@@ -1,0 +1,23 @@
+[
+  {
+    "run": 1,
+    "am_start": "Starting: Intent { cmp=com.puppytrainer.puppy_trainer.astra/com.puppytrainer.puppy_trainer.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.puppytrainer.puppy_trainer.astra/com.puppytrainer.puppy_trainer.MainActivity\nTotalTime: 4132\nWaitTime: 4529\nComplete",
+    "launch_marker": "         1794814077.104  7632  7632 I ASTRA   : M1_COLD_0",
+    "home_frame": "         1794814084.499  7639  7639 I flutter : ASTRA_HOME_READY",
+    "home_ready_ms": 7395
+  },
+  {
+    "run": 2,
+    "am_start": "Starting: Intent { cmp=com.puppytrainer.puppy_trainer.astra/com.puppytrainer.puppy_trainer.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.puppytrainer.puppy_trainer.astra/com.puppytrainer.puppy_trainer.MainActivity\nTotalTime: 3352\nWaitTime: 3354\nComplete",
+    "launch_marker": "         1794814085.179  7683  7683 I ASTRA   : M1_COLD_1",
+    "home_frame": "         1794814090.890  7690  7690 I flutter : ASTRA_HOME_READY",
+    "home_ready_ms": 5711
+  },
+  {
+    "run": 3,
+    "am_start": "Starting: Intent { cmp=com.puppytrainer.puppy_trainer.astra/com.puppytrainer.puppy_trainer.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: com.puppytrainer.puppy_trainer.astra/com.puppytrainer.puppy_trainer.MainActivity\nTotalTime: 2721\nWaitTime: 2848\nComplete",
+    "launch_marker": "         1794814092.374  7728  7728 I ASTRA   : M1_COLD_2",
+    "home_frame": "         1794814096.775  7735  7735 I flutter : ASTRA_HOME_READY",
+    "home_ready_ms": 4401
+  }
+]

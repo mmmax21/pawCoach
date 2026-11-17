@@ -1,0 +1,33 @@
+# 库内题：期望 kind = normal，cited_content_ids 非空且包含 expect_ids 中至少一个
+# 格式：q 问题；context 可选，课程内提问时带 skill_id；expect_ids 期望检索命中
+questions:
+  - { q: 坐下练了三天狗还是不坐怎么办, expect_ids: [sit] }
+  - { q: 说坐它就跳起来, expect_ids: [sit] }
+  - { q: 零食抬起来它不跟, expect_ids: [lure_follow, sit] }
+  - { q: 它坐下马上又站起来, expect_ids: [sit, stay_short] }
+  - { q: 趴下教不会, expect_ids: [down] }
+  - { q: 叫名字它不看我, expect_ids: [name_response] }
+  - { q: 响片按了它没反应, expect_ids: [marker_intro] }
+  - { q: 响片要按几次才算学会, expect_ids: [marker_intro] }
+  - { q: 等待能坚持多久算合格, expect_ids: [stay_short, stay_long] }
+  - { q: 在家叫得回来出门就叫不回, expect_ids: [not_coming, recall_outdoor] }
+  - { q: 长绳召回怎么练, expect_ids: [recall_outdoor] }
+  - { q: 总是在家里乱尿, expect_ids: [potty_accidents, potty_training] }
+  - { q: 尿垫上尿一半地上尿一半, expect_ids: [potty_accidents] }
+  - { q: 定点大小便要带出去几次, expect_ids: [potty_training] }
+  - { q: 不肯进航空箱, expect_ids: [crate_intro] }
+  - { q: 我一出门它就哭, expect_ids: [separation_crying, alone_time] }
+  - { q: 独处练习从几分钟开始, expect_ids: [alone_time] }
+  - { q: 咬手怎么办, expect_ids: [biting_hands, bite_inhibition] }
+  - { q: 换牙期一直咬人, expect_ids: [biting_hands] }
+  - { q: 啃沙发和鞋子, expect_ids: [chewing_furniture] }
+  - { q: 怎么让它去咬玩具不咬我, expect_ids: [redirect_to_toy, bite_inhibition] }
+  - { q: 遛狗一直往前冲, expect_ids: [leash_pulling, loose_leash] }
+  - { q: 戴上牵绳就不肯走, expect_ids: [leash_intro, leash_pulling] }
+  - { q: 松绳行走室内练好了户外怎么过渡, expect_ids: [loose_leash] }
+  - { q: 剪指甲它不让碰爪子, expect_ids: [handling_body] }
+  - { q: 客人来就扑人, expect_ids: [jumping_on_people] }
+  - { q: 听到门外有声音就乱叫, expect_ids: [excessive_barking] }
+  - { q: 吃饭的时候靠近它就低吼, expect_ids: [resource_guarding] }
+  - { q: 安静趴垫练多久能自己去, expect_ids: [calm_settle] }
+  - { q: 它太兴奋坐不住怎么练, expect_ids: [calm_settle, stay_short] }

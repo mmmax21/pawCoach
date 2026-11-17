@@ -1,0 +1,94 @@
+id: marker_intro
+name: 响片 / 标记词建立
+category: basic_obedience
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 1
+default_cue: 对（标记词）
+default_gesture: 无手势，响片声或标记词本身就是信号
+sessions_to_master: 2
+tutorial:
+  summary: 让狗明白"咔哒"一声（或一个固定的词）等于零食马上来，之后你就能在狗做对的那一瞬间精准告诉它"就是这个"。
+  steps:
+    - text: 准备 15 块软零食和一个响片。没有响片就选一个平时不说的短词，比如"对"或"Yes"，以后固定只用这一个。
+      image: marker_intro_step1.png
+    - text: 和狗待在安静的房间，你坐着或蹲着。狗什么都不用做，站着、坐着、走来走去都行。
+      image: marker_intro_step2.png
+    - text: 按一下响片，立刻给一块零食。响片在前，零食在后，中间不超过 1 秒。
+      image: marker_intro_step3.png
+    - text: 重复 10 次，节奏打乱，有时隔 2 秒有时隔 8 秒。狗没看你的时候也按，让它知道这个声音随时可能出现。
+      image: marker_intro_step4.png
+    - text: 测试：等狗在闻地板或走神时按一下。如果它马上转头来找零食，说明它已经懂了。给零食。
+      image: marker_intro_step5.png
+    - text: 第一次用在行为上：狗自己坐下或看你的那一刻按响片，给零食。这就是以后所有训练的基本动作。
+      image: marker_intro_step6.png
+  common_mistakes:
+    - 按完响片才去掏零食，或者零食和响片同时给。响片一定在前，零食紧跟在后，顺序和间隔都不能乱。
+    - 把响片当遥控器，狗不理你就按。响片不是召唤工具，每按一次都必须跟一块零食，不然它很快就失效。
+    - 标记词换来换去，一会儿"好"一会儿"棒"一会儿"乖"。只用一个词，全家人都用同一个。
+    - 响片声太近太响，狗吓到了。把手放到背后或口袋里按，或者先用标记词，等狗习惯了再换响片。
+    - 练了几十次还在"充电"。狗一听到声音就找零食（通常 10-20 次就够了），马上开始用在真实行为上。
+  success_criteria: 狗在走神时听到响片（或标记词），2 秒内转头看你或找零食，连续 3 次测试中 3 次都做到。
+script:
+  - step: 1
+    instruction: 拿 15 块零食和响片。找个安静的房间，坐下或蹲下，让狗在旁边随便待着。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 按一下响片，马上给一块零食。狗什么都不用做。响片在前，零食紧跟着，中间不超过 1 秒。
+    duration_sec: 20
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 重复 10 次。节奏打乱，有时隔 2 秒有时隔 8 秒。狗没看你也按，按完就给零食。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 测试。等狗去闻地板或走神的时候按一下。它马上转头来找零食就说明懂了，给零食。做 3 次。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 现在用在行为上。狗自己坐下、或者抬头看你的那一瞬间按响片，给零食。抓住 3 次。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。给最后一块零食，说"好了"，收起响片。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 拿 10 块零食和响片。找个安静的房间，坐下或蹲下，让狗在旁边随便待着。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 按一下响片，马上给一块零食。狗什么都不用做。响片在前，零食紧跟着，中间不超过 1 秒。重复 6 次，节奏打乱。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 测试。等狗去闻地板或走神的时候按一下。它马上转头来找零食就说明懂了，给零食。做 2 次。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 狗自己坐下、或者抬头看你的那一瞬间按响片，给零食。抓住 2 次。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。给最后一块零食，说"好了"，收起响片。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 第 4 步 3 次测试里 3 次都在 2 秒内转头找零食；部分做到 = 1-2 次；没做到 = 0 次，或者听到响片有躲闪反应。
+downgrade_to: null
+sources:
+  - 响片充电（charging the clicker / loading the marker），参见 Karen Pryor《Don't Shoot the Dog》及 Karen Pryor Clicker Training 官网入门教程
+  - AKC "What Is Clicker Training" 公开文章

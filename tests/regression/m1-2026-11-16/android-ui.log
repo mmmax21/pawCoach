@@ -1,0 +1,12 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m1_regression_test.dart
+Running Gradle task 'assembleDebug'...                             15.4s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          15.7s
+00:00 +0: M1 Android: boundaries, search, selection, preview and home
+ASTRA scenario age=7 minutes=5 goals=0 PASS
+ASTRA scenario age=8 minutes=10 goals=3 PASS
+ASTRA scenario age=52 minutes=15 goals=3 PASS
+ASTRA scenario age=53 minutes=30 goals=4 PASS
+ASTRA scenario age=8 minutes=5 goals=2 PASS
+04:10 +1: (tearDownAll)
+04:11 +1: All tests passed!

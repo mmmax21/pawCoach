@@ -1,0 +1,7 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4b_astra_removal_test.dart
+lib/core/providers.dart:121:43: Error: Undefined name 'nudgeIdMax'.
+Target kernel_snapshot_program failed: Exception
+00:00 +0 -1: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4b_astra_removal_test.dart [E]
+00:00 +0 -1: Some tests failed.
+adb uninstall failed: ProcessException: Process exited abnormally with exit code 1:
+[tour] flutter test 退出码 1

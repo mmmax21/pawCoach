@@ -1,0 +1,97 @@
+id: bite_inhibition
+name: 咬合抑制
+category: social
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: [marker_intro]
+difficulty: 2
+default_cue: 轻一点
+default_gesture: 无（咬重时手静止不动，然后收回）
+sessions_to_master: 3
+tutorial:
+  summary: 教幼犬在换牙期控制嘴巴的力度，先学会"咬人要轻"，再学会"不咬人"。这是它一辈子最重要的社交课，错过 18 周就很难补。
+  steps:
+    - text: 准备一个长条形的拉扯玩具和 10 块零食。坐在地上和狗玩，用玩具逗它，让它咬玩具。
+      image: bite_inhibition_step1.png
+    - text: 狗咬到玩具、嘴巴没碰到手的时候，按响片，给一块零食。让它知道"咬玩具有奖"。
+      image: bite_inhibition_step2.png
+    - text: 玩的过程中狗牙齿咬到你的手了，如果力度轻，什么都不做继续玩。只有咬得疼的时候，才说一声平静的"哎"，手静止不动。
+      image: bite_inhibition_step3.png
+    - text: 说完"哎"立刻站起来，背对狗或走出围栏，停止所有互动 10 秒。10 秒后回来继续用玩具玩，像什么都没发生。
+      image: bite_inhibition_step4.png
+    - text: 几天后狗咬重的次数明显减少，这时把"疼"的标准调低：中等力度也开始"哎"加停止 10 秒。再过几天，牙齿碰到皮肤就停。
+      image: bite_inhibition_step5.png
+    - text: 和狗玩的时候，每次它用嘴轻轻碰手或舔手而不是咬，就按响片给零食。你想要的"嘴巴轻"要专门奖励，不能只靠停止互动。
+      image: bite_inhibition_step6.png
+    - text: 全家人都用同一套规则：轻咬继续玩、咬疼就"哎"加离开 10 秒、咬玩具就奖励。规则不一致狗就学不会。
+      image: bite_inhibition_step7.png
+  common_mistakes:
+    - 被咬了就拍嘴、捏嘴、按住狗。这会让狗觉得手是威胁，要么更用力咬，要么开始怕手。被咬唯一要做的就是停止互动和离开，让它失去玩伴。
+    - 被咬疼了大叫、甩手、快速抽回。幼犬觉得这是猎物在动，咬得更起劲。手要像木头一样不动，然后平静地站起来走开。
+    - 一开始就要求"完全不许碰手"。幼犬得先通过轻咬学会力度，直接禁止它就没机会学"轻"。前两周只对咬疼的做反应，轻咬放过。
+    - 狗一咬就塞玩具给它。狗会学到"咬手 = 得到玩具"。玩具要在它还没咬手之前就主动给，咬了手之后是停止互动，不是换玩具。
+    - 用手逗狗玩。手在狗脸前晃就是在邀请它咬，和幼犬玩一定要隔着玩具。
+    - 离开后回来还在生气、不理狗。10 秒就够了，回来要正常玩，狗才能把"咬疼"和"玩伴消失"准确对上，而不是觉得你整个人都变了。
+  success_criteria: 和狗玩拉扯玩具 5 分钟，狗牙齿碰到手但用力的次数 0 次，轻碰手不超过 2 次，连续 3 天做到。
+script:
+  - step: 1
+    instruction: 坐在地上，拿出拉扯玩具，准备好 10 块零食。用玩具在地上拖动逗狗，让它去咬玩具。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 狗咬住玩具、嘴巴没碰到手的时候，按响片，给一块零食。继续玩，做 5 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 继续玩。如果狗牙齿咬到手而且疼，平静地说一声"哎"，手不动，然后站起来背对它 10 秒，再回来继续玩。轻咬就当没发生。
+    duration_sec: 90
+    voice: true
+    clicker_hint: false
+  - step: 4
+    instruction: 把玩具放到地上，伸出手放在狗面前。它用嘴轻轻碰或舔你的手而不是咬，就按响片给零食。做 5 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 再用玩具玩一会儿，狗全程只咬玩具不碰手的话，按响片，连给 2 块零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。在狗还没玩疯之前停下，把玩具收走，给它一个磨牙玩具自己啃。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 坐在地上，拿出拉扯玩具和 8 块零食。用玩具在地上拖动逗狗，让它去咬玩具。
+    duration_sec: 20
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 狗咬住玩具、嘴巴没碰到手的时候，按响片，给一块零食。继续玩，做 4 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 继续玩。狗牙齿咬到手而且疼，平静地说一声"哎"，手不动，站起来背对它 10 秒再回来。轻咬就当没发生。
+    duration_sec: 60
+    voice: true
+    clicker_hint: false
+  - step: 4
+    instruction: 把玩具放到地上，伸出手放在狗面前。它轻碰或舔你的手而不是咬，就按响片给零食。做 4 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。在狗玩疯之前停下，收走玩具，给它一个磨牙玩具自己啃。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 整个练习里狗咬疼手 0 次，"哎"一声后能在 1 秒内松口；部分做到 = 咬疼 1-2 次，"哎"后能松口；没做到 = 咬疼 3 次以上，或"哎"后不松口反而更兴奋。
+downgrade_to: marker_intro
+sources:
+  - 咬合抑制训练（bite inhibition：先教轻咬再教不咬，咬重即暂停互动），参见 Ian Dunbar "After You Get Your Puppy" 公开章节与 AKC "How to Stop Puppy Biting" 资料
+  - 用响片强化"咬玩具 / 轻碰手"的正向替代行为，参见 Karen Pryor Clicker Training 幼犬公开教程

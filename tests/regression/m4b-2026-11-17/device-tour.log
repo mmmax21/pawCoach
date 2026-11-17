@@ -1,0 +1,33 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4b_device_tour_test.dart
+00:00 +0: M4 批次 B 设备实测
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b01_skill_tree.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b02_skill_tree_tap_sit.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b03_family_remove_button.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b04_family_remove_confirm.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b05_family_after_remove.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b06_diagnosis_not_this.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b07_back_to_issue_list.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b08_mistakes_folded.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b09_mistakes_expanded.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b10_records_by_date.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b11_records_by_skill.png
+M4TOUR pending id=1001 title=幼犬训练
+M4TOUR pending id=1002 title=幼犬训练
+M4TOUR pending id=1003 title=幼犬训练
+M4TOUR pending id=1004 title=幼犬训练
+M4TOUR pending id=1005 title=幼犬训练
+M4TOUR pending id=1006 title=幼犬训练
+M4TOUR pending id=1007 title=幼犬训练
+M4TOUR pending id=1008 title=幼犬训练
+M4TOUR pending id=1009 title=幼犬训练
+M4TOUR pending id=1010 title=幼犬训练
+M4TOUR pending id=1011 title=幼犬训练
+M4TOUR pending id=1012 title=幼犬训练
+M4TOUR pending id=1013 title=幼犬训练
+M4TOUR pending id=1014 title=幼犬训练
+M4TOUR pending id=3000 title=已经 3 天没练了
+M4TOUR nudge_shown=true
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_20261117/b12_nudge_notification.png
+01:00 +1: (tearDownAll)
+01:01 +1: All tests passed!
+[tour] flutter test 退出码 0

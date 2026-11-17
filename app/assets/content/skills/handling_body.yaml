@@ -1,0 +1,151 @@
+id: handling_body
+name: 全身触摸脱敏（爪、耳、嘴）
+category: handling
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 2
+default_cue: 摸摸
+default_gesture: 手掌摊开，缓慢伸向狗的肩膀
+sessions_to_master: 3
+script_parts: 2
+tutorial:
+  summary: 让幼犬习惯被人摸爪子、耳朵、嘴和全身，以后剪指甲、清耳朵、刷牙、看兽医、被小孩摸都不会挣扎或咬人。
+  steps:
+    - text: 挑狗刚玩完、有点困的时候练。准备 20 块很小的零食，坐在地上让狗靠在你腿边。
+      image: handling_body_step1.png
+    - text: 说"摸摸"，手掌摊开从狗肩膀慢慢摸到背、胸口，每摸 2 秒给一块零食。狗放松不躲，再摸腿、肚子。
+      image: handling_body_step2.png
+    - text: 摸到前爪：先只碰一下爪背就给零食，然后握住爪子 1 秒给零食，再慢慢加到 3 秒。四只爪子轮流来，每只做 3 次。
+      image: handling_body_step3.png
+    - text: 握住爪子时用拇指轻轻分开脚趾、碰一下指甲，每碰一次给零食。这是为以后剪指甲做准备。
+      image: handling_body_step4.png
+    - text: 摸耳朵：先摸耳根给零食，再轻轻翻开耳朵看一眼给零食，最后用手指轻轻碰耳朵内侧给零食。两只耳朵各做 3 次。
+      image: handling_body_step5.png
+    - text: 摸嘴：先摸嘴边给零食，再用手指轻轻掀开嘴唇看牙齿 1 秒给零食，最后用手指在牙齿上轻擦一下给零食。做 3 次。
+      image: handling_body_step6.png
+    - text: 每天各部位练 2-3 分钟。狗稳定了以后，让家里其他人、再让朋友照同样步骤摸，每个人都带零食。
+      image: handling_body_step7.png
+  common_mistakes:
+    - 狗一缩爪就强行握住不放。这样狗会更怕，下次直接躲。狗缩回去就松手，退回到上一步（比如只碰一下），多做几次再往前。
+    - 先摸完再给零食，中间隔了好几秒。零食要在摸的同时或者摸完的瞬间给，狗才会把"被摸"和"好事"连起来。
+    - 挑狗最兴奋的时候练。狗会把手当玩具咬。在它刚睡醒或者玩累了的时候练，坐着比站着好。
+    - 一上来就翻耳朵、掰嘴看牙。要从最不敏感的肩膀、背开始，每个部位都是先碰一下、再 1 秒、再 3 秒，一步步来。
+    - 一次把所有部位都练完。幼犬注意力有限，一次只练一两个部位，每次 3-5 分钟就停。
+    - 狗低吼或者龇牙时继续摸。这是它在说"太快了"，立刻退回到它舒服的部位和时长。如果低吼持续出现，先去咨询训犬师再练。
+  success_criteria: 狗在放松状态下，四只爪子各被握住 3 秒、两只耳朵各被翻开看 3 秒、嘴唇被掀开看牙 3 秒，全程不缩回、不挣扎、不咬手，每个部位 3 次中至少 2 次做到，且连续 2 次练习都做到。
+script:
+  - step: 1
+    part: 1
+    instruction: 坐在地上，让狗靠在你腿边。说"摸摸"，手掌从狗肩膀慢慢摸到背，每摸 2 秒给一块零食。做 5 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+  - step: 2
+    part: 1
+    instruction: 摸胸口、前腿、肚子，每个地方摸 2 秒给一块零食。狗躲开就回到肩膀重新来。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+  - step: 3
+    part: 1
+    instruction: 碰一下前爪的爪背，狗不缩就按响片给零食。每只前爪做 3 次。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    part: 1
+    instruction: 轻轻握住前爪 1 秒，狗不缩就按响片给零食。再加到 3 秒。每只前爪做 3 次。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    part: 1
+    instruction: 后爪同样来：先碰一下，再握 1 秒，再握 3 秒。不缩就按响片给零食。每只做 3 次。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 6
+    part: 1
+    instruction: 握住一只爪子，拇指轻轻分开脚趾碰一下指甲，狗不缩就按响片给零食。做 3 次。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 7
+    part: 1
+    instruction: 结束。全身顺着毛摸 10 秒，给一块零食，说"好了"。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+  - step: 8
+    part: 2
+    instruction: 坐在地上，让狗靠在你腿边。说"摸摸"，从肩膀摸到背，每 2 秒给一块零食，让狗先放松。做 3 遍。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 9
+    part: 2
+    instruction: 摸耳根，狗不躲就按响片给零食。两只耳朵各做 3 次。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 10
+    part: 2
+    instruction: 轻轻翻开耳朵看一眼，不躲就按响片给零食。再翻开看 3 秒。两只耳朵各做 3 次。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 11
+    part: 2
+    instruction: 用手指轻轻碰一下耳朵内侧，不躲就按响片给零食。两只耳朵各做 3 次。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 12
+    part: 2
+    instruction: 摸嘴边，不躲就按响片给零食。然后用手指轻轻掀开嘴唇看牙齿 1 秒，按响片给零食。做 3 次。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 13
+    part: 2
+    instruction: 掀开嘴唇看牙 3 秒，再用手指在牙齿上轻擦一下，不躲就按响片给零食。做 3 次。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 14
+    part: 2
+    instruction: 结束。全身顺着毛摸 10 秒，给一块零食，说"好了"。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 坐在地上，让狗靠在你腿边。说"摸摸"，手掌从肩膀摸到背，每摸 2 秒给一块零食。做 3 遍。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 轻轻握住一只前爪 1 秒，狗不缩就按响片给零食。两只前爪各做 2 次。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 摸耳根，狗不躲就按响片给零食。两只耳朵各做 2 次。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 摸嘴边，不躲就按响片给零食。然后用手指轻轻掀开嘴唇看牙齿 1 秒，按响片给零食。做 2 次。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。全身顺着毛摸 10 秒，给一块零食，说"好了"。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 本次练到的每个部位（爪 / 耳 / 嘴）都能被握住或翻开 3 秒，3 次中 2 次以上不缩不挣扎；部分做到 = 能接受碰一下和 1 秒，但 3 秒时会缩回；没做到 = 碰一下就躲、挣扎或者张嘴咬手。
+downgrade_to: null
+sources:
+  - 触摸脱敏与正向关联（handling desensitization / cooperative care），参见 Ian Dunbar《Before & After Getting Your Puppy》中的 handling and gentling 章节与 Fear Free Pets 公开资料

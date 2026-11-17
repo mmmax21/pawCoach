@@ -1,0 +1,8 @@
+{
+  "artifact": "app/build/app/outputs/flutter-apk/app-release.apk",
+  "sha256": "6ef9e495500d70eb168a9efaf5a618d09a6eb6ff818a2968432fc051081f17dc",
+  "uncompressed_members_scanned": 162,
+  "hits": [],
+  "pattern": "sk-ant-|ANTHROPIC_API_KEY|x-api-key",
+  "lint_disabled": false
+}

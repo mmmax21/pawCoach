@@ -1,0 +1,11 @@
+{
+  "apk": "app/build/app/outputs/flutter-apk/app-release.apk",
+  "files_scanned": 162,
+  "feature_match_counts": {
+    "anthropic_key": 0,
+    "openai_key": 0,
+    "aws_access_key": 0,
+    "google_key": 0,
+    "private_key": 0
+  }
+}

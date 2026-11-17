@@ -1,0 +1,101 @@
+id: calm_settle
+name: 安静趴垫
+category: impulse
+min_age_weeks: 12
+max_age_weeks: 52
+prerequisites: [down]
+difficulty: 3
+default_cue: 去垫子
+default_gesture: 手臂伸直，手指指向垫子
+sessions_to_master: 3
+tutorial:
+  summary: 教幼犬听到口令就走到垫子上趴下并安静待着，是对付扑人、乱叫、兴奋过头和独处哭闹的核心工具。
+  steps:
+    - text: 准备一块狗专用的垫子或薄毯（只在训练时拿出来），还有 15 块小零食。在安静的房间把垫子铺在地上。
+      image: calm_settle_step1.png
+    - text: 狗只要看一眼垫子或者一只脚踩上去，立刻按响片，把零食扔在垫子上让它吃。重复 5 次，狗会开始主动往垫子上走。
+      image: calm_settle_step2.png
+    - text: 狗四只脚都在垫子上时，说一次"趴"。趴下的瞬间按响片，零食直接放在它两只前爪中间。
+      image: calm_settle_step3.png
+    - text: 狗趴着不动时，每隔 3 秒在它爪子间放一块零食，不说话不响片。放完 5 块后说"好了"，把零食扔到垫子外面让它起来。
+      image: calm_settle_step4.png
+    - text: 狗能趴 15 秒后，走到垫子前先说"去垫子"再指垫子。它上垫子趴下就按响片，然后照步骤 4 慢慢喂。
+      image: calm_settle_step5.png
+    - text: 逐渐拉长喂零食的间隔，从 3 秒到 5 秒、10 秒。狗在垫子上叹气、侧躺、头放下来，这些放松的动作都单独奖励一块。
+      image: calm_settle_step6.png
+    - text: 日常里吃饭、看电视、来客人之前先说"去垫子"，每次让狗趴 1-2 分钟，中间偶尔扔一块零食。
+      image: calm_settle_step7.png
+  common_mistakes:
+    - 零食扔到垫子外面或者递到狗嘴边让它抬头。零食一定要放在垫子上、两只前爪中间，狗才会觉得"趴在这里就有好事"。
+    - 狗一站起来主人就说"不行"把它推回去。站起来不用管，等它自己回垫子再奖励；如果连续 3 次站起来，说明间隔拉太长了，缩短回去。
+    - 一上来就要求趴 1 分钟。从 3 秒间隔开始，每次练习只加一点点，一次练习里狗总共趴够 1 分钟就够了。
+    - 忘记说"好了"结束口令，狗自己溜走。每次都要主人说"好了"再让它离开垫子，不然狗学不会"要一直待着"。
+    - 在狗最疯的时候才拿出垫子。先在它本来就比较困、刚玩完的时候练，稳定了再用到兴奋场景。
+    - 垫子一直铺在地上当床。训练用的垫子只在练习时出现，练完就收，狗才会把它和"趴下安静"联系起来。
+  success_criteria: 说一次"去垫子"，狗在 5 秒内走到垫子上趴下，不用零食引导，能安静趴 30 秒以上（中间最多喂 3 块零食），3 次中至少 2 次做到。
+script:
+  - step: 1
+    instruction: 把垫子铺好，拿着零食站在旁边。狗看垫子或者踩上去，马上按响片，把零食扔到垫子上。做 5 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 狗四只脚都在垫子上的时候，说一次"趴"。趴下的瞬间按响片，零食放在它两只前爪中间。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 狗趴着不动，每 3 秒在它爪子间放一块零食，不说话。放完 5 块，说"好了"，零食扔到垫子外面让它起来。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+  - step: 4
+    instruction: 再做 2 遍：上垫子说"趴"，趴下按响片，然后每 5 秒喂一块，喂 4 块，说"好了"放它走。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 现在站在离垫子一步远，说"去垫子"并用手指垫子。狗上垫子趴下就按响片，每 5 秒喂一块，喂 4 块，说"好了"。做 2 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 最后一遍，说"去垫子"，趴下后把喂食间隔拉到 10 秒，喂 3 块。狗如果叹气或者头放下来，额外奖一块。说"好了"结束。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 7
+    instruction: 结束。把垫子收起来，摸摸狗，让它自由活动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 把垫子铺好，拿着零食站在旁边。狗看垫子或踩上去，马上按响片，把零食扔到垫子上。做 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 站在离垫子一步远，说"去垫子"并用手指垫子。狗上垫子趴下就按响片。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 狗趴着不动，每 5 秒在它爪子间放一块零食，不说话。喂 4 块，说"好了"，零食扔到垫子外让它起来。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+  - step: 4
+    instruction: 再做 2 遍"去垫子"。趴下按响片，每 5 秒喂一块，喂 4 块，说"好了"放它走。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 最后一遍，趴下后把喂食间隔拉到 10 秒，喂 3 块。说"好了"结束，把垫子收起来。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+scoring_hint: 完全做到 = 最后 3 遍"去垫子"中 2 遍以上狗 5 秒内自己上垫子趴下，并趴满 30 秒；部分做到 = 能上垫子趴下但趴不到 30 秒就起来，或 3 遍中只做到 1 遍；没做到 = 需要零食引导才上垫子，或趴下不到 10 秒就起来。
+downgrade_to: down
+sources:
+  - 垫子训练（mat training / Relaxation Protocol），参见 Karen Overall "Protocol for Relaxation" 与 Karen Pryor Clicker Training 公开教程 "Go to Mat"

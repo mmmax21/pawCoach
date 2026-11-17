@@ -1,0 +1,139 @@
+id: loose_leash
+name: 松绳行走
+category: leash
+min_age_weeks: 16
+max_age_weeks: 52
+prerequisites: [leash_intro, name_response]
+difficulty: 4
+default_cue: 跟我
+default_gesture: 手掌轻拍自己靠狗一侧的大腿
+sessions_to_master: 3
+script_parts: 2
+tutorial:
+  summary: 教幼犬散步时让牵引绳一直保持松的，不往前冲、不拖着你走，是解决牵绳暴冲的根本方法。
+  steps:
+    - text: 准备 1.5-2 米的牵引绳、一袋 20-30 块小零食，装在靠狗那一侧的口袋里。先在家里走廊或客厅练，不出门。
+      image: loose_leash_step1.png
+    - text: 定好狗走在你哪一边（一般左边），零食就从那一边的手给，位置在你大腿旁边。狗站在你腿旁时按响片，零食贴着大腿给。重复 5 次。
+      image: loose_leash_step2.png
+    - text: 说"跟我"，拍一下大腿，往前走 2 步。狗跟在腿旁绳子是松的就按响片，零食贴大腿给。慢慢加到 5 步、10 步再奖励。
+      image: loose_leash_step3.png
+    - text: 绳子一绷紧，你立刻停下站着不动，不拉不喊。等狗自己回头或者往回走一步让绳子松了，按响片，再继续走。
+      image: loose_leash_step4.png
+    - text: 狗冲到前面不回头时，叫它名字，它回头看你就按响片，然后你往反方向走 3 步，狗跟上来给零食。
+      image: loose_leash_step5.png
+    - text: 室内能走 10 步不绷绳后，换到楼道或小区里最安静的角落，从 2 步重新开始，奖励加密到每 2-3 步一块。
+      image: loose_leash_step6.png
+    - text: 户外每次练 5 分钟就换成正常散步，让狗闻闻草地当奖励。每周把训练地点换成更热闹一点的地方，奖励频率随之加密。
+      image: loose_leash_step7.png
+  common_mistakes:
+    - 狗一拉绳主人就跟着被拖走。狗会学到"拉就能到想去的地方"。绳子一紧必须停住，狗松了绳子才往前走。
+    - 狗拉绳时主人往回猛拽绳子。这样狗会怕绳子、更紧张，而且和你拔河反而更拉。只需要停下站着，等狗自己回来。
+    - 零食从身体中间或者另一边的手给，狗会跑到你前面横着走。零食永远贴着狗那一侧的大腿给，狗才会待在你腿旁。
+    - 一出门就在最热闹的路口练。狗被路人和狗吸引，根本注意不到你。从家里到楼道到小区角落，一级一级加难度，一个地方稳定了再换。
+    - 奖励间隔拉得太快。室内 2 步就能奖，到户外要重新从 2 步开始，不能直接要求 10 步。
+    - 一次走太远。狗 16 周注意力有限，户外每次练 5 分钟就停，剩下的时间正常散步让它闻东西。
+  success_criteria: 室内说一次"跟我"，狗跟在腿旁走 10 步绳子不绷紧，5 次中 4 次做到；户外安静地点走 10 步绳子不绷紧，5 次中 3 次做到，并且绳子绷紧后狗在 5 秒内自己回到你身边。
+script:
+  - step: 1
+    part: 1
+    instruction: 在客厅或走廊，狗牵在左边。狗站到你左腿旁边就按响片，零食贴着左腿给。做 5 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 2
+    part: 1
+    instruction: 说"跟我"，拍一下左腿，往前走 2 步。狗跟在腿旁绳子松着，就按响片，零食贴大腿给。做 5 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    part: 1
+    instruction: 现在走 5 步再奖励。绳子一绷紧你就停下站着不动，狗松回来了按响片，再继续。做 5 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    part: 1
+    instruction: 狗冲到前面的时候叫它名字，回头看你就按响片，你往反方向走 3 步，它跟上来给零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    part: 1
+    instruction: 最后一轮，说"跟我"走 10 步，绳子一直松着才按响片给零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    part: 1
+    instruction: 结束。给一块零食，解开绳子，说"好了"，让狗自由活动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+  - step: 7
+    part: 2
+    instruction: 到楼道或小区里最安静的角落。先站着不走，狗回到你左腿旁就按响片给零食。做 5 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 8
+    part: 2
+    instruction: 说"跟我"，往前走 2 步，绳子松着就按响片，零食贴大腿给。做 5 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 9
+    part: 2
+    instruction: 走 5 步再奖励。绳子一绷紧就停下不动，等狗自己松回来，按响片再走。做 5 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 10
+    part: 2
+    instruction: 狗被外面东西吸引往前冲时，叫名字，回头就按响片，反方向走 3 步，跟上来给零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 11
+    part: 2
+    instruction: 最后说"跟我"走 10 步，绳子一直松着才按响片。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 12
+    part: 2
+    instruction: 结束。说"去闻吧"，让狗自由闻草地 1 分钟当奖励，然后正常散步。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 在客厅或走廊，狗牵在左边。狗站到你左腿旁边就按响片，零食贴着左腿给。做 3 遍。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 说"跟我"，拍一下左腿，往前走 2 步。狗跟在腿旁绳子松着，就按响片，零食贴大腿给。做 4 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 走 5 步再奖励。绳子一绷紧你就停下站着不动，狗松回来了按响片，再继续。做 4 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 最后说"跟我"走 10 步，绳子一直松着才按响片给零食。做 2 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。给一块零食，解开绳子，说"好了"，让狗自由活动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 最后 3 遍"跟我"走 10 步中 2 遍以上绳子全程松着，且绳子绷紧后狗 5 秒内自己回来；部分做到 = 能走 5 步不绷绳但 10 步做不到，或者 3 遍中只做到 1 遍；没做到 = 2 步内就绷绳，或者绷紧后 10 秒还不回头。
+downgrade_to: leash_intro
+sources:
+  - 松绳行走的"停下等待 + 位置奖励"法（be a tree / silky leash），参见 Grisha Stewart《The Official Ahimsa Dog Training Manual》与 AKC "Teach Your Puppy to Walk on a Loose Leash" 公开文章

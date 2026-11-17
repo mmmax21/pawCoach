@@ -1,0 +1,854 @@
+--------- beginning of system
+11-22 21:01:00.118   578   658 I UsageStatsDatabase: Time changed by +5d5h15m8s942ms. files deleted: 0 files moved: 4
+--------- beginning of main
+11-22 21:01:00.122  1451  5905 I BugleDataModel: ActionExecutorImpl: Starting ActionService
+11-22 21:01:00.123  1253  5899 I AlarmManager: setExactAndAllowWhileIdle [name: RemindersNSREFRESH_TIME_REMINDERS_ALARM type: 0 triggerAtMillis: 1795363200000]
+11-22 21:01:00.124   578   658 D IntervalStats: Unable to parse usage stats packages: [227, 228, 244]
+11-22 21:01:00.124   578   658 D IntervalStats: Unable to parse usage stats packages: [245, 246]
+11-22 21:01:00.125   578   658 D IntervalStats: Unable to parse usage stats packages: [245, 246]
+11-22 21:01:00.125   578   658 D IntervalStats: Unable to parse usage stats packages: [245, 246]
+11-22 21:01:00.125   578   658 I UsageStatsService: User[0] Rollover scheduled @ 2026-11-23 08:20:30(1795393230386)
+11-22 21:01:00.129  1253  5909 I SystemUpdate: [Installation,ReceiverIntentOperation] Received intent: Intent { act=android.intent.action.TIME_SET flg=0x25200010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver }.
+11-22 21:01:00.132  1253  5907 I AlarmManager: setExactAndAllowWhileIdle [name: RemindersNSREFRESH_TIME_REMINDERS_ALARM type: 0 triggerAtMillis: 1795363200000]
+11-22 21:01:00.133   578  2062 I ActivityManager: Background started FGS: Allowed [callingPackage: com.google.android.apps.wellbeing; callingUid: 10139; uidState: RCVR; uidBFSL: n/a; intent: Intent { cmp=com.google.android.apps.wellbeing/com.google.apps.tiktok.concurrent.InternalForegroundService (has extras) }; code:BACKGROUND_ACTIVITY_PERMISSION; tempAllowListReason:<c4b9eef android.intent.action.TIME_SET/u-1,reasonCode:TIME_CHANGED,duration:20000,callingUid:1000>; targetSdkVersion:34; callerTargetSdkVersion:34; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+11-22 21:01:00.135   578   608 D ActivityManager: sync unfroze 1158 com.google.android.permissioncontroller for 3
+11-22 21:01:00.136   578   926 W ForegroundServiceTypeLoggerModule: Foreground service start for UID: 10139 does not have any types
+11-22 21:01:00.143   578   608 D ActivityManager: sync unfroze 4249 com.google.android.providers.media.module:PhotoPicker for 10
+11-22 21:01:00.144  1320  1320 D WM-RescheduleReceiver: Received intent Intent { act=android.intent.action.TIME_SET flg=0x25200010 cmp=com.google.android.providers.media.module/androidx.work.impl.background.systemalarm.RescheduleReceiver }
+11-22 21:01:00.146   578   608 D ActivityManager: sync unfroze 2307 com.google.android.rkpdapp for 3
+11-22 21:01:00.152  2307  2307 D WM-RescheduleReceiver: Received intent Intent { act=android.intent.action.TIME_SET flg=0x25200010 cmp=com.google.android.rkpdapp/androidx.work.impl.background.systemalarm.RescheduleReceiver }
+11-22 21:01:00.153  1451  5905 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_RecurringTelemetryUploaderAction
+11-22 21:01:00.159  1228  1364 W UsageSyncManager: <DWB> Last (TimeDelta{wallTime=2026-11-17T07:34:43.155Z, elapsedSinceBoot=PT1H28M56.251S}, boot count 5) and current (TimeDelta{wallTime=2026-11-22T13:01:00.134Z, elapsedSinceBoot=PT1H40M4.288S}, boot count 5) deltas are different. Increase event shift by PT125H15M8.942S.
+11-22 21:01:00.159  1228  1364 W UsageSyncManager: <DWB> Deferring shifting events by PT126H3M14.72S
+11-22 21:01:00.163   578   601 D ColorDisplayService: Setting saturation level: 100
+11-22 21:01:00.165  1253  5899 I SystemUpdate: [Execution,InstallationEventIntentOperation] Handling event of type 6.
+11-22 21:01:00.165  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.165  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.166   578  2065 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.167  1158  1158 D PermissionStorageTimeChangeReceiver: Time changed by 450908 seconds
+11-22 21:01:00.167  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.167  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.167   578  2065 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.167  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.167  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.168   578  2065 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.168  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.168  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.169   578  2065 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.169  1158  1158 D PermissionStorageTimeChangeReceiver: systemTimeSnapshot set to 1795352460167
+11-22 21:01:00.169  1158  1158 D PermissionStorageTimeChangeReceiver: realtimeSnapshot set to 6004321
+11-22 21:01:00.170  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.170  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.170   578   926 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.170  1451  5904 I BugleDataModel: ExecuteActionRunnable: running action RecurringTelemetryUploaderAction
+11-22 21:01:00.172  1451  5904 I BugleDataModel: ActionExecutorImpl: ACTION_EXECUTE_QUEUED_DeferBackgroundWorkAction
+11-22 21:01:00.172  1451  5904 I BugleDataModel: ExecuteActionRunnable: running action DeferBackgroundWorkAction
+11-22 21:01:00.176   994   994 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-22 21:01:00.177  1451  1797 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.analytics.recurringmetrics.AnalyticsAlarmReceiver@1a96e6c
+11-22 21:01:00.178  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.178  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.178   578  1052 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.178  1253  5899 I SystemUpdate: [Execution,InstallationIntentOperation] Received intent: Intent { act=com.google.android.gms.update.INSTALL_UPDATE cat=[targeted_intent_op_prefix:.update.execution.InstallationIntentOperation] cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+11-22 21:01:00.178  1253  5899 I SystemUpdate: [Execution,ExecutionManager] Action finished-execution executed for 0.00 seconds.
+11-22 21:01:00.178  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.178  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.179   578   640 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.179  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.179  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.179   578  1052 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.180   578   608 D ActivityManager: sync unfroze 1694 com.google.android.apps.wallpaper for 3
+11-22 21:01:00.182  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.182  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.183   578  1052 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.188  1451  5904 I BugleDataModel: ActionExecutorImpl: ACTION_BACKGROUND_QUEUED_RecurringTelemetryUploaderAction
+11-22 21:01:00.190  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.190  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.190   578   640 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.192  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.192  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.193   578   640 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.194  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.194  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.194   578   640 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.198  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.198  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.199  1451  1455 I .apps.messaging: Compiler allocated 8094KB to compile java.lang.Object aflc.A()
+11-22 21:01:00.199   953  4187 W DataProcessor: shouldShowBatteryAttributionList(): 0.1
+11-22 21:01:00.199   953  4187 W BatteryUsageDataLoader: getBatteryEntryList() returns null or empty content
+11-22 21:01:00.199   578  1036 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.199   953  4187 D BatteryUsageDataLoader: getBatteryUsageStats() in 121/ms
+11-22 21:01:00.201   953  4187 D DatabaseUtils: insert() data into database with isFullChargeStart:false
+11-22 21:01:00.202  1694  1699 W .apps.wallpaper: Reducing the number of considered missed Gc histogram windows from 597 to 100
+11-22 21:01:00.202   953  4187 D DatabaseUtils: sendBatteryEntryData() size=1 in 3/ms
+11-22 21:01:00.202   953  4187 D BatteryUsageContentProvider: getQueryUserId from uri: content://com.android.settings.battery.usage.provider/appUsageLatestTimestamp?userid=0
+11-22 21:01:00.202   953  4187 D BatteryUsageContentProvider: getAppUsageLatestTimestamp() for user 0 in 0/ms
+11-22 21:01:00.203   953  4187 D DatabaseUtils: getAppUsageStartTimestampOfUser() userId=0 latestTimestamp=Nov 17, 2026, 13:35:05 in 1/ms
+11-22 21:01:00.203  1158  1181 D AccessibilitySourceService: enabled a11y services count 0
+11-22 21:01:00.203  1158  1181 D AccessibilitySourceService: a11y source sending 0 issue to sc
+11-22 21:01:00.203   578   640 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+11-22 21:01:00.208   953  4187 D DataProcessor: getAppUsageEventsForUser(): 0 from 1794893705588 to 1795352460202 in 5/ms
+11-22 21:01:00.208   953  4187 D DataProcessor: getAppUsageEvents() for all unlocked users in 6/ms
+11-22 21:01:00.218   802   802 D TileServices: Couldn't find tile for ComponentInfo{com.google.android.apps.wellbeing/com.google.android.apps.wellbeing.screen.ui.GrayscaleTileService}(0)
+11-22 21:01:00.220  1228  1393 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=a22a7c75-ccf7-4895-bc5a-241da368d830, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.apps.wellbeing.widget.WidgetFlagCheckWorker } ]
+11-22 21:01:00.220  1228  1393 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=b87cb222-4539-4dc4-b7ff-b48381112e9f, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.apps.wellbeing.powerstate.impl.PowerStateManagerImpl } ]
+11-22 21:01:00.221  1228  1401 W FirebaseApp: Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project.
+11-22 21:01:00.224   578   658 I UsageStatsService: Time changed in by 450908 seconds
+11-22 21:01:00.230   953  4187 W DataProcessor: Read 115 relevant events (2841 total) from UsageStatsManager
+11-22 21:01:00.230   953  4187 D BatteryUsageDataLoader: loadAppUsageData() size=115 in 28/ms
+11-22 21:01:00.231  1228  1394 W UsageSyncManager: <DWB> Shifting events by PT126H3M14.72S now
+11-22 21:01:00.235   578  1036 W PackageManager: Cannot suspend package "com.android.dynsystem": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1894 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "android": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.google.android.permissioncontroller": required for permissions management
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.providers.settings": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.inputdevices": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.google.android.dialer": is the default dialer
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.server.telecom": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.keychain": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.google.android.packageinstaller": required for package installation
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.localtransport": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.google.android.apps.nexuslauncher": contains the active launcher
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.DeviceAsWebcam": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.236   578  1036 W PackageManager: Cannot suspend package "com.android.emulator.multidisplay": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.237   578  1036 W PackageManager: Cannot suspend package "com.android.settings": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.237   578  1036 W PackageManager: Cannot suspend package "com.android.location.fused": has OP_SYSTEM_EXEMPT_FROM_SUSPENSION set
+11-22 21:01:00.237  1228  1365 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=32d94815-a364-4180-88cb-4708cd592669, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.apps.wellbeing.fences.FenceRecovery } ]
+11-22 21:01:00.244   802   802 D TileServices: Couldn't find tile for ComponentInfo{com.google.android.apps.wellbeing/com.google.android.apps.wellbeing.focusmode.quicksettings.FocusModeTileService}(0)
+11-22 21:01:00.246   578   890 D ActivityManager: sync unfroze 4013 com.android.chrome for 6
+11-22 21:01:00.256   578  1036 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-22 21:01:00.256   578  2066 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+11-22 21:01:00.257   378  5929 I resolv  : GetAddrInfoHandler::run: {52 786484 52 983092 10137 0}
+11-22 21:01:00.257   578  2066 I AppWidgetServiceImpl: notifyProviderInheritance() 0
+11-22 21:01:00.264  4013  4111 D CompatChangeReporter: Compat change id reported: 263076149; UID 10146; state: ENABLED
+11-22 21:01:00.267  1253  1253 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-22 21:01:00.267  1253  1253 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-22 21:01:00.267   953  4187 D DatabaseUtils: insert() app usage events data into database
+11-22 21:01:00.267   953  4187 D DatabaseUtils: sendAppUsageEventData() size=115 in 37/ms
+11-22 21:01:00.267   953  4187 D BatteryUsageContentProvider: getLastFullChargeTimestamp() in 0/ms
+11-22 21:01:00.267   953  4187 D DatabaseUtils: getLastFullChargeTime() lastFullChargeTime=Jan 01, 1970, 08:00:00 in 0/ms
+11-22 21:01:00.267   953  4187 D DatabaseUtils: getBatteryEvents for timestamp: 1794758400000
+11-22 21:01:00.267   953  4187 D BatteryUsageContentProvider: getQueryBatteryEventTypes from uri: content://com.android.settings.battery.usage.provider/BatteryEvent?timestamp=1794758400000&batteryEventType=3%2C4
+11-22 21:01:00.267   953  4187 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/BatteryEvent?timestamp=1794758400000&batteryEventType=3%2C4
+11-22 21:01:00.267   953  4187 W BatteryUsageContentProvider: getBatteryEvents() in 0/ms
+11-22 21:01:00.267   953  4187 D DatabaseUtils: getBatteryEvents size=27 in 0/ms
+11-22 21:01:00.268   953  4187 D DataProcessManager: getPeriodBatteryLevelData() startTimestamp=Nov 17, 2026, 14:00:00
+11-22 21:01:00.268   953  4187 D DatabaseUtils: sixDaysAgoTimestamp: Nov 16, 2026, 00:00:00
+11-22 21:01:00.268   953  4187 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/batteryStateLatestTimestamp?timestamp=1794895200000
+11-22 21:01:00.268   953  4187 D BatteryUsageContentProvider: getBatteryStateLatestTimestamp() no later than 1794895200000 in 0/ms
+11-22 21:01:00.268   953  4187 D DatabaseUtils: getBatteryStateLatestTimestamp() batteryStateLatestTimestamp=Nov 17, 2026, 13:00:19 in 0/ms
+11-22 21:01:00.268   953  4187 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/BatteryState?timestamp=1794891619191
+11-22 21:01:00.268   953  4187 D BatteryUsageContentProvider: getBatteryStates() after 1794891619191 in 0/ms
+11-22 21:01:00.268   953  4187 D DatabaseUtils: getBatteryHistoryMap() size=4 in 0/ms
+11-22 21:01:00.268   953  4187 D DataProcessor: getHistoryMapWithExpectedTimestamps() size=130 in 0/ms
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 16:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 17:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 18:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 19:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 20:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 21:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 22:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 17, 2026, 23:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 01:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 02:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 03:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 04:00:00
+11-22 21:01:00.268   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 05:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 06:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 07:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 08:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 09:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 10:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 11:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 12:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 13:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 14:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 15:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 16:00:00
+11-22 21:01:00.269   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 17:00:00
+11-22 21:01:00.269   578  2063 I AppWidgetServiceImpl: getAppWidgetIds() 0
+11-22 21:01:00.270  4013  4125 I cr_media: Create MediaDrmBridge with level L3 and origin 46BB4337BAE1218F908BF4FD7CD68AA7
+11-22 21:01:00.271   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 18:00:00
+11-22 21:01:00.271   578  1894 D ShortcutService: rescanPackageIfNeeded 0@com.google.android.apps.messaging, forceRescan=false , isNewApp=false
+11-22 21:01:00.271   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 19:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 20:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 21:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 22:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 18, 2026, 23:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 01:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 02:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 03:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 04:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 05:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 06:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 07:00:00
+11-22 21:01:00.273   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 08:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 09:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 10:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 11:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 12:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 13:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 14:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 15:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 16:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 17:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 18:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 19:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 20:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 21:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 22:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 19, 2026, 23:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 01:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 02:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 03:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 04:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 05:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 06:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 07:00:00
+11-22 21:01:00.274   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 08:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 09:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 10:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 11:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 12:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 13:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 14:00:00
+11-22 21:01:00.275   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 15:00:00
+11-22 21:01:00.276   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 16:00:00
+11-22 21:01:00.276   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 17:00:00
+11-22 21:01:00.276   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 18:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 19:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 20:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 21:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 22:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 20, 2026, 23:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 01:00:00
+11-22 21:01:00.277   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 02:00:00
+11-22 21:01:00.278   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 03:00:00
+11-22 21:01:00.278   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 04:00:00
+11-22 21:01:00.278   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 05:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 06:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 07:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 08:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 09:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 10:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 11:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 12:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 13:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 14:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 15:00:00
+11-22 21:01:00.279   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 16:00:00
+11-22 21:01:00.280   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 17:00:00
+11-22 21:01:00.280   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 18:00:00
+11-22 21:01:00.280   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 19:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 20:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 21:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 22:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 21, 2026, 23:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 01:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 02:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 03:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 04:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 05:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 06:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 07:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 08:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 09:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 10:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 11:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 12:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 13:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 14:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 15:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 16:00:00
+11-22 21:01:00.281   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 17:00:00
+11-22 21:01:00.282   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 18:00:00
+11-22 21:01:00.283   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 19:00:00
+11-22 21:01:00.283   953  4187 E DataProcessor: abnormal entry list in the timestamp:Nov 22, 2026, 20:00:00
+11-22 21:01:00.283   953  4187 D DataProcessManager: execute getBatteryLevelData in 16/ms, batteryLevelRecordEvents.size=27
+11-22 21:01:00.285   378  5931 I resolv  : GetAddrInfoHandler::run: {0 0 0 983040 10146 0}
+11-22 21:01:00.286  4013  4125 I DrmHalHidl: No hidl drm factories found
+11-22 21:01:00.287   378  5932 I resolv  : GetAddrInfoHandler::run: {0 0 0 983040 10146 0}
+11-22 21:01:00.287   163   163 I hwservicemanager: getTransport: Cannot find entry android.hardware.drm@1.0::IDrmFactory/default in either framework or device VINTF manifest.
+11-22 21:01:00.287  4013  4125 E DrmHalHidl: Failed to find passthrough drm factories
+11-22 21:01:00.289  1228  1364 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=6ca88bf6-7173-4581-803c-8a22e3d05204, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,com.google.apps.tiktok.sync.impl.workmanager.SyncWorker,TikTokWorker#com.google.apps.tiktok.sync.impl.workmanager.SyncWorker } ]
+11-22 21:01:00.290  1253  1253 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.safetynet.service.START pkg=com.google.android.gms }
+11-22 21:01:00.290  1253  1253 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.safetynet.service.START pkg=com.google.android.gms }
+--------- beginning of kernel
+11-22 21:01:00.295   161   161 I servicemanager: Caller(pid=4013,uid=10146,sid=u:r:untrusted_app:s0:c146,c256,c512,c768) Since 'android.hardware.drm.IDrmFactory/clearkey' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+11-22 21:01:00.293   953  4187 D DatabaseUtils: insert() battery event data into database
+11-22 21:01:00.293   953  4187 D DatabaseUtils: sendBatteryEventData() size=65 in 10/ms
+11-22 21:01:00.293   953  4187 D BatteryUsageDataLoader: preprocessBatteryUsageSlots() batteryLevelData=dailyBatteryLevels: timestamps: [1794895200000, 1794931200000, 1795017600000, 1795104000000, 1795190400000, 1795276800000, 1795352400000]; levels: [100, 100, 100, 100, 100, 100, 100]; hourlyBatteryLevelsPerDay: [timestamps: [1794895200000, 1794902400000, 1794909600000, 1794916800000, 1794924000000, 1794931200000]; levels: [100, -1, -1, -1, -1, 100], timestamps: [1794931200000, 1794938400000, 1794945600000, 1794952800000, 1794960000000, 1794967200000, 1794974400000, 1794981600000, 1794988800000, 1794996000000, 1795003200000, 1795010400000, 1795017600000]; levels: [100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100], timestamps: [1795017600000, 1795024800000, 1795032000000, 1795039200000, 1795046400000, 1795053600000, 1795060800000, 1795068000000, 1795075200000, 1795082400000, 1795089600000, 1795096800000, 1795104000000]; levels: [100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100], timestamps: [1795104000000, 1795111200000, 1795118400000, 1795125600000, 1795132800000, 1795140000000, 1795147200000, 1795154400000, 1795161600000, 1795168800000, 1795176000000, 1795183200000, 1795190400000]; levels: [100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100], timestamps: [1795190400000, 1795197600000, 1795204800000, 1795212000000, 1795219200000, 1795226400000, 1795233600000, 1795240800000, 1795248000000, 1795255200000, 1795262400000, 1795269600000, 1795276800000]; levels: [100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100], timestamps: [1795276800000, 1795284000000, 1795291200000, 1795298400000, 1795305600000, 1795312800000, 1795320000000, 1795327200000, 1795334400000, 1795341600000, 1795348800000, 1795352400000]; levels: [100, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100]] in 26/ms
+11-22 21:01:00.293   953  4187 D BatteryUsageDataLoader: loadUsageDataSafely() in 215/ms
+11-22 21:01:00.295   953  4187 D DatabaseUtils: sixDaysAgoTimestamp: Nov 16, 2026, 00:00:00
+11-22 21:01:00.295   953  4187 D BatteryUsageContentProvider: getQueryUserIds from uri: content://com.android.settings.battery.usage.provider/AppUsageEvent?timestamp=1794884400000&userid=0
+11-22 21:01:00.295   953  4187 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/AppUsageEvent?timestamp=1794884400000&userid=0
+11-22 21:01:00.295   953  4187 W BatteryUsageContentProvider: getAppUsageEvents() in 0/ms
+11-22 21:01:00.296   378  5935 I resolv  : GetAddrInfoHandler::run: {0 0 0 983040 10146 0}
+11-22 21:01:00.296   953  4187 D DatabaseUtils: getAppUsageEventForUser userId=0 size=159 in 1/ms
+11-22 21:01:00.296   953  4187 D DataProcessManager: execute loadDatabaseAppUsageList size=159 in 1/ms
+11-22 21:01:00.296   953  5897 D DatabaseUtils: getBatteryEvents for timestamp: 1794895200000
+11-22 21:01:00.296   953  5897 D BatteryUsageContentProvider: getQueryBatteryEventTypes from uri: content://com.android.settings.battery.usage.provider/BatteryEvent?timestamp=1794895200000&batteryEventType=1%2C2
+11-22 21:01:00.296   953  5897 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/BatteryEvent?timestamp=1794895200000&batteryEventType=1%2C2
+11-22 21:01:00.296   578  2063 W ForegroundServiceTypeLoggerModule: FGS stop call for: 10139 has no types!
+11-22 21:01:00.296   953  5897 W BatteryUsageContentProvider: getBatteryEvents() in 0/ms
+11-22 21:01:00.297   953  5897 D DatabaseUtils: getBatteryEvents size=0 in 1/ms
+11-22 21:01:00.297   953  5897 D DataProcessManager: execute loadPowerConnectionBatteryEventList size=0 in 1/ms
+11-22 21:01:00.297   953   953 D DataProcessManager: batteryEventList is null or empty
+11-22 21:01:00.297     1     1 I init    : starting service 'vendor.drm-clearkey-service'...
+11-22 21:01:00.299  1451  5904 I ShortcutBadger: Checking if platform supports badge counters, attempt 1/3.
+11-22 21:01:00.301  1451  5904 I ShortcutBadger: Checking if platform supports badge counters, attempt 2/3.
+11-22 21:01:00.302   578  1894 W BestClock: java.time.DateTimeException: Missing network time fix
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: Unable to determine attempted syncs. They will not be used to schedule the next sync.
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: java.util.concurrent.CancellationException: Task was cancelled.
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at lem.r(PG:33)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at lem.get(PG:3)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at a.j(PG:2)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at laq.C(PG:10)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at kgs.f(PG:3)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at kgm.a(PG:235)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at jql.a(PG:304)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at jql.a(PG:353)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at lhn.a(PG:3)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at lgs.run(PG:21)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at lhp.run(PG:5)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at hur.run(PG:7)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at lcx.run(PG:50)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at hld.run(PG:450)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at java.lang.Thread.run(Thread.java:1012)
+11-22 21:01:00.303  1228  1364 W SyncManagerImpl: 	at hwd.run(PG:64)
+11-22 21:01:00.303  1228  1393 W TikTokListenableWorker: TikTokListenableWorker was cancelled while running client worker: com.google.apps.tiktok.sync.impl.workmanager.SyncWorker
+11-22 21:01:00.303  1451  5904 I ShortcutBadger: Checking if platform supports badge counters, attempt 3/3.
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: <DWB> Failed to fetch suspensions in com.android.chrome
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: java.util.concurrent.ExecutionException: ftw: Service rejected request (status=5)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lem.r(PG:21)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lem.get(PG:3)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lgb.get(PG:1)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at a.j(PG:2)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at laq.C(PG:10)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at awe.call(PG:520)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lfb.call(PG:17)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lfn.a(PG:3)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lgs.run(PG:21)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at hur.run(PG:7)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lcx.run(PG:50)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at hld.run(PG:450)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at java.lang.Thread.run(Thread.java:1012)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at hwd.run(PG:64)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: Caused by: ftw: Service rejected request (status=5)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at exi.a(PG:211)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at lfc.a(PG:57)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at leo.e(PG:3)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	at leq.run(PG:42)
+11-22 21:01:00.308  1228  1364 E CombinedComponentSuspen: 	... 5 more
+11-22 21:01:00.308  1451  5904 W ShortcutBadger: Badge counter seems not supported in this platform: unable to resolve intent: Intent { act=android.intent.action.BADGE_COUNT_UPDATE (has extras) }
+11-22 21:01:00.310   953  5897 W PowerUsageFeatureProviderGoogleImpl: processBatteryReattributeData: disabled
+11-22 21:01:00.310   953  5897 D DataProcessManager: execute generateFinalDataAndApplyCallback size=64 in 12/ms
+11-22 21:01:00.314     1     1 I init    : ... started service 'vendor.drm-clearkey-service' has pid 5934
+11-22 21:01:00.314     1     1 I init    : Control message: Processed ctl.interface_start for 'aidl/android.hardware.drm.IDrmFactory/clearkey' from pid: 161 (/system/bin/servicemanager)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: Work [ id=0e025f1e-ea94-4af3-84a9-3ebdf753d314, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,com.google.apps.tiktok.sync.impl.workmanager.SyncWorker,TikTokWorker#com.google.apps.tiktok.sync.impl.workmanager.SyncWorker } ] was cancelled
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: java.util.concurrent.CancellationException: Task was cancelled.
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at bbr.j(PG:33)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at bbr.get(PG:3)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at awg.h(PG:8)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at bn.run(PG:20)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at bbg.run(PG:66)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at hur.run(PG:7)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at lcx.run(PG:50)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at hld.run(PG:450)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at java.lang.Thread.run(Thread.java:1012)
+11-22 21:01:00.317  1228  1394 I WM-WorkerWrapper: 	at hwd.run(PG:64)
+11-22 21:01:00.318   378   378 I netd    : tetherGetStats() -> {[]} <0.30ms>
+11-22 21:01:00.318   578  1894 W BestClock: java.time.DateTimeException: Missing network time fix
+11-22 21:01:00.322  1253  1253 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.chromesync.service.firstparty.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-22 21:01:00.322  1253  1253 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.chromesync.service.firstparty.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-22 21:01:00.332  5934  5934 I AidlLazyServiceRegistrar: Registering service android.hardware.drm.IDrmFactory/clearkey
+11-22 21:01:00.333  5934  5934 I AidlLazyServiceRegistrar: Process has 1 (of 1 available) client(s) in use after notification android.hardware.drm.IDrmFactory/clearkey has clients: 1
+11-22 21:01:00.333  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/clearkey]
+11-22 21:01:00.333   953   953 D DatabaseUtils: insert() battery usage slots data into database
+11-22 21:01:00.333   953   953 D DatabaseUtils: sendBatteryUsageSlotData() size=64 in 23/ms
+11-22 21:01:00.333  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/widevine]
+11-22 21:01:00.336   161   161 I servicemanager: Caller(pid=5934,uid=1013,sid=u:r:hal_drm_clearkey_aidl:s0) Found android.hardware.drm.IDrmFactory/clearkey in device VINTF manifest.
+11-22 21:01:00.337   161   161 I servicemanager: Notifying android.hardware.drm.IDrmFactory/clearkey they do (previously: don't) have clients when service is guaranteed to be in use
+11-22 21:01:00.337   161   161 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-22 21:01:00.335   994   994 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.phenotype.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-22 21:01:00.335   994   994 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.phenotype.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-22 21:01:00.338   422   422 I WVCdm   : [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.338   802   802 D TileServices: Couldn't find tile for ComponentInfo{com.google.android.apps.wellbeing/com.google.android.apps.wellbeing.focusmode.quicksettings.FocusModeTileService}(0)
+11-22 21:01:00.342  1451  5904 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (no permission to fix)
+11-22 21:01:00.343   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.344   422  5937 I WVCdm   : [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.344   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.346  1451  5904 I BugleRcsEngine: RCS Configuration storage in Bugle is disabled by p/h flag, using ProvisioningEngineStateCacheUtil.getProvisioningConfigurationForGivenSimIfExist() [CONTEXT log_prefix="ProvisioningEngineDataRetriever" thread_id=118 ]
+11-22 21:01:00.348  1451  5904 W BugleAction: Failed to get msisdn from Bugle
+11-22 21:01:00.349  1451  5904 W Bugle   : Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-22 21:01:00.350  1451  5904 I Bugle   : SubscriptionUtilsAsOfLMR1: getActiveSubscriptionInfo(): empty sub info for subscription{id:-1}
+11-22 21:01:00.350  1451  5904 W Bugle   : Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-22 21:01:00.350  1451  5904 W Bugle   : Bugle: SubscriptionMetadataUtils get: unexpected subId = -2, replacing with -1
+11-22 21:01:00.351  1451  5904 I Bugle   : getRawTelephonyPhoneNumber redacted-pii[0-chars] [CONTEXT sub_id=-1 ]
+11-22 21:01:00.351  1451  5904 W BugleAction: No default number, returning empty msisdn
+11-22 21:01:00.365  1451  5904 W LoggingReporter: MIXED_UP_PARTICIPANT: occurred in conversation with id=-1
+11-22 21:01:00.365  1451  5904 I MixedUpConvInspector: logging Mixed Up Participant Info to clearcut completed successfully
+11-22 21:01:00.368   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.369   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.369   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.369   422   422 E WVCdm   : [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.369   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.369   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.369   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.370   422   422 D WVCdm   : [crypto_session.cpp(444):CacheVersion] OEMCrypto version (default security level): 18.3
+11-22 21:01:00.370   422   422 D WVCdm   : [crypto_session.cpp(453):CacheVersion] OEMCrypto version (L3 security level): 18.3
+11-22 21:01:00.372   422   422 I WVCdm   : [(0):] L3 Terminate.
+11-22 21:01:00.372  4013  4125 I DrmHalHidl: No hidl drm factories found
+11-22 21:01:00.373   163   163 I hwservicemanager: getTransport: Cannot find entry android.hardware.drm@1.0::IDrmFactory/default in either framework or device VINTF manifest.
+11-22 21:01:00.373  4013  4125 E DrmHalHidl: Failed to find passthrough drm factories
+11-22 21:01:00.373  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/clearkey]
+11-22 21:01:00.373  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/widevine]
+11-22 21:01:00.373   422   422 I WVCdm   : [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.373   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.374   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.374   422  5942 I WVCdm   : [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.374   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.374   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.374   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.374   422   422 E WVCdm   : [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.374   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.374   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.374   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.374   422   422 D WVCdm   : [crypto_session.cpp(444):CacheVersion] OEMCrypto version (default security level): 18.3
+11-22 21:01:00.374   422   422 D WVCdm   : [crypto_session.cpp(453):CacheVersion] OEMCrypto version (L3 security level): 18.3
+11-22 21:01:00.375   578   578 D FlashNotifController: requestStartFlashNotification
+11-22 21:01:00.375   578   578 I FlashNotifController: startFlashNotification: type=1, tag=android
+11-22 21:01:00.375   578   578 D FlashNotifController: Flash notification is disabled
+11-22 21:01:00.376   422   422 I WVCdm   : [(0):] L3 Terminate.
+11-22 21:01:00.376   422   422 I WVCdm-DrmFactory: [app][com.android.chrome] calling virtual ::ndk::ScopedAStatus wvdrm::hardware::drm::widevine::WVDrmFactory::createDrmPlugin(const Uuid &, const string &, std::shared_ptr< ::aidl::android::hardware::drm::IDrmPlugin> *)
+11-22 21:01:00.376   422   422 D WVCdm   : Instantiating CDM metrics queue
+11-22 21:01:00.376   422   422 D WVCdm   : Instantiating CDM.
+11-22 21:01:00.376   578   578 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+11-22 21:01:00.379   422   422 D WVCdm   : [cdm_engine.cpp(583):QueryStatus] security_level = Default, query_token = WidevineCdmVersion
+11-22 21:01:00.379   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.379   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.379   422  5948 I WVCdm   : [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.380   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.380   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.380   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.380   422   422 E WVCdm   : [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.380   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.380   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.380   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.380   422   422 D WVCdm   : [crypto_session.cpp(444):CacheVersion] OEMCrypto version (default security level): 18.3
+11-22 21:01:00.380   422   422 D WVCdm   : [crypto_session.cpp(453):CacheVersion] OEMCrypto version (L3 security level): 18.3
+11-22 21:01:00.381   422   422 D WVCdm   : [cdm_engine.cpp(583):QueryStatus] security_level = Default, query_token = SecurityLevel
+11-22 21:01:00.382   422   422 D WVCdm   : [cdm_engine.cpp(583):QueryStatus] security_level = Default, query_token = DeviceID
+11-22 21:01:00.382   422   422 D WVCdm   : [crypto_session.cpp(917):Open] Opening crypto session: requested_security_level = Default
+11-22 21:01:00.382   422   422 D WVCdm   : [cdm_usage_table.cpp(162):Init] security_level = L3
+11-22 21:01:00.382   422   422 D WVCdm   : [cdm_usage_table.cpp(509):DetermineTableCapacity] capacity = unlimited, security_level = L3
+11-22 21:01:00.385  1286  1783 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+11-22 21:01:00.385  1286  1783 I AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+11-22 21:01:00.390   422   422 I WVCdm   : [cdm_usage_table.cpp(203):RestoreTable] Found usage table to restore: entry_count = 0
+11-22 21:01:00.390   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.391   422   422 D WVCdm   : [crypto_session.cpp(917):Open] Opening crypto session: requested_security_level = Default
+11-22 21:01:00.391   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.391   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.391  4013  4013 I MediaDrm: Drm event (1,0)
+11-22 21:01:00.391  4013  4125 D DrmHalAidl: framework logs size 4; plugin logs size 38
+11-22 21:01:00.391   422   422 I WVCdm   : [cdm_engine.cpp(1118):GetProvisioningRequest] cert_type = Widevine
+11-22 21:01:00.392   475   475 D NuPlayerDriver: NuPlayerDriver(0xb4000075c8e15890) created, clientPid(802)
+11-22 21:01:00.393   163   163 I hwservicemanager: getTransport: Cannot find entry android.hardware.media.omx@1.0::IOmx/default in either framework or device VINTF manifest.
+11-22 21:01:00.393   475   475 D MediaPlayerService: OMX service is not available
+11-22 21:01:00.397   422   422 D WVCdm   : [crypto_session.cpp(917):Open] Opening crypto session: requested_security_level = Default
+11-22 21:01:00.399   475  5951 D GenericSource: FileSource remote
+11-22 21:01:00.414   802  2918 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-22 21:01:00.414   802  2918 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-22 21:01:00.423   578   890 I MediaFocusControl: requestAudioFocus() from uid/pid 10179/802 AA=USAGE_NOTIFICATION/CONTENT_TYPE_UNKNOWN clientId=android.media.AudioManager@567089a callingPack=com.android.systemui req=3 flags=0x0 sdk=35
+11-22 21:01:00.423   578   890 I AS.FadeOutManager: unfadeOutUid() uid:10179
+11-22 21:01:00.423   939   950 V MmsProvider: accessRestricted=false
+11-22 21:01:00.426  4013  4125 I cr_media: Provisioning origin ID 46BB4337BAE1218F908BF4FD7CD68AA7
+11-22 21:01:00.428   378  5953 I resolv  : GetAddrInfoHandler::run: {0 0 0 983040 10146 0}
+11-22 21:01:00.429   378  5954 I resolv  : GetAddrInfoHandler::run: {0 0 0 983040 10146 0}
+11-22 21:01:00.432   939   950 V MmsProvider: accessRestricted=false
+11-22 21:01:00.434  4013  4125 I cr_media: Create MediaDrmBridge with level L1 and origin 46BB4337BAE1218F908BF4FD7CD68AA7
+11-22 21:01:00.435   474  5955 W s       : AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+11-22 21:01:00.436  4013  4125 I DrmHalHidl: No hidl drm factories found
+11-22 21:01:00.436   163   163 I hwservicemanager: getTransport: Cannot find entry android.hardware.drm@1.0::IDrmFactory/default in either framework or device VINTF manifest.
+11-22 21:01:00.437  4013  4125 E DrmHalHidl: Failed to find passthrough drm factories
+11-22 21:01:00.437   422   422 I WVCdm   : [(0):] L3 Terminate.
+11-22 21:01:00.442  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/clearkey]
+11-22 21:01:00.442  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/widevine]
+11-22 21:01:00.443   422   422 I WVCdm   : [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.443   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.443   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.443   422  5956 I WVCdm   : [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.445   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.445   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.445   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.445   422   422 E WVCdm   : [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.445   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.445   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.445   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.445   422   422 D WVCdm   : [crypto_session.cpp(444):CacheVersion] OEMCrypto version (default security level): 18.3
+11-22 21:01:00.445   422   422 D WVCdm   : [crypto_session.cpp(453):CacheVersion] OEMCrypto version (L3 security level): 18.3
+11-22 21:01:00.445  4013  4125 I DrmHalHidl: No hidl drm factories found
+11-22 21:01:00.445   163   163 I hwservicemanager: getTransport: Cannot find entry android.hardware.drm@1.0::IDrmFactory/default in either framework or device VINTF manifest.
+11-22 21:01:00.445  4013  4125 E DrmHalHidl: Failed to find passthrough drm factories
+11-22 21:01:00.446  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/clearkey]
+11-22 21:01:00.446  4013  4125 I DrmUtils: found IDrmFactory. Instance name:[android.hardware.drm.IDrmFactory/widevine]
+11-22 21:01:00.446   422   422 I WVCdm   : [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.446   422   422 I WVCdm-DrmFactory: [app][com.android.chrome] calling virtual ::ndk::ScopedAStatus wvdrm::hardware::drm::widevine::WVDrmFactory::createDrmPlugin(const Uuid &, const string &, std::shared_ptr< ::aidl::android::hardware::drm::IDrmPlugin> *)
+11-22 21:01:00.446   422   422 D WVCdm   : Instantiating CDM.
+11-22 21:01:00.446   939  1037 V MmsProvider: accessRestricted=false
+11-22 21:01:00.446   422   422 D WVCdm   : [cdm_engine.cpp(583):QueryStatus] security_level = Default, query_token = WidevineCdmVersion
+11-22 21:01:00.446   422   422 D WVCdm   : [cdm_engine.cpp(583):QueryStatus] security_level = Default, query_token = SecurityLevel
+11-22 21:01:00.450   422   422 I WVCdm   : [(0):] L3 Terminate.
+11-22 21:01:00.450   422   422 D WVCdm   : [cdm_engine.cpp(583):QueryStatus] security_level = Default, query_token = SecurityLevel
+11-22 21:01:00.450   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.450   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.450   422  5958 I WVCdm   : [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.455   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.455   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.455   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.455   422   422 E WVCdm   : [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.455   422   422 I WVCdm   : [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.455   422   422 W WVCdm   : [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.455   422   422 I WVCdm   : [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.455   422   422 D WVCdm   : [crypto_session.cpp(444):CacheVersion] OEMCrypto version (default security level): 18.3
+11-22 21:01:00.455   422   422 D WVCdm   : [crypto_session.cpp(453):CacheVersion] OEMCrypto version (L3 security level): 18.3
+11-22 21:01:00.455   422   422 E WVCdm   : App requested L1 security on a non-L1 device.
+11-22 21:01:00.455  4013  4125 D DrmHalAidl: framework logs size 8; plugin logs size 63
+11-22 21:01:00.456  4013  4125 E cr_media: Failed to set security level L1
+11-22 21:01:00.456  4013  4125 E cr_media: java.lang.IllegalArgumentException: {}: BAD_VALUE
+11-22 21:01:00.456  4013  4125 E cr_media: cdm err: 0, oem err: 0, ctx: 0
+11-22 21:01:00.456  4013  4125 E cr_media: ============================== Beginning of DRM Plugin Log ==============================
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.287 E Failed to find passthrough drm factories
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.287 I No hidl drm factories found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.338 I [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.343 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.344 I [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.344 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.368 I [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.369 I [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.369 W [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.369 W [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.369 E [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.369 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.369 W [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.372 I No hidl drm factories found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.372 I [(0):] L3 Terminate.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.373 E Failed to find passthrough drm factories
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.373 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.373 I [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 I [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 I [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 I [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 W [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 W [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 E [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.374 W [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.376 I [(0):] L3 Terminate.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.379 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.379 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.379 I [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 I [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 W [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 W [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 E [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 W [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.380 I [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.390 I [cdm_usage_table.cpp(203):RestoreTable] Found usage table to restore: entry_count = 0
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.390 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.391 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.391 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.391 I [cdm_engine.cpp(1118):GetProvisioningRequest] cert_type = Widevine
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.436 I No hidl drm factories found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.437 E Failed to find passthrough drm factories
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.437 I [(0):] L3 Terminate.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.443 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.443 I [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.443 I [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.443 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 E Failed to find passthrough drm factories
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 I No hidl drm factories found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 I [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 W [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 W [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 E [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 W [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.445 I [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.446 I [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.450 I [(0):] L3 Terminate.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.450 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.450 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {"soc_vendor":"L3_33098","soc_model":"ARM 64 bit","ta_ver":"18.1.0+Feb 20 2024_20:28:39_","uses_opk":false,"tee_os":"none","tee_os_ver":"0.0.0","form_factor":"L3","implementer":"Widevine","fused":false}
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.451 I [(0):] Level3 Library 33098 Feb 20 2024 20:28:39
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 I [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 W [oemcrypto_adapter_dynamic.cpp(854):Initialize] Could not load oemcrypto from path liboemcrypto.so.  dlopen failed: library "liboemcrypto.so" not found
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 W [oemcrypto_adapter_dynamic.cpp(858):Initialize] Could not load oemcrypto. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 E [oemcrypto_adapter_dynamic.cpp(1326):ValidateOrInstallL1KeyboxOrCert] L1 not initialized. Falling back to L3
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 I [file_utils.cpp(38):Exists] stat failed: ENOENT
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 W [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.
+11-22 21:01:00.456  4013  4125 E cr_media:   11-22 21:01:00.455 I [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed
+11-22 21:01:00.456  4013  4125 E cr_media: ============================== End of DRM Plugin Log ==============================
+11-22 21:01:00.456  4013  4125 E cr_media: 	at android.media.MediaDrm.setPropertyString(Native Method)
+11-22 21:01:00.456  4013  4125 E cr_media: 	at org.chromium.media.MediaDrmBridge.create(chromium-TrichromeChromeGoogle6432.aab-stable-636771932:104)
+11-22 21:01:00.456  4013  4125 E cr_media: Security level L1 not supported!
+11-22 21:01:00.459  4013  4125 W chromium: [WARNING:media_drm_origin_id_manager.cc(328)] Failed to provision origin ID
+11-22 21:01:00.462   422   422 I WVCdm   : [(0):] L3 Terminate.
+11-22 21:01:00.462   939  1037 V MmsProvider: accessRestricted=false
+11-22 21:01:00.463   578   578 W NotificationHistory: Attempted to add notif for locked/gone/disabled user 0
+11-22 21:01:00.466   474   474 D statsd_drm: statsd_mediadrm skipping empty entry
+11-22 21:01:00.466  1286  1783 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+11-22 21:01:00.466  1286  1783 I AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+11-22 21:01:00.490   802  1094 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+11-22 21:01:00.495   802  1094 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+11-22 21:01:00.496   939  1037 V MmsProvider: accessRestricted=false
+11-22 21:01:00.498  1451  5905 I BugleDataModel: ActionExecutorImpl: ACTION_RESPONSE_QUEUED_RecurringTelemetryUploaderAction
+11-22 21:01:00.499  1451  5904 I BugleDataModel: ActionExecutorImpl: Stopping ActionService
+11-22 21:01:00.538  1451  1456 W .apps.messaging: Reducing the number of considered missed Gc histogram windows from 320 to 100
+11-22 21:01:00.592  1286  1783 W AiAiEcho: LyftNotificationParser Ridesharing ETA not enabled
+11-22 21:01:00.592  1286  1783 I AiAiEcho: SmartspaceNotificationPredictor no parser can handle this notification or notification is invalid
+11-22 21:01:00.924   802   802 D MediaRouter: onRestoreRoute() : route=RouteInfo{ name=Phone, description=null, status=null, category=RouteCategory{ name=System types=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO  groupable=false }, supportedTypes=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO , presentationDisplay=null }
+11-22 21:01:00.924   802   802 V MediaRouter: Selecting route: RouteInfo{ name=Phone, description=null, status=null, category=RouteCategory{ name=System types=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO  groupable=false }, supportedTypes=ROUTE_TYPE_LIVE_AUDIO ROUTE_TYPE_LIVE_VIDEO , presentationDisplay=null }
+11-22 21:01:00.924   475  5950 I GenericSource: start
+11-22 21:01:00.927   475  5962 D CCodec  : allocate(c2.android.vorbis.decoder)
+11-22 21:01:00.928   475  5962 I CCodec  : setting up 'default' as default (vendor) store
+11-22 21:01:00.931   475  4382 D BufferPoolAccessor2.0: bufferpool2 0xb4000075a8e08288 : 0(0 size) total buffers - 0(0 size) used buffers - 0/4 (recycle/alloc) - 3/3 (fetch/transfer)
+11-22 21:01:00.931   475  4382 D BufferPoolAccessor2.0: Destruction - bufferpool2 0xb4000075a8e08288 cached: 0/0M, 0/0% in use; allocs: 4, 0% recycled; transfers: 3, 0% unfetched
+11-22 21:01:00.932   475  5962 I CCodec  : Created component [c2.android.vorbis.decoder]
+11-22 21:01:00.932   475  5962 D CCodecConfig: read media type: audio/vorbis
+11-22 21:01:00.934   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.max-count.values
+11-22 21:01:00.934   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: output.subscribed-indices.values
+11-22 21:01:00.935   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: input.buffers.allocator-ids.values
+11-22 21:01:00.935   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.allocator-ids.values
+11-22 21:01:00.935   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.allocator-ids.values
+11-22 21:01:00.935   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.pool-ids.values
+11-22 21:01:00.936   475  5962 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.pool-ids.values
+11-22 21:01:00.937   475  5962 I CCodecConfig: query failed after returning 8 values (BAD_INDEX)
+11-22 21:01:00.937   475  5962 D CCodecConfig: c2 config diff is Dict {
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 coded.bitrate.value = 64000
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 input.buffers.max-size.value = 32768
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 input.delay.value = 0
+11-22 21:01:00.937   475  5962 D CCodecConfig:   string input.media-type.value = "audio/vorbis"
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 output.large-frame.max-size = 0
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 output.large-frame.threshold-size = 0
+11-22 21:01:00.937   475  5962 D CCodecConfig:   string output.media-type.value = "audio/raw"
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 raw.channel-count.value = 1
+11-22 21:01:00.937   475  5962 D CCodecConfig:   c2::u32 raw.sample-rate.value = 48000
+11-22 21:01:00.937   475  5962 D CCodecConfig: }
+11-22 21:01:00.938   475  5962 D CCodec  : [c2.android.vorbis.decoder] buffers are bound to CCodec for this session
+11-22 21:01:00.938   475  5962 D CCodecConfig: no c2 equivalents for durationUs
+11-22 21:01:00.938   475  5962 D CCodecConfig: no c2 equivalents for csd-1
+11-22 21:01:00.938   475  5962 D CCodecConfig: no c2 equivalents for flags
+11-22 21:01:00.938   475  5962 D CCodecConfig: c2 config diff is   c2::u32 coded.bitrate.value = 70000
+11-22 21:01:00.938   475  5962 W Codec2Client: query -- param skipped: index = 1107298332.
+11-22 21:01:00.938   475  5962 D CCodec  : encoding statistics level = 0
+11-22 21:01:00.938   475  5962 D CCodec  : setup formats input: AMessage(what = 0x00000000) = {
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t bitrate = 70000
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t channel-count = 1
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t max-input-size = 32768
+11-22 21:01:00.938   475  5962 D CCodec  :   string mime = "audio/vorbis"
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t sample-rate = 48000
+11-22 21:01:00.938   475  5962 D CCodec  : }
+11-22 21:01:00.938   475  5962 D CCodec  : setup formats output: AMessage(what = 0x00000000) = {
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t buffer-batch-max-output-size = 0
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t buffer-batch-threshold-output-size = 0
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t channel-count = 1
+11-22 21:01:00.938   475  5962 D CCodec  :   string mime = "audio/raw"
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t sample-rate = 48000
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t channel-mask = 1
+11-22 21:01:00.938   475  5962 D CCodec  :   int32_t android._config-pcm-encoding = 2
+11-22 21:01:00.938   475  5962 D CCodec  : }
+11-22 21:01:00.939   475  5962 I CCodecConfig: query failed after returning 8 values (BAD_INDEX)
+11-22 21:01:00.940   475  5962 I MediaCodec: MediaCodec will operate in async mode
+11-22 21:01:00.940   475  5961 D MediaCodec: keep callback message for reclaim
+11-22 21:01:00.940   475  5962 W Codec2Client: query -- param skipped: index = 1342179345.
+11-22 21:01:00.940   475  5962 W Codec2Client: query -- param skipped: index = 2415921170.
+11-22 21:01:00.941   475  5962 D CCodecBufferChannel: [c2.android.vorbis.decoder#613] Created input block pool with allocatorID 16 => poolID 18 - OK (0)
+11-22 21:01:00.941   475  5962 I CCodecBufferChannel: [c2.android.vorbis.decoder#613] Created output block pool with allocatorID 16 => poolID 37 - OK
+11-22 21:01:00.942   475  5962 D CCodecBufferChannel: [c2.android.vorbis.decoder#613] Configured output block pool ids 37 => OK
+11-22 21:01:00.942   479   886 E Codec2-ComponentInterface: We have a failed config
+11-22 21:01:00.942   479  5963 D SimpleC2Component: Using output block pool with poolID 37 => got 37 - 0
+11-22 21:01:00.948   423  1713 D AudioFlinger: Client defaulted notificationFrames to 12512 for frameCount 25024
+11-22 21:01:00.950   423  1713 D audioserver: logFgsApiBegin: FGS Logger Transaction failed, -129
+11-22 21:01:00.951   475  5960 D AudioTrack: getTimestamp_l(34): device stall time corrected using current time 6005106620603
+11-22 21:01:00.974   423   532 D AudioFlinger: mixer(0xb400007d64d088e0) throttle end: throttle time(36)
+11-22 21:01:01.045   423   532 D AudioFlinger: mixer(0xb400007d64d088e0) throttle end: throttle time(36)
+11-22 21:01:01.423   394   394 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+11-22 21:01:02.067   475  5962 D CCodecBufferChannel: [c2.android.vorbis.decoder#613] buffers after EOS ignored (0 us)
+11-22 21:01:02.067   475  5962 D CCodecBufferChannel: [c2.android.vorbis.decoder#613] buffers after EOS ignored (0 us)
+11-22 21:01:02.329   475  5960 D AudioTrack: stop(34): called with 82980 frames delivered
+11-22 21:01:02.705   578  2063 I MediaFocusControl: abandonAudioFocus() from uid/pid 10179/802 clientId=android.media.AudioManager@567089a
+11-22 21:01:02.706   578  2063 I AS.FadeOutManager: unfadeOutUid() uid:10212
+11-22 21:01:02.706   802  5945 V MediaPlayer: resetDrmState:  mDrmInfo=null mDrmProvisioningThread=null mPrepareDrmInProgress=false mActiveDrmScheme=false
+11-22 21:01:02.706   802  5945 V MediaPlayer: cleanDrmObj: mDrmObj=null mDrmSessionId=null
+11-22 21:01:02.707   475  2225 D NuPlayerDriver: reset(0xb4000075c8e15890) at state 6
+11-22 21:01:02.711   475  5962 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+11-22 21:01:02.711   479   530 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+11-22 21:01:02.711   479   530 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+11-22 21:01:02.712   479   530 D BufferPoolAccessor2.0: Destruction - bufferpool2 0xb400007675f7aed8 cached: 0/0M, 0/0% in use; allocs: 0, 0% recycled; transfers: 0, 0% unfetched
+11-22 21:01:02.713   475  5950 D NuPlayerDriver: notifyResetComplete(0xb4000075c8e15890)
+11-22 21:01:02.713   475  2225 W AMessage: failed to post message as target looper for handler 0 is gone.
+11-22 21:01:02.767   423   532 D audioserver: logFgsApiEnd: FGS Logger Transaction failed, -129
+11-22 21:01:02.780   423   532 D audioserver: logFgsApiEnd: FGS Logger Transaction failed, -129
+11-22 21:01:03.019  1051  1062 I IPCThreadState: oneway function results for code 2 on binder at 0xb400007adf705380 will be dropped but finished with status UNKNOWN_TRANSACTION
+11-22 21:01:03.035   378   378 I netd    : tetherGetStats() -> {[]} <0.78ms>
+11-22 21:01:03.167   578   601 D ColorDisplayService: GlobalSaturationTintController Animation cancelled: false to matrix: 
+11-22 21:01:03.167   578   601 D ColorDisplayService:        1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 min matrix coefficients: 
+11-22 21:01:03.167   578   601 D ColorDisplayService:        1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 max matrix coefficients: 
+11-22 21:01:03.167   578   601 D ColorDisplayService:        1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000
+11-22 21:01:03.752   578   658 I UsageStatsService: User[0] Flushing usage stats to disk
+11-22 21:01:05.075   171   171 I logd    : logdr: UID=2000 GID=2000 PID=5969 n tail=800 logMask=99 pid=0 start=0ns deadline=0ns
+11-22 21:01:05.118   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:05.118   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:05.118   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10138} in 1ms
+11-22 21:01:05.118   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:05.118   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:05.118   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20138} in 0ms
+11-22 21:01:05.199   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:05.199   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:05.199   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10181} in 1ms
+11-22 21:01:05.199   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:05.199   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:05.200   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20181} in 0ms
+11-22 21:01:05.320   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:05.320   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:05.320   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10146} in 1ms
+11-22 21:01:05.320   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:05.321   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:05.321   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20146} in 0ms
+11-22 21:01:05.332  5934  5934 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification android.hardware.drm.IDrmFactory/clearkey has clients: 0
+11-22 21:01:05.332  5934  5934 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+11-22 21:01:05.335   161   161 I servicemanager: Notifying android.hardware.drm.IDrmFactory/clearkey they don't (previously: do) have clients when we now have no record of a client
+11-22 21:01:05.336   161   161 I servicemanager: Caller(pid=5934,uid=1013,sid=u:r:hal_drm_clearkey_aidl:s0) Unregistering android.hardware.drm.IDrmFactory/clearkey
+11-22 21:01:05.336   161   161 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-22 21:01:05.333  5934  5934 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+11-22 21:01:05.338     1     1 I init    : Service 'vendor.drm-clearkey-service' (pid 5934) exited with status 0 oneshot service took 5.039000 seconds in background
+11-22 21:01:05.338     1     1 I init    : Sending signal 9 to service 'vendor.drm-clearkey-service' (pid 5934) process group...
+11-22 21:01:05.338     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_1013/pid_5934
+11-22 21:01:05.634   382  2877 D android.hardware.audio@7.1-impl.ranchu: threadLoop: entering standby, frames: 16440768
+11-22 21:01:05.939   475  4381 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 0
+11-22 21:01:06.143   378   378 I netd    : tetherGetStats() -> {[]} <0.49ms>
+11-22 21:01:07.207  1253  1258 W gle.android.gms: Cleared Reference was only reachable from finalizer (only reported once)
+11-22 21:01:07.941   479   800 D BufferPoolAccessor2.0: bufferpool2 0xb400007675f7a348 : 0(0 size) total buffers - 0(0 size) used buffers - 94/97 (recycle/alloc) - 3/96 (fetch/transfer)
+11-22 21:01:07.942   479   800 D BufferPoolAccessor2.0: evictor expired: 2, evicted: 1
+11-22 21:01:07.942   475  4381 D BufferPoolAccessor2.0: bufferpool2 0xb4000075a8e0a9d8 : 0(0 size) total buffers - 0(0 size) used buffers - 95/103 (recycle/alloc) - 8/198 (fetch/transfer)
+11-22 21:01:07.942   475  4381 D BufferPoolAccessor2.0: evictor expired: 1, evicted: 1
+11-22 21:01:10.244   578   669 D ActivityManager: freezing 1694 com.google.android.apps.wallpaper
+11-22 21:01:10.245   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:10.245   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:10.245   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10181} in 1ms
+11-22 21:01:10.326   378   378 I netd    : tetherGetStats() -> {[]} <0.41ms>
+11-22 21:01:10.607  1291  1714 I BistoHotwordHelper: (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+11-22 21:01:15.210   994   994 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-22 21:01:15.317  1253  1253 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-22 21:01:15.318   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:15.318   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:15.318   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10146} in 1ms
+11-22 21:01:15.318   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:15.319   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:15.319   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20146} in 0ms
+11-22 21:01:15.334  1253  1253 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.safetynet.service.START pkg=com.google.android.gms }
+11-22 21:01:15.343   994   994 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.phenotype.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-22 21:01:20.053  1451  1548 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+11-22 21:01:20.082   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.083   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.083   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 1ms
+11-22 21:01:20.083   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.084   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.084   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20151} in 0ms
+11-22 21:01:20.152   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.153   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.153   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10206} in 0ms
+11-22 21:01:20.153   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.153   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.153   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20206} in 1ms
+11-22 21:01:20.163   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.163   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.163   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10139} in 1ms
+11-22 21:01:20.163   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.163   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.163   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={20139} in 0ms
+11-22 21:01:20.267  1253  1253 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chromesync.service.firstparty.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-22 21:01:20.353   578   669 D ActivityManager: freezing 4013 com.android.chrome
+11-22 21:01:20.356   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:20.356   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:20.356   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10146} in 1ms
+11-22 21:01:21.782   578   591 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk' with 1 weak references
+11-22 21:01:21.783   578   591 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/WellbeingPrebuilt/WellbeingPrebuilt.apk' with 1 weak references
+11-22 21:01:30.022   578   669 D ActivityManager: freezing 953 com.android.settings
+11-22 21:01:30.024   578   669 D ActivityManager: freezing 2442 com.google.android.settings.intelligence
+11-22 21:01:30.067   578   669 D ActivityManager: freezing 2114 com.google.android.apps.safetyhub
+11-22 21:01:30.067   578   669 D ActivityManager: freezing 1451 com.google.android.apps.messaging
+11-22 21:01:30.068   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.068   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.068   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10138} in 1ms
+11-22 21:01:30.068   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.068   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.068   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10134} in 0ms
+11-22 21:01:30.106   578   669 D ActivityManager: freezing 4073 com.google.android.deskclock
+11-22 21:01:30.106   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.106   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.106   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 0ms
+11-22 21:01:30.118   578   669 D ActivityManager: freezing 2078 com.google.android.gms.unstable
+11-22 21:01:30.136   578   669 D ActivityManager: freezing 1631 com.google.android.googlequicksearchbox:search
+11-22 21:01:30.136   578   669 D ActivityManager: freezing 2386 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0
+11-22 21:01:30.175   578   669 D ActivityManager: freezing 4249 com.google.android.providers.media.module:PhotoPicker
+11-22 21:01:30.175   578   669 D ActivityManager: freezing 2307 com.google.android.rkpdapp
+11-22 21:01:30.175   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.175   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.175   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={99000} in 0ms
+11-22 21:01:30.176   578   669 D ActivityManager: freezing 1158 com.google.android.permissioncontroller
+11-22 21:01:30.176   578   669 D ActivityManager: freezing 1228 com.google.android.apps.wellbeing
+11-22 21:01:30.187   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.187   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.188   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10206} in 0ms
+11-22 21:01:30.188   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.188   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.188   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10185} in 0ms
+11-22 21:01:30.195   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-22 21:01:30.195   578   724 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-22 21:01:30.195   578   724 D InetDiagMessage: Destroyed live tcp sockets for uids={10139} in 0ms
+11-22 21:01:30.268   578   669 D ActivityManager: freezing 1253 com.google.android.gms
+11-22 21:01:42.457   578  2062 D JobScheduler: executeRunCommand(): com.puppytrainer.puppy_trainer/androidx.work.systemjobscheduler/0 1 s=false f=true
+11-22 21:01:42.464  2497  2497 D WM-SystemJobService: onStartJob for WorkGenerationalId(workSpecId=f984c8a9-ceca-4f88-8173-9efaf64b4f9f, generation=0)
+11-22 21:01:42.466  2497  2541 D WM-Processor: jl0: processing WorkGenerationalId(workSpecId=f984c8a9-ceca-4f88-8173-9efaf64b4f9f, generation=0)
+11-22 21:01:42.469  2497  2497 D WM-WorkerWrapper: Starting work for dev.fluttercommunity.workmanager.BackgroundWorker
+11-22 21:01:42.479  2497  2497 I TextToSpeech: Sucessfully bound to com.google.android.tts
+11-22 21:01:42.479   578  2062 D TextToSpeechManagerPerUserService: Trying to start connection to TTS engine: com.google.android.tts
+11-22 21:01:42.482   578   578 D TextToSpeechManagerPerUserService: Connected successfully to TTS engine: com.google.android.tts
+11-22 21:01:42.483  2497  3001 I TextToSpeech: Connected to TTS engine
+11-22 21:01:42.486  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.486  2497  5987 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+11-22 21:01:42.487  2130  2140 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.487  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.487  2130  2140 I GoogleTTSServiceImpl: For default lang en-us is name en-US-language (en-us-x-iog-server)
+11-22 21:01:42.488  2497  2812 I TextToSpeech: Setting up the connection to TTS engine...
+11-22 21:01:42.502  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.502  2130  2140 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.503  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.503  2130  2140 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.503  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.503  2130  2140 I GoogleTTSServiceImpl: For default lang en-us is name en-US-language (en-us-x-iog-server)
+11-22 21:01:42.514  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.514  2130  2140 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.515  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.517  2130  2140 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.518  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.518  2130  2140 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.518  2130  2140 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.518  2130  2140 I GoogleTTSServiceImpl: For default lang en-us is name en-US-language (en-us-x-iog-server)
+11-22 21:01:42.518  2130  2590 W RankedDispatcher: The requested voice is not available for this app identifier
+11-22 21:01:42.519  2130  2590 I GoogleTTSServiceImpl: currentLocale = en-US
+11-22 21:01:42.548  2497  2505 W r.puppy_trainer: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/talkback/talkback.apk' with 1 weak references
+11-22 21:01:42.550  2497  2505 W r.puppy_trainer: ApkAssets: Deleting an ApkAssets object '/vendor/overlay/EmulatorTalkBackOverlay/EmulatorTalkBackOverlay.apk' with 1 weak references
+11-22 21:01:42.551  2497  2505 W r.puppy_trainer: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/GoogleTTS/GoogleTTS.apk' with 1 weak references
+11-22 21:01:42.557  2497  2497 I flutter : weekly_job: 新生成周报 2 份
+11-22 21:01:42.559  2497  2541 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=f984c8a9-ceca-4f88-8173-9efaf64b4f9f, tags={ dev.fluttercommunity.workmanager.BackgroundWorker } ]
+11-22 21:01:42.561   578   890 D TextToSpeechManagerPerUserService: Unbinding TTS engine: com.google.android.tts. Reason: client disconnection request
+11-22 21:01:42.562   578   578 W TextToSpeechManagerPerUserService: Disconnected from TTS engine
+11-22 21:01:42.562   578   578 W ServiceConnector.Impl: mayInterruptIfRunning not supported - ignoring
+11-22 21:01:42.562  2497  3001 I TextToSpeech: Disconnected from TTS engine
+11-22 21:01:42.566  2497  2497 D WM-Processor: jl0 f984c8a9-ceca-4f88-8173-9efaf64b4f9f executed; reschedule = false
+11-22 21:01:42.566  2497  2497 D WM-SystemJobService: f984c8a9-ceca-4f88-8173-9efaf64b4f9f executed on JobScheduler
+11-22 21:01:42.568  2497  2542 D WM-GreedyScheduler: Cancelling work ID f984c8a9-ceca-4f88-8173-9efaf64b4f9f
+11-22 21:01:42.569  2497  2542 D WM-SystemJobScheduler: Scheduling work ID f984c8a9-ceca-4f88-8173-9efaf64b4f9fJob ID 2

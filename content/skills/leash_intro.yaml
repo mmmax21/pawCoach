@@ -1,0 +1,95 @@
+id: leash_intro
+name: 牵绳适应
+category: leash
+min_age_weeks: 10
+max_age_weeks: 52
+prerequisites: []
+difficulty: 1
+default_cue: 走吧
+default_gesture: 拍一下自己大腿外侧
+sessions_to_master: 2
+tutorial:
+  summary: 让幼犬把项圈、胸背和牵引绳当成"好事要发生"的信号，不害怕、不咬绳、不原地趴着不动，为出门和松绳行走打基础。
+  steps:
+    - text: 准备一条轻的平口项圈或胸背、一根 1.5-2 米的轻牵引绳，还有 15 块小零食。先在家里客厅练，不出门。
+      image: leash_intro_step1.png
+    - text: 把项圈或胸背拿到狗面前让它闻，闻一下就给一块零食。重复 5 次，狗看到项圈就往前凑了再进下一步。
+      image: leash_intro_step2.png
+    - text: 一边喂零食一边把项圈或胸背套上，扣好后立刻再给 2 块。套上后让狗戴着正常玩 5-10 分钟，不去管它。狗抓挠或者僵住就扔零食让它走动。
+      image: leash_intro_step3.png
+    - text: 狗戴着项圈不在意了，把牵引绳扣上，绳子松松地拖在地上，你跟着狗在屋里走，狗走到哪你跟到哪。狗每走几步就扔一块零食到地上。
+      image: leash_intro_step4.png
+    - text: 拿起绳子的末端，手臂放松，绳子保持弯的。狗往前走你就跟着走，狗停你就停，不拉它。狗回头看你就按响片给零食。
+      image: leash_intro_step5.png
+    - text: 说"走吧"，拍一下大腿往前走 3-5 步，狗跟上来就按响片给零食。狗不动的话蹲下来拍地叫它过来，来了再奖励，绳子始终是松的。
+      image: leash_intro_step6.png
+    - text: 狗咬绳子的时候，手停住不动不拉扯，另一只手扔一块零食到旁边。它松口去吃就夸它。每天戴着绳子在家走 2-3 次，每次 3-5 分钟。
+      image: leash_intro_step7.png
+  common_mistakes:
+    - 狗趴着不动，主人拉绳子把它拽起来。狗会更怕绳子。正确做法是蹲下、拍地、扔零食，让狗自己决定站起来。
+    - 第一次就戴着出门。门外全是新鲜东西，狗会被吓到或者兴奋过头。先在家练到狗完全不在意绳子，再去楼道、再去楼下。
+    - 狗咬绳子时跟它拔河。越拉狗越觉得好玩。手静止不动，扔零食转移注意，或者换一条有苦味喷剂的绳子。
+    - 绳子一直绷紧，狗从第一天就学会"绳子紧是正常的"。整个练习过程绳子要保持弯的，狗一拉你就停下。
+    - 项圈或胸背太紧或者太松。两根手指能插进去的松紧刚好，太松狗容易挣脱，太紧它会一直想抓。
+  success_criteria: 戴上项圈或胸背并扣上牵引绳后，狗在 1 分钟内能正常走动、不抓挠、不原地趴下、不咬绳子，并且听到"走吧"能跟着走 5 步以上，连续 2 天做到。
+script:
+  - step: 1
+    instruction: 把项圈或胸背拿到狗面前让它闻，闻一下就给一块零食。做 5 遍。
+    duration_sec: 40
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 一边喂零食一边把项圈或胸背套上扣好，扣好后再给 2 块。然后让狗自己在屋里走动 1 分钟，走几步就扔一块零食。
+    duration_sec: 90
+    voice: true
+    clicker_hint: false
+  - step: 3
+    instruction: 把牵引绳扣上，绳子松松拖在地上。狗走到哪你跟到哪，狗回头看你就按响片给零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 拿起绳子末端，手放松，绳子保持弯的。跟着狗走，狗停你就停。狗回头看你就按响片。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 说"走吧"，拍一下大腿往前走 5 步。狗跟上来就按响片给零食。狗不动就蹲下拍地叫它，来了再奖。做 4 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。蹲下来把绳子解开，给一块零食，说"好了"。项圈可以继续戴着。
+    duration_sec: 20
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 一边喂零食一边把项圈或胸背套上扣好，扣好后再给 2 块。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 把牵引绳扣上，绳子松松拖在地上。狗走到哪你跟到哪，狗回头看你就按响片给零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 拿起绳子末端，手放松，绳子保持弯的。跟着狗走，狗停你就停。狗回头看你就按响片。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 说"走吧"，拍一下大腿往前走 5 步。狗跟上来就按响片给零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。蹲下来把绳子解开，给一块零食，说"好了"。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 整个练习狗没有趴下不动、没有咬绳超过 5 秒，最后 4 遍"走吧"中 3 遍以上跟着走了 5 步；部分做到 = 能戴着走动但"走吧"只做到 1-2 遍，或者中间咬绳 1-2 次；没做到 = 戴上后趴着不动超过 30 秒，或者一直咬绳、抓挠项圈。
+downgrade_to: null
+sources:
+  - 牵绳脱敏与正向关联（desensitization and counter-conditioning），参见 AKC "How to Leash Train a Puppy" 公开文章与 Grisha Stewart《The Official Ahimsa Dog Training Manual》

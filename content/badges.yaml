@@ -1,0 +1,86 @@
+# 徽章定义
+# condition_type:
+#   first_checkin        首次打卡
+#   streak_days          连续打卡天数 >= condition_value
+#   skills_mastered      掌握技能数 >= condition_value
+#   first_diagnosis      完成首次 AI 诊断
+#   sessions_total       累计训练次数 >= condition_value
+#   household_members    家庭成员数 >= condition_value
+
+badges:
+  - id: first_step
+    name: 第一步
+    icon: badge_first_step.png
+    condition_type: first_checkin
+    condition_value: 1
+    description: 完成第一次训练打卡
+
+  - id: streak_7
+    name: 一周不断
+    icon: badge_streak_7.png
+    condition_type: streak_days
+    condition_value: 7
+    description: 连续打卡 7 天
+
+  - id: streak_30
+    name: 月度坚持
+    icon: badge_streak_30.png
+    condition_type: streak_days
+    condition_value: 30
+    description: 连续打卡 30 天
+
+  - id: streak_100
+    name: 百日之约
+    icon: badge_streak_100.png
+    condition_type: streak_days
+    condition_value: 100
+    description: 连续打卡 100 天
+
+  - id: first_skill
+    name: 开窍了
+    icon: badge_first_skill.png
+    condition_type: skills_mastered
+    condition_value: 1
+    description: 掌握第一个技能
+
+  - id: skills_5
+    name: 小学毕业
+    icon: badge_skills_5.png
+    condition_type: skills_mastered
+    condition_value: 5
+    description: 掌握 5 个技能
+
+  - id: skills_10
+    name: 中学毕业
+    icon: badge_skills_10.png
+    condition_type: skills_mastered
+    condition_value: 10
+    description: 掌握 10 个技能
+
+  - id: skills_all
+    name: 全科优等生
+    icon: badge_skills_all.png
+    condition_type: skills_mastered
+    condition_value: 18
+    description: 掌握首版全部 18 个技能
+
+  - id: first_diagnosis
+    name: 对症下药
+    icon: badge_first_diagnosis.png
+    condition_type: first_diagnosis
+    condition_value: 1
+    description: 完成第一次 AI 问题诊断
+
+  - id: sessions_50
+    name: 五十次练习
+    icon: badge_sessions_50.png
+    condition_type: sessions_total
+    condition_value: 50
+    description: 累计完成 50 次训练
+
+  - id: team_effort
+    name: 全家总动员
+    icon: badge_team_effort.png
+    condition_type: household_members
+    condition_value: 2
+    description: 家庭里有第二位成员加入并完成打卡

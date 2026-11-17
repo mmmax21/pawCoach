@@ -1,0 +1,9 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart
+00:00 +0: ON-2 counts a dog name by user-visible characters
+00:00 +1: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +2: WP-1 multipart mini task uses part 1 and reports its full duration
+ASTRA mini stay_long part=1 seconds=240 minutes=4
+ASTRA mini alone_time part=1 seconds=330 minutes=6
+ASTRA mini loose_leash part=1 seconds=315 minutes=6
+ASTRA mini handling_body part=1 seconds=330 minutes=6
+00:00 +3: All tests passed!

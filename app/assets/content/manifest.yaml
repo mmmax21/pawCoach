@@ -1,0 +1,30 @@
+# 由 tool/sync_content.sh 自动生成，不要手改
+skills:
+  - alone_time.yaml
+  - bite_inhibition.yaml
+  - calm_settle.yaml
+  - crate_intro.yaml
+  - down.yaml
+  - handling_body.yaml
+  - leash_intro.yaml
+  - loose_leash.yaml
+  - lure_follow.yaml
+  - marker_intro.yaml
+  - name_response.yaml
+  - potty_training.yaml
+  - recall_indoor.yaml
+  - recall_outdoor.yaml
+  - redirect_to_toy.yaml
+  - sit.yaml
+  - stay_long.yaml
+  - stay_short.yaml
+issues:
+  - biting_hands.yaml
+  - chewing_furniture.yaml
+  - excessive_barking.yaml
+  - jumping_on_people.yaml
+  - leash_pulling.yaml
+  - not_coming.yaml
+  - potty_accidents.yaml
+  - resource_guarding.yaml
+  - separation_crying.yaml

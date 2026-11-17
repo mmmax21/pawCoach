@@ -1,0 +1,97 @@
+id: recall_indoor
+name: 室内召回
+category: basic_obedience
+min_age_weeks: 10
+max_age_weeks: 52
+prerequisites: [name_response]
+difficulty: 2
+default_cue: 来
+default_gesture: 蹲下，双手张开拍大腿
+sessions_to_master: 2
+tutorial:
+  summary: 让狗一听到"来"就开心地跑向你，这是以后户外放绳、避免走失的保命技能，必须先在家里练到稳。
+  steps:
+    - text: 准备 15 块狗最爱吃的小零食（比平时训练用的更好吃），在客厅或走廊这种 3-5 米长的空间开始，收走玩具。
+      image: recall_indoor_step1.png
+    - text: 狗离你 1-2 米、正好看向你的时候，用开心的高音调喊一次"来"，同时蹲下、张开双手拍大腿。
+      image: recall_indoor_step2.png
+    - text: 狗一动身朝你跑，就持续夸它"好棒好棒"。它跑到你面前的那一刻按响片，立刻从手里喂 2-3 块零食，一块一块地给，让它觉得来找你超值。
+      image: recall_indoor_step3.png
+    - text: 喂完零食轻轻摸一下项圈再放开。这样狗以后不会一看你伸手抓项圈就躲。
+      image: recall_indoor_step4.png
+    - text: 说"去玩吧"放它走开，等它走出 2-3 米再喊下一次。一次练 5-8 遍就停。
+      image: recall_indoor_step5.png
+    - text: 能稳定过来后加难度：换一个房间，或在狗背对你闻东西时喊。每次只加一个难度。
+      image: recall_indoor_step6.png
+    - text: 找家人帮忙玩"两人召回"：两个人隔 4-5 米轮流喊狗，谁喊狗来谁给零食，狗来回跑特别开心。
+      image: recall_indoor_step7.png
+  common_mistakes:
+    - 狗没过来就一遍遍喊"来来来"。口令喊多了就没用了。只喊一次，没反应就拍手、后退、发出有趣的声音吸引它，等它过来再奖励，下次把距离缩短。
+    - 用"来"叫狗过来做它不喜欢的事，比如剪指甲、洗澡、关笼子。狗很快会学到"来"没好事。需要做这些事时直接走过去抱它，别用口令。
+    - 狗来晚了或者走得慢就不给奖励、语气变差。不管多慢，只要来了就奖励。对狗来说，"来了就有好事"比"来得快"更重要，速度以后会跟上。
+    - 奖励给得抠门，只给一小块。召回是最值得花大价钱的技能，到位时连给 2-3 块，或者给一小块鸡肉，让它印象深刻。
+    - 狗跑到面前没停就从身边冲过去，也照样给奖励。零食要贴着自己的腿给，让狗养成跑到你面前停下来的习惯。
+    - 一上来就在狗玩得最嗨的时候喊它。先在它没事干、正好看你的时候练，成功率高了再慢慢挑战有干扰的时候。
+  success_criteria: 在家里任意房间，狗离你 3 米以上，说一次"来"，狗在 5 秒内跑到你面前并停下，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 准备好 15 块好吃的零食，收走地上的玩具。让狗在你 1-2 米范围内自由走动。
+    duration_sec: 20
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 等狗看向你的时候，用开心的声音喊一次"来"，同时蹲下拍大腿。它跑到你面前的瞬间按响片，连给 3 块零食。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 说"去玩吧"放它走。等它走开 2 米再喊一次"来"，到位就按响片给零食，顺手摸一下项圈。这样做 4 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 现在你悄悄走到另一个房间门口，在狗看不到你的时候喊一次"来"。它找到你跑过来，按响片，给 3 块零食大大夸奖。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 回到原来的房间，再做 3 遍普通召回，每次距离拉到 3-4 米。到位就按响片给零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。最后一次召回后给它一块最好吃的，摸摸它，说"好了"，让它自由活动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 准备好 10 块好吃的零食，收走地上的玩具。让狗在你 1-2 米范围内自由走动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 等狗看向你的时候，用开心的声音喊一次"来"，同时蹲下拍大腿。它跑到面前的瞬间按响片，连给 3 块零食。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 说"去玩吧"放它走。等它走开 2 米再喊一次"来"，到位就按响片给零食，顺手摸一下项圈。做 3 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 再做 2 遍召回，距离拉到 3-4 米。到位就按响片给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。最后给它一块最好吃的，摸摸它，说"好了"，让它自由活动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 最后 5 遍召回中 4 遍以上在 5 秒内跑到面前；部分做到 = 2-3 遍；没做到 = 1 遍以下，或狗过来后不停留直接跑开。
+downgrade_to: name_response
+sources:
+  - 正向召回训练法（高价值奖励 + 口令不重复 + 不用口令叫狗做讨厌的事），参见 AKC "How to Teach Your Dog to Come When Called" 及 Karen Pryor Clicker Training 公开教程
+  - 两人召回游戏（Round Robin Recall）为常见正向训练课堂练习，参见 Ian Dunbar 幼犬训练公开资料

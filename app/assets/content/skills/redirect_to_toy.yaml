@@ -1,0 +1,93 @@
+id: redirect_to_toy
+name: 转移到玩具
+category: social
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 1
+default_cue: 玩具
+default_gesture: 把玩具举到狗鼻尖前方，左右小幅晃动
+sessions_to_master: 2
+tutorial:
+  summary: 教幼犬"想咬的时候去咬玩具，不咬手和家具"，是处理咬手、啃鞋、啃桌腿的第一个工具。
+  steps:
+    - text: 准备 2-3 个不同材质的玩具（绳结、橡胶、毛绒各一个），放在口袋或沙发边随手能拿到的地方。
+      image: redirect_to_toy_step1.png
+    - text: 狗平静的时候，拿一个玩具在它鼻尖前左右小幅晃动，让玩具"活起来"。狗一张嘴咬住玩具，立刻说"好"或按响片，然后陪它玩 5-10 秒。
+      image: redirect_to_toy_step2.png
+    - text: 重复 5 次。狗一看到玩具动就主动扑上来咬的时候，在晃玩具前先说一次"玩具"。
+      image: redirect_to_toy_step3.png
+    - text: 制造一点小诱惑：用手在狗面前慢慢动。狗想咬手的瞬间，手不动，另一只手把玩具递到它嘴边，咬到玩具就按响片。
+      image: redirect_to_toy_step4.png
+    - text: 狗咬到玩具后一定要陪它拉扯或者扔两下，让它明白"咬玩具比咬手好玩多了"。
+      image: redirect_to_toy_step5.png
+    - text: 日常里只要狗开始啃手、啃鞋、啃家具，就说"玩具"并递玩具，咬到玩具就夸。玩具每 2-3 天换一个，保持新鲜感。
+      image: redirect_to_toy_step6.png
+  common_mistakes:
+    - 玩具一直摆在地上不动，狗觉得没意思。玩具要在主人手里动起来才有吸引力，练完收起来。
+    - 狗咬住玩具之后主人松手走开。这样狗玩两下就丢了，又去找手咬。咬住后要陪它玩至少 5 秒，再松手。
+    - 狗咬手时主人大喊、甩手或者把手抽走。手越动狗越兴奋，正确做法是手停住不动，用另一只手递玩具。
+    - 用手逗狗玩，让狗习惯了手是玩具。平时不要用手跟狗打闹，手只负责摸和给零食，玩闹一律用玩具。
+    - 只练一个玩具。狗会对单一玩具腻掉，准备 2-3 个轮换。
+  success_criteria: 说一次"玩具"并递出玩具，狗在 3 秒内放开手或家具改咬玩具，并持续玩玩具 5 秒以上，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 拿出一个玩具，在狗鼻尖前面左右晃动，让玩具动起来。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 狗一咬住玩具，马上按响片，然后陪它拉扯 5 秒。松手，再重复 4 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 现在晃玩具前先说一次"玩具"。狗扑上来咬就按响片，陪它玩一会儿。做 5 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 用一只手在狗面前慢慢动，狗想咬手的时候手停住不动，另一只手说"玩具"递玩具。狗咬到玩具就按响片。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 换一个不同材质的玩具，再做 3 遍"玩具"口令。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。让狗自己叼着玩具玩一会儿，摸摸它，说"好了"。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 拿出一个玩具，在狗鼻尖前面左右晃动，让玩具动起来。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 狗一咬住玩具，马上按响片，陪它拉扯 5 秒。松手，再重复 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 晃玩具前先说一次"玩具"。狗扑上来咬就按响片，陪它玩一会儿。做 4 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 用一只手在狗面前慢慢动，狗想咬手时手停住不动，另一只手说"玩具"递玩具。狗咬到玩具就按响片。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。让狗自己叼着玩具玩一会儿，摸摸它，说"好了"。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 最后 6 遍中 5 遍以上听到"玩具"就咬玩具并玩 5 秒以上；部分做到 = 3-4 遍；没做到 = 2 遍以下或仍然追着手咬。
+downgrade_to: null
+sources:
+  - 转移注意法（redirection），参见 AKC "How to Stop Puppy Biting" 公开文章与 Ian Dunbar《Before & After Getting Your Puppy》

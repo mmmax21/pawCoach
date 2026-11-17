@@ -1,0 +1,74 @@
+[
+  {
+    "file": "content/skills/leash_intro.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/crate_intro.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/down.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/handling_body.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/recall_indoor.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/name_response.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/potty_training.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/alone_time.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/calm_settle.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/stay_long.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/stay_short.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/recall_outdoor.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/sit.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/loose_leash.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/redirect_to_toy.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/bite_inhibition.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/lure_follow.yaml",
+    "asset_equal": true
+  },
+  {
+    "file": "content/skills/marker_intro.yaml",
+    "asset_equal": true
+  }
+]

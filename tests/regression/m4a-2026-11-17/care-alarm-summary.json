@@ -1,0 +1,82 @@
+{
+  "observed_dates": [
+    "2026-11-24 09:00:00.000",
+    "2026-12-01 09:00:00.000",
+    "2026-12-01 09:00:00.000",
+    "2026-12-01 09:00:00.000",
+    "2026-12-15 09:00:00.000",
+    "2026-12-22 09:00:00.000",
+    "2026-12-29 09:00:00.000",
+    "2026-12-29 09:00:00.000"
+  ],
+  "count": 8,
+  "schedule_ids_from_integration": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007
+  ],
+  "note": "care-scheduled-prefs.xml verifies persisted IDs 2000..2007; care-alarms.txt verifies same 8 future dates in Android AlarmManager; inexact single alarms, no repeatInterval.",
+  "persisted_schedules": [
+    {
+      "id": 2000,
+      "at": "2026-11-24T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "第二针核心疫苗",
+      "body": "与第一针间隔 3-4 周。"
+    },
+    {
+      "id": 2001,
+      "at": "2026-12-01T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "体外驱虫",
+      "body": "每月一次，部分产品有最低周龄和体重要求，用前看说明。"
+    },
+    {
+      "id": 2002,
+      "at": "2026-12-01T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "体内驱虫（幼犬期）",
+      "body": "12 周龄前每 2 周一次。"
+    },
+    {
+      "id": 2003,
+      "at": "2026-12-01T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "体内驱虫（常规）",
+      "body": "12 周龄后每月一次。"
+    },
+    {
+      "id": 2004,
+      "at": "2026-12-15T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "狂犬疫苗",
+      "body": "具体周龄按当地规定，部分地区要求满 3 月龄。"
+    },
+    {
+      "id": 2005,
+      "at": "2026-12-22T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "第三针核心疫苗",
+      "body": "与第二针间隔 3-4 周。"
+    },
+    {
+      "id": 2006,
+      "at": "2026-12-29T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "体外驱虫",
+      "body": "每月一次，部分产品有最低周龄和体重要求，用前看说明。"
+    },
+    {
+      "id": 2007,
+      "at": "2026-12-29T09:00:00",
+      "timeZone": "Asia/Shanghai",
+      "title": "体内驱虫（常规）",
+      "body": "12 周龄后每月一次。"
+    }
+  ]
+}

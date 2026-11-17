@@ -1,0 +1,76 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m4_astra_http_test.dart
+00:00 +0: Astra real HTTP: offline onboarding/checkin replay, weekly uniqueness and badge owner
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:11413:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m4_astra_http_test.dart:46:21)
+<asynchronous suspension>
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:11413:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      loadRepoContent (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:27:15)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m4_astra_http_test.dart:59:23)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:11413:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m4_astra_http_test.dart:60:15)
+<asynchronous suspension>
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:11413:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m4_astra_http_test.dart:61:15)
+<asynchronous suspension>
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:15)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:02 +1: All tests passed!

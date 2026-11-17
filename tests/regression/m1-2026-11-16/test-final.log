@@ -1,0 +1,88 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart
+00:00 +0: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/breeds_test.dart: 30 个品种，末尾固定混种/不确定
+00:00 +1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 加载真实 content/：技能 18、问题 9、徽章 11，引用关系可解析
+00:00 +2: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 加载真实 content/：技能 18、问题 9、徽章 11，引用关系可解析
+00:00 +3: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 加载真实 content/：技能 18、问题 9、徽章 11，引用关系可解析
+00:00 +4: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +4: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: script_parts 默认 1，多段脚本 part 正确，手势"无"不展示图
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:4701:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      loadRepoContent (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:27:15)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/content_loader_test.dart:39:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +5: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +6: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +7: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +8: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +9: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +10: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +11: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +12: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +13: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +14: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +15: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +16: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +17: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +18: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +19: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +20: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +20: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 版本相同时跳过重载，从数据库读回的内容一致
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:4701:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/content_loader_test.dart:52:16)
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +20: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-1 multipart mini task uses part 1 and reports its full duration
+ASTRA mini stay_long part=1 seconds=240 minutes=4
+ASTRA mini alone_time part=1 seconds=330 minutes=6
+ASTRA mini loose_leash part=1 seconds=315 minutes=6
+ASTRA mini handling_body part=1 seconds=330 minutes=6
+00:00 +21: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +22: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +23: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +23: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 引用不存在的技能时 validateReferences 抛异常
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:4701:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/content_loader_test.dart:92:16)
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +24: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:07 +25: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 困扰最多选 3 项
+00:13 +26: All tests passed!

@@ -1,0 +1,19 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4_device_tour_test.dart
+00:00 +0: M4 设备实测
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/01_home.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/02_me.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/03_family_invite_code.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/04_family_two_members.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/05_badge_popup_first_step.png
+M4TOUR b_visible_ms=2940
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/06_badge_popup_team_effort_by_b.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/07_home_updated_by_b.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/08_records_show_b.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/09_badge_wall.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/10a_badge_popup_first_diagnosis.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/10_diagnosis_jumping_add_this_week.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/11_care_page.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4_screenshots/12_skill_tree.png
+00:49 +1: (tearDownAll)
+00:49 +1: All tests passed!
+[tour] flutter test 退出码 0

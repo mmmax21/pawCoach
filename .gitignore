@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+server/.venv/
+server/data/
+
+# OS / editors
+.DS_Store
+.idea/
+*.iml

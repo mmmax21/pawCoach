@@ -1,0 +1,51 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4_astra_carryover_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             10.1s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          693ms
+00:00 +0: Astra M4 M3 carryovers: notification, remote controls, lifecycle, keyboard
+M4SHOT carry_01_notification_home
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T12:00:00.000 now=2026-11-17T20:19:09.399862
+M4SHOT carry_02_remote_paused_5s
+M4SHOT carry_03_remote_resumed
+TRAIN ENTER step=2 announceNext=false step=2/6 phase=running remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:16.581589
+M4SHOT carry_04_remote_next
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.257077
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.257689
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.257785
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.257857
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.258216
+TRAIN LIFECYCLE foreground(before tick) step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.258343
+TRAIN LIFECYCLE foreground(after tick) step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:20.258417
+ASTRA lock paused_10s=20000 resumed=19000
+M4SHOT carry_05_lock_return
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938408
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938603
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938681
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938743
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938857
+TRAIN LIFECYCLE foreground(before tick) step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938899
+TRAIN LIFECYCLE foreground(after tick) step=2/6 phase=paused remaining=19000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:19:23.938965
+ASTRA background paused_10s=19000 resumed=18000
+M4SHOT carry_05_background_return
+M4SHOT carry_06_keyboard_open
+M4SHOT carry_07_keyboard_return_no_overflow
+ASTRA_CARE id=2000 at=2026-11-24T09:00:00.000
+ASTRA_CARE id=2001 at=2026-12-01T09:00:00.000
+ASTRA_CARE id=2002 at=2026-12-01T09:00:00.000
+ASTRA_CARE id=2003 at=2026-12-01T09:00:00.000
+ASTRA_CARE id=2004 at=2026-12-15T09:00:00.000
+ASTRA_CARE id=2005 at=2026-12-22T09:00:00.000
+ASTRA_CARE id=2006 at=2026-12-29T09:00:00.000
+ASTRA_CARE id=2007 at=2026-12-29T09:00:00.000
+M4SHOT carry_08_care_scheduled
+00:36 +1: (tearDownAll)
+00:37 +1: All tests passed!

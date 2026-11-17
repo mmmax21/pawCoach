@@ -1,0 +1,25 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m2_training_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                              9.6s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          950ms
+00:00 +0: 跟练一次 → 记录页 → 首页完成次数 +1、连续天数 1
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-16T22:06:49.294336 now=2026-11-16T22:06:49.294777
+TRAIN ENTER step=2 announceNext=false step=2/6 phase=running remaining=20000ms stepStartedAt=2026-11-16T22:06:49.401803 now=2026-11-16T22:06:49.401839
+TRAIN ENTER step=3 announceNext=false step=3/6 phase=running remaining=90000ms stepStartedAt=2026-11-16T22:06:49.431237 now=2026-11-16T22:06:49.431380
+TRAIN ENTER step=4 announceNext=false step=4/6 phase=running remaining=40000ms stepStartedAt=2026-11-16T22:06:49.459025 now=2026-11-16T22:06:49.459060
+TRAIN ENTER step=5 announceNext=false step=5/6 phase=running remaining=60000ms stepStartedAt=2026-11-16T22:06:49.790488 now=2026-11-16T22:06:49.790539
+TRAIN ENTER step=6 announceNext=false step=6/6 phase=running remaining=10000ms stepStartedAt=2026-11-16T22:06:50.115650 now=2026-11-16T22:06:50.115695
+TRAIN FINISHED step=6/6 phase=finished remaining=0ms stepStartedAt=2026-11-16T22:06:50.115650 now=2026-11-16T22:06:50.430225
+00:03 +1: 中途退出：确认后丢弃，不写记录，不算打卡
+TRAIN ENTER step=1 announceNext=false step=1/5 phase=running remaining=10000ms stepStartedAt=2026-11-16T22:06:51.918646 now=2026-11-16T22:06:51.918686
+00:06 +2: (tearDownAll)
+00:06 +2: All tests passed!

@@ -1,0 +1,97 @@
+id: potty_training
+name: 定点大小便
+category: house
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 2
+default_cue: 去尿尿
+default_gesture: 手指向定点位置
+sessions_to_master: 3
+tutorial:
+  summary: 通过固定时间带狗去固定地点，加上在它尿对的瞬间奖励，让狗学会憋到定点再解决，大幅减少家里的意外。
+  steps:
+    - text: 定一个固定地点：户外一块固定的草地，或家里固定角落铺的尿垫。前两周不要换地方。准备一袋小零食放在门口随手能拿的地方。
+      image: potty_training_step1.png
+    - text: 记住 5 个必带时机：早上醒来、每次吃完饭 10-20 分钟后、玩完一场、睡醒午觉、晚上睡前。8-12 周的幼犬白天每 1-2 小时带一次。
+      image: potty_training_step2.png
+    - text: 到时间就带狗去定点，牵绳站在旁边，不说话不互动，给狗 3-5 分钟时间自己闻和转圈。
+      image: potty_training_step3.png
+    - text: 狗开始蹲下的时候，轻声说一次"去尿尿"（这是在给动作贴标签，以后狗听到就知道该干什么）。
+      image: potty_training_step4.png
+    - text: 尿完或拉完的那一刻按响片，立刻给零食，夸它。一定要在原地奖励，不要回家再给。
+      image: potty_training_step5.png
+    - text: 如果 5 分钟没动静，带它回家，10-15 分钟内盯紧它或放回围栏，然后再带出去一次。
+      image: potty_training_step6.png
+    - text: 在家时留意信号：原地转圈、闻地板、突然走到角落、玩着玩着停下。看到任何一个，马上带去定点。
+      image: potty_training_step7.png
+  common_mistakes:
+    - 发现家里有尿迹后骂狗或把它拖到现场。狗根本不知道你在说几分钟前的事，只会学到"在主人面前尿会倒霉"，以后躲起来尿。看到意外只需要默默清理，然后检查是不是带出去的间隔太长。
+    - 用普通清洁剂擦尿迹。气味残留狗还会回来尿。要用含酶的宠物专用清洁剂彻底清掉味道。
+    - 带出去的时候一直跟狗说话、逗它玩。狗分心就不尿了。到定点后安静站着，等它尿完再互动。
+    - 狗一尿完就马上回家。狗会学到"尿完 = 散步结束"，于是故意憋着。尿完奖励后再陪它玩 2-3 分钟或多走一段。
+    - 奖励给晚了，回家才给。狗联系不上几分钟前的事。零食必须在尿完 2 秒内给，所以口袋里要常备零食。
+    - 觉得 1 天没出意外就放松盯梢。幼犬要连续 2-4 周没有意外才算稳，之前放松就会倒退。
+  success_criteria: 连续 7 天家里没有意外，并且每次带去定点时 5 分钟内就解决，7 天里至少 6 天做到。
+script:
+  - step: 1
+    instruction: 口袋装好零食，牵好绳。平静地带狗走到定点，路上不要逗它玩。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 到定点后站住不动，绳子放松，不说话，让狗自己闻和转圈。
+    duration_sec: 90
+    voice: true
+    clicker_hint: false
+  - step: 3
+    instruction: 看到狗开始蹲下，轻声说一次"去尿尿"。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 4
+    instruction: 狗尿完或拉完站起来的那一刻按响片，立刻给零食，开心地夸它。
+    duration_sec: 15
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 如果这时候还没解决，再安静等待一会儿，一旦解决就按响片给零食。到点还没动静就回家，盯紧它 15 分钟后再来一次。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 解决完了不要马上回家，陪它在附近再走一走或玩一会儿，让它知道尿完还有好事。
+    duration_sec: 60
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 口袋装好零食，牵好绳。平静地带狗走到定点，路上不要逗它玩。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 到定点后站住不动，绳子放松，不说话，让狗自己闻和转圈。看到狗开始蹲下，轻声说一次"去尿尿"。
+    duration_sec: 90
+    voice: true
+    clicker_hint: false
+  - step: 3
+    instruction: 狗尿完或拉完站起来的那一刻按响片，立刻给零食，开心地夸它。
+    duration_sec: 15
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 如果还没解决，再安静等一会儿，解决了就按响片给零食。到点还没动静就回家，盯紧它 15 分钟后再来一次。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 解决完了陪它在附近再走一走，让它知道尿完还有好事。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 今天带出去的所有次数里，5 分钟内解决的占 80% 以上，且家里 0 次意外；部分做到 = 50%-80% 或家里 1 次意外；没做到 = 50% 以下或家里 2 次以上意外。
+downgrade_to: null
+sources:
+  - 幼犬定点排泄训练法（固定时间表 + 定点奖励 + 含酶清洁剂），参见 AKC "How to Potty Train a Puppy" 与 Humane Society 公开资料
+  - 不惩罚室内意外、只管理与奖励的原则，参见 Ian Dunbar "Before and After Getting Your Puppy" 公开章节

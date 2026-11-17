@@ -1,0 +1,898 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/weekly_report_test.dart
+00:00 +0: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: (setUpAll)
+00:00 +0: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +0: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 建档：保底任务写 part 0（M2 简报第 7 节） DailyMiniTask.script_part == 0
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:85:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +2: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +3: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +3: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 保存一次记录：写 TrainingSession、目标 +1、Streak = 1
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:98:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +4: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +5: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +6: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +7: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +8: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +9: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +10: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +11: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +12: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +13: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +14: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +15: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +16: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +17: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +18: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +19: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +20: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +21: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +22: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +23: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +24: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +25: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +26: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +27: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +28: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +29: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +30: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +31: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +32: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +33: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +34: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +35: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +36: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +37: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +38: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +39: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +40: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +41: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +42: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +42: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 一天多次只计一次打卡，但目标完成次数每次都 +1
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:130:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +43: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +44: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +45: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +46: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +47: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +48: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +49: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +49: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 连续三天：Streak 3；断一天后回来：当前 1，最长 3
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:143:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +50: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +50: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 保底任务（part 0）打卡但不计入目标进度
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:158:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +51: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +51: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 非本周目标的技能打卡：记录写入，目标进度不变
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:178:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +52: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +52: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 跳过的步骤写进备注（TR-6）
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:190:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +53: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +54: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +54: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 技能状态：available → in_progress；full / none 计数
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:212:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +55: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +55: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 打卡与连续天数（RC-2 / ST-1） 首页进度：目标 completed 之和 / target 之和，保底不计，超额封顶
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:226:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +56: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +56: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 同一 plan_id 跑两次只生成一份周报、一份下周计划
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:253:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +57: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +57: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） workmanager 与冷启动补跑两条路径：先后调用只生成一份
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:273:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +58: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +58: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 两条路径反过来：先冷启动补跑，后 workmanager，同样只有一份
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:296:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +59: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +59: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 并发调用（两个 isolate 同时跑）：唯一约束兜底，仍只有一份
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:308:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +60: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +60: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 周日 21:00 之前不生成；本周计划之后才有周报
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:324:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +61: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +61: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 数据库层面：同一 plan_id 插入第二份周报被唯一约束拒绝
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:333:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +62: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +62: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 数据库层面：同一只狗同一周第二份计划被唯一约束拒绝
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:349:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +63: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +63: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 久未打开：跨多周补跑，一周一份周报，最终活动计划落在当前周
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:364:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +64: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +64: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 周报内容：完成次数、评分、outcome、comment 与 summary_json 结构
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.weekWithPractice (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:245:23)
+#8      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:378:24)
+#9      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#10     Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#11     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +65: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +65: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 下周计划写库：mastered 技能置 mastered 且不进下周；降级目标 source=downgrade
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:406:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +65: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +66: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +66: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） regenerate_next 为 true：下周全新生成，不走 WP-6
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:437:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +67: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +67: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 未读周报：生成后 latestUnread 返回，markRead 后消失
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:458:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +68: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +68: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: 周报与下周计划：幂等（WP-5 / WP-6） 本周零记录：周报 comment 为固定文案，下周全部 carryover
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:469:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +69: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +69: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） 本周无记录：改每日时长后立即重生成本周计划
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:504:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +70: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +70: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） 本周无记录：改出生日期后按新周龄重生成
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:522:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +71: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +71: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） 本周无记录：改困扰后重生成，且 DogConcern 同步更新
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:538:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +72: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +72: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） 本周已有记录：不动本周计划，标记 regenerate_next
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:556:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +73: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +74: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +74: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） 改名字 / 性别 / 训练人数：只更新 Dog，不触发计划变化
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:580:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +74: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: script_parts 默认 1，多段脚本 part 正确，手势"无"不展示图
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      loadRepoContent (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:27:15)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/content_loader_test.dart:39:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +75: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +75: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） 改口令：只更新 DogCue，不动计划
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:600:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +76: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +76: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: ON-7 档案修改（M2 简报第 8 节） planAffectingChanged：困扰顺序不同不算变化
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.setup (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:37:16)
+#7      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:616:23)
+#8      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#9      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#10     Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +77: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +77: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_repository_test.dart: M1 → M2 数据库迁移 schema 1 的库升级到 2：新表可用，保底任务 script_part 归 0
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_repository_test.dart:636:18)
+#6      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#7      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#8      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +78: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +78: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 首页：初始为 0 天、0 / 9；打卡后实时变为 1 天、1 / 9，保底不计进度
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.seed (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:32:10)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:106:11)
+#8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#10     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +79: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +79: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 版本相同时跳过重载，从数据库读回的内容一致
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/content_loader_test.dart:52:16)
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +80: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +81: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:00 +81: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/content_loader_test.dart: 引用不存在的技能时 validateReferences 抛异常
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/content_loader_test.dart:92:16)
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:00 +82: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +83: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +84: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +84: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-1 multipart mini task uses mini_script (part 0) and stays within 5 minutes
+ASTRA mini stay_long part=0 seconds=220
+ASTRA mini alone_time part=0 seconds=210
+ASTRA mini loose_leash part=0 seconds=240
+ASTRA mini handling_body part=0 seconds=175
+00:01 +85: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +86: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +87: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +88: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +89: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +90: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +91: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +92: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +93: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +94: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +95: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +96: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +97: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +98: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +99: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +100: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +101: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +102: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +103: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +104: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +105: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +106: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +107: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +108: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +109: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +110: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +111: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +111: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/mini_script_test.dart: 版本门槛：读到 v1.0 报错，不静默兼容 ensureLoaded 读到 v1.0 的 VERSION.md 抛异常
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.<anonymous closure>.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/mini_script_test.dart:148:13)
+#7      Declarer.test.<anonymous closure>.<anonymous closure> (package:test_api/src/backend/declarer.dart:253:25)
+<asynchronous suspension>
+#8      Declarer.test.<anonymous closure> (package:test_api/src/backend/declarer.dart:250:11)
+<asynchronous suspension>
+#9      Invoker._waitForOutstandingCallbacks.<anonymous closure> (package:test_api/src/backend/invoker.dart:318:9)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:01 +112: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +113: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +114: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +115: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +116: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +117: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +118: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +119: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +120: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +121: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +122: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +123: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +124: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +125: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +126: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:01 +127: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:07 +128: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 三步建档走通，数据库里存在 1 个 Dog 和 1 个 WeeklyPlan
+00:07 +128: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 跨周后冷启动：补跑生成周报，首页显示新一周与"上周周报已生成"入口
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.seed (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:32:10)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:162:11)
+#8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#10     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:07 +129: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 跨周后冷启动：补跑生成周报，首页显示新一周与"上周周报已生成"入口
+00:13 +130: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/onboarding_widget_test.dart: 困扰最多选 3 项
+00:13 +130: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 本周零记录跨周：周报 comment 为固定文案
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.seed (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:32:10)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:215:11)
+#8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#10     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:13 +131: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 本周零记录跨周：周报 comment 为固定文案
+00:19 +132: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 狗档案页：改名只更新 Dog；改每日时长（本周无记录）重生成并提示
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.seed (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:32:10)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:227:11)
+#8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#10     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:26 +133: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 狗档案页：本周已有记录时改每日时长，提示下周重新生成，本周计划不变
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.seed (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:32:10)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:274:11)
+#8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#10     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:32 +134: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: 空计划（7 周龄）：首页与预览都有"去狗档案"入口
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:6166:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      memoryDb (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/helpers.dart:23:27)
+#6      main.seed (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:32:10)
+#7      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/test/m2_home_widget_test.dart:308:11)
+#8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#10     StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+00:38 +135: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/m2_home_widget_test.dart: (tearDownAll)
+00:38 +135: All tests passed!

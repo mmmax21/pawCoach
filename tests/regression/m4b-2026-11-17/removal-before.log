@@ -1,0 +1,60 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4b_astra_removal_test.dart
+00:00 +0: M4 批次 B 设备实测
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b01_skill_tree.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b02_skill_tree_tap_sit.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b03_family_remove_button.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b04_family_remove_confirm.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b05_family_after_remove.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b06_diagnosis_not_this.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b07_back_to_issue_list.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b08_mistakes_folded.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b09_mistakes_expanded.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b10_records_by_date.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b11_records_by_skill.png
+M4TOUR pending id=1001 title=幼犬训练
+M4TOUR pending id=1002 title=幼犬训练
+M4TOUR pending id=1003 title=幼犬训练
+M4TOUR pending id=1004 title=幼犬训练
+M4TOUR pending id=1005 title=幼犬训练
+M4TOUR pending id=1006 title=幼犬训练
+M4TOUR pending id=1007 title=幼犬训练
+M4TOUR pending id=1008 title=幼犬训练
+M4TOUR pending id=1009 title=幼犬训练
+M4TOUR pending id=1010 title=幼犬训练
+M4TOUR pending id=1011 title=幼犬训练
+M4TOUR pending id=1012 title=幼犬训练
+M4TOUR pending id=1013 title=幼犬训练
+M4TOUR pending id=1014 title=幼犬训练
+M4TOUR pending id=3000 title=已经 3 天没练了
+M4TOUR nudge_shown=true
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/b12_nudge_notification.png
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/remove_ai5_before.png
+M4TOUR remove_pending_ai5=[3001, 3099]
+[tour] 截图 /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/build/m4b_astra_before/remove_ai5_after.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: empty
+  Actual: WhereIterable<PendingNotificationRequest>:[
+            Instance of 'PendingNotificationRequest',
+            Instance of 'PendingNotificationRequest'
+          ]
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4b_astra_removal_test.dart:239:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4b_astra_removal_test.dart line 239
+The test description was:
+  M4 批次 B 设备实测
+════════════════════════════════════════════════════════════════════════════════════════════════════
+01:07 +0 -1: M4 批次 B 设备实测 [E]
+01:07 +0 -1: (tearDownAll)
+01:07 +0 -1: Some tests failed.
+[tour] flutter test 退出码 1

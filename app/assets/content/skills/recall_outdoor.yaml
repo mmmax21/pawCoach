@@ -1,0 +1,97 @@
+id: recall_outdoor
+name: 户外召回（长绳）
+category: basic_obedience
+min_age_weeks: 20
+max_age_weeks: 52
+prerequisites: [recall_indoor, stay_short]
+difficulty: 4
+default_cue: 来
+default_gesture: 蹲下，双手张开拍大腿
+sessions_to_master: 3
+tutorial:
+  summary: 把家里练稳的召回搬到户外，用 5-10 米长绳保证安全，让狗在有气味、有人、有别的狗的环境里也愿意回到你身边。
+  steps:
+    - text: 准备一根 5-10 米的长绳（不是伸缩绳）、一件胸背带、15 块狗最爱吃的零食（鸡肉、奶酪这种）。长绳扣在胸背带上，不要扣项圈。
+      image: recall_outdoor_step1.png
+    - text: 第一次选一个安静、围起来的地方，比如小区里没人的草坪角落或清晨的公园。先让狗闻 2-3 分钟，熟悉环境。
+      image: recall_outdoor_step2.png
+    - text: 长绳松松地拖在地上，你握住末端。狗离你 2-3 米、刚好抬头的时候，开心地喊一次"来"，蹲下拍大腿。
+      image: recall_outdoor_step3.png
+    - text: 狗跑到你面前的瞬间按响片，连给 3 块零食，摸一下胸背带，然后说"去玩吧"放它继续闻。一次练 5-8 遍。
+      image: recall_outdoor_step4.png
+    - text: 如果狗没反应，不要重复口令。用长绳轻轻收 1-2 米缩短距离（不是拽），拍手、往后小跑吸引它，它一过来就奖励，下一次距离缩短。
+      image: recall_outdoor_step5.png
+    - text: 稳定后每次只加一个难度：距离从 3 米到 5 米再到 8 米，或者从没人的地方换到远处有人经过的地方。
+      image: recall_outdoor_step6.png
+    - text: 结合等待练习：让狗"等"，你走出 3 米，再喊"来"。这是以后在路边、门口最常用的组合。
+      image: recall_outdoor_step7.png
+  common_mistakes:
+    - 狗没来就用长绳把它拖回来。拖回来的狗学不会主动跑向你，反而会抗拒绳子。长绳只用来防走丢和轻轻缩短距离，狗要靠自己的腿跑回来才给奖励。
+    - 一到户外就要求和在家一样好。户外气味和干扰是家里的几十倍，第一周把距离缩到 2 米、只在狗看你的时候喊，成功率高才有信心。
+    - 用召回结束遛狗。每次"来"完就扣绳回家，狗会学到"来 = 玩完了"。十次召回里至少八次要奖励完就放它继续玩。
+    - 狗跑向别的狗或人的时候才喊它。这是最难的情况，前几周不要在这时喊，先用长绳管理，等它自己回头看你再喊。
+    - 奖励给得和家里一样普通。户外要用最高级的零食，狗在外面能回来是件大事，要让它觉得比闻草地值。
+    - 用伸缩绳代替长绳。伸缩绳一直有拉力，狗会习惯绷紧，而且卡住时容易伤手。
+  success_criteria: 在户外安静环境、长绳拖地的情况下，狗离你 5 米以上并正在闻东西时，说一次"来"，狗在 8 秒内自己跑到你面前，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 到户外安静的地方，长绳扣在胸背带上，你握住绳子末端。先让狗自由闻 1 分钟，不要叫它。
+    duration_sec: 60
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 等狗离你 2-3 米、刚好抬头的时候，开心地喊一次"来"，蹲下拍大腿。它跑到面前的瞬间按响片，连给 3 块零食。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 说"去玩吧"放它继续闻。等它走开 3 米再喊一次"来"，到位就按响片给零食，摸一下胸背带。这样做 4 遍。
+    duration_sec: 120
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 现在等狗低头闻得正专心的时候喊"来"。它抬头跑过来就按响片，给最好的那块零食。没反应就轻轻收绳 1 米、拍手吸引它，过来也照样奖励。做 3 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 让狗"等"，你往后走 3 米，然后喊"来"。它跑过来按响片，给 3 块零食。做 2 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。最后给一块零食，说"去玩吧"，让它再自由闻几分钟再回家，不要召回完就走。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 到户外安静的地方，长绳扣在胸背带上，握住绳子末端。先让狗自由闻 30 秒，不要叫它。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 等狗离你 2-3 米、刚好抬头的时候，开心地喊一次"来"，蹲下拍大腿。它跑到面前的瞬间按响片，连给 3 块零食。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 说"去玩吧"放它继续闻。等它走开 3 米再喊一次"来"，到位就按响片给零食，摸一下胸背带。做 3 遍。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 等狗低头闻得正专心时喊"来"。抬头跑过来就按响片，给最好的那块零食。没反应就轻轻收绳 1 米、拍手吸引它。做 2 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。给一块零食，说"去玩吧"，让它再自由闻一会儿再回家。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 今天 10 次召回中 8 次以上狗自己跑回来，没有靠收绳；部分做到 = 5-7 次；没做到 = 4 次以下，或大多数需要收绳才回来。
+downgrade_to: recall_indoor
+sources:
+  - 长绳召回训练法（long line recall），参见 AKC "How to Teach Your Dog to Come When Called" 与 Karen Pryor Clicker Training 户外召回公开教程
+  - 召回后放狗继续玩、避免"召回 = 结束"的原则，参见 Ian Dunbar 及 Patricia McConnell 相关公开资料

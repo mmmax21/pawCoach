@@ -1,0 +1,94 @@
+id: name_response
+name: 听名字看主人
+category: basic_obedience
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 1
+default_cue: 狗的名字
+default_gesture: 无手势，叫名字时身体微微前倾，眼睛看着狗
+sessions_to_master: 2
+tutorial:
+  summary: 让狗一听到名字就转头看你，这是所有口令的"开关"，后面的坐下、召回都靠它先把注意力拉回来。
+  steps:
+    - text: 准备 10 块小拇指甲大小的软零食，在安静、没人走动的房间开始。狗在房间里自由活动就行。
+      image: name_response_step1.png
+    - text: 等狗没在看你的时候，用平常说话的语气叫一次它的名字，只叫一次。
+      image: name_response_step2.png
+    - text: 狗一转头看向你，立刻按响片（或说标记词），然后把零食送到它嘴边。
+      image: name_response_step3.png
+    - text: 狗吃完零食后不管它，等它注意力又跑开了，再叫一次。重复 5 次。
+      image: name_response_step4.png
+    - text: 换个位置站，比如走到房间另一头或蹲下来，再叫名字。狗看过来就奖励。
+      image: name_response_step5.png
+    - text: 在地上放一个玩具当干扰。狗盯着玩具时叫名字，它回头看你就重重奖励（给 2 块）。
+      image: name_response_step6.png
+  common_mistakes:
+    - 名字连着叫好几遍，比如"豆豆豆豆豆豆"。狗会学到名字可以不理。只叫一次，没反应就走近一点让它更容易成功，而不是加大音量。
+    - 狗看过来了才去口袋掏零食。零食要提前握在手里，响片一按就能马上给，慢 1 秒狗就不知道奖的是"看你"。
+    - 名字和不开心的事绑在一起，比如叫完名字就剪指甲、关笼子。这个阶段叫名字只能跟好事挂钩。
+    - 一上来就在有狗、有人、有声音的地方练。先在安静房间练到 5 次 5 次都看你，再慢慢加干扰。
+    - 狗只是耳朵动了一下没回头就给零食。标准是眼睛看向你的脸，低于这个标准不奖。
+  success_criteria: 在安静房间，叫一次名字，狗在 2 秒内转头看你的脸，5 次中至少 4 次做到；地上有玩具时 3 次中至少 2 次做到。
+script:
+  - step: 1
+    instruction: 拿 10 块零食握在手里。让狗在房间里随便走，你站着不说话，等它不看你。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 用平常的语气叫一次狗的名字。它一转头看你，马上按响片，把零食送到它嘴边。
+    duration_sec: 20
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 再做 4 遍。每次都等狗注意力跑开了再叫，叫完只给一次机会，看过来就按响片给零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 换个位置，走到房间另一头或蹲下来，再叫 3 遍名字。看过来就按响片给零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 在地上放一个玩具。狗去看玩具的时候叫一次名字，它回头看你就按响片，给 2 块零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。把玩具给狗玩，说"好了"，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 拿 8 块零食握在手里。让狗在房间里随便走，你站着不说话，等它不看你。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 用平常的语气叫一次狗的名字。它一转头看你，马上按响片，把零食送到嘴边。做 3 遍，每次都等它注意力跑开了再叫。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 换个位置，走到房间另一头或蹲下来，再叫 2 遍名字。看过来就按响片给零食。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 在地上放一个玩具。狗去看玩具的时候叫一次名字，回头看你就按响片，给 2 块零食。做 2 遍。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。把玩具给狗玩，说"好了"，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 后面 8 遍（第 3 到第 5 步）里 7 遍以上在 2 秒内看你；部分做到 = 4-6 遍；没做到 = 3 遍以下或需要叫第二次才看。
+downgrade_to: null
+sources:
+  - 名字即注意力口令（name recognition / attention cue），参见 Ian Dunbar《Before and After Getting Your Puppy》及 AKC "Teach Your Puppy Its Name" 公开文章
+  - 响片标记法，参见 Karen Pryor《Don't Shoot the Dog》

@@ -1,0 +1,6 @@
+{
+  "tests/ai_boundary/in_library.yaml": "3819625bde6fbc675d07f472e1b16f4e5248fdb1ebbd1ed4ea89ac22f298d2ce",
+  "tests/ai_boundary/model_should_refuse.yaml": "1f3c6fd6ea85e28ccf9d76db22fc730d9461061494a88de96c5611d22cb4e458",
+  "tests/ai_boundary/out_of_library.yaml": "faa5000b354df4b4dc7f584f9463f892d02068524aacf7f3636613c1f6c04522",
+  "tests/ai_boundary/health.yaml": "d5fdf74db6e69771b57f53d7f2300c696f65febd58faef43176c7b94a917cb6b"
+}

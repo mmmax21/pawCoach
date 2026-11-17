@@ -1,0 +1,172 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m1_regression_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             20.6s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          694ms
+00:00 +0: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m1_regression_test.dart: M1 Android: boundaries, search, selection, preview and home
+ASTRA scenario age=7 minutes=5 goals=0 PASS
+ASTRA scenario age=8 minutes=10 goals=3 PASS
+ASTRA scenario age=52 minutes=15 goals=3 PASS
+ASTRA scenario age=53 minutes=30 goals=4 PASS
+ASTRA scenario age=8 minutes=5 goals=2 PASS
+02:28 +1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m1_regression_test.dart: (tearDownAll)
+02:28 +1: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m2_training_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             19.2s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          540ms
+02:51 +1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m2_training_test.dart: 跟练一次 → 记录页 → 首页完成次数 +1、连续天数 1
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:11:18.288698 now=2026-11-17T20:11:18.289199
+TRAIN ENTER step=2 announceNext=false step=2/6 phase=running remaining=20000ms stepStartedAt=2026-11-17T20:11:18.406208 now=2026-11-17T20:11:18.406251
+TRAIN ENTER step=3 announceNext=false step=3/6 phase=running remaining=90000ms stepStartedAt=2026-11-17T20:11:18.443451 now=2026-11-17T20:11:18.443545
+TRAIN ENTER step=4 announceNext=false step=4/6 phase=running remaining=40000ms stepStartedAt=2026-11-17T20:11:18.483268 now=2026-11-17T20:11:18.483307
+TRAIN ENTER step=5 announceNext=false step=5/6 phase=running remaining=60000ms stepStartedAt=2026-11-17T20:11:18.810775 now=2026-11-17T20:11:18.810815
+TRAIN ENTER step=6 announceNext=false step=6/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:11:19.125961 now=2026-11-17T20:11:19.126006
+TRAIN FINISHED step=6/6 phase=finished remaining=0ms stepStartedAt=2026-11-17T20:11:19.125961 now=2026-11-17T20:11:19.441586
+02:56 +2: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m2_training_test.dart: 中途退出：确认后丢弃，不写记录，不算打卡
+TRAIN ENTER step=1 announceNext=false step=1/5 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:11:21.720593 now=2026-11-17T20:11:21.720631
+02:59 +3: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m2_training_test.dart: (tearDownAll)
+02:59 +3: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_library_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             19.4s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          699ms
+03:23 +3: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_library_test.dart: library 模式五个场景：课程内 / 自由提问 / 健康 / 库外 / 跟练中，零网络、即时返回
+M3SHOT L1_course
+M3SHOT L2_free
+[ai] guard_health HealthGuard(hard: 吐了)
+[ai] guard_health Retrieval(context: [], scored: [])
+[ai] guard_no_hit Retrieval(context: [], scored: [])
+M3SHOT L3_health_nohit
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:12:00.238482 now=2026-11-17T20:12:00.239096
+M3SHOT L4_training
+M3TIMING {课程内提问: 171, 自由提问: 76, 健康题: 71, 库外题: 51, 跟练中提问: 114}
+03:41 +4: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_library_test.dart: (tearDownAll)
+03:41 +4: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_astra_r2_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             19.6s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          558ms
+04:05 +4: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_astra_r2_test.dart: library 模式五个场景：课程内 / 自由提问 / 健康 / 库外 / 跟练中，零网络、即时返回
+M3SHOT L1_course
+M3SHOT L2_free
+[ai] guard_health HealthGuard(hard: 吐了)
+[ai] guard_health Retrieval(context: [], scored: [])
+[ai] guard_no_hit Retrieval(context: [], scored: [])
+M3SHOT L3_health_nohit
+R2_CUE_AND_DOWNGRADE_PASS alone_time
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:12:43.608942 now=2026-11-17T20:12:43.609595
+M3SHOT L4_training
+M3TIMING {课程内提问: 193, 自由提问: 109, 健康题: 68, 库外题: 80, 跟练中提问: 139}
+04:24 +5: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_astra_r2_test.dart: (tearDownAll)
+04:25 +5: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             20.8s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          754ms
+04:50 +5: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 课程内提问：技能页"问教练" → 经本地服务端流式回答 → 参考内容 → 健康问题固定话术
+M3SHOT 01_home
+M3SHOT 02_course_qa_refs
+[ai] guard_health HealthGuard(hard: 吐了)
+[ai] guard_health Retrieval(context: [marker_intro], scored: [])
+[ai] guard_no_hit Retrieval(context: [], scored: [])
+M3SHOT 03_guards
+05:04 +6: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 跟练中问教练：进入时暂停，返回后恢复，倒计时不丢
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:13:30.105440 now=2026-11-17T20:13:30.106028
+M3SHOT 04_training_ask_coach
+05:19 +7: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 诊断：选 issue → 追问按钮 → 结果页 → 加入本周 → 首页立即出现
+M3SHOT 05_coach_home
+M3SHOT 06_diagnosis_question
+M3SHOT 07_diagnosis_result
+M3SHOT 08_add_this_week
+M3SHOT 09_home_after_add
+05:36 +8: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 提醒：打开开关 → 已调度每日通知；打卡后改到明天
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+超时未出现：Found 0 widgets with key [<'reminder_next'>]: []
+
+When the exception was thrown, this was the stack:
+#0      main.waitFor (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m3_ai_coach_test.dart:53:5)
+<asynchronous suspension>
+#1      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m3_ai_coach_test.dart:279:5)
+<asynchronous suspension>
+#2      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#3      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  提醒：打开开关 → 已调度每日通知；打卡后改到明天
+════════════════════════════════════════════════════════════════════════════════════════════════════
+06:00 +8 -1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 提醒：打开开关 → 已调度每日通知；打卡后改到明天 [E]
+  Test failed. See exception logs above.
+  The test description was: 提醒：打开开关 → 已调度每日通知；打卡后改到明天
+  
+06:00 +8 -1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 网络断开：对话页显示"教练暂时联系不上，稍后再试"，消息不入库
+WARNING (drift): It looks like you've created the database class AppDatabase multiple times. When these two databases use the same QueryExecutor, race conditions will occur and might corrupt the database. 
+Try to follow the advice at https://drift.simonbinder.eu/faq/#using-the-database or, if you know what you're doing, set driftRuntimeOptions.dontWarnAboutMultipleDatabases = true
+Here is the stacktrace from when the database was opened a second time:
+#0      GeneratedDatabase._handleInstantiated (package:drift/src/runtime/api/db_base.dart:96:30)
+#1      GeneratedDatabase._whenConstructed (package:drift/src/runtime/api/db_base.dart:73:12)
+#2      new GeneratedDatabase (package:drift/src/runtime/api/db_base.dart:64:5)
+#3      new _$AppDatabase (package:puppy_trainer/data/db/database.g.dart:11413:36)
+#4      new AppDatabase (package:puppy_trainer/data/db/database.dart)
+#5      main.boot (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m3_ai_coach_test.dart:68:16)
+#6      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m3_ai_coach_test.dart:316:21)
+#7      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#8      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+#9      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+This warning will only appear on debug builds.
+[ai] 网络失败：AiClientException: 请求失败 (DioException [connection error]: The connection errored: Connection refused This indicates an error which most likely cannot be solved by the library.
+Error: SocketException: Connection refused (OS Error: Connection refused, errno = 111), address = 10.0.2.2, port = 32772)
+M3SHOT 11_offline
+06:04 +9 -1: /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: (tearDownAll)
+06:04 +9 -1: Some tests failed.
+
+Failing tests:
+  /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart: 提醒：打开开关 → 已调度每日通知；打卡后改到明天

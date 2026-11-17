@@ -1,0 +1,99 @@
+id: stay_short
+name: 短暂等待（3 秒）
+category: impulse
+min_age_weeks: 12
+max_age_weeks: 52
+prerequisites: [sit]
+difficulty: 2
+default_cue: 等
+default_gesture: 手掌张开朝向狗，像交警的"停"手势，放在狗面前约 30 厘米
+sessions_to_master: 2
+tutorial:
+  summary: 教狗坐下以后保持不动 3 秒，直到你说"好了"才起来。这是所有自控力训练的起点，也是出门、开门、放饭前最常用的动作。
+  steps:
+    - text: 准备 10 块软零食，在安静房间让狗坐下。你站在它正前方，离它半步远。
+      image: stay_short_step1.png
+    - text: 说一次"等"，同时做"停"的手势。然后心里数 1 秒，狗屁股没离地，就按响片，把零食送到它嘴边（在它坐着的时候给）。
+      image: stay_short_step2.png
+    - text: 给完零食说"好了"，拍拍腿让狗站起来走两步。"好了"是释放词，每次等待结束都要说，狗才知道什么时候可以动。
+      image: stay_short_step3.png
+    - text: 重复 5 次 1 秒等待。狗 5 次都没动，再把时间加到 2 秒，同样做 5 次。
+      image: stay_short_step4.png
+    - text: 加到 3 秒。3 秒内可以在中间给一块"保持费"，比如第 1 秒给一块，第 3 秒再给一块加释放。
+      image: stay_short_step5.png
+    - text: 狗如果中途站起来了，不说话，让它重新坐下，把时间退回上一个成功的秒数再练。
+      image: stay_short_step6.png
+  common_mistakes:
+    - 一上来就要求等 3 秒、5 秒。幼犬先从 1 秒开始，每 5 次成功才加 1 秒，急了反而退步。
+    - 狗站起来了才给零食，或者把零食举高让狗起来够。零食要送到狗嘴边，在它坐着的时候给，奖的是"坐着没动"。
+    - 没有释放词，狗自己决定什么时候起来。每次都用"好了"结束，狗才知道等待是有尽头的，也才不会自己乱动。
+    - 狗没等住就说"不行""不对"，或者按着它坐下。什么都不说，让它重新坐，退回更短的时间。失败说明步子迈太大了，不是狗的错。
+    - 你自己在等待时后退、转身、拿东西。这个阶段你站着不动，距离和干扰留到延长等待再加。
+  success_criteria: 说一次"等"加手势，你站在原地不动，狗坐着等满 3 秒不起身，直到听到"好了"才动，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 让狗坐下。你站在它正前方半步远，手里拿好零食。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 说一次"等"，做"停"的手势，心里数 1 秒。狗没动就按响片，零食送到它嘴边让它坐着吃。然后说"好了"让它起来。
+    duration_sec: 20
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 再做 4 遍 1 秒等待。每遍结束都说"好了"让狗起来走两步，再重新坐下。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 加到 2 秒。说"等"，数两下，没动就按响片给零食，说"好了"。做 5 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 加到 3 秒。第 1 秒先送一块零食，狗继续坐着，到第 3 秒按响片再给一块，说"好了"。做 5 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 狗如果中途站起来了，不说话，让它重新坐下，退回 2 秒再做 2 遍，成功了再回到 3 秒。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 7
+    instruction: 结束。说"好了"，给一块零食，摸摸狗，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 让狗坐下。你站在它正前方半步远，手里拿好零食。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 说一次"等"，做"停"的手势，心里数 1 秒。狗没动就按响片，零食送到嘴边让它坐着吃。说"好了"让它起来。做 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 加到 2 秒。说"等"，数两下，没动就按响片给零食，说"好了"。做 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 加到 3 秒。第 1 秒先送一块零食，狗继续坐着，到第 3 秒按响片再给一块，说"好了"。做 3 遍。狗中途站起来就不说话，重新坐下退回 2 秒。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。说"好了"，给一块零食，摸摸狗，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 第 5 步 5 遍 3 秒等待里 4 遍以上没起身；部分做到 = 2-3 遍；没做到 = 1 遍以下，或 2 秒都等不住。
+downgrade_to: sit
+sources:
+  - 等待的逐秒递增法（building duration in stay），参见 AKC "How to Teach Your Dog to Stay" 公开文章
+  - 释放词与"保持费"奖励，参见 Kikopup（Emily Larlham）YouTube 公开教程 "How to teach your dog to stay"

@@ -1,0 +1,72 @@
+id: not_coming
+name: 叫不回来
+category: puppy_behavior
+typical_age_weeks: [12, 52]
+diagnosis_tree:
+  - q: 在家里、没什么干扰的时候叫它，它会过来吗？
+    options:
+      - text: 在家叫名字也经常不理
+        next: 1
+      - text: 在家会来，出门就不行
+        next: 2
+  - q: 它叫名字时会看你一眼吗？
+    options:
+      - text: 基本不看，像没听见
+        result: name_not_learned
+      - text: 会看，但是不过来
+        result: recall_foundation
+  - q: 出门叫不回来时，通常它在干什么？
+    options:
+      - text: 跟别的狗玩、追东西、闻来闻去，太投入了
+        next: 3
+      - text: 看到你就躲，或者绕着不让你抓
+        result: recall_avoidance
+  - q: 出门时它用的是什么绳？
+    options:
+      - text: 基本放开跑，或者用伸缩绳
+        result: recall_avoidance
+      - text: 用长绳或普通牵引绳
+        result: recall_distraction
+solutions:
+  name_not_learned:
+    summary: 狗叫不回来，很多时候是连名字都没真正学会。它不知道名字意味着"看主人有好事"。先把名字和零食绑在一起，这是所有召回的起点。
+    skills: [name_response, marker_intro, recall_indoor]
+    management:
+      - 每天 10 次以上：叫一次名字，它一回头就说"好"给零食，不管它在干嘛。
+      - 名字只在有好事时叫，训它、带它去洗澡、剪指甲的时候不叫名字，直接走过去。
+      - 一次只叫一遍，不要"豆豆豆豆豆豆"连着喊，喊多了名字就成背景音了。
+      - 家里所有人用同一个名字，不要一会儿大名一会儿小名。
+      - 先在家里安静的时候练，练熟了再在它玩的时候试。
+    escalate_if: 练习 3 周后在家叫名字仍然完全没反应，先带去兽医检查听力，再考虑找训犬师。
+  recall_foundation:
+    summary: 它知道名字，但是"过来"对它来说不够值得。召回要变成它一辈子最喜欢的游戏，过来永远有好事，从来不会被抓住然后结束。
+    skills: [name_response, recall_indoor, stay_short]
+    management:
+      - 每次它过来都给最好吃的零食或者玩一会儿，比平时的奖励高一个档次。
+      - 它过来后摸一下项圈再给零食，让它习惯"过来 = 被碰一下 = 有好吃的"。
+      - 绝对不在召回之后做它不喜欢的事（洗澡、关笼子、结束玩耍），要做这些的时候走过去牵它。
+      - 在家里两个人隔着房间轮流叫它，跑过来就奖励，一天玩 5 分钟。
+      - 召回词只用一个（比如"来"或者"过来"），叫了就一定要让它过来，叫不动就走过去带它，不要叫第二遍。
+    escalate_if: 系统练习 4 周后，在家没有干扰的情况下还是 10 次里不到 5 次能过来，找训犬师当面看看是哪里出了问题。
+  recall_distraction:
+    summary: 它在家能回来，说明基础有了，问题是户外的干扰太大。户外召回要从低干扰、短距离、拴长绳开始，一步一步加难度，不能直接放开。
+    skills: [recall_indoor, stay_short, recall_outdoor]
+    management:
+      - 户外一律用 5-10 米长绳练，叫不动的时候可以轻轻收绳，不让它学会"不来也没事"。
+      - 先在它不太感兴趣的地方练（小区空地），每次它在闻东西但不是特别投入时叫。
+      - 带比平时好得多的零食，户外召回用鸡肉、奶酪，不用平时的狗粮。
+      - 和别的狗玩的时候，中途叫回来给零食然后放它回去接着玩，让它知道回来不等于结束。
+      - 每次出门召回 3-5 次就够了，次数多了它会烦，次数少每次都是惊喜。
+    escalate_if: 长绳练习 6 周后，在小区这种低干扰环境还是叫不回来，或者曾经挣脱跑到马路上，不要再放开，咨询训犬师。
+  recall_avoidance:
+    summary: 它看到你过来就躲，说明在它的经验里"被抓住"是坏事，可能以前被抓住之后就回家了、被训了或者被拉走了。这个要从修复信任开始，并且在它重新信任之前不能再放开。
+    skills: [name_response, recall_indoor, recall_outdoor]
+    management:
+      - 从现在开始户外只用长绳，不再放开，也不再追着它跑，追它就变成游戏了。
+      - 它靠近你的时候你蹲下、侧身、不看着它，手里拿零食摊开，等它自己过来。
+      - 它过来后不要马上扣绳子，先给零食、摸一下、再放它走，十次里有七八次都这样。
+      - 每次遛狗结束前，先叫回来给零食玩一会儿，再扣绳回家，不要一叫回来就回家。
+      - 回家路上也随时给零食，让"跟主人回家"也变成好事。
+    escalate_if: 它在家也开始躲着你，或者碰它的时候僵硬、低吼，不要硬抓，咨询专业训犬师。
+sources:
+  - 召回训练方法参考 Pippa Mattinson《Total Recall》与 AKC "Teaching Your Dog to Come When Called" 公开指南

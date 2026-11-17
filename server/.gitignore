@@ -1,0 +1,5 @@
+data/
+e2e_last_result.json
+.venv/
+__pycache__/
+.pytest_cache/

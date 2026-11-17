@@ -1,0 +1,133 @@
+# AI 检索分词词表（M3 简报第 5 节第二层）
+# 每个词映射到若干内容 ID（技能或问题行为）。
+# 客户端用最大匹配分词，对用户消息中出现的词累计各 ID 的命中数。
+# 同一个词可以映射多个 ID。
+
+terms:
+  # 基础服从
+  - { word: 坐下, ids: [sit] }
+  - { word: 说坐, ids: [sit] }
+  - { word: 坐着, ids: [sit] }
+  - { word: 坐好, ids: [sit] }
+  - { word: 不坐, ids: [sit] }
+  - { word: 趴下, ids: [down] }
+  - { word: 名字, ids: [name_response, not_coming] }
+  - { word: 叫它, ids: [name_response, not_coming] }
+  - { word: 叫名字, ids: [name_response] }
+  - { word: 不理我, ids: [name_response, not_coming] }
+  - { word: 不看我, ids: [name_response] }
+  - { word: 响片, ids: [marker_intro] }
+  - { word: 标记词, ids: [marker_intro] }
+  - { word: 零食引导, ids: [lure_follow] }
+  - { word: 跟着手, ids: [lure_follow] }
+  - { word: 跟着零食, ids: [lure_follow] }
+  - { word: 零食, ids: [lure_follow, marker_intro] }
+  - { word: 不跟, ids: [lure_follow] }
+  - { word: 尿尿, ids: [potty_training, potty_accidents] }
+  - { word: 咬我, ids: [biting_hands, bite_inhibition] }
+  - { word: 咬东西, ids: [chewing_furniture] }
+  - { word: 抢东西, ids: [resource_guarding] }
+  - { word: 诱导, ids: [lure_follow] }
+
+  # 等待 / 冲动控制
+  - { word: 等待, ids: [stay_short, stay_long] }
+  - { word: 坐不住, ids: [stay_short, calm_settle] }
+  - { word: 站起来, ids: [stay_short, stay_long] }
+  - { word: 安静, ids: [calm_settle, excessive_barking] }
+  - { word: 趴垫, ids: [calm_settle] }
+  - { word: 垫子, ids: [calm_settle] }
+  - { word: 冷静, ids: [calm_settle] }
+  - { word: 兴奋, ids: [calm_settle, jumping_on_people, biting_hands] }
+  - { word: 太疯, ids: [calm_settle] }
+
+  # 召回
+  - { word: 召回, ids: [recall_indoor, recall_outdoor, not_coming] }
+  - { word: 叫不回, ids: [not_coming, recall_indoor, recall_outdoor] }
+  - { word: 不回来, ids: [not_coming, recall_indoor, recall_outdoor] }
+  - { word: 过来, ids: [recall_indoor, recall_outdoor] }
+  - { word: 跑了, ids: [not_coming, recall_outdoor] }
+  - { word: 跑开, ids: [not_coming, recall_outdoor] }
+  - { word: 长绳, ids: [recall_outdoor] }
+  - { word: 户外, ids: [recall_outdoor, loose_leash] }
+  - { word: 放开, ids: [not_coming, recall_outdoor] }
+
+  # 定点排泄
+  - { word: 大小便, ids: [potty_training, potty_accidents] }
+  - { word: 便便, ids: [potty_training, potty_accidents] }
+  - { word: 乱尿, ids: [potty_accidents, potty_training] }
+  - { word: 随地, ids: [potty_accidents] }
+  - { word: 尿垫, ids: [potty_accidents, potty_training] }
+  - { word: 定点, ids: [potty_training] }
+  - { word: 厕所, ids: [potty_training, potty_accidents] }
+  - { word: 漏尿, ids: [potty_accidents] }
+
+  # 航空箱 / 独处
+  - { word: 航空箱, ids: [crate_intro] }
+  - { word: 笼子, ids: [crate_intro, separation_crying] }
+  - { word: 围栏, ids: [crate_intro] }
+  - { word: 进笼, ids: [crate_intro] }
+  - { word: 不进笼, ids: [crate_intro, separation_crying] }
+  - { word: 独处, ids: [alone_time, separation_crying] }
+  - { word: 一个人, ids: [alone_time, separation_crying] }
+  - { word: 自己待, ids: [alone_time, separation_crying] }
+  - { word: 出门, ids: [alone_time, separation_crying, leash_intro] }
+  - { word: 不在家, ids: [alone_time, separation_crying, chewing_furniture] }
+  - { word: 分离焦虑, ids: [separation_crying, alone_time] }
+  - { word: 哭叫, ids: [separation_crying] }
+  - { word: 刨门, ids: [separation_crying] }
+
+  # 咬
+  - { word: 咬手, ids: [biting_hands, bite_inhibition] }
+  - { word: 咬人, ids: [biting_hands, bite_inhibition] }
+  - { word: 啃人, ids: [biting_hands] }
+  - { word: 换牙, ids: [biting_hands, chewing_furniture] }
+  - { word: 咬合, ids: [bite_inhibition] }
+  - { word: 轻一点, ids: [bite_inhibition] }
+  - { word: 磨牙, ids: [chewing_furniture, redirect_to_toy] }
+  - { word: 啃家具, ids: [chewing_furniture] }
+  - { word: 咬鞋, ids: [chewing_furniture] }
+  - { word: 鞋子, ids: [chewing_furniture] }
+  - { word: 沙发, ids: [chewing_furniture, resource_guarding] }
+  - { word: 拆家, ids: [chewing_furniture, separation_crying] }
+  - { word: 玩具, ids: [redirect_to_toy, resource_guarding] }
+  - { word: 转移, ids: [redirect_to_toy] }
+
+  # 牵绳
+  - { word: 牵绳, ids: [leash_intro, loose_leash, leash_pulling] }
+  - { word: 绳子, ids: [leash_intro, loose_leash, leash_pulling] }
+  - { word: 牵引绳, ids: [leash_intro, loose_leash, leash_pulling] }
+  - { word: 遛弯, ids: [loose_leash, leash_pulling] }
+  - { word: 遛狗, ids: [loose_leash, leash_pulling] }
+  - { word: 散步, ids: [loose_leash, leash_pulling] }
+  - { word: 拉绳, ids: [leash_pulling, loose_leash] }
+  - { word: 暴冲, ids: [leash_pulling] }
+  - { word: 往前冲, ids: [leash_pulling, loose_leash] }
+  - { word: 拖着, ids: [leash_pulling] }
+  - { word: 松绳, ids: [loose_leash] }
+  - { word: 跟我, ids: [loose_leash] }
+  - { word: 不肯走, ids: [leash_intro, leash_pulling] }
+  - { word: 项圈, ids: [leash_intro] }
+
+  # 触摸 / 护理
+  - { word: 触摸, ids: [handling_body] }
+  - { word: 爪子, ids: [handling_body] }
+  - { word: 剪指甲, ids: [handling_body] }
+  - { word: 耳朵, ids: [handling_body] }
+  - { word: 嘴巴, ids: [handling_body, bite_inhibition] }
+  - { word: 刷牙, ids: [handling_body] }
+  - { word: 洗澡, ids: [handling_body] }
+  - { word: 梳毛, ids: [handling_body] }
+  - { word: 敏感, ids: [handling_body] }
+
+  # 其他问题行为
+  - { word: 扑人, ids: [jumping_on_people] }
+  - { word: 跳起来, ids: [jumping_on_people] }
+  - { word: 乱叫, ids: [excessive_barking] }
+  - { word: 吠叫, ids: [excessive_barking] }
+  - { word: 汪汪, ids: [excessive_barking] }
+  - { word: 护食, ids: [resource_guarding] }
+  - { word: 低吼, ids: [resource_guarding, biting_hands] }
+  - { word: 龇牙, ids: [resource_guarding, biting_hands] }
+  - { word: 不让碰, ids: [resource_guarding, handling_body] }
+  - { word: 食盆, ids: [resource_guarding] }
+  - { word: 饭碗, ids: [resource_guarding] }

@@ -1,0 +1,33 @@
+{
+  "domain_bad_imports": [],
+  "dependencies": "name: puppy_trainer\ndescription: 幼犬训练 App（M1 骨架与建档；M2 跟练、记录打卡、周报）\npublish_to: \"none\"\nversion: 0.1.0+1\n\nenvironment:\n  sdk: ^3.6.0\n\ndependencies:\n  flutter:\n    sdk: flutter\n  material_ui: ^1.1.0\n  flutter_riverpod: ^2.6.1\n  drift: ^2.22.0\n  drift_flutter: ^0.2.2\n  go_router: ^14.6.2\n  yaml: ^3.1.2\n  path_provider: ^2.1.5\n  path: ^1.9.0\n  sqlite3_flutter_libs: ^0.5.28\n  flutter_tts: ^4.2.5\n  audio_service: ^0.18.19\n  just_audio: ^0.10.6\n  wakelock_plus: ^1.8.2\n  image_picker: ^1.2.4\n  workmanager: ^0.10.10\n  dio: ^5.11.1\n  flutter_local_notifications: ^23.0.2\n  timezone: ^0.11.2\n\ndev_dependencies:\n  integration_test:\n    sdk: flutter\n  flutter_test:\n    sdk: flutter\n  flutter_lints: ^5.0.0\n  build_runner: ^2.4.13\n  drift_dev: ^2.22.0\n\nflutter:\n  uses-material-design: true\n  assets:\n    - assets/content/\n    - assets/content/skills/\n    - assets/content/issues/\n    - assets/audio/\n\n# BUG-M3-003: preserve the requested first date for Android daily reminders.\ndependency_overrides:\n  flutter_local_notifications:\n    path: ../third_party/flutter_local_notifications\n",
+  "content_parser_swallowed_errors": false,
+  "source_secret_signature_matches": [],
+  "artifact": {
+    "path": "app/build/app/outputs/flutter-apk/app-debug.apk",
+    "sha256": "f0755ff2c26d356eacd64a6d9540d2f8d4cea32bf002d8998cfc3ca82f3e1710",
+    "matching_entries": []
+  },
+  "reviewed_log_calls": {
+    "app/lib/data/sync/sync_service.dart": [
+      {
+        "line": 354,
+        "text": "debugPrint('同步：跳过一条无法应用的记录 ${r.table}');"
+      }
+    ],
+    "server/sync.py": [],
+    "server/store.py": []
+  },
+  "boundary_question_sha256": {
+    "tests/ai_boundary/in_library.yaml": "3819625bde6fbc675d07f472e1b16f4e5248fdb1ebbd1ed4ea89ac22f298d2ce",
+    "tests/ai_boundary/model_should_refuse.yaml": "1f3c6fd6ea85e28ccf9d76db22fc730d9461061494a88de96c5611d22cb4e458",
+    "tests/ai_boundary/out_of_library.yaml": "faa5000b354df4b4dc7f584f9463f892d02068524aacf7f3636613c1f6c04522",
+    "tests/ai_boundary/health.yaml": "d5fdf74db6e69771b57f53d7f2300c696f65febd58faef43176c7b94a917cb6b"
+  },
+  "content_parser_review": "content_parser.dart:126-127 catches YAML parser errors and immediately throws ContentParseException; other validation failures throw. Mere presence of catch is not swallowed error.",
+  "final_debug_artifact": {
+    "path": "app/build/app/outputs/flutter-apk/app-debug.apk",
+    "sha256": "54fac718af33af69abf20109cc02d279a0174ebb2cec8a32ee0f5f9ce0000875",
+    "matching_entries": []
+  }
+}

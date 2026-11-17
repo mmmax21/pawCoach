@@ -1,0 +1,110 @@
+id: alone_time
+name: 独处练习（分离焦虑预防）
+category: house
+min_age_weeks: 10
+max_age_weeks: 52
+prerequisites: [crate_intro]
+difficulty: 3
+default_cue: 等我回来
+default_gesture: 无（离开时不做夸张手势，平静走开）
+sessions_to_master: 3
+script_parts: 2
+tutorial:
+  summary: 从几十秒开始，一点点教狗"主人走了一定会回来"，让它在独处时能安心睡觉或啃玩具，而不是哭叫、拆家。
+  steps:
+    - text: 先让狗玩累、尿完。准备一个塞了零食或冻了花生酱的漏食玩具，只有独处练习时才给这个玩具。
+      image: alone_time_step1.png
+    - text: 让狗"进窝"（航空箱或围栏），把漏食玩具给它。它开始啃的时候，你平静地在房间里走动，不看它。
+      image: alone_time_step2.png
+    - text: 说一句平静的"等我回来"，走出房间，带上门，30 秒后回来。回来时也平静，不要激动地打招呼，先做自己的事。
+      image: alone_time_step3.png
+    - text: 狗在你离开的整段时间里都安静，回来后按响片，隔着围栏给一块零食。然后再离开一次，时间翻倍：1 分钟、2 分钟、5 分钟。
+      image: alone_time_step4.png
+    - text: 加时间的时候要打乱顺序：5 分钟、1 分钟、3 分钟、30 秒。不要只往上加，不然狗会猜到"越来越久"而焦虑。
+      image: alone_time_step5.png
+    - text: 从离开房间进阶到出家门：拿钥匙、穿鞋、开门、关门，出去 1 分钟就回来。出门动作本身就是一种练习，平时也可以拿钥匙却不出门。
+      image: alone_time_step6.png
+    - text: 独处能稳定到 10 分钟后，用手机录像看狗的状态。能趴下睡觉或安静啃玩具才算真的放松，一直站着盯门就要退回更短的时间。
+      image: alone_time_step7.png
+  common_mistakes:
+    - 第一次就离开半小时、一小时。狗没有"你会回来"的经验，直接崩溃。第一天的目标就是 30 秒到 2 分钟，看起来少，但这才是能建立信任的速度。
+    - 出门前抱着狗恋恋不舍地说"宝贝我很快回来哦"，回家后大喊大叫地拥抱。这会把你的离开和回来都变成大事，狗更紧张。出门回家都要平淡，像出去倒个垃圾。
+    - 狗一叫就冲回来开门。狗会学到"叫就能让主人回来"。要等它安静下来的那几秒再进门。如果一直叫停不下来，说明这次时间太长了，下次减半。
+    - 每次独处时间只增不减。狗能感觉到"越来越久"，开始焦虑。时间要长短穿插，让狗猜不到。
+    - 狗拆家、哭叫后回家骂它、把它关起来。狗做这些是因为害怕，骂它只会更怕下一次独处。回家只需要默默收拾，然后把练习时间退回到它能安静的长度。
+    - 只靠漏食玩具，玩具啃完狗就开始叫。玩具是辅助，关键是时间要短到狗啃完玩具之前你就回来了，然后再慢慢拉长。
+  success_criteria: 狗在围栏或箱子里，你出家门 10 分钟，狗全程没有持续叫（偶尔叫一两声不算）、没有抓门，录像里能看到它趴下或啃玩具，连续 3 次做到。
+script:
+  - step: 1
+    part: 1
+    instruction: 先带狗尿完、玩一会儿消耗体力。准备好漏食玩具，让狗"进窝"，把玩具给它。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+  - step: 2
+    part: 1
+    instruction: 狗开始啃玩具后，你在房间里平静走动，不看它、不说话。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 3
+    part: 1
+    instruction: 平静地说"等我回来"，走出房间关上门。30 秒后平静地回来，狗安静的话按响片，隔着围栏给一块零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    part: 1
+    instruction: 再出去一次，这次 1 分钟。回来时狗安静就按响片给零食。狗叫了就等它停下来的那几秒再进门，下次时间减半。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 5
+    part: 1
+    instruction: 第三次出去 2 分钟。回来后狗安静就按响片，给零食，然后把门打开，让它自己出来。第一部分结束。
+    duration_sec: 135
+    voice: true
+    clicker_hint: true
+  - step: 6
+    part: 2
+    instruction: 狗在围栏里啃玩具，你拿上钥匙、穿好鞋，说"等我回来"，出家门关上门，在门外等 5 分钟。手机可以开录像看它。
+    duration_sec: 300
+    voice: true
+    clicker_hint: false
+  - step: 7
+    part: 2
+    instruction: 平静地进门，放下钥匙，先做自己的事 30 秒。狗一直安静的话再按响片，隔着围栏给零食，打开门让它出来。第二部分结束。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+mini_script:
+  - step: 1
+    instruction: 先带狗尿完。准备好漏食玩具，让狗"进窝"，把玩具给它。
+    duration_sec: 30
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 狗开始啃玩具后，平静地说"等我回来"，走出房间关上门，等 30 秒。
+    duration_sec: 45
+    voice: true
+    clicker_hint: false
+  - step: 3
+    instruction: 平静地回来，狗安静的话按响片，隔着围栏给一块零食。狗叫了就等它停下来那几秒再进门。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 再出去一次，这次 1 分钟。回来时狗安静就按响片给零食，然后把门打开让它自己出来。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。不要大动作迎接，平静地让狗自由活动。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 今天离开的每一次狗都没有持续叫超过 10 秒、没抓门，5 分钟那次录像里能看到它趴下或啃玩具；部分做到 = 2 分钟以内都安静，5 分钟那次有叫但停下来了；没做到 = 1 分钟以内就持续叫或抓门。
+downgrade_to: crate_intro
+sources:
+  - 分离焦虑预防的渐进式独处训练（graduated departures），参见 ASPCA "Separation Anxiety" 与 Humane Society 公开资料
+  - 离开与回来保持平淡、出门动作脱敏（钥匙、穿鞋）的方法，参见 Patricia McConnell "I'll Be Home Soon" 及 Malena DeMartini 公开讲座要点

@@ -1,0 +1,10 @@
+{
+  "apk_files": [
+    "app/build/app/outputs/apk/release/app-release.apk",
+    "app/build/app/outputs/apk/debug/app-debug.apk",
+    "app/build/app/outputs/flutter-apk/app-release.apk",
+    "app/build/app/outputs/flutter-apk/app-debug.apk"
+  ],
+  "m3_archived_apk_found": false,
+  "block": "M3 old APK with verified build provenance not retained in tests; actual archived schema3 SQLite fixture is available and tested. No runtime error: missing baseline artifact."
+}

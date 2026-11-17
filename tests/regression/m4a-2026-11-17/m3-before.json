@@ -1,0 +1,839 @@
+{
+  "source": "tests/regression/m3-2026-11-17-r2/weekly-after.sqlite",
+  "version": 3,
+  "tables": {
+    "content_versions": [
+      {
+        "version": "v1.2",
+        "loaded_at": "2026-11-17T03:12:39.647877Z"
+      }
+    ],
+    "content_skills": [
+      {
+        "id": "alone_time",
+        "version": "v1.2",
+        "json": "{\"id\":\"alone_time\",\"name\":\"独处练习（分离焦虑预防）\",\"category\":\"house\",\"min_age_weeks\":10,\"max_age_weeks\":52,\"prerequisites\":[\"crate_intro\"],\"difficulty\":3,\"default_cue\":\"等我回来\",\"default_gesture\":\"无（离开时不做夸张手势，平静走开）\",\"sessions_to_master\":3,\"script_parts\":2,\"tutorial\":{\"summary\":\"从几十秒开始，一点点教狗\\\"主人走了一定会回来\\\"，让它在独处时能安心睡觉或啃玩具，而不是哭叫、拆家。\",\"steps\":[{\"text\":\"先让狗玩累、尿完。准备一个塞了零食或冻了花生酱的漏食玩具，只有独处练习时才给这个玩具。\",\"image\":\"alone_time_step1.png\"},{\"text\":\"让狗\\\"进窝\\\"（航空箱或围栏），把漏食玩具给它。它开始啃的时候，你平静地在房间里走动，不看它。\",\"image\":\"alone_time_step2.png\"},{\"text\":\"说一句平静的\\\"等我回来\\\"，走出房间，带上门，30 秒后回来。回来时也平静，不要激动地打招呼，先做自己的事。\",\"image\":\"alone_time_step3.png\"},{\"text\":\"狗在你离开的整段时间里都安静，回来后按响片，隔着围栏给一块零食。然后再离开一次，时间翻倍：1 分钟、2 分钟、5 分钟。\",\"image\":\"alone_time_step4.png\"},{\"text\":\"加时间的时候要打乱顺序：5 分钟、1 分钟、3 分钟、30 秒。不要只往上加，不然狗会猜到\\\"越来越久\\\"而焦虑。\",\"image\":\"alone_time_step5.png\"},{\"text\":\"从离开房间进阶到出家门：拿钥匙、穿鞋、开门、关门，出去 1 分钟就回来。出门动作本身就是一种练习，平时也可以拿钥匙却不出门。\",\"image\":\"alone_time_step6.png\"},{\"text\":\"独处能稳定到 10 分钟后，用手机录像看狗的状态。能趴下睡觉或安静啃玩具才算真的放松，一直站着盯门就要退回更短的时间。\",\"image\":\"alone_time_step7.png\"}],\"common_mistakes\":[\"第一次就离开半小时、一小时。狗没有\\\"你会回来\\\"的经验，直接崩溃。第一天的目标就是 30 秒到 2 分钟，看起来少，但这才是能建立信任的速度。\",\"出门前抱着狗恋恋不舍地说\\\"宝贝我很快回来哦\\\"，回家后大喊大叫地拥抱。这会把你的离开和回来都变成大事，狗更紧张。出门回家都要平淡，像出去倒个垃圾。\",\"狗一叫就冲回来开门。狗会学到\\\"叫就能让主人回来\\\"。要等它安静下来的那几秒再进门。如果一直叫停不下来，说明这次时间太长了，下次减半。\",\"每次独处时间只增不减。狗能感觉到\\\"越来越久\\\"，开始焦虑。时间要长短穿插，让狗猜不到。\",\"狗拆家、哭叫后回家骂它、把它关起来。狗做这些是因为害怕，骂它只会更怕下一次独处。回家只需要默默收拾，然后把练习时间退回到它能安静的长度。\",\"只靠漏食玩具，玩具啃完狗就开始叫。玩具是辅助，关键是时间要短到狗啃完玩具之前你就回来了，然后再慢慢拉长。\"],\"success_criteria\":\"狗在围栏或箱子里，你出家门 10 分钟，狗全程没有持续叫（偶尔叫一两声不算）、没有抓门，录像里能看到它趴下或啃玩具，连续 3 次做到。\"},\"script\":[{\"step\":1,\"part\":1,\"instruction\":\"先带狗尿完、玩一会儿消耗体力。准备好漏食玩具，让狗\\\"进窝\\\"，把玩具给它。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"part\":1,\"instruction\":\"狗开始啃玩具后，你在房间里平静走动，不看它、不说话。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":3,\"part\":1,\"instruction\":\"平静地说\\\"等我回来\\\"，走出房间关上门。30 秒后平静地回来，狗安静的话按响片，隔着围栏给一块零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"part\":1,\"instruction\":\"再出去一次，这次 1 分钟。回来时狗安静就按响片给零食。狗叫了就等它停下来的那几秒再进门，下次时间减半。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"part\":1,\"instruction\":\"第三次出去 2 分钟。回来后狗安静就按响片，给零食，然后把门打开，让它自己出来。第一部分结束。\",\"duration_sec\":135,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"part\":2,\"instruction\":\"狗在围栏里啃玩具，你拿上钥匙、穿好鞋，说\\\"等我回来\\\"，出家门关上门，在门外等 5 分钟。手机可以开录像看它。\",\"duration_sec\":300,\"voice\":true,\"clicker_hint\":false},{\"step\":7,\"part\":2,\"instruction\":\"平静地进门，放下钥匙，先做自己的事 30 秒。狗一直安静的话再按响片，隔着围栏给零食，打开门让它出来。第二部分结束。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true}],\"mini_script\":[{\"step\":1,\"instruction\":\"先带狗尿完。准备好漏食玩具，让狗\\\"进窝\\\"，把玩具给它。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"狗开始啃玩具后，平静地说\\\"等我回来\\\"，走出房间关上门，等 30 秒。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false},{\"step\":3,\"instruction\":\"平静地回来，狗安静的话按响片，隔着围栏给一块零食。狗叫了就等它停下来那几秒再进门。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"再出去一次，这次 1 分钟。回来时狗安静就按响片给零食，然后把门打开让它自己出来。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。不要大动作迎接，平静地让狗自由活动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 今天离开的每一次狗都没有持续叫超过 10 秒、没抓门，5 分钟那次录像里能看到它趴下或啃玩具；部分做到 = 2 分钟以内都安静，5 分钟那次有叫但停下来了；没做到 = 1 分钟以内就持续叫或抓门。\",\"downgrade_to\":\"crate_intro\",\"sources\":[\"分离焦虑预防的渐进式独处训练（graduated departures），参见 ASPCA \\\"Separation Anxiety\\\" 与 Humane Society 公开资料\",\"离开与回来保持平淡、出门动作脱敏（钥匙、穿鞋）的方法，参见 Patricia McConnell \\\"I'll Be Home Soon\\\" 及 Malena DeMartini 公开讲座要点\"]}"
+      },
+      {
+        "id": "bite_inhibition",
+        "version": "v1.2",
+        "json": "{\"id\":\"bite_inhibition\",\"name\":\"咬合抑制\",\"category\":\"social\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[\"marker_intro\"],\"difficulty\":2,\"default_cue\":\"轻一点\",\"default_gesture\":\"无（咬重时手静止不动，然后收回）\",\"sessions_to_master\":3,\"tutorial\":{\"summary\":\"教幼犬在换牙期控制嘴巴的力度，先学会\\\"咬人要轻\\\"，再学会\\\"不咬人\\\"。这是它一辈子最重要的社交课，错过 18 周就很难补。\",\"steps\":[{\"text\":\"准备一个长条形的拉扯玩具和 10 块零食。坐在地上和狗玩，用玩具逗它，让它咬玩具。\",\"image\":\"bite_inhibition_step1.png\"},{\"text\":\"狗咬到玩具、嘴巴没碰到手的时候，按响片，给一块零食。让它知道\\\"咬玩具有奖\\\"。\",\"image\":\"bite_inhibition_step2.png\"},{\"text\":\"玩的过程中狗牙齿咬到你的手了，如果力度轻，什么都不做继续玩。只有咬得疼的时候，才说一声平静的\\\"哎\\\"，手静止不动。\",\"image\":\"bite_inhibition_step3.png\"},{\"text\":\"说完\\\"哎\\\"立刻站起来，背对狗或走出围栏，停止所有互动 10 秒。10 秒后回来继续用玩具玩，像什么都没发生。\",\"image\":\"bite_inhibition_step4.png\"},{\"text\":\"几天后狗咬重的次数明显减少，这时把\\\"疼\\\"的标准调低：中等力度也开始\\\"哎\\\"加停止 10 秒。再过几天，牙齿碰到皮肤就停。\",\"image\":\"bite_inhibition_step5.png\"},{\"text\":\"和狗玩的时候，每次它用嘴轻轻碰手或舔手而不是咬，就按响片给零食。你想要的\\\"嘴巴轻\\\"要专门奖励，不能只靠停止互动。\",\"image\":\"bite_inhibition_step6.png\"},{\"text\":\"全家人都用同一套规则：轻咬继续玩、咬疼就\\\"哎\\\"加离开 10 秒、咬玩具就奖励。规则不一致狗就学不会。\",\"image\":\"bite_inhibition_step7.png\"}],\"common_mistakes\":[\"被咬了就拍嘴、捏嘴、按住狗。这会让狗觉得手是威胁，要么更用力咬，要么开始怕手。被咬唯一要做的就是停止互动和离开，让它失去玩伴。\",\"被咬疼了大叫、甩手、快速抽回。幼犬觉得这是猎物在动，咬得更起劲。手要像木头一样不动，然后平静地站起来走开。\",\"一开始就要求\\\"完全不许碰手\\\"。幼犬得先通过轻咬学会力度，直接禁止它就没机会学\\\"轻\\\"。前两周只对咬疼的做反应，轻咬放过。\",\"狗一咬就塞玩具给它。狗会学到\\\"咬手 = 得到玩具\\\"。玩具要在它还没咬手之前就主动给，咬了手之后是停止互动，不是换玩具。\",\"用手逗狗玩。手在狗脸前晃就是在邀请它咬，和幼犬玩一定要隔着玩具。\",\"离开后回来还在生气、不理狗。10 秒就够了，回来要正常玩，狗才能把\\\"咬疼\\\"和\\\"玩伴消失\\\"准确对上，而不是觉得你整个人都变了。\"],\"success_criteria\":\"和狗玩拉扯玩具 5 分钟，狗牙齿碰到手但用力的次数 0 次，轻碰手不超过 2 次，连续 3 天做到。\"},\"script\":[{\"step\":1,\"instruction\":\"坐在地上，拿出拉扯玩具，准备好 10 块零食。用玩具在地上拖动逗狗，让它去咬玩具。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"狗咬住玩具、嘴巴没碰到手的时候，按响片，给一块零食。继续玩，做 5 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"继续玩。如果狗牙齿咬到手而且疼，平静地说一声\\\"哎\\\"，手不动，然后站起来背对它 10 秒，再回来继续玩。轻咬就当没发生。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":false},{\"step\":4,\"instruction\":\"把玩具放到地上，伸出手放在狗面前。它用嘴轻轻碰或舔你的手而不是咬，就按响片给零食。做 5 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"再用玩具玩一会儿，狗全程只咬玩具不碰手的话，按响片，连给 2 块零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。在狗还没玩疯之前停下，把玩具收走，给它一个磨牙玩具自己啃。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"坐在地上，拿出拉扯玩具和 8 块零食。用玩具在地上拖动逗狗，让它去咬玩具。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"狗咬住玩具、嘴巴没碰到手的时候，按响片，给一块零食。继续玩，做 4 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"继续玩。狗牙齿咬到手而且疼，平静地说一声\\\"哎\\\"，手不动，站起来背对它 10 秒再回来。轻咬就当没发生。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":false},{\"step\":4,\"instruction\":\"把玩具放到地上，伸出手放在狗面前。它轻碰或舔你的手而不是咬，就按响片给零食。做 4 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。在狗玩疯之前停下，收走玩具，给它一个磨牙玩具自己啃。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 整个练习里狗咬疼手 0 次，\\\"哎\\\"一声后能在 1 秒内松口；部分做到 = 咬疼 1-2 次，\\\"哎\\\"后能松口；没做到 = 咬疼 3 次以上，或\\\"哎\\\"后不松口反而更兴奋。\",\"downgrade_to\":\"marker_intro\",\"sources\":[\"咬合抑制训练（bite inhibition：先教轻咬再教不咬，咬重即暂停互动），参见 Ian Dunbar \\\"After You Get Your Puppy\\\" 公开章节与 AKC \\\"How to Stop Puppy Biting\\\" 资料\",\"用响片强化\\\"咬玩具 / 轻碰手\\\"的正向替代行为，参见 Karen Pryor Clicker Training 幼犬公开教程\"]}"
+      },
+      {
+        "id": "calm_settle",
+        "version": "v1.2",
+        "json": "{\"id\":\"calm_settle\",\"name\":\"安静趴垫\",\"category\":\"impulse\",\"min_age_weeks\":12,\"max_age_weeks\":52,\"prerequisites\":[\"down\"],\"difficulty\":3,\"default_cue\":\"去垫子\",\"default_gesture\":\"手臂伸直，手指指向垫子\",\"sessions_to_master\":3,\"tutorial\":{\"summary\":\"教幼犬听到口令就走到垫子上趴下并安静待着，是对付扑人、乱叫、兴奋过头和独处哭闹的核心工具。\",\"steps\":[{\"text\":\"准备一块狗专用的垫子或薄毯（只在训练时拿出来），还有 15 块小零食。在安静的房间把垫子铺在地上。\",\"image\":\"calm_settle_step1.png\"},{\"text\":\"狗只要看一眼垫子或者一只脚踩上去，立刻按响片，把零食扔在垫子上让它吃。重复 5 次，狗会开始主动往垫子上走。\",\"image\":\"calm_settle_step2.png\"},{\"text\":\"狗四只脚都在垫子上时，说一次\\\"趴\\\"。趴下的瞬间按响片，零食直接放在它两只前爪中间。\",\"image\":\"calm_settle_step3.png\"},{\"text\":\"狗趴着不动时，每隔 3 秒在它爪子间放一块零食，不说话不响片。放完 5 块后说\\\"好了\\\"，把零食扔到垫子外面让它起来。\",\"image\":\"calm_settle_step4.png\"},{\"text\":\"狗能趴 15 秒后，走到垫子前先说\\\"去垫子\\\"再指垫子。它上垫子趴下就按响片，然后照步骤 4 慢慢喂。\",\"image\":\"calm_settle_step5.png\"},{\"text\":\"逐渐拉长喂零食的间隔，从 3 秒到 5 秒、10 秒。狗在垫子上叹气、侧躺、头放下来，这些放松的动作都单独奖励一块。\",\"image\":\"calm_settle_step6.png\"},{\"text\":\"日常里吃饭、看电视、来客人之前先说\\\"去垫子\\\"，每次让狗趴 1-2 分钟，中间偶尔扔一块零食。\",\"image\":\"calm_settle_step7.png\"}],\"common_mistakes\":[\"零食扔到垫子外面或者递到狗嘴边让它抬头。零食一定要放在垫子上、两只前爪中间，狗才会觉得\\\"趴在这里就有好事\\\"。\",\"狗一站起来主人就说\\\"不行\\\"把它推回去。站起来不用管，等它自己回垫子再奖励；如果连续 3 次站起来，说明间隔拉太长了，缩短回去。\",\"一上来就要求趴 1 分钟。从 3 秒间隔开始，每次练习只加一点点，一次练习里狗总共趴够 1 分钟就够了。\",\"忘记说\\\"好了\\\"结束口令，狗自己溜走。每次都要主人说\\\"好了\\\"再让它离开垫子，不然狗学不会\\\"要一直待着\\\"。\",\"在狗最疯的时候才拿出垫子。先在它本来就比较困、刚玩完的时候练，稳定了再用到兴奋场景。\",\"垫子一直铺在地上当床。训练用的垫子只在练习时出现，练完就收，狗才会把它和\\\"趴下安静\\\"联系起来。\"],\"success_criteria\":\"说一次\\\"去垫子\\\"，狗在 5 秒内走到垫子上趴下，不用零食引导，能安静趴 30 秒以上（中间最多喂 3 块零食），3 次中至少 2 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"把垫子铺好，拿着零食站在旁边。狗看垫子或者踩上去，马上按响片，把零食扔到垫子上。做 5 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"狗四只脚都在垫子上的时候，说一次\\\"趴\\\"。趴下的瞬间按响片，零食放在它两只前爪中间。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"狗趴着不动，每 3 秒在它爪子间放一块零食，不说话。放完 5 块，说\\\"好了\\\"，零食扔到垫子外面让它起来。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false},{\"step\":4,\"instruction\":\"再做 2 遍：上垫子说\\\"趴\\\"，趴下按响片，然后每 5 秒喂一块，喂 4 块，说\\\"好了\\\"放它走。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"现在站在离垫子一步远，说\\\"去垫子\\\"并用手指垫子。狗上垫子趴下就按响片，每 5 秒喂一块，喂 4 块，说\\\"好了\\\"。做 2 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"最后一遍，说\\\"去垫子\\\"，趴下后把喂食间隔拉到 10 秒，喂 3 块。狗如果叹气或者头放下来，额外奖一块。说\\\"好了\\\"结束。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":7,\"instruction\":\"结束。把垫子收起来，摸摸狗，让它自由活动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"把垫子铺好，拿着零食站在旁边。狗看垫子或踩上去，马上按响片，把零食扔到垫子上。做 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"站在离垫子一步远，说\\\"去垫子\\\"并用手指垫子。狗上垫子趴下就按响片。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"狗趴着不动，每 5 秒在它爪子间放一块零食，不说话。喂 4 块，说\\\"好了\\\"，零食扔到垫子外让它起来。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false},{\"step\":4,\"instruction\":\"再做 2 遍\\\"去垫子\\\"。趴下按响片，每 5 秒喂一块，喂 4 块，说\\\"好了\\\"放它走。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"最后一遍，趴下后把喂食间隔拉到 10 秒，喂 3 块。说\\\"好了\\\"结束，把垫子收起来。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true}],\"scoring_hint\":\"完全做到 = 最后 3 遍\\\"去垫子\\\"中 2 遍以上狗 5 秒内自己上垫子趴下，并趴满 30 秒；部分做到 = 能上垫子趴下但趴不到 30 秒就起来，或 3 遍中只做到 1 遍；没做到 = 需要零食引导才上垫子，或趴下不到 10 秒就起来。\",\"downgrade_to\":\"down\",\"sources\":[\"垫子训练（mat training / Relaxation Protocol），参见 Karen Overall \\\"Protocol for Relaxation\\\" 与 Karen Pryor Clicker Training 公开教程 \\\"Go to Mat\\\"\"]}"
+      },
+      {
+        "id": "crate_intro",
+        "version": "v1.2",
+        "json": "{\"id\":\"crate_intro\",\"name\":\"航空箱 / 围栏适应\",\"category\":\"house\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":2,\"default_cue\":\"进窝\",\"default_gesture\":\"手指向航空箱门口\",\"sessions_to_master\":3,\"tutorial\":{\"summary\":\"让狗把航空箱或围栏当成自己的安全小窝，愿意主动进去待着，这是定点排泄、独处训练和以后出行的基础。\",\"steps\":[{\"text\":\"把航空箱放在家人常待的客厅角落，门拆掉或用东西固定全开，里面铺一块软垫。不要放在没人去的阳台或储物间。\",\"image\":\"crate_intro_step1.png\"},{\"text\":\"准备 15 块小零食。当着狗的面往箱子里扔一块，狗进去吃的时候不要关门、不要碰它，让它自己出来。重复 5 遍。\",\"image\":\"crate_intro_step2.png\"},{\"text\":\"狗能毫不犹豫进去后，在它四脚都进去的瞬间按响片，再往箱子里面多给一块。开始在它进门前说一次\\\"进窝\\\"。\",\"image\":\"crate_intro_step3.png\"},{\"text\":\"让狗在里面待久一点：把狗的正餐放在箱子最里面吃，或给一个塞了零食的漏食玩具，狗在里面啃的时候你坐在旁边。\",\"image\":\"crate_intro_step4.png\"},{\"text\":\"狗在里面安心吃东西时，轻轻把门合上 3 秒，再打开。它没反应就按响片给零食。慢慢加到 10 秒、30 秒、1 分钟，始终坐在旁边。\",\"image\":\"crate_intro_step5.png\"},{\"text\":\"关门时间到 1 分钟后，你起身在房间里走动，再回来开门。慢慢加到你离开房间 1-2 分钟再回来。\",\"image\":\"crate_intro_step6.png\"},{\"text\":\"平时狗自己走进箱子趴着时，悄悄给一块零食。把箱子变成\\\"没事也想去\\\"的地方。\",\"image\":\"crate_intro_step7.png\"}],\"common_mistakes\":[\"第一天就关门关好几个小时，狗哭叫也不管。这是最常见的翻车原因，狗会从此怕箱子。关门时间要从几秒钟开始，狗一直放松才往上加。\",\"狗做错事就把它关进箱子。箱子一旦和\\\"倒霉\\\"挂钩就没法当小窝用了。箱子只用来休息、吃好吃的，惩罚性关禁闭绝对不行。\",\"狗叫了就立刻开门。狗会学到\\\"叫 = 门开\\\"。正确做法是时间退回到它能安静的长度（比如关 3 秒），等它安静的那一瞬间开门。如果已经叫得很厉害，说明今天加太快了，下次缩短。\",\"把狗推进去或抱进去关门。狗必须是自己走进去的，强行塞进去只会让它更抗拒。进不去就先把零食扔得离门口近一点。\",\"箱子太大。幼犬能在一头尿、另一头睡的话，定点训练就失效了。箱子大小以狗能站起来转身躺下为准，大箱子用隔板隔小。\",\"只有出门或睡觉才用箱子。平时狗在家也要能随时进去，把它当成正常的家具，而不是出门前的信号。\"],\"success_criteria\":\"说一次\\\"进窝\\\"，狗在 5 秒内自己走进箱子，关门后能安静待 2 分钟不叫不抓门，连续 3 天做到。\"},\"script\":[{\"step\":1,\"instruction\":\"箱子门固定全开，你坐在箱子旁边，准备好 15 块零食。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"当着狗的面往箱子里扔一块零食。狗四只脚都进去的瞬间按响片，再往里面多扔一块。它出来也没关系，重复 5 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"现在扔零食之前先说一次\\\"进窝\\\"，再把零食扔进去。狗进去就按响片。做 5 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"说\\\"进窝\\\"但手里不扔零食，手指向箱子。狗自己走进去就按响片，往里面给 3 块零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"给狗一个塞了零食的漏食玩具放在箱子里面。狗趴着啃的时候，轻轻把门合上 5 秒，狗没反应就按响片，然后打开门。做 3 遍，每遍多关 5 秒。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。把门打开固定住，让狗自己决定留在里面啃还是出来。不要把它叫出来。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"箱子门固定全开，坐在箱子旁边，准备好 10 块零食。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"当着狗的面往箱子里扔一块零食。狗四只脚都进去的瞬间按响片，再往里多扔一块。重复 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"扔零食之前先说一次\\\"进窝\\\"。狗进去就按响片。做 4 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"说\\\"进窝\\\"但手里不扔零食，手指向箱子。狗自己走进去就按响片，往里面给 3 块零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"给狗一个塞了零食的漏食玩具放在箱子里。狗趴着啃的时候轻轻把门合上 5 秒，没反应就按响片，打开门。做 2 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。门打开固定住，让狗自己决定留在里面还是出来。不要把它叫出来。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 只说口令不扔零食，3 次中 3 次狗自己进箱，并且关门 15 秒狗没有叫或抓门；部分做到 = 口令进箱 1-2 次，或关门时有轻微不安但没叫；没做到 = 不扔零食就不进去，或关门就叫。\",\"downgrade_to\":null,\"sources\":[\"正向航空箱训练法（crate training：零食引诱、逐秒加时、不作惩罚），参见 Humane Society \\\"Crate training 101\\\" 与 AKC \\\"How to Crate Train Your Dog\\\" 公开资料\",\"箱内喂食与漏食玩具建立正向联结的方法，参见 Karen Pryor Clicker Training 公开教程\"]}"
+      },
+      {
+        "id": "down",
+        "version": "v1.2",
+        "json": "{\"id\":\"down\",\"name\":\"趴下\",\"category\":\"basic_obedience\",\"min_age_weeks\":10,\"max_age_weeks\":52,\"prerequisites\":[\"sit\"],\"difficulty\":2,\"default_cue\":\"趴\",\"default_gesture\":\"手心向下，握着零食从狗鼻尖缓慢向下压到两只前爪之间的地面\",\"sessions_to_master\":3,\"tutorial\":{\"summary\":\"趴下是比坐下更放松的姿势，狗兴奋过头时让它趴下最容易冷静，也是以后安静趴垫和长时间等待的基础。\",\"steps\":[{\"text\":\"准备 10 块软零食，在铺了地垫或地毯的地方练，硬地板很多幼犬不愿意趴。先让狗坐下。\",\"image\":\"down_step1.png\"},{\"text\":\"零食握在手心，放到狗鼻尖前让它闻到，然后手缓慢笔直往下移，一直移到狗两只前爪中间的地面。\",\"image\":\"down_step2.png\"},{\"text\":\"狗会低头跟着手，前肢慢慢往前滑。肘部一碰到地面，立刻按响片，把零食给它。\",\"image\":\"down_step3.png\"},{\"text\":\"如果狗只低头不趴，手贴着地面慢慢往狗胸口方向拖一点，或者往前拖一点，狗为了够零食会把前腿伸出去。一有向下的动作就先奖一次。\",\"image\":\"down_step4.png\"},{\"text\":\"重复 5 次。狗能稳定跟着手趴下后，在手往下移之前先说一次\\\"趴\\\"。\",\"image\":\"down_step5.png\"},{\"text\":\"手里不拿零食，只做向下压的手势加口令。趴下后从另一只手给零食。\",\"image\":\"down_step6.png\"},{\"text\":\"狗趴下后，隔 1-2 秒再给一块，让它知道趴着不动也有好处，然后说\\\"好了\\\"让它起来。\",\"image\":\"down_step7.png\"}],\"common_mistakes\":[\"用手按狗的背或肩膀把它压下去。狗会抗拒，而且学不会自己做。只用零食引导，狗不趴就回到上一步，多奖励\\\"低头\\\"这种中间动作。\",\"零食往下移得太快，或者离狗鼻子太远，狗直接站起来去追。手要贴着狗鼻尖，慢到像在放慢动作。\",\"狗趴下了，手一抬狗就跟着起来。按完响片把零食送到狗嘴边，在它趴着的时候给，不要让它起来够。\",\"在冰凉或光滑的硬地板上练。换到地毯、垫子或床上，幼犬更愿意趴。\",\"太早加口令。狗还要靠零食拖好几秒才趴，这时说\\\"趴\\\"它学不到关联。先练到手一往下狗就趴，再加口令。\"],\"success_criteria\":\"说一次\\\"趴\\\"，配合手势，狗在 3 秒内趴下（肘部碰地）并保持 2 秒以上，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"到地毯或垫子上。让狗坐下，坐下了按响片给一块零食。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"零食握在手心贴着狗鼻尖，手缓慢笔直往下移到它两只前爪中间的地面。肘部一碰地，马上按响片，把零食送到它嘴边。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"狗只低头不趴的话，手贴着地面慢慢往它胸口方向拖一点。狗一有向下趴的动作就按响片给零食，哪怕只趴了一半。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"再做 4 遍完整的趴下。每遍趴下后，隔 1 秒再多给一块，然后说\\\"好了\\\"让它起来。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"现在手往下移之前先说一次\\\"趴\\\"，然后再做手势。趴下就按响片给零食。做 4 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"最后 3 遍，手里不拿零食，只说口令加向下压的手势。趴下后从另一只手给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":7,\"instruction\":\"结束。给一块零食，摸摸狗，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"到地毯或垫子上。让狗坐下，坐下了按响片给一块零食。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"零食握在手心贴着狗鼻尖，手缓慢笔直往下移到两只前爪中间的地面。肘部一碰地，马上按响片，零食送到嘴边。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"手往下移之前先说一次\\\"趴\\\"，然后再做手势。趴下就按响片给零食。做 4 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"最后 3 遍，手里不拿零食，只说口令加向下压的手势。趴下后从另一只手给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。给一块零食，摸摸狗，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 最后 7 遍（第 5、6 步）里 6 遍以上只用口令加手势就趴下；部分做到 = 3-5 遍；没做到 = 2 遍以下或仍需零食拖到地上才趴。\",\"downgrade_to\":\"sit\",\"sources\":[\"诱导法教趴下（luring the down），参见 AKC \\\"How to Teach Your Dog to Lie Down\\\" 公开文章及 Karen Pryor Clicker Training 官网\",\"中间动作分步奖励（shaping），参见 Karen Pryor《Don't Shoot the Dog》\"]}"
+      },
+      {
+        "id": "handling_body",
+        "version": "v1.2",
+        "json": "{\"id\":\"handling_body\",\"name\":\"全身触摸脱敏（爪、耳、嘴）\",\"category\":\"handling\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":2,\"default_cue\":\"摸摸\",\"default_gesture\":\"手掌摊开，缓慢伸向狗的肩膀\",\"sessions_to_master\":3,\"script_parts\":2,\"tutorial\":{\"summary\":\"让幼犬习惯被人摸爪子、耳朵、嘴和全身，以后剪指甲、清耳朵、刷牙、看兽医、被小孩摸都不会挣扎或咬人。\",\"steps\":[{\"text\":\"挑狗刚玩完、有点困的时候练。准备 20 块很小的零食，坐在地上让狗靠在你腿边。\",\"image\":\"handling_body_step1.png\"},{\"text\":\"说\\\"摸摸\\\"，手掌摊开从狗肩膀慢慢摸到背、胸口，每摸 2 秒给一块零食。狗放松不躲，再摸腿、肚子。\",\"image\":\"handling_body_step2.png\"},{\"text\":\"摸到前爪：先只碰一下爪背就给零食，然后握住爪子 1 秒给零食，再慢慢加到 3 秒。四只爪子轮流来，每只做 3 次。\",\"image\":\"handling_body_step3.png\"},{\"text\":\"握住爪子时用拇指轻轻分开脚趾、碰一下指甲，每碰一次给零食。这是为以后剪指甲做准备。\",\"image\":\"handling_body_step4.png\"},{\"text\":\"摸耳朵：先摸耳根给零食，再轻轻翻开耳朵看一眼给零食，最后用手指轻轻碰耳朵内侧给零食。两只耳朵各做 3 次。\",\"image\":\"handling_body_step5.png\"},{\"text\":\"摸嘴：先摸嘴边给零食，再用手指轻轻掀开嘴唇看牙齿 1 秒给零食，最后用手指在牙齿上轻擦一下给零食。做 3 次。\",\"image\":\"handling_body_step6.png\"},{\"text\":\"每天各部位练 2-3 分钟。狗稳定了以后，让家里其他人、再让朋友照同样步骤摸，每个人都带零食。\",\"image\":\"handling_body_step7.png\"}],\"common_mistakes\":[\"狗一缩爪就强行握住不放。这样狗会更怕，下次直接躲。狗缩回去就松手，退回到上一步（比如只碰一下），多做几次再往前。\",\"先摸完再给零食，中间隔了好几秒。零食要在摸的同时或者摸完的瞬间给，狗才会把\\\"被摸\\\"和\\\"好事\\\"连起来。\",\"挑狗最兴奋的时候练。狗会把手当玩具咬。在它刚睡醒或者玩累了的时候练，坐着比站着好。\",\"一上来就翻耳朵、掰嘴看牙。要从最不敏感的肩膀、背开始，每个部位都是先碰一下、再 1 秒、再 3 秒，一步步来。\",\"一次把所有部位都练完。幼犬注意力有限，一次只练一两个部位，每次 3-5 分钟就停。\",\"狗低吼或者龇牙时继续摸。这是它在说\\\"太快了\\\"，立刻退回到它舒服的部位和时长。如果低吼持续出现，先去咨询训犬师再练。\"],\"success_criteria\":\"狗在放松状态下，四只爪子各被握住 3 秒、两只耳朵各被翻开看 3 秒、嘴唇被掀开看牙 3 秒，全程不缩回、不挣扎、不咬手，每个部位 3 次中至少 2 次做到，且连续 2 次练习都做到。\"},\"script\":[{\"step\":1,\"part\":1,\"instruction\":\"坐在地上，让狗靠在你腿边。说\\\"摸摸\\\"，手掌从狗肩膀慢慢摸到背，每摸 2 秒给一块零食。做 5 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"part\":1,\"instruction\":\"摸胸口、前腿、肚子，每个地方摸 2 秒给一块零食。狗躲开就回到肩膀重新来。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false},{\"step\":3,\"part\":1,\"instruction\":\"碰一下前爪的爪背，狗不缩就按响片给零食。每只前爪做 3 次。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"part\":1,\"instruction\":\"轻轻握住前爪 1 秒，狗不缩就按响片给零食。再加到 3 秒。每只前爪做 3 次。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"part\":1,\"instruction\":\"后爪同样来：先碰一下，再握 1 秒，再握 3 秒。不缩就按响片给零食。每只做 3 次。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"part\":1,\"instruction\":\"握住一只爪子，拇指轻轻分开脚趾碰一下指甲，狗不缩就按响片给零食。做 3 次。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":7,\"part\":1,\"instruction\":\"结束。全身顺着毛摸 10 秒，给一块零食，说\\\"好了\\\"。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false},{\"step\":8,\"part\":2,\"instruction\":\"坐在地上，让狗靠在你腿边。说\\\"摸摸\\\"，从肩膀摸到背，每 2 秒给一块零食，让狗先放松。做 3 遍。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":9,\"part\":2,\"instruction\":\"摸耳根，狗不躲就按响片给零食。两只耳朵各做 3 次。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":10,\"part\":2,\"instruction\":\"轻轻翻开耳朵看一眼，不躲就按响片给零食。再翻开看 3 秒。两只耳朵各做 3 次。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":11,\"part\":2,\"instruction\":\"用手指轻轻碰一下耳朵内侧，不躲就按响片给零食。两只耳朵各做 3 次。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":12,\"part\":2,\"instruction\":\"摸嘴边，不躲就按响片给零食。然后用手指轻轻掀开嘴唇看牙齿 1 秒，按响片给零食。做 3 次。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":13,\"part\":2,\"instruction\":\"掀开嘴唇看牙 3 秒，再用手指在牙齿上轻擦一下，不躲就按响片给零食。做 3 次。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":14,\"part\":2,\"instruction\":\"结束。全身顺着毛摸 10 秒，给一块零食，说\\\"好了\\\"。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"坐在地上，让狗靠在你腿边。说\\\"摸摸\\\"，手掌从肩膀摸到背，每摸 2 秒给一块零食。做 3 遍。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"轻轻握住一只前爪 1 秒，狗不缩就按响片给零食。两只前爪各做 2 次。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"摸耳根，狗不躲就按响片给零食。两只耳朵各做 2 次。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"摸嘴边，不躲就按响片给零食。然后用手指轻轻掀开嘴唇看牙齿 1 秒，按响片给零食。做 2 次。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。全身顺着毛摸 10 秒，给一块零食，说\\\"好了\\\"。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 本次练到的每个部位（爪 / 耳 / 嘴）都能被握住或翻开 3 秒，3 次中 2 次以上不缩不挣扎；部分做到 = 能接受碰一下和 1 秒，但 3 秒时会缩回；没做到 = 碰一下就躲、挣扎或者张嘴咬手。\",\"downgrade_to\":null,\"sources\":[\"触摸脱敏与正向关联（handling desensitization / cooperative care），参见 Ian Dunbar《Before & After Getting Your Puppy》中的 handling and gentling 章节与 Fear Free Pets 公开资料\"]}"
+      },
+      {
+        "id": "leash_intro",
+        "version": "v1.2",
+        "json": "{\"id\":\"leash_intro\",\"name\":\"牵绳适应\",\"category\":\"leash\",\"min_age_weeks\":10,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":1,\"default_cue\":\"走吧\",\"default_gesture\":\"拍一下自己大腿外侧\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"让幼犬把项圈、胸背和牵引绳当成\\\"好事要发生\\\"的信号，不害怕、不咬绳、不原地趴着不动，为出门和松绳行走打基础。\",\"steps\":[{\"text\":\"准备一条轻的平口项圈或胸背、一根 1.5-2 米的轻牵引绳，还有 15 块小零食。先在家里客厅练，不出门。\",\"image\":\"leash_intro_step1.png\"},{\"text\":\"把项圈或胸背拿到狗面前让它闻，闻一下就给一块零食。重复 5 次，狗看到项圈就往前凑了再进下一步。\",\"image\":\"leash_intro_step2.png\"},{\"text\":\"一边喂零食一边把项圈或胸背套上，扣好后立刻再给 2 块。套上后让狗戴着正常玩 5-10 分钟，不去管它。狗抓挠或者僵住就扔零食让它走动。\",\"image\":\"leash_intro_step3.png\"},{\"text\":\"狗戴着项圈不在意了，把牵引绳扣上，绳子松松地拖在地上，你跟着狗在屋里走，狗走到哪你跟到哪。狗每走几步就扔一块零食到地上。\",\"image\":\"leash_intro_step4.png\"},{\"text\":\"拿起绳子的末端，手臂放松，绳子保持弯的。狗往前走你就跟着走，狗停你就停，不拉它。狗回头看你就按响片给零食。\",\"image\":\"leash_intro_step5.png\"},{\"text\":\"说\\\"走吧\\\"，拍一下大腿往前走 3-5 步，狗跟上来就按响片给零食。狗不动的话蹲下来拍地叫它过来，来了再奖励，绳子始终是松的。\",\"image\":\"leash_intro_step6.png\"},{\"text\":\"狗咬绳子的时候，手停住不动不拉扯，另一只手扔一块零食到旁边。它松口去吃就夸它。每天戴着绳子在家走 2-3 次，每次 3-5 分钟。\",\"image\":\"leash_intro_step7.png\"}],\"common_mistakes\":[\"狗趴着不动，主人拉绳子把它拽起来。狗会更怕绳子。正确做法是蹲下、拍地、扔零食，让狗自己决定站起来。\",\"第一次就戴着出门。门外全是新鲜东西，狗会被吓到或者兴奋过头。先在家练到狗完全不在意绳子，再去楼道、再去楼下。\",\"狗咬绳子时跟它拔河。越拉狗越觉得好玩。手静止不动，扔零食转移注意，或者换一条有苦味喷剂的绳子。\",\"绳子一直绷紧，狗从第一天就学会\\\"绳子紧是正常的\\\"。整个练习过程绳子要保持弯的，狗一拉你就停下。\",\"项圈或胸背太紧或者太松。两根手指能插进去的松紧刚好，太松狗容易挣脱，太紧它会一直想抓。\"],\"success_criteria\":\"戴上项圈或胸背并扣上牵引绳后，狗在 1 分钟内能正常走动、不抓挠、不原地趴下、不咬绳子，并且听到\\\"走吧\\\"能跟着走 5 步以上，连续 2 天做到。\"},\"script\":[{\"step\":1,\"instruction\":\"把项圈或胸背拿到狗面前让它闻，闻一下就给一块零食。做 5 遍。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"一边喂零食一边把项圈或胸背套上扣好，扣好后再给 2 块。然后让狗自己在屋里走动 1 分钟，走几步就扔一块零食。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":false},{\"step\":3,\"instruction\":\"把牵引绳扣上，绳子松松拖在地上。狗走到哪你跟到哪，狗回头看你就按响片给零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"拿起绳子末端，手放松，绳子保持弯的。跟着狗走，狗停你就停。狗回头看你就按响片。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"说\\\"走吧\\\"，拍一下大腿往前走 5 步。狗跟上来就按响片给零食。狗不动就蹲下拍地叫它，来了再奖。做 4 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。蹲下来把绳子解开，给一块零食，说\\\"好了\\\"。项圈可以继续戴着。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"一边喂零食一边把项圈或胸背套上扣好，扣好后再给 2 块。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"把牵引绳扣上，绳子松松拖在地上。狗走到哪你跟到哪，狗回头看你就按响片给零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"拿起绳子末端，手放松，绳子保持弯的。跟着狗走，狗停你就停。狗回头看你就按响片。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"说\\\"走吧\\\"，拍一下大腿往前走 5 步。狗跟上来就按响片给零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。蹲下来把绳子解开，给一块零食，说\\\"好了\\\"。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 整个练习狗没有趴下不动、没有咬绳超过 5 秒，最后 4 遍\\\"走吧\\\"中 3 遍以上跟着走了 5 步；部分做到 = 能戴着走动但\\\"走吧\\\"只做到 1-2 遍，或者中间咬绳 1-2 次；没做到 = 戴上后趴着不动超过 30 秒，或者一直咬绳、抓挠项圈。\",\"downgrade_to\":null,\"sources\":[\"牵绳脱敏与正向关联（desensitization and counter-conditioning），参见 AKC \\\"How to Leash Train a Puppy\\\" 公开文章与 Grisha Stewart《The Official Ahimsa Dog Training Manual》\"]}"
+      },
+      {
+        "id": "loose_leash",
+        "version": "v1.2",
+        "json": "{\"id\":\"loose_leash\",\"name\":\"松绳行走\",\"category\":\"leash\",\"min_age_weeks\":16,\"max_age_weeks\":52,\"prerequisites\":[\"leash_intro\",\"name_response\"],\"difficulty\":4,\"default_cue\":\"跟我\",\"default_gesture\":\"手掌轻拍自己靠狗一侧的大腿\",\"sessions_to_master\":3,\"script_parts\":2,\"tutorial\":{\"summary\":\"教幼犬散步时让牵引绳一直保持松的，不往前冲、不拖着你走，是解决牵绳暴冲的根本方法。\",\"steps\":[{\"text\":\"准备 1.5-2 米的牵引绳、一袋 20-30 块小零食，装在靠狗那一侧的口袋里。先在家里走廊或客厅练，不出门。\",\"image\":\"loose_leash_step1.png\"},{\"text\":\"定好狗走在你哪一边（一般左边），零食就从那一边的手给，位置在你大腿旁边。狗站在你腿旁时按响片，零食贴着大腿给。重复 5 次。\",\"image\":\"loose_leash_step2.png\"},{\"text\":\"说\\\"跟我\\\"，拍一下大腿，往前走 2 步。狗跟在腿旁绳子是松的就按响片，零食贴大腿给。慢慢加到 5 步、10 步再奖励。\",\"image\":\"loose_leash_step3.png\"},{\"text\":\"绳子一绷紧，你立刻停下站着不动，不拉不喊。等狗自己回头或者往回走一步让绳子松了，按响片，再继续走。\",\"image\":\"loose_leash_step4.png\"},{\"text\":\"狗冲到前面不回头时，叫它名字，它回头看你就按响片，然后你往反方向走 3 步，狗跟上来给零食。\",\"image\":\"loose_leash_step5.png\"},{\"text\":\"室内能走 10 步不绷绳后，换到楼道或小区里最安静的角落，从 2 步重新开始，奖励加密到每 2-3 步一块。\",\"image\":\"loose_leash_step6.png\"},{\"text\":\"户外每次练 5 分钟就换成正常散步，让狗闻闻草地当奖励。每周把训练地点换成更热闹一点的地方，奖励频率随之加密。\",\"image\":\"loose_leash_step7.png\"}],\"common_mistakes\":[\"狗一拉绳主人就跟着被拖走。狗会学到\\\"拉就能到想去的地方\\\"。绳子一紧必须停住，狗松了绳子才往前走。\",\"狗拉绳时主人往回猛拽绳子。这样狗会怕绳子、更紧张，而且和你拔河反而更拉。只需要停下站着，等狗自己回来。\",\"零食从身体中间或者另一边的手给，狗会跑到你前面横着走。零食永远贴着狗那一侧的大腿给，狗才会待在你腿旁。\",\"一出门就在最热闹的路口练。狗被路人和狗吸引，根本注意不到你。从家里到楼道到小区角落，一级一级加难度，一个地方稳定了再换。\",\"奖励间隔拉得太快。室内 2 步就能奖，到户外要重新从 2 步开始，不能直接要求 10 步。\",\"一次走太远。狗 16 周注意力有限，户外每次练 5 分钟就停，剩下的时间正常散步让它闻东西。\"],\"success_criteria\":\"室内说一次\\\"跟我\\\"，狗跟在腿旁走 10 步绳子不绷紧，5 次中 4 次做到；户外安静地点走 10 步绳子不绷紧，5 次中 3 次做到，并且绳子绷紧后狗在 5 秒内自己回到你身边。\"},\"script\":[{\"step\":1,\"part\":1,\"instruction\":\"在客厅或走廊，狗牵在左边。狗站到你左腿旁边就按响片，零食贴着左腿给。做 5 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"part\":1,\"instruction\":\"说\\\"跟我\\\"，拍一下左腿，往前走 2 步。狗跟在腿旁绳子松着，就按响片，零食贴大腿给。做 5 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"part\":1,\"instruction\":\"现在走 5 步再奖励。绳子一绷紧你就停下站着不动，狗松回来了按响片，再继续。做 5 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"part\":1,\"instruction\":\"狗冲到前面的时候叫它名字，回头看你就按响片，你往反方向走 3 步，它跟上来给零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"part\":1,\"instruction\":\"最后一轮，说\\\"跟我\\\"走 10 步，绳子一直松着才按响片给零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"part\":1,\"instruction\":\"结束。给一块零食，解开绳子，说\\\"好了\\\"，让狗自由活动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false},{\"step\":7,\"part\":2,\"instruction\":\"到楼道或小区里最安静的角落。先站着不走，狗回到你左腿旁就按响片给零食。做 5 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":8,\"part\":2,\"instruction\":\"说\\\"跟我\\\"，往前走 2 步，绳子松着就按响片，零食贴大腿给。做 5 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":9,\"part\":2,\"instruction\":\"走 5 步再奖励。绳子一绷紧就停下不动，等狗自己松回来，按响片再走。做 5 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":10,\"part\":2,\"instruction\":\"狗被外面东西吸引往前冲时，叫名字，回头就按响片，反方向走 3 步，跟上来给零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":11,\"part\":2,\"instruction\":\"最后说\\\"跟我\\\"走 10 步，绳子一直松着才按响片。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":12,\"part\":2,\"instruction\":\"结束。说\\\"去闻吧\\\"，让狗自由闻草地 1 分钟当奖励，然后正常散步。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"在客厅或走廊，狗牵在左边。狗站到你左腿旁边就按响片，零食贴着左腿给。做 3 遍。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"说\\\"跟我\\\"，拍一下左腿，往前走 2 步。狗跟在腿旁绳子松着，就按响片，零食贴大腿给。做 4 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"走 5 步再奖励。绳子一绷紧你就停下站着不动，狗松回来了按响片，再继续。做 4 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"最后说\\\"跟我\\\"走 10 步，绳子一直松着才按响片给零食。做 2 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。给一块零食，解开绳子，说\\\"好了\\\"，让狗自由活动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 最后 3 遍\\\"跟我\\\"走 10 步中 2 遍以上绳子全程松着，且绳子绷紧后狗 5 秒内自己回来；部分做到 = 能走 5 步不绷绳但 10 步做不到，或者 3 遍中只做到 1 遍；没做到 = 2 步内就绷绳，或者绷紧后 10 秒还不回头。\",\"downgrade_to\":\"leash_intro\",\"sources\":[\"松绳行走的\\\"停下等待 + 位置奖励\\\"法（be a tree / silky leash），参见 Grisha Stewart《The Official Ahimsa Dog Training Manual》与 AKC \\\"Teach Your Puppy to Walk on a Loose Leash\\\" 公开文章\"]}"
+      },
+      {
+        "id": "lure_follow",
+        "version": "v1.2",
+        "json": "{\"id\":\"lure_follow\",\"name\":\"跟随零食\",\"category\":\"basic_obedience\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":1,\"default_cue\":\"跟着\",\"default_gesture\":\"握着零食的手放在狗鼻尖前 2-3 厘米，手往哪走狗就往哪走\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"教狗用鼻子跟着你手里的零食走，之后坐下、趴下、转圈都是靠这只\\\"磁铁手\\\"引导出来的。\",\"steps\":[{\"text\":\"准备 10 块软零食，一块握在手心，手指半合，狗能闻到、舔到但吃不到。\",\"image\":\"lure_follow_step1.png\"},{\"text\":\"把手放到狗鼻尖前 2-3 厘米，让它闻一下。狗鼻子贴上来就按响片，把这块零食给它。\",\"image\":\"lure_follow_step2.png\"},{\"text\":\"再拿一块，手慢慢向左移 10 厘米。狗的鼻子跟着手动了就按响片给零食。再向右做一次。\",\"image\":\"lure_follow_step3.png\"},{\"text\":\"手保持在狗鼻子的高度，你向后退两步。狗跟着走过来就按响片给零食。\",\"image\":\"lure_follow_step4.png\"},{\"text\":\"用手带着狗走一个小圆圈，转完一圈按响片给零食。左转一圈，右转一圈。\",\"image\":\"lure_follow_step5.png\"},{\"text\":\"狗跟得稳以后，手里不拿零食，只做同样的手势。狗跟着走就按响片，从另一只手给零食。\",\"image\":\"lure_follow_step6.png\"}],\"common_mistakes\":[\"手移得太快，狗跟丢了就放弃。手的速度要和狗鼻子一样慢，狗一跟不上就停下来等它。\",\"零食露在手指外面，狗直接抢走或者一直啃手。零食要包在手心里，狗闻得到但拿不到。\",\"手抬得比狗头高，狗变成跳起来够。手始终保持在狗鼻尖的高度。\",\"跟了一长段才给奖励，狗中途就走神了。一开始跟 10 厘米就奖，慢慢再加长。\",\"狗没兴趣跟。换一种更香的零食（比如小块鸡肉），或者在狗饭前练。\"],\"success_criteria\":\"手里不拿零食，只做手势，狗鼻子跟着手走出 2 米以上，并能跟着转一个完整的圈，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"一块零食握在手心，手放到狗鼻尖前面让它闻。鼻子贴上来就按响片，给零食。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"再拿一块，手慢慢向左移 10 厘米。狗鼻子跟着动就按响片给零食。然后向右做一次。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"手保持在狗鼻子高度，你向后退两步。狗跟着走过来就按响片给零食。做 4 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"用手带狗走一个小圆圈，转完就按响片给零食。左转 2 圈，右转 2 圈，每圈都奖。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"手慢慢向下带到地面，再慢慢抬回鼻子高度。狗鼻子一直跟着就按响片给零食。做 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"最后 3 遍手里不拿零食，只做手势带狗走 3 步。狗跟着走就按响片，从另一只手给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":7,\"instruction\":\"结束。给一块零食，说\\\"好了\\\"，让狗自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"一块零食握在手心，手放到狗鼻尖前让它闻。鼻子贴上来就按响片，给零食。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"手保持在狗鼻子高度，你向后退两步。狗跟着走过来就按响片给零食。做 3 遍。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"用手带狗走一个小圆圈，转完就按响片给零食。左转 1 圈，右转 1 圈。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"最后 3 遍手里不拿零食，只做手势带狗走 3 步。狗跟着走就按响片，从另一只手给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。给一块零食，说\\\"好了\\\"，让狗自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 最后 3 遍空手手势里 3 遍狗都跟着走完；部分做到 = 1-2 遍；没做到 = 0 遍，或者有零食在手也跟不到 1 米。\",\"downgrade_to\":null,\"sources\":[\"诱导法（luring）基础，参见 Karen Pryor Clicker Training 官网 \\\"Luring\\\" 词条及 AKC 幼犬基础训练公开资料\",\"Ian Dunbar《Before and After Getting Your Puppy》中的 lure-reward training\"]}"
+      },
+      {
+        "id": "marker_intro",
+        "version": "v1.2",
+        "json": "{\"id\":\"marker_intro\",\"name\":\"响片 / 标记词建立\",\"category\":\"basic_obedience\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":1,\"default_cue\":\"对（标记词）\",\"default_gesture\":\"无手势，响片声或标记词本身就是信号\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"让狗明白\\\"咔哒\\\"一声（或一个固定的词）等于零食马上来，之后你就能在狗做对的那一瞬间精准告诉它\\\"就是这个\\\"。\",\"steps\":[{\"text\":\"准备 15 块软零食和一个响片。没有响片就选一个平时不说的短词，比如\\\"对\\\"或\\\"Yes\\\"，以后固定只用这一个。\",\"image\":\"marker_intro_step1.png\"},{\"text\":\"和狗待在安静的房间，你坐着或蹲着。狗什么都不用做，站着、坐着、走来走去都行。\",\"image\":\"marker_intro_step2.png\"},{\"text\":\"按一下响片，立刻给一块零食。响片在前，零食在后，中间不超过 1 秒。\",\"image\":\"marker_intro_step3.png\"},{\"text\":\"重复 10 次，节奏打乱，有时隔 2 秒有时隔 8 秒。狗没看你的时候也按，让它知道这个声音随时可能出现。\",\"image\":\"marker_intro_step4.png\"},{\"text\":\"测试：等狗在闻地板或走神时按一下。如果它马上转头来找零食，说明它已经懂了。给零食。\",\"image\":\"marker_intro_step5.png\"},{\"text\":\"第一次用在行为上：狗自己坐下或看你的那一刻按响片，给零食。这就是以后所有训练的基本动作。\",\"image\":\"marker_intro_step6.png\"}],\"common_mistakes\":[\"按完响片才去掏零食，或者零食和响片同时给。响片一定在前，零食紧跟在后，顺序和间隔都不能乱。\",\"把响片当遥控器，狗不理你就按。响片不是召唤工具，每按一次都必须跟一块零食，不然它很快就失效。\",\"标记词换来换去，一会儿\\\"好\\\"一会儿\\\"棒\\\"一会儿\\\"乖\\\"。只用一个词，全家人都用同一个。\",\"响片声太近太响，狗吓到了。把手放到背后或口袋里按，或者先用标记词，等狗习惯了再换响片。\",\"练了几十次还在\\\"充电\\\"。狗一听到声音就找零食（通常 10-20 次就够了），马上开始用在真实行为上。\"],\"success_criteria\":\"狗在走神时听到响片（或标记词），2 秒内转头看你或找零食，连续 3 次测试中 3 次都做到。\"},\"script\":[{\"step\":1,\"instruction\":\"拿 15 块零食和响片。找个安静的房间，坐下或蹲下，让狗在旁边随便待着。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"按一下响片，马上给一块零食。狗什么都不用做。响片在前，零食紧跟着，中间不超过 1 秒。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"重复 10 次。节奏打乱，有时隔 2 秒有时隔 8 秒。狗没看你也按，按完就给零食。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"测试。等狗去闻地板或走神的时候按一下。它马上转头来找零食就说明懂了，给零食。做 3 次。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"现在用在行为上。狗自己坐下、或者抬头看你的那一瞬间按响片，给零食。抓住 3 次。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。给最后一块零食，说\\\"好了\\\"，收起响片。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"拿 10 块零食和响片。找个安静的房间，坐下或蹲下，让狗在旁边随便待着。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"按一下响片，马上给一块零食。狗什么都不用做。响片在前，零食紧跟着，中间不超过 1 秒。重复 6 次，节奏打乱。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"测试。等狗去闻地板或走神的时候按一下。它马上转头来找零食就说明懂了，给零食。做 2 次。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"狗自己坐下、或者抬头看你的那一瞬间按响片，给零食。抓住 2 次。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。给最后一块零食，说\\\"好了\\\"，收起响片。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 第 4 步 3 次测试里 3 次都在 2 秒内转头找零食；部分做到 = 1-2 次；没做到 = 0 次，或者听到响片有躲闪反应。\",\"downgrade_to\":null,\"sources\":[\"响片充电（charging the clicker / loading the marker），参见 Karen Pryor《Don't Shoot the Dog》及 Karen Pryor Clicker Training 官网入门教程\",\"AKC \\\"What Is Clicker Training\\\" 公开文章\"]}"
+      },
+      {
+        "id": "name_response",
+        "version": "v1.2",
+        "json": "{\"id\":\"name_response\",\"name\":\"听名字看主人\",\"category\":\"basic_obedience\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":1,\"default_cue\":\"狗的名字\",\"default_gesture\":\"无手势，叫名字时身体微微前倾，眼睛看着狗\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"让狗一听到名字就转头看你，这是所有口令的\\\"开关\\\"，后面的坐下、召回都靠它先把注意力拉回来。\",\"steps\":[{\"text\":\"准备 10 块小拇指甲大小的软零食，在安静、没人走动的房间开始。狗在房间里自由活动就行。\",\"image\":\"name_response_step1.png\"},{\"text\":\"等狗没在看你的时候，用平常说话的语气叫一次它的名字，只叫一次。\",\"image\":\"name_response_step2.png\"},{\"text\":\"狗一转头看向你，立刻按响片（或说标记词），然后把零食送到它嘴边。\",\"image\":\"name_response_step3.png\"},{\"text\":\"狗吃完零食后不管它，等它注意力又跑开了，再叫一次。重复 5 次。\",\"image\":\"name_response_step4.png\"},{\"text\":\"换个位置站，比如走到房间另一头或蹲下来，再叫名字。狗看过来就奖励。\",\"image\":\"name_response_step5.png\"},{\"text\":\"在地上放一个玩具当干扰。狗盯着玩具时叫名字，它回头看你就重重奖励（给 2 块）。\",\"image\":\"name_response_step6.png\"}],\"common_mistakes\":[\"名字连着叫好几遍，比如\\\"豆豆豆豆豆豆\\\"。狗会学到名字可以不理。只叫一次，没反应就走近一点让它更容易成功，而不是加大音量。\",\"狗看过来了才去口袋掏零食。零食要提前握在手里，响片一按就能马上给，慢 1 秒狗就不知道奖的是\\\"看你\\\"。\",\"名字和不开心的事绑在一起，比如叫完名字就剪指甲、关笼子。这个阶段叫名字只能跟好事挂钩。\",\"一上来就在有狗、有人、有声音的地方练。先在安静房间练到 5 次 5 次都看你，再慢慢加干扰。\",\"狗只是耳朵动了一下没回头就给零食。标准是眼睛看向你的脸，低于这个标准不奖。\"],\"success_criteria\":\"在安静房间，叫一次名字，狗在 2 秒内转头看你的脸，5 次中至少 4 次做到；地上有玩具时 3 次中至少 2 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"拿 10 块零食握在手里。让狗在房间里随便走，你站着不说话，等它不看你。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"用平常的语气叫一次狗的名字。它一转头看你，马上按响片，把零食送到它嘴边。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"再做 4 遍。每次都等狗注意力跑开了再叫，叫完只给一次机会，看过来就按响片给零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"换个位置，走到房间另一头或蹲下来，再叫 3 遍名字。看过来就按响片给零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"在地上放一个玩具。狗去看玩具的时候叫一次名字，它回头看你就按响片，给 2 块零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。把玩具给狗玩，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"拿 8 块零食握在手里。让狗在房间里随便走，你站着不说话，等它不看你。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"用平常的语气叫一次狗的名字。它一转头看你，马上按响片，把零食送到嘴边。做 3 遍，每次都等它注意力跑开了再叫。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"换个位置，走到房间另一头或蹲下来，再叫 2 遍名字。看过来就按响片给零食。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"在地上放一个玩具。狗去看玩具的时候叫一次名字，回头看你就按响片，给 2 块零食。做 2 遍。\",\"duration_sec\":40,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。把玩具给狗玩，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 后面 8 遍（第 3 到第 5 步）里 7 遍以上在 2 秒内看你；部分做到 = 4-6 遍；没做到 = 3 遍以下或需要叫第二次才看。\",\"downgrade_to\":null,\"sources\":[\"名字即注意力口令（name recognition / attention cue），参见 Ian Dunbar《Before and After Getting Your Puppy》及 AKC \\\"Teach Your Puppy Its Name\\\" 公开文章\",\"响片标记法，参见 Karen Pryor《Don't Shoot the Dog》\"]}"
+      },
+      {
+        "id": "potty_training",
+        "version": "v1.2",
+        "json": "{\"id\":\"potty_training\",\"name\":\"定点大小便\",\"category\":\"house\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":2,\"default_cue\":\"去尿尿\",\"default_gesture\":\"手指向定点位置\",\"sessions_to_master\":3,\"tutorial\":{\"summary\":\"通过固定时间带狗去固定地点，加上在它尿对的瞬间奖励，让狗学会憋到定点再解决，大幅减少家里的意外。\",\"steps\":[{\"text\":\"定一个固定地点：户外一块固定的草地，或家里固定角落铺的尿垫。前两周不要换地方。准备一袋小零食放在门口随手能拿的地方。\",\"image\":\"potty_training_step1.png\"},{\"text\":\"记住 5 个必带时机：早上醒来、每次吃完饭 10-20 分钟后、玩完一场、睡醒午觉、晚上睡前。8-12 周的幼犬白天每 1-2 小时带一次。\",\"image\":\"potty_training_step2.png\"},{\"text\":\"到时间就带狗去定点，牵绳站在旁边，不说话不互动，给狗 3-5 分钟时间自己闻和转圈。\",\"image\":\"potty_training_step3.png\"},{\"text\":\"狗开始蹲下的时候，轻声说一次\\\"去尿尿\\\"（这是在给动作贴标签，以后狗听到就知道该干什么）。\",\"image\":\"potty_training_step4.png\"},{\"text\":\"尿完或拉完的那一刻按响片，立刻给零食，夸它。一定要在原地奖励，不要回家再给。\",\"image\":\"potty_training_step5.png\"},{\"text\":\"如果 5 分钟没动静，带它回家，10-15 分钟内盯紧它或放回围栏，然后再带出去一次。\",\"image\":\"potty_training_step6.png\"},{\"text\":\"在家时留意信号：原地转圈、闻地板、突然走到角落、玩着玩着停下。看到任何一个，马上带去定点。\",\"image\":\"potty_training_step7.png\"}],\"common_mistakes\":[\"发现家里有尿迹后骂狗或把它拖到现场。狗根本不知道你在说几分钟前的事，只会学到\\\"在主人面前尿会倒霉\\\"，以后躲起来尿。看到意外只需要默默清理，然后检查是不是带出去的间隔太长。\",\"用普通清洁剂擦尿迹。气味残留狗还会回来尿。要用含酶的宠物专用清洁剂彻底清掉味道。\",\"带出去的时候一直跟狗说话、逗它玩。狗分心就不尿了。到定点后安静站着，等它尿完再互动。\",\"狗一尿完就马上回家。狗会学到\\\"尿完 = 散步结束\\\"，于是故意憋着。尿完奖励后再陪它玩 2-3 分钟或多走一段。\",\"奖励给晚了，回家才给。狗联系不上几分钟前的事。零食必须在尿完 2 秒内给，所以口袋里要常备零食。\",\"觉得 1 天没出意外就放松盯梢。幼犬要连续 2-4 周没有意外才算稳，之前放松就会倒退。\"],\"success_criteria\":\"连续 7 天家里没有意外，并且每次带去定点时 5 分钟内就解决，7 天里至少 6 天做到。\"},\"script\":[{\"step\":1,\"instruction\":\"口袋装好零食，牵好绳。平静地带狗走到定点，路上不要逗它玩。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"到定点后站住不动，绳子放松，不说话，让狗自己闻和转圈。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":false},{\"step\":3,\"instruction\":\"看到狗开始蹲下，轻声说一次\\\"去尿尿\\\"。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":4,\"instruction\":\"狗尿完或拉完站起来的那一刻按响片，立刻给零食，开心地夸它。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"如果这时候还没解决，再安静等待一会儿，一旦解决就按响片给零食。到点还没动静就回家，盯紧它 15 分钟后再来一次。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"解决完了不要马上回家，陪它在附近再走一走或玩一会儿，让它知道尿完还有好事。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"口袋装好零食，牵好绳。平静地带狗走到定点，路上不要逗它玩。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"到定点后站住不动，绳子放松，不说话，让狗自己闻和转圈。看到狗开始蹲下，轻声说一次\\\"去尿尿\\\"。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":false},{\"step\":3,\"instruction\":\"狗尿完或拉完站起来的那一刻按响片，立刻给零食，开心地夸它。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"如果还没解决，再安静等一会儿，解决了就按响片给零食。到点还没动静就回家，盯紧它 15 分钟后再来一次。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"解决完了陪它在附近再走一走，让它知道尿完还有好事。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 今天带出去的所有次数里，5 分钟内解决的占 80% 以上，且家里 0 次意外；部分做到 = 50%-80% 或家里 1 次意外；没做到 = 50% 以下或家里 2 次以上意外。\",\"downgrade_to\":null,\"sources\":[\"幼犬定点排泄训练法（固定时间表 + 定点奖励 + 含酶清洁剂），参见 AKC \\\"How to Potty Train a Puppy\\\" 与 Humane Society 公开资料\",\"不惩罚室内意外、只管理与奖励的原则，参见 Ian Dunbar \\\"Before and After Getting Your Puppy\\\" 公开章节\"]}"
+      },
+      {
+        "id": "recall_indoor",
+        "version": "v1.2",
+        "json": "{\"id\":\"recall_indoor\",\"name\":\"室内召回\",\"category\":\"basic_obedience\",\"min_age_weeks\":10,\"max_age_weeks\":52,\"prerequisites\":[\"name_response\"],\"difficulty\":2,\"default_cue\":\"来\",\"default_gesture\":\"蹲下，双手张开拍大腿\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"让狗一听到\\\"来\\\"就开心地跑向你，这是以后户外放绳、避免走失的保命技能，必须先在家里练到稳。\",\"steps\":[{\"text\":\"准备 15 块狗最爱吃的小零食（比平时训练用的更好吃），在客厅或走廊这种 3-5 米长的空间开始，收走玩具。\",\"image\":\"recall_indoor_step1.png\"},{\"text\":\"狗离你 1-2 米、正好看向你的时候，用开心的高音调喊一次\\\"来\\\"，同时蹲下、张开双手拍大腿。\",\"image\":\"recall_indoor_step2.png\"},{\"text\":\"狗一动身朝你跑，就持续夸它\\\"好棒好棒\\\"。它跑到你面前的那一刻按响片，立刻从手里喂 2-3 块零食，一块一块地给，让它觉得来找你超值。\",\"image\":\"recall_indoor_step3.png\"},{\"text\":\"喂完零食轻轻摸一下项圈再放开。这样狗以后不会一看你伸手抓项圈就躲。\",\"image\":\"recall_indoor_step4.png\"},{\"text\":\"说\\\"去玩吧\\\"放它走开，等它走出 2-3 米再喊下一次。一次练 5-8 遍就停。\",\"image\":\"recall_indoor_step5.png\"},{\"text\":\"能稳定过来后加难度：换一个房间，或在狗背对你闻东西时喊。每次只加一个难度。\",\"image\":\"recall_indoor_step6.png\"},{\"text\":\"找家人帮忙玩\\\"两人召回\\\"：两个人隔 4-5 米轮流喊狗，谁喊狗来谁给零食，狗来回跑特别开心。\",\"image\":\"recall_indoor_step7.png\"}],\"common_mistakes\":[\"狗没过来就一遍遍喊\\\"来来来\\\"。口令喊多了就没用了。只喊一次，没反应就拍手、后退、发出有趣的声音吸引它，等它过来再奖励，下次把距离缩短。\",\"用\\\"来\\\"叫狗过来做它不喜欢的事，比如剪指甲、洗澡、关笼子。狗很快会学到\\\"来\\\"没好事。需要做这些事时直接走过去抱它，别用口令。\",\"狗来晚了或者走得慢就不给奖励、语气变差。不管多慢，只要来了就奖励。对狗来说，\\\"来了就有好事\\\"比\\\"来得快\\\"更重要，速度以后会跟上。\",\"奖励给得抠门，只给一小块。召回是最值得花大价钱的技能，到位时连给 2-3 块，或者给一小块鸡肉，让它印象深刻。\",\"狗跑到面前没停就从身边冲过去，也照样给奖励。零食要贴着自己的腿给，让狗养成跑到你面前停下来的习惯。\",\"一上来就在狗玩得最嗨的时候喊它。先在它没事干、正好看你的时候练，成功率高了再慢慢挑战有干扰的时候。\"],\"success_criteria\":\"在家里任意房间，狗离你 3 米以上，说一次\\\"来\\\"，狗在 5 秒内跑到你面前并停下，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"准备好 15 块好吃的零食，收走地上的玩具。让狗在你 1-2 米范围内自由走动。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"等狗看向你的时候，用开心的声音喊一次\\\"来\\\"，同时蹲下拍大腿。它跑到你面前的瞬间按响片，连给 3 块零食。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"说\\\"去玩吧\\\"放它走。等它走开 2 米再喊一次\\\"来\\\"，到位就按响片给零食，顺手摸一下项圈。这样做 4 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"现在你悄悄走到另一个房间门口，在狗看不到你的时候喊一次\\\"来\\\"。它找到你跑过来，按响片，给 3 块零食大大夸奖。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"回到原来的房间，再做 3 遍普通召回，每次距离拉到 3-4 米。到位就按响片给零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。最后一次召回后给它一块最好吃的，摸摸它，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"准备好 10 块好吃的零食，收走地上的玩具。让狗在你 1-2 米范围内自由走动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"等狗看向你的时候，用开心的声音喊一次\\\"来\\\"，同时蹲下拍大腿。它跑到面前的瞬间按响片，连给 3 块零食。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"说\\\"去玩吧\\\"放它走。等它走开 2 米再喊一次\\\"来\\\"，到位就按响片给零食，顺手摸一下项圈。做 3 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"再做 2 遍召回，距离拉到 3-4 米。到位就按响片给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。最后给它一块最好吃的，摸摸它，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 最后 5 遍召回中 4 遍以上在 5 秒内跑到面前；部分做到 = 2-3 遍；没做到 = 1 遍以下，或狗过来后不停留直接跑开。\",\"downgrade_to\":\"name_response\",\"sources\":[\"正向召回训练法（高价值奖励 + 口令不重复 + 不用口令叫狗做讨厌的事），参见 AKC \\\"How to Teach Your Dog to Come When Called\\\" 及 Karen Pryor Clicker Training 公开教程\",\"两人召回游戏（Round Robin Recall）为常见正向训练课堂练习，参见 Ian Dunbar 幼犬训练公开资料\"]}"
+      },
+      {
+        "id": "recall_outdoor",
+        "version": "v1.2",
+        "json": "{\"id\":\"recall_outdoor\",\"name\":\"户外召回（长绳）\",\"category\":\"basic_obedience\",\"min_age_weeks\":20,\"max_age_weeks\":52,\"prerequisites\":[\"recall_indoor\",\"stay_short\"],\"difficulty\":4,\"default_cue\":\"来\",\"default_gesture\":\"蹲下，双手张开拍大腿\",\"sessions_to_master\":3,\"tutorial\":{\"summary\":\"把家里练稳的召回搬到户外，用 5-10 米长绳保证安全，让狗在有气味、有人、有别的狗的环境里也愿意回到你身边。\",\"steps\":[{\"text\":\"准备一根 5-10 米的长绳（不是伸缩绳）、一件胸背带、15 块狗最爱吃的零食（鸡肉、奶酪这种）。长绳扣在胸背带上，不要扣项圈。\",\"image\":\"recall_outdoor_step1.png\"},{\"text\":\"第一次选一个安静、围起来的地方，比如小区里没人的草坪角落或清晨的公园。先让狗闻 2-3 分钟，熟悉环境。\",\"image\":\"recall_outdoor_step2.png\"},{\"text\":\"长绳松松地拖在地上，你握住末端。狗离你 2-3 米、刚好抬头的时候，开心地喊一次\\\"来\\\"，蹲下拍大腿。\",\"image\":\"recall_outdoor_step3.png\"},{\"text\":\"狗跑到你面前的瞬间按响片，连给 3 块零食，摸一下胸背带，然后说\\\"去玩吧\\\"放它继续闻。一次练 5-8 遍。\",\"image\":\"recall_outdoor_step4.png\"},{\"text\":\"如果狗没反应，不要重复口令。用长绳轻轻收 1-2 米缩短距离（不是拽），拍手、往后小跑吸引它，它一过来就奖励，下一次距离缩短。\",\"image\":\"recall_outdoor_step5.png\"},{\"text\":\"稳定后每次只加一个难度：距离从 3 米到 5 米再到 8 米，或者从没人的地方换到远处有人经过的地方。\",\"image\":\"recall_outdoor_step6.png\"},{\"text\":\"结合等待练习：让狗\\\"等\\\"，你走出 3 米，再喊\\\"来\\\"。这是以后在路边、门口最常用的组合。\",\"image\":\"recall_outdoor_step7.png\"}],\"common_mistakes\":[\"狗没来就用长绳把它拖回来。拖回来的狗学不会主动跑向你，反而会抗拒绳子。长绳只用来防走丢和轻轻缩短距离，狗要靠自己的腿跑回来才给奖励。\",\"一到户外就要求和在家一样好。户外气味和干扰是家里的几十倍，第一周把距离缩到 2 米、只在狗看你的时候喊，成功率高才有信心。\",\"用召回结束遛狗。每次\\\"来\\\"完就扣绳回家，狗会学到\\\"来 = 玩完了\\\"。十次召回里至少八次要奖励完就放它继续玩。\",\"狗跑向别的狗或人的时候才喊它。这是最难的情况，前几周不要在这时喊，先用长绳管理，等它自己回头看你再喊。\",\"奖励给得和家里一样普通。户外要用最高级的零食，狗在外面能回来是件大事，要让它觉得比闻草地值。\",\"用伸缩绳代替长绳。伸缩绳一直有拉力，狗会习惯绷紧，而且卡住时容易伤手。\"],\"success_criteria\":\"在户外安静环境、长绳拖地的情况下，狗离你 5 米以上并正在闻东西时，说一次\\\"来\\\"，狗在 8 秒内自己跑到你面前，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"到户外安静的地方，长绳扣在胸背带上，你握住绳子末端。先让狗自由闻 1 分钟，不要叫它。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"等狗离你 2-3 米、刚好抬头的时候，开心地喊一次\\\"来\\\"，蹲下拍大腿。它跑到面前的瞬间按响片，连给 3 块零食。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"说\\\"去玩吧\\\"放它继续闻。等它走开 3 米再喊一次\\\"来\\\"，到位就按响片给零食，摸一下胸背带。这样做 4 遍。\",\"duration_sec\":120,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"现在等狗低头闻得正专心的时候喊\\\"来\\\"。它抬头跑过来就按响片，给最好的那块零食。没反应就轻轻收绳 1 米、拍手吸引它，过来也照样奖励。做 3 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"让狗\\\"等\\\"，你往后走 3 米，然后喊\\\"来\\\"。它跑过来按响片，给 3 块零食。做 2 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。最后给一块零食，说\\\"去玩吧\\\"，让它再自由闻几分钟再回家，不要召回完就走。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"到户外安静的地方，长绳扣在胸背带上，握住绳子末端。先让狗自由闻 30 秒，不要叫它。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"等狗离你 2-3 米、刚好抬头的时候，开心地喊一次\\\"来\\\"，蹲下拍大腿。它跑到面前的瞬间按响片，连给 3 块零食。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"说\\\"去玩吧\\\"放它继续闻。等它走开 3 米再喊一次\\\"来\\\"，到位就按响片给零食，摸一下胸背带。做 3 遍。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"等狗低头闻得正专心时喊\\\"来\\\"。抬头跑过来就按响片，给最好的那块零食。没反应就轻轻收绳 1 米、拍手吸引它。做 2 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。给一块零食，说\\\"去玩吧\\\"，让它再自由闻一会儿再回家。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 今天 10 次召回中 8 次以上狗自己跑回来，没有靠收绳；部分做到 = 5-7 次；没做到 = 4 次以下，或大多数需要收绳才回来。\",\"downgrade_to\":\"recall_indoor\",\"sources\":[\"长绳召回训练法（long line recall），参见 AKC \\\"How to Teach Your Dog to Come When Called\\\" 与 Karen Pryor Clicker Training 户外召回公开教程\",\"召回后放狗继续玩、避免\\\"召回 = 结束\\\"的原则，参见 Ian Dunbar 及 Patricia McConnell 相关公开资料\"]}"
+      },
+      {
+        "id": "redirect_to_toy",
+        "version": "v1.2",
+        "json": "{\"id\":\"redirect_to_toy\",\"name\":\"转移到玩具\",\"category\":\"social\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[],\"difficulty\":1,\"default_cue\":\"玩具\",\"default_gesture\":\"把玩具举到狗鼻尖前方，左右小幅晃动\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"教幼犬\\\"想咬的时候去咬玩具，不咬手和家具\\\"，是处理咬手、啃鞋、啃桌腿的第一个工具。\",\"steps\":[{\"text\":\"准备 2-3 个不同材质的玩具（绳结、橡胶、毛绒各一个），放在口袋或沙发边随手能拿到的地方。\",\"image\":\"redirect_to_toy_step1.png\"},{\"text\":\"狗平静的时候，拿一个玩具在它鼻尖前左右小幅晃动，让玩具\\\"活起来\\\"。狗一张嘴咬住玩具，立刻说\\\"好\\\"或按响片，然后陪它玩 5-10 秒。\",\"image\":\"redirect_to_toy_step2.png\"},{\"text\":\"重复 5 次。狗一看到玩具动就主动扑上来咬的时候，在晃玩具前先说一次\\\"玩具\\\"。\",\"image\":\"redirect_to_toy_step3.png\"},{\"text\":\"制造一点小诱惑：用手在狗面前慢慢动。狗想咬手的瞬间，手不动，另一只手把玩具递到它嘴边，咬到玩具就按响片。\",\"image\":\"redirect_to_toy_step4.png\"},{\"text\":\"狗咬到玩具后一定要陪它拉扯或者扔两下，让它明白\\\"咬玩具比咬手好玩多了\\\"。\",\"image\":\"redirect_to_toy_step5.png\"},{\"text\":\"日常里只要狗开始啃手、啃鞋、啃家具，就说\\\"玩具\\\"并递玩具，咬到玩具就夸。玩具每 2-3 天换一个，保持新鲜感。\",\"image\":\"redirect_to_toy_step6.png\"}],\"common_mistakes\":[\"玩具一直摆在地上不动，狗觉得没意思。玩具要在主人手里动起来才有吸引力，练完收起来。\",\"狗咬住玩具之后主人松手走开。这样狗玩两下就丢了，又去找手咬。咬住后要陪它玩至少 5 秒，再松手。\",\"狗咬手时主人大喊、甩手或者把手抽走。手越动狗越兴奋，正确做法是手停住不动，用另一只手递玩具。\",\"用手逗狗玩，让狗习惯了手是玩具。平时不要用手跟狗打闹，手只负责摸和给零食，玩闹一律用玩具。\",\"只练一个玩具。狗会对单一玩具腻掉，准备 2-3 个轮换。\"],\"success_criteria\":\"说一次\\\"玩具\\\"并递出玩具，狗在 3 秒内放开手或家具改咬玩具，并持续玩玩具 5 秒以上，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"拿出一个玩具，在狗鼻尖前面左右晃动，让玩具动起来。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"狗一咬住玩具，马上按响片，然后陪它拉扯 5 秒。松手，再重复 4 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"现在晃玩具前先说一次\\\"玩具\\\"。狗扑上来咬就按响片，陪它玩一会儿。做 5 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"用一只手在狗面前慢慢动，狗想咬手的时候手停住不动，另一只手说\\\"玩具\\\"递玩具。狗咬到玩具就按响片。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"换一个不同材质的玩具，再做 3 遍\\\"玩具\\\"口令。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。让狗自己叼着玩具玩一会儿，摸摸它，说\\\"好了\\\"。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"拿出一个玩具，在狗鼻尖前面左右晃动，让玩具动起来。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"狗一咬住玩具，马上按响片，陪它拉扯 5 秒。松手，再重复 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"晃玩具前先说一次\\\"玩具\\\"。狗扑上来咬就按响片，陪它玩一会儿。做 4 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"用一只手在狗面前慢慢动，狗想咬手时手停住不动，另一只手说\\\"玩具\\\"递玩具。狗咬到玩具就按响片。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。让狗自己叼着玩具玩一会儿，摸摸它，说\\\"好了\\\"。\",\"duration_sec\":15,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 最后 6 遍中 5 遍以上听到\\\"玩具\\\"就咬玩具并玩 5 秒以上；部分做到 = 3-4 遍；没做到 = 2 遍以下或仍然追着手咬。\",\"downgrade_to\":null,\"sources\":[\"转移注意法（redirection），参见 AKC \\\"How to Stop Puppy Biting\\\" 公开文章与 Ian Dunbar《Before & After Getting Your Puppy》\"]}"
+      },
+      {
+        "id": "sit",
+        "version": "v1.2",
+        "json": "{\"id\":\"sit\",\"name\":\"坐下\",\"category\":\"basic_obedience\",\"min_age_weeks\":8,\"max_age_weeks\":52,\"prerequisites\":[\"name_response\",\"lure_follow\"],\"difficulty\":1,\"default_cue\":\"坐\",\"default_gesture\":\"手心向上，握着零食从狗鼻尖前方缓慢向上抬\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"坐下是几乎所有后续技能的基础，也是让幼犬在兴奋时快速安定下来的第一个工具。\",\"steps\":[{\"text\":\"准备 10 块小拇指甲大小的软零食，在安静、没有玩具的房间开始。\",\"image\":\"sit_step1.png\"},{\"text\":\"把零食握在手心，放到狗鼻尖前让它闻到，但不给。\",\"image\":\"sit_step2.png\"},{\"text\":\"手缓慢向上、略向狗头后方移动。狗抬头追零食时，屁股会自然落地。\",\"image\":\"sit_step3.png\"},{\"text\":\"屁股一碰地，立刻按响片（或说标记词），然后给零食。\",\"image\":\"sit_step4.png\"},{\"text\":\"重复 5 次。狗能稳定跟着手坐下后，在手抬起前先说一次\\\"坐\\\"。\",\"image\":\"sit_step5.png\"},{\"text\":\"逐渐减少手里的零食，手势保留，零食从另一只手给。\",\"image\":\"sit_step6.png\"}],\"common_mistakes\":[\"零食抬得太高或太快，狗会跳起来而不是坐下。保持零食贴着鼻尖移动。\",\"口令重复喊好几遍。只说一次，狗没反应就回到用手引导，不要加口令。\",\"奖励给得太晚。响片要在屁股碰地的瞬间按，晚 1 秒狗就不知道奖的是什么。\",\"狗坐下后主人往后退，狗立刻站起来追。先原地奖励，站立训练放到以后。\",\"练太久。幼犬注意力只有几分钟，一次 5-8 遍就停。\"],\"success_criteria\":\"说一次\\\"坐\\\"，手势配合，狗在 3 秒内坐下并保持 2 秒以上，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"拿一块零食，握在手心，放到狗鼻尖前面让它闻。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"手缓慢向上、向狗头后方移动。狗的屁股一碰地，马上按响片，然后给零食。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"再做 4 遍，每遍之间让狗站起来走两步。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"现在手抬起前先说一次\\\"坐\\\"，然后再做手势。坐下就按响片给零食。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"最后 3 遍，手里不拿零食，只做手势说口令。坐下后从另一只手给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"结束。给一块零食，摸摸狗，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"拿一块零食握在手心，放到狗鼻尖前让它闻。手缓慢向上、向狗头后方移动。屁股一碰地，马上按响片，给零食。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"现在手抬起前先说一次\\\"坐\\\"，再做手势。坐下就按响片给零食。做 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"最后 3 遍，手里不拿零食，只做手势说口令。坐下后从另一只手给零食。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"结束。给一块零食，摸摸狗，说\\\"好了\\\"，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 最后 5 遍中 4 遍以上只用口令加手势就坐下；部分做到 = 2-3 遍；没做到 = 1 遍以下或仍需零食引导。\",\"downgrade_to\":\"lure_follow\",\"sources\":[\"正向训练中的诱导法（luring），参见 Karen Pryor 响片训练体系与 AKC 幼犬基础训练公开资料\"]}"
+      },
+      {
+        "id": "stay_long",
+        "version": "v1.2",
+        "json": "{\"id\":\"stay_long\",\"name\":\"延长等待（30 秒 + 距离）\",\"category\":\"impulse\",\"min_age_weeks\":16,\"max_age_weeks\":52,\"prerequisites\":[\"stay_short\"],\"difficulty\":3,\"default_cue\":\"等\",\"default_gesture\":\"手掌张开朝向狗，做\\\"停\\\"的手势，然后转身或后退\",\"sessions_to_master\":3,\"script_parts\":2,\"tutorial\":{\"summary\":\"把 3 秒的等待拉长到 30 秒，并且你能走开 5 步狗还不动。距离和时长分开练，一次只加一样难度。\",\"steps\":[{\"text\":\"准备 15 块软零食。在安静房间让狗坐下，先复习 2 次 3 秒等待，确认它今天状态在线。\",\"image\":\"stay_long_step1.png\"},{\"text\":\"练距离（第一段）：说\\\"等\\\"做手势，向后退 1 步，马上走回狗身边，狗没动就按响片，零食送到嘴边，再说\\\"好了\\\"释放。\",\"image\":\"stay_long_step2.png\"},{\"text\":\"每 5 次成功就多退 1 步，退到 5 步为止。每次都要走回狗身边再奖励，不要在远处叫狗过来拿零食。\",\"image\":\"stay_long_step3.png\"},{\"text\":\"练时长（第二段）：站在狗身边不走开，说\\\"等\\\"，每隔 3-5 秒送一块\\\"保持费\\\"，等满 10 秒按响片释放。\",\"image\":\"stay_long_step4.png\"},{\"text\":\"10 秒稳了加到 20 秒，再加到 30 秒。保持费的间隔慢慢拉长，最后 30 秒里只给 2 块。\",\"image\":\"stay_long_step5.png\"},{\"text\":\"两段都稳了以后才合起来：退 3 步，站 10 秒，走回来奖励。再慢慢往 5 步 30 秒靠。\",\"image\":\"stay_long_step6.png\"},{\"text\":\"狗一旦起身，不说话，让它重新坐下，把距离或时间退回上一个成功的档位，做 2 次成功再往前加。\",\"image\":\"stay_long_step7.png\"}],\"common_mistakes\":[\"距离和时长一起加，比如退 5 步同时等 30 秒。狗一下子失败好几次就不愿意等了。一次只加一样，另一样保持最低。\",\"站在远处叫狗过来拿零食。狗会学到\\\"等一会儿就能跑过来\\\"，等待就变成了起跑。永远走回狗身边再给奖励和释放。\",\"走开的时候一直盯着狗、倒着走。狗会觉得气氛紧张。正常地转身走，正常地走回来，但退 1-2 步时可以先面对狗。\",\"长时间等待中间完全不给奖励。30 秒对幼犬很长，中间要送\\\"保持费\\\"，让它知道坐着不动一直有好处。\",\"狗起身了就说\\\"不对\\\"或者拉它回去。不说话，重新坐下，退一档。连续失败 2 次就说明今天到这里了，结束，换天再练。\",\"一次练太久。两段各 3-4 分钟，中间休息，不要一口气把两段连着做完。\"],\"success_criteria\":\"距离：你退 5 步再走回来，狗坐着不动，5 次中至少 4 次做到。时长：你站在狗身边，狗等满 30 秒直到\\\"好了\\\"才起身，3 次中至少 2 次做到。\"},\"script\":[{\"step\":1,\"part\":1,\"instruction\":\"让狗坐下。复习 2 次 3 秒等待，说\\\"等\\\"，数 3 秒，按响片给零食，说\\\"好了\\\"。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"part\":1,\"instruction\":\"说\\\"等\\\"做手势，向后退 1 步，马上走回狗身边。狗没动就按响片，零食送到嘴边，说\\\"好了\\\"。做 5 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"part\":1,\"instruction\":\"退 3 步再走回来。狗没动就按响片给零食，说\\\"好了\\\"。做 5 遍。狗起身了就不说话，重新坐下，退回 1 步做 2 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"part\":1,\"instruction\":\"退 5 步再走回来。狗没动就按响片，给 2 块零食，说\\\"好了\\\"。做 5 遍。然后第一段结束，让狗休息一下。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"part\":2,\"instruction\":\"第二段。让狗坐下，你站在它身边不走开。说\\\"等\\\"，每隔 3 秒送一块零食，等满 10 秒按响片，说\\\"好了\\\"。做 3 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"part\":2,\"instruction\":\"加到 20 秒。说\\\"等\\\"，第 5 秒、第 12 秒各送一块零食，等满 20 秒按响片，说\\\"好了\\\"。做 2 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":7,\"part\":2,\"instruction\":\"加到 30 秒。说\\\"等\\\"，第 10 秒、第 20 秒各送一块零食，等满 30 秒按响片，给 2 块零食，说\\\"好了\\\"。做 2 遍，然后结束，让狗自由活动。\",\"duration_sec\":90,\"voice\":true,\"clicker_hint\":true}],\"mini_script\":[{\"step\":1,\"instruction\":\"让狗坐下。复习 2 次 3 秒等待，说\\\"等\\\"，数 3 秒，按响片给零食，说\\\"好了\\\"。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":2,\"instruction\":\"说\\\"等\\\"做手势，向后退 3 步再走回来。狗没动就按响片给零食，说\\\"好了\\\"。做 3 遍。狗起身了就不说话，重新坐下，退回 1 步做 1 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"站在狗身边不走开。说\\\"等\\\"，每隔 3 秒送一块零食，等满 10 秒按响片，说\\\"好了\\\"。做 2 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"加到 20 秒。说\\\"等\\\"，第 5 秒、第 12 秒各送一块零食，等满 20 秒按响片，说\\\"好了\\\"。做 2 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。说\\\"好了\\\"，给一块零食，让狗自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 第 4 步退 5 步 5 遍里 4 遍以上没动，并且第 7 步 30 秒 2 遍都等住；部分做到 = 只有距离或只有时长达标；没做到 = 两样都没达标，或退 3 步就起身。\",\"downgrade_to\":\"stay_short\",\"sources\":[\"等待的三要素分开训练（3 D's：distance / duration / distraction），参见 Pat Miller 在 Whole Dog Journal 的公开文章及 AKC \\\"How to Teach Your Dog to Stay\\\"\",\"回到狗身边释放、保持费奖励，参见 Kikopup（Emily Larlham）YouTube 公开教程\"]}"
+      },
+      {
+        "id": "stay_short",
+        "version": "v1.2",
+        "json": "{\"id\":\"stay_short\",\"name\":\"短暂等待（3 秒）\",\"category\":\"impulse\",\"min_age_weeks\":12,\"max_age_weeks\":52,\"prerequisites\":[\"sit\"],\"difficulty\":2,\"default_cue\":\"等\",\"default_gesture\":\"手掌张开朝向狗，像交警的\\\"停\\\"手势，放在狗面前约 30 厘米\",\"sessions_to_master\":2,\"tutorial\":{\"summary\":\"教狗坐下以后保持不动 3 秒，直到你说\\\"好了\\\"才起来。这是所有自控力训练的起点，也是出门、开门、放饭前最常用的动作。\",\"steps\":[{\"text\":\"准备 10 块软零食，在安静房间让狗坐下。你站在它正前方，离它半步远。\",\"image\":\"stay_short_step1.png\"},{\"text\":\"说一次\\\"等\\\"，同时做\\\"停\\\"的手势。然后心里数 1 秒，狗屁股没离地，就按响片，把零食送到它嘴边（在它坐着的时候给）。\",\"image\":\"stay_short_step2.png\"},{\"text\":\"给完零食说\\\"好了\\\"，拍拍腿让狗站起来走两步。\\\"好了\\\"是释放词，每次等待结束都要说，狗才知道什么时候可以动。\",\"image\":\"stay_short_step3.png\"},{\"text\":\"重复 5 次 1 秒等待。狗 5 次都没动，再把时间加到 2 秒，同样做 5 次。\",\"image\":\"stay_short_step4.png\"},{\"text\":\"加到 3 秒。3 秒内可以在中间给一块\\\"保持费\\\"，比如第 1 秒给一块，第 3 秒再给一块加释放。\",\"image\":\"stay_short_step5.png\"},{\"text\":\"狗如果中途站起来了，不说话，让它重新坐下，把时间退回上一个成功的秒数再练。\",\"image\":\"stay_short_step6.png\"}],\"common_mistakes\":[\"一上来就要求等 3 秒、5 秒。幼犬先从 1 秒开始，每 5 次成功才加 1 秒，急了反而退步。\",\"狗站起来了才给零食，或者把零食举高让狗起来够。零食要送到狗嘴边，在它坐着的时候给，奖的是\\\"坐着没动\\\"。\",\"没有释放词，狗自己决定什么时候起来。每次都用\\\"好了\\\"结束，狗才知道等待是有尽头的，也才不会自己乱动。\",\"狗没等住就说\\\"不行\\\"\\\"不对\\\"，或者按着它坐下。什么都不说，让它重新坐，退回更短的时间。失败说明步子迈太大了，不是狗的错。\",\"你自己在等待时后退、转身、拿东西。这个阶段你站着不动，距离和干扰留到延长等待再加。\"],\"success_criteria\":\"说一次\\\"等\\\"加手势，你站在原地不动，狗坐着等满 3 秒不起身，直到听到\\\"好了\\\"才动，5 次中至少 4 次做到。\"},\"script\":[{\"step\":1,\"instruction\":\"让狗坐下。你站在它正前方半步远，手里拿好零食。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"说一次\\\"等\\\"，做\\\"停\\\"的手势，心里数 1 秒。狗没动就按响片，零食送到它嘴边让它坐着吃。然后说\\\"好了\\\"让它起来。\",\"duration_sec\":20,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"再做 4 遍 1 秒等待。每遍结束都说\\\"好了\\\"让狗起来走两步，再重新坐下。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"加到 2 秒。说\\\"等\\\"，数两下，没动就按响片给零食，说\\\"好了\\\"。做 5 遍。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"加到 3 秒。第 1 秒先送一块零食，狗继续坐着，到第 3 秒按响片再给一块，说\\\"好了\\\"。做 5 遍。\",\"duration_sec\":75,\"voice\":true,\"clicker_hint\":true},{\"step\":6,\"instruction\":\"狗如果中途站起来了，不说话，让它重新坐下，退回 2 秒再做 2 遍，成功了再回到 3 秒。\",\"duration_sec\":30,\"voice\":true,\"clicker_hint\":true},{\"step\":7,\"instruction\":\"结束。说\\\"好了\\\"，给一块零食，摸摸狗，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"mini_script\":[{\"step\":1,\"instruction\":\"让狗坐下。你站在它正前方半步远，手里拿好零食。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false},{\"step\":2,\"instruction\":\"说一次\\\"等\\\"，做\\\"停\\\"的手势，心里数 1 秒。狗没动就按响片，零食送到嘴边让它坐着吃。说\\\"好了\\\"让它起来。做 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":3,\"instruction\":\"加到 2 秒。说\\\"等\\\"，数两下，没动就按响片给零食，说\\\"好了\\\"。做 3 遍。\",\"duration_sec\":45,\"voice\":true,\"clicker_hint\":true},{\"step\":4,\"instruction\":\"加到 3 秒。第 1 秒先送一块零食，狗继续坐着，到第 3 秒按响片再给一块，说\\\"好了\\\"。做 3 遍。狗中途站起来就不说话，重新坐下退回 2 秒。\",\"duration_sec\":60,\"voice\":true,\"clicker_hint\":true},{\"step\":5,\"instruction\":\"结束。说\\\"好了\\\"，给一块零食，摸摸狗，让它自由活动。\",\"duration_sec\":10,\"voice\":true,\"clicker_hint\":false}],\"scoring_hint\":\"完全做到 = 第 5 步 5 遍 3 秒等待里 4 遍以上没起身；部分做到 = 2-3 遍；没做到 = 1 遍以下，或 2 秒都等不住。\",\"downgrade_to\":\"sit\",\"sources\":[\"等待的逐秒递增法（building duration in stay），参见 AKC \\\"How to Teach Your Dog to Stay\\\" 公开文章\",\"释放词与\\\"保持费\\\"奖励，参见 Kikopup（Emily Larlham）YouTube 公开教程 \\\"How to teach your dog to stay\\\"\"]}"
+      }
+    ],
+    "content_issues": [
+      {
+        "id": "biting_hands",
+        "version": "v1.2",
+        "json": "{\"id\":\"biting_hands\",\"name\":\"咬手 / 啃人\",\"category\":\"puppy_behavior\",\"typical_age_weeks\":[8,24],\"diagnosis_tree\":[{\"q\":\"狗通常在什么时候咬人？\",\"options\":[{\"text\":\"玩耍或兴奋的时候\",\"next\":1},{\"text\":\"被摸到某个部位的时候\",\"next\":2},{\"text\":\"几乎任何时候都咬\",\"next\":1}]},{\"q\":\"咬的力度怎么样？\",\"options\":[{\"text\":\"轻咬、含着，没有破皮\",\"result\":\"play_biting\"},{\"text\":\"用力咬，有破皮或淤青\",\"result\":\"hard_biting\"}]},{\"q\":\"被摸哪里会咬？\",\"options\":[{\"text\":\"爪子、耳朵、嘴巴、尾巴\",\"result\":\"handling_sensitivity\"},{\"text\":\"没有固定部位，摸哪都可能\",\"result\":\"play_biting\"}]}],\"solutions\":{\"play_biting\":{\"summary\":\"幼犬 8-24 周正在换牙，用嘴探索和玩耍是正常行为。重点不是禁止咬，而是教它控制力度，并学会把嘴转移到玩具上。\",\"skills\":[\"bite_inhibition\",\"redirect_to_toy\",\"calm_settle\"],\"management\":[\"准备至少 3 种不同材质的磨牙玩具（橡胶、绳结、冷冻毛巾），轮换使用。\",\"牙齿碰到皮肤时立刻停止一切互动，把手收回、转身 10 秒，然后再回来。\",\"兴奋到失控时结束游戏，放进围栏或航空箱安静 2-3 分钟，不是惩罚，是降温。\",\"家里所有人规则一致，任何人都不能用手逗狗玩咬手游戏。\",\"保证每天足够的睡眠，幼犬困的时候咬得最凶。\"],\"escalate_if\":\"持续练习 4 周没有改善，或开始出现低吼、龇牙、咬了不松口。\"},\"hard_biting\":{\"summary\":\"用力到破皮的咬合超出了幼犬正常探索范围，可能是过度兴奋、缺乏咬合抑制训练，也可能是恐惧或疼痛引起。先排除身体原因，再从管理入手。\",\"skills\":[\"bite_inhibition\",\"calm_settle\",\"handling_body\"],\"management\":[\"先带去兽医检查是否有口腔、换牙疼痛或其他不适。\",\"暂停所有用手的游戏，改用长玩具或拉绳保持距离。\",\"被咬时不喊叫不挣扎，手静止不动，等它松口后立刻离开 30 秒。\",\"记录每次用力咬发生的时间、前后发生了什么，带给训犬师看。\"],\"escalate_if\":\"任何一次破皮咬合后都建议尽快咨询专业训犬师；如伴随低吼、僵硬、护食，立即咨询。\"},\"handling_sensitivity\":{\"summary\":\"狗对特定部位被碰触敏感，咬是它表达\\\"不要碰\\\"的方式。需要做触摸脱敏，让它把被碰触和好事联系起来。\",\"skills\":[\"handling_body\",\"marker_intro\"],\"management\":[\"暂时避免碰触敏感部位，尤其不要强行剪指甲、掏耳朵。\",\"从它能接受的距离开始，碰一下给零食，逐步靠近敏感部位。\",\"如果该部位近期有受伤、发炎或刚做过处理，先让兽医看。\"],\"escalate_if\":\"碰触时出现僵硬、龇牙、低吼，或该部位可能有伤痛，先就医再训练。\"}},\"sources\":[\"咬合抑制与转移训练参考 Ian Dunbar 幼犬社会化方法及 AKC 幼犬行为公开资料\"]}"
+      },
+      {
+        "id": "chewing_furniture",
+        "version": "v1.2",
+        "json": "{\"id\":\"chewing_furniture\",\"name\":\"啃家具 / 鞋子\",\"category\":\"house\",\"typical_age_weeks\":[10,32],\"diagnosis_tree\":[{\"q\":\"它一般什么时候啃？\",\"options\":[{\"text\":\"你在家、它醒着的时候就啃\",\"next\":1},{\"text\":\"主要是你不在家或没盯着的时候\",\"next\":2},{\"text\":\"什么时候都啃，感觉嘴停不下来\",\"next\":1}]},{\"q\":\"现在多大？\",\"options\":[{\"text\":\"3-7 个月，正在换牙\",\"result\":\"teething_chewing\"},{\"text\":\"7 个月以上，牙早换完了\",\"next\":3}]},{\"q\":\"你回家时它什么样？\",\"options\":[{\"text\":\"东西啃坏了，但它本身挺正常\",\"result\":\"unsupervised_chewing\"},{\"text\":\"除了啃东西，还有刨门、乱尿、流口水、一直哭叫\",\"result\":\"anxiety_chewing\"}]},{\"q\":\"它每天的活动量和互动大概是？\",\"options\":[{\"text\":\"每天有出门遛、有玩游戏、有训练\",\"result\":\"teething_chewing\"},{\"text\":\"基本在家待着，遛得少，大部分时间没人陪\",\"result\":\"boredom_chewing\"}]}],\"solutions\":{\"teething_chewing\":{\"summary\":\"3-7 个月是换牙期，牙龈又痒又疼，啃东西是它缓解不适的方式，啃什么全凭顺手。换完牙的狗如果活动量够还是爱啃，多半是嘴闲不住的习惯，处理方式一样。不用阻止它啃，要做的是让它啃该啃的，并且让不该啃的够不着。\",\"skills\":[\"redirect_to_toy\",\"crate_intro\",\"calm_settle\"],\"management\":[\"鞋子、充电线、遥控器收进柜子或抬高，桌腿、沙发角可以用苦味喷剂（宠物专用），先在小块试一下不掉色。\",\"准备 5-6 个不同硬度的啃咬玩具，每天只放 2-3 个，轮换着给，它会觉得一直有新的。\",\"换牙期准备几个冷冻的：湿毛巾拧成绳冻一下、冻过的胡萝卜条，凉的能缓解牙龈不适。\",\"看到它嘴凑向家具，别喊，拿玩具过去递到嘴边，它接了就夸。做到了几次之后它会自己找玩具。\",\"没人盯着的时候放围栏或笼子里，里面放一个塞了食物的啃咬玩具。\"],\"escalate_if\":\"换牙期过了（8 个月后）还严重啃，或者啃的时候牙龈出血很多、不吃硬的东西、拒绝啃任何玩具，先去看兽医检查口腔。\"},\"unsupervised_chewing\":{\"summary\":\"它只在没人管的时候啃，因为那时候没人告诉它什么能啃，而家具啃起来又确实挺爽。这是管理问题：先把自由活动的范围管住，等它养成\\\"只啃玩具\\\"的习惯再慢慢放开。\",\"skills\":[\"crate_intro\",\"redirect_to_toy\",\"alone_time\"],\"management\":[\"出门或忙的时候把它放进围栏、笼子或一个收拾干净的小房间，里面只留它能啃的东西。\",\"每次出门给一个漏食玩具或冻过的塞食 Kong，让它有事做。\",\"在家时每周做几次\\\"自由活动试验\\\"：放它出来 10 分钟，你在旁边假装忙，它只啃玩具就夸，啃家具就递玩具。没问题了再慢慢加时间。\",\"回家发现东西被啃了，什么都别说，安静收拾。事后的责备它完全对不上号，只会学会\\\"主人回家时要害怕\\\"。\",\"全家统一：出门前谁最后走谁负责把它安置好，别出现\\\"以为别人关了\\\"的情况。\"],\"escalate_if\":\"管理到位 4 周后，一放出来就立刻啃，完全不碰玩具；或者开始啃墙、啃门框、吞下碎片，找训犬师，吞了东西先看兽医。\"},\"boredom_chewing\":{\"summary\":\"牙换完了还一直啃，大多是精力没地方用，嘴闲不住。幼犬一天需要的活动和脑力游戏远比很多人以为的多，没得干就自己找乐子，家具就是乐子。\",\"skills\":[\"redirect_to_toy\",\"name_response\",\"sit\",\"calm_settle\"],\"management\":[\"每天至少两次出门，不只是上厕所，要让它慢慢闻、走够。嗅闻比快走更累。\",\"把一餐狗粮改用漏食玩具、嗅闻垫或撒在草地上让它找，吃饭就是脑力活动。\",\"每天 2-3 次、每次 5 分钟的小训练（坐下、名字、趴着），训完它会比跑半小时还累。\",\"啃咬玩具轮换，每天换 2-3 个，一直摆着同一个很快就没意思了。\",\"想啃家具时拿玩具换，接了就夸，然后一起玩一会儿，让它知道找玩具不只是有东西啃，还能换来陪玩。\"],\"escalate_if\":\"活动量明显提高 3-4 周后仍然每天啃坏东西，或者啃的目标转向墙面、地板、自己的尾巴和爪子，找训犬师，啃自己的话先看兽医。\"},\"anxiety_chewing\":{\"summary\":\"啃东西加上刨门、乱尿、流口水、长时间哭叫，这不是无聊，是它一个人待着时在恐慌，啃是它发泄压力的方式。这种情况要当成分离焦虑处理，不是当成拆家。\",\"skills\":[\"crate_intro\",\"alone_time\",\"calm_settle\"],\"management\":[\"先去看兽医排除身体不适，顺便和兽医聊目前的情况。\",\"最近几周尽量别让它独自在家：找人照看、带它上班或用日托，每次恐慌都会加重问题。\",\"装一个摄像头，记录你出门后多久开始啃、同时还做了什么，这些对训犬师很重要。\",\"如果它在笼子里更慌、啃笼门，就别关笼子，改用封闭房间加围栏，把危险的东西拿走。\",\"回家不要说它，被啃坏的东西安静收走，它当时是害怕不是捣蛋。\"],\"escalate_if\":\"这条本身就是升级：先就医排除身体原因，然后尽快找有分离焦虑经验的训犬师或行为咨询师。如果它啃到牙齿、嘴、爪子受伤，立即就医。\"}},\"sources\":[\"幼犬啃咬管理参考 ASPCA 破坏性啃咬公开资料及 AKC 幼犬换牙期公开指南\",\"分离焦虑相关啃咬的识别参考 Malena DeMartini《Treating Separation Anxiety in Dogs》\"]}"
+      },
+      {
+        "id": "excessive_barking",
+        "version": "v1.2",
+        "json": "{\"id\":\"excessive_barking\",\"name\":\"乱叫\",\"category\":\"puppy_behavior\",\"typical_age_weeks\":[12,52],\"diagnosis_tree\":[{\"q\":\"它主要在什么情况下叫？\",\"options\":[{\"text\":\"对着你叫，想要零食、想玩、想被放出来，或者没事干就叫\",\"result\":\"demand_barking\"},{\"text\":\"听到门外有声音、看到窗外有人有狗就叫\",\"next\":1},{\"text\":\"你不在家或不在它身边的时候叫\",\"result\":\"alone_barking\"}]},{\"q\":\"叫了之后它能停下来吗？\",\"options\":[{\"text\":\"叫几声就停，声音走了它也就算了\",\"result\":\"alert_barking\"},{\"text\":\"停不下来，越叫越激动，还会扑门扑窗\",\"next\":2}]},{\"q\":\"叫的时候身体是什么状态？\",\"options\":[{\"text\":\"尾巴摇、来回跑，像在兴奋\",\"result\":\"alert_barking\"},{\"text\":\"炸毛、身体绷紧、低吼，或者夹着尾巴往后退\",\"result\":\"fearful_barking\"}]}],\"solutions\":{\"demand_barking\":{\"summary\":\"它学会了\\\"叫 = 能得到想要的\\\"，哪怕你只是看它一眼、说一句\\\"别叫\\\"也算回应。再加上幼犬精力旺盛，没地方用就靠叫来找事。要让它发现安静才有用，教它一个替代行为，同时把精力花掉。\",\"skills\":[\"sit\",\"down\",\"redirect_to_toy\",\"calm_settle\"],\"management\":[\"它为了要东西而叫的时候，转身、不看、不说话，等它安静 2-3 秒再给它想要的。\",\"刚开始它会叫得更凶（\\\"以前这招管用啊\\\"），这是正常的，这时候最不能妥协，家里每个人规则要一致。\",\"在它还没开始叫之前主动给，比如坐下了就给零食，让它学会安静坐着比叫管用。\",\"每天至少两次带出门走走闻闻，用漏食玩具、嗅闻垫喂饭，一顿饭能让它忙 15-20 分钟。\",\"它安静趴着的时候悄悄过去放一颗零食，它会慢慢发现安静也有好处。\"],\"escalate_if\":\"坚持 3-4 周后叫得比之前更频繁，叫的同时开始咬人、扑人，或者出现转圈、咬尾巴这类反复动作，咨询训犬师。\"},\"alert_barking\":{\"summary\":\"听到动静叫几声是狗的天性，不用也不可能完全禁止。目标是叫两声就能停下来看你，而不是一直叫。方法是让它把\\\"外面有动静\\\"和\\\"看主人有零食\\\"连起来。\",\"skills\":[\"name_response\",\"marker_intro\",\"calm_settle\"],\"management\":[\"听到它叫，先说一声\\\"谢谢\\\"或\\\"知道了\\\"，然后叫名字，它回头就给零食。\",\"用磨砂贴膜或者拉上窗帘下半截，让它看不到窗外来来往往的人和狗。\",\"它常趴的地方别放在门口或窗边，换到离门远一点的角落。\",\"门铃声、敲门声可以用手机录下来小声放，放的同时给零食，慢慢把音量调大。\",\"不要跟着它一起喊\\\"别叫\\\"，在它听来这是你也在叫。\"],\"escalate_if\":\"练习 4 周后叫的时间反而变长，或者一有动静就扑门撞门、叫到嗓子哑，咨询训犬师。\"},\"fearful_barking\":{\"summary\":\"又炸毛又后退地叫，说明它是害怕，叫是在\\\"吓退\\\"让它不安的东西。这种情况不能让它硬扛，要给它足够的距离，让它在看到或听到刺激时还能冷静下来吃零食。\",\"skills\":[\"name_response\",\"crate_intro\",\"calm_settle\"],\"management\":[\"给它一个能躲的地方（航空箱或角落的垫子），害怕的时候能自己过去待着，没人打扰。\",\"暂时减少刺激：拉上窗帘、关上通往门口的房门，让它每天被吓到的次数降下来。\",\"它看到或听到刺激但还没叫的时候，就给零食，叫起来了就带它走开，不骂它。\",\"不要让陌生人直接靠近摸它，让人站着不动，它自己愿意凑过去再说。\",\"出门选安静的时段和路线，不要带它去人多狗多的地方\\\"锻炼胆子\\\"。\"],\"escalate_if\":\"每次刺激都会叫到停不下来、躲起来发抖，或者有扑咬人的动作，立即停止自行训练，咨询专业训犬师。\"},\"alone_barking\":{\"summary\":\"你不在的时候叫，这不是\\\"乱叫\\\"，是分离焦虑或者还没学会一个人待着。处理方式和其他乱叫完全不一样，重点是练独处而不是练安静。建议同时看\\\"独处时哭叫\\\"这个条目，那里有更完整的方案。\",\"skills\":[\"crate_intro\",\"alone_time\",\"calm_settle\"],\"management\":[\"先在家里装个摄像头，看看你走后它是几分钟开始叫、叫多久，这决定了练习从几分钟开始。\",\"从你在家的时候开始练，它在围栏里你在隔壁房间待 1 分钟就回来，慢慢加长。\",\"出门和回家都不要搞得很隆重，走的时候不告别，回来先不理它，等它平静了再打招呼。\",\"出门前给一个塞了食物的漏食玩具，让离开和好事绑在一起。\",\"练习期间尽量不要让它独自待超过它目前能承受的时间，请人来看或者送去寄养一段时间都可以。\"],\"escalate_if\":\"一个人待的时候叫到嗓子哑、拉尿、咬坏笼子或者有自残（咬爪子出血），不要再把它单独留在家，咨询专业训犬师。\"}},\"sources\":[\"吠叫分类与处理参考 Patricia McConnell《The Bark Stops Here》及 ASPCA \\\"Barking\\\" 公开资料；独处部分参考 Malena DeMartini 分离焦虑训练方法\"]}"
+      },
+      {
+        "id": "jumping_on_people",
+        "version": "v1.2",
+        "json": "{\"id\":\"jumping_on_people\",\"name\":\"扑人\",\"category\":\"puppy_behavior\",\"typical_age_weeks\":[12,40],\"diagnosis_tree\":[{\"q\":\"它主要扑谁？\",\"options\":[{\"text\":\"主要扑家里人，比如回家的时候\",\"next\":1},{\"text\":\"主要扑客人或路上的陌生人\",\"next\":2},{\"text\":\"谁都扑，随时随地\",\"next\":1}]},{\"q\":\"扑的时候是什么样？\",\"options\":[{\"text\":\"尾巴狂摇、嗷嗷叫、整个很兴奋\",\"result\":\"greeting_jumping\"},{\"text\":\"你手里有吃的或玩具它才扑\",\"result\":\"demand_jumping\"},{\"text\":\"你坐着或走路时也会扑、用嘴叼衣服\",\"result\":\"demand_jumping\"}]},{\"q\":\"扑陌生人的时候，它看起来？\",\"options\":[{\"text\":\"很兴奋、想玩，被摸了更起劲\",\"result\":\"greeting_jumping\"},{\"text\":\"毛竖着、叫声紧张，或者扑完就躲\",\"result\":\"fearful_jumping\"}]}],\"solutions\":{\"greeting_jumping\":{\"summary\":\"扑人是幼犬想靠近你的脸打招呼，而且每次扑了都有人摸它、看它、说话，这都是奖励。方法是让\\\"四脚着地\\\"或\\\"坐下\\\"才能得到关注，扑了反而什么都得不到。\",\"skills\":[\"sit\",\"stay_short\",\"calm_settle\"],\"management\":[\"它扑上来时转身、抱手、不看不说，脚一落地就马上转回来摸它。要快，别等它再扑第二次。\",\"回家先不打招呼，放下东西、换鞋，等它安静了再蹲下来摸。狗越兴奋越要平淡。\",\"进门前先在门外准备几粒零食，一开门就丢在地上，让它低头捡而不是往上跳。\",\"来客人前先把它牵好或放围栏，等客人坐下、它平静了再放出来打招呼。\",\"全家和常来的朋友规则一致：只要它四脚着地或坐下就能摸，扑了就谁也不理。只要有一个人扑了也摸，前面全白练。\"],\"escalate_if\":\"一致执行 4 周没改善，或者扑的时候开始用嘴叼、咬手臂衣服很用力，或者家里有老人小孩被扑倒过，找训犬师。\"},\"demand_jumping\":{\"summary\":\"它已经学会\\\"扑一下就有东西\\\"：扑你手里的零食、扑你要你陪玩、扑了你就跟它说话。这不是打招呼，是要东西。要让它知道，坐下安静才会有，扑了反而什么都没有。\",\"skills\":[\"sit\",\"stay_short\",\"down\",\"calm_settle\"],\"management\":[\"零食和玩具举高不算，狗会跳得更高。改成握在手里放在胸前不动，等它四脚着地或坐下再给。\",\"它扑上来要东西时站起来走开 10 秒，再回来给它一个\\\"坐下\\\"的机会。\",\"每天固定几次主动给它关注和游戏，别让它只能靠扑来争取。\",\"你吃饭、办公时让它在垫子上趴着，提前给个啃咬玩具，不要等它扑了再给。\",\"家里所有人都要做到\\\"扑了不给\\\"，包括零食、玩具、说话、眼神。\"],\"escalate_if\":\"3-4 周没改善，或者不给就开始叫、咬裤腿、推撞得越来越用力，找训犬师。\"},\"fearful_jumping\":{\"summary\":\"有些狗紧张时也会扑人，看起来像热情，其实是不知道该怎么办。这种扑人不能用\\\"不理它\\\"处理，重点是别让它在压力下硬撑，先减少让它紧张的场面，再慢慢建立信心。\",\"skills\":[\"name_response\",\"sit\",\"calm_settle\"],\"management\":[\"遇到陌生人时先保持距离，让它在不紧张的距离看一看、闻一闻，给零食，然后走开。不要强迫它被摸。\",\"跟陌生人说\\\"请不要摸它、不要看它\\\",让它自己决定要不要靠近。\",\"牵绳别拉紧，拉紧会让它更紧张；用名字把它叫回你身边，给零食，坐下。\",\"社交场合控制时长，每次 5-10 分钟，它还没累就结束。\",\"记录哪些人、哪些场景会让它这样，一般有规律（高个男性、戴帽子、小孩跑动等），训练时从最容易的开始。\"],\"escalate_if\":\"扑人时伴随低吼、龇牙、咬衣服，或者在陌生人靠近时明显发抖、躲藏，尽快找训犬师做社会化评估，别自己硬练。\"}},\"sources\":[\"扑人处理参考 AKC 幼犬扑人公开指南及 Karen Pryor Academy 正向训练公开资料\",\"紧张型扑人的识别参考 ASPCA 犬类肢体语言公开资料\"]}"
+      },
+      {
+        "id": "leash_pulling",
+        "version": "v1.2",
+        "json": "{\"id\":\"leash_pulling\",\"name\":\"牵绳暴冲\",\"category\":\"puppy_behavior\",\"typical_age_weeks\":[16,52],\"diagnosis_tree\":[{\"q\":\"牵绳出门的时候，主要是哪种情况？\",\"options\":[{\"text\":\"还没习惯牵绳：原地不动、咬绳子、往后缩\",\"result\":\"leash_not_accepted\"},{\"text\":\"从出门到回家一路都在往前拉\",\"next\":1},{\"text\":\"平时还行，看到特定东西才突然冲\",\"next\":2}]},{\"q\":\"在家里或小区安静的角落，它能不能跟着你走几步不拉？\",\"options\":[{\"text\":\"可以，一到热闹的地方就不行\",\"result\":\"pulling_distractions\"},{\"text\":\"不行，哪里都拉\",\"result\":\"pulling_untrained\"}]},{\"q\":\"看到什么会冲？\",\"options\":[{\"text\":\"别的狗、猫、鸟，想追或想去玩\",\"next\":3},{\"text\":\"熟人、小孩，想去打招呼\",\"result\":\"pulling_distractions\"}]},{\"q\":\"冲的时候有没有吠叫、炸毛、低吼？\",\"options\":[{\"text\":\"没有，就是兴奋地拽\",\"result\":\"pulling_distractions\"},{\"text\":\"有，叫得很凶，或者身体绷得很紧\",\"result\":\"lunging_reactivity\"}]}],\"solutions\":{\"leash_not_accepted\":{\"summary\":\"狗还没把牵绳当成正常的东西，脖子上多了个东西、后面还有人拉着，它会不舒服或者害怕。这个阶段不用练走路，先让它觉得戴绳子等于有好事。\",\"skills\":[\"name_response\",\"lure_follow\",\"leash_intro\"],\"management\":[\"先在家里戴项圈或胸背，戴上就给零食，戴 5 分钟摘掉，每天多来几次。\",\"绳子扣上之后先不牵，让它拖着绳子在家里走，你在旁边撒零食。\",\"它咬绳子时不拉扯，手里拿玩具换掉绳子，或者把绳子换成它不爱咬的材质。\",\"第一次出门选安静时段、离家门口不超过 50 米，走几步就回家，不要一上来就遛半小时。\",\"它停下不走时别硬拽，蹲下来叫名字，走过来了就给零食。\"],\"escalate_if\":\"戴绳 2 周后还是极度抗拒（尖叫、瘫倒、拼命挣脱），或者出门就发抖、夹尾巴不动，建议咨询专业训犬师做脱敏方案。\"},\"pulling_untrained\":{\"summary\":\"狗拉绳是因为拉了就能到想去的地方，这是它学会的。要让它明白松绳才能往前走、拉紧就哪也去不了。这需要时间，16 周以后才建议正式练松绳行走。\",\"skills\":[\"name_response\",\"leash_intro\",\"loose_leash\"],\"management\":[\"给它换一条 1.5-2 米的固定长度绳子，不要用伸缩绳，伸缩绳每次都在奖励拉扯。\",\"绳子拉紧就停下站着不动，绳子一松或它回头看你，马上说\\\"好\\\"然后继续走。\",\"出门前先在家里消耗一点精力（玩 5 分钟找零食游戏），不要在它最兴奋的时候练。\",\"正式练习每次只走 5-10 分钟，先在楼道、小区内这种安静环境，再去马路。\",\"需要赶时间或者带它去放风的时候，用胸背 + 长绳明确告诉自己\\\"这段不练\\\"，和练习时间分开。\"],\"escalate_if\":\"系统练习 6 周后在安静环境里还是完全拉不住，或者拉绳时经常把人拽倒、绳子勒到它咳嗽，建议找训犬师当面看一下。\"},\"pulling_distractions\":{\"summary\":\"它在安静环境已经会松绳走了，问题是一有吸引它的东西就什么都忘了。重点是把\\\"看到有意思的东西先看主人\\\"练成习惯，并控制好距离，别一上来就在最难的场景练。\",\"skills\":[\"name_response\",\"sit\",\"loose_leash\"],\"management\":[\"看到它感兴趣的东西（狗、人、鸟）时，在它还没开始冲之前就叫名字，回头就给高价值零食。\",\"保持它还能听你话的距离，远远看到狗就先停下或绕开，等它能看着你再慢慢缩短距离。\",\"带特别好吃的零食（鸡肉、奶酪）专门用在有干扰的场合，平时在家不给。\",\"让它想去打招呼的时候，先坐下、绳子松了才带它过去，去打招呼本身就是奖励。\",\"一周里安排 2-3 次\\\"干扰练习\\\"，专门去公园边上远远地练，其他时间走它熟悉的安静路线。\"],\"escalate_if\":\"看到别的狗时越来越激动、开始吠叫或低吼，或者有一次冲过去和别的狗打起来，不要再自己练接近，咨询专业训犬师。\"},\"lunging_reactivity\":{\"summary\":\"冲的同时又叫又炸毛，说明它不只是兴奋，而是紧张、害怕或过度刺激。这种情况硬拉或者强行靠近会让它更糟。现阶段目标不是\\\"不冲\\\"，而是给它足够的距离，让它在看到刺激时还能保持冷静。\",\"skills\":[\"name_response\",\"loose_leash\",\"calm_settle\"],\"management\":[\"找到它的\\\"安全距离\\\"：在这个距离看到狗它还能吃零食、能回头看你，以后遛狗都尽量保持在这个距离以外。\",\"遇到避不开的狗，直接转身走开或躲到车后、树后，不要让它正面对着。\",\"换成安静的时段和路线遛狗（清早、小路），先减少每天被刺激的次数。\",\"每次它看到狗但没叫，马上给零食；叫了就带它走远，不骂它，它不是故意的。\",\"用胸背不用项圈或 P 链，避免冲的时候勒到脖子，把疼痛和看见狗联系起来。\"],\"escalate_if\":\"每次出门都会爆发、在安全距离也无法吃零食，或者有咬人、咬狗的情况，立即停止自己练接近，咨询专业训犬师。\"}},\"sources\":[\"松绳行走方法参考 Grisha Stewart《BAT 2.0》关于牵绳反应性的距离管理，以及 AKC \\\"Loose Leash Walking\\\" 公开指南\"]}"
+      },
+      {
+        "id": "not_coming",
+        "version": "v1.2",
+        "json": "{\"id\":\"not_coming\",\"name\":\"叫不回来\",\"category\":\"puppy_behavior\",\"typical_age_weeks\":[12,52],\"diagnosis_tree\":[{\"q\":\"在家里、没什么干扰的时候叫它，它会过来吗？\",\"options\":[{\"text\":\"在家叫名字也经常不理\",\"next\":1},{\"text\":\"在家会来，出门就不行\",\"next\":2}]},{\"q\":\"它叫名字时会看你一眼吗？\",\"options\":[{\"text\":\"基本不看，像没听见\",\"result\":\"name_not_learned\"},{\"text\":\"会看，但是不过来\",\"result\":\"recall_foundation\"}]},{\"q\":\"出门叫不回来时，通常它在干什么？\",\"options\":[{\"text\":\"跟别的狗玩、追东西、闻来闻去，太投入了\",\"next\":3},{\"text\":\"看到你就躲，或者绕着不让你抓\",\"result\":\"recall_avoidance\"}]},{\"q\":\"出门时它用的是什么绳？\",\"options\":[{\"text\":\"基本放开跑，或者用伸缩绳\",\"result\":\"recall_avoidance\"},{\"text\":\"用长绳或普通牵引绳\",\"result\":\"recall_distraction\"}]}],\"solutions\":{\"name_not_learned\":{\"summary\":\"狗叫不回来，很多时候是连名字都没真正学会。它不知道名字意味着\\\"看主人有好事\\\"。先把名字和零食绑在一起，这是所有召回的起点。\",\"skills\":[\"name_response\",\"marker_intro\",\"recall_indoor\"],\"management\":[\"每天 10 次以上：叫一次名字，它一回头就说\\\"好\\\"给零食，不管它在干嘛。\",\"名字只在有好事时叫，训它、带它去洗澡、剪指甲的时候不叫名字，直接走过去。\",\"一次只叫一遍，不要\\\"豆豆豆豆豆豆\\\"连着喊，喊多了名字就成背景音了。\",\"家里所有人用同一个名字，不要一会儿大名一会儿小名。\",\"先在家里安静的时候练，练熟了再在它玩的时候试。\"],\"escalate_if\":\"练习 3 周后在家叫名字仍然完全没反应，先带去兽医检查听力，再考虑找训犬师。\"},\"recall_foundation\":{\"summary\":\"它知道名字，但是\\\"过来\\\"对它来说不够值得。召回要变成它一辈子最喜欢的游戏，过来永远有好事，从来不会被抓住然后结束。\",\"skills\":[\"name_response\",\"recall_indoor\",\"stay_short\"],\"management\":[\"每次它过来都给最好吃的零食或者玩一会儿，比平时的奖励高一个档次。\",\"它过来后摸一下项圈再给零食，让它习惯\\\"过来 = 被碰一下 = 有好吃的\\\"。\",\"绝对不在召回之后做它不喜欢的事（洗澡、关笼子、结束玩耍），要做这些的时候走过去牵它。\",\"在家里两个人隔着房间轮流叫它，跑过来就奖励，一天玩 5 分钟。\",\"召回词只用一个（比如\\\"来\\\"或者\\\"过来\\\"），叫了就一定要让它过来，叫不动就走过去带它，不要叫第二遍。\"],\"escalate_if\":\"系统练习 4 周后，在家没有干扰的情况下还是 10 次里不到 5 次能过来，找训犬师当面看看是哪里出了问题。\"},\"recall_distraction\":{\"summary\":\"它在家能回来，说明基础有了，问题是户外的干扰太大。户外召回要从低干扰、短距离、拴长绳开始，一步一步加难度，不能直接放开。\",\"skills\":[\"recall_indoor\",\"stay_short\",\"recall_outdoor\"],\"management\":[\"户外一律用 5-10 米长绳练，叫不动的时候可以轻轻收绳，不让它学会\\\"不来也没事\\\"。\",\"先在它不太感兴趣的地方练（小区空地），每次它在闻东西但不是特别投入时叫。\",\"带比平时好得多的零食，户外召回用鸡肉、奶酪，不用平时的狗粮。\",\"和别的狗玩的时候，中途叫回来给零食然后放它回去接着玩，让它知道回来不等于结束。\",\"每次出门召回 3-5 次就够了，次数多了它会烦，次数少每次都是惊喜。\"],\"escalate_if\":\"长绳练习 6 周后，在小区这种低干扰环境还是叫不回来，或者曾经挣脱跑到马路上，不要再放开，咨询训犬师。\"},\"recall_avoidance\":{\"summary\":\"它看到你过来就躲，说明在它的经验里\\\"被抓住\\\"是坏事，可能以前被抓住之后就回家了、被训了或者被拉走了。这个要从修复信任开始，并且在它重新信任之前不能再放开。\",\"skills\":[\"name_response\",\"recall_indoor\",\"recall_outdoor\"],\"management\":[\"从现在开始户外只用长绳，不再放开，也不再追着它跑，追它就变成游戏了。\",\"它靠近你的时候你蹲下、侧身、不看着它，手里拿零食摊开，等它自己过来。\",\"它过来后不要马上扣绳子，先给零食、摸一下、再放它走，十次里有七八次都这样。\",\"每次遛狗结束前，先叫回来给零食玩一会儿，再扣绳回家，不要一叫回来就回家。\",\"回家路上也随时给零食，让\\\"跟主人回家\\\"也变成好事。\"],\"escalate_if\":\"它在家也开始躲着你，或者碰它的时候僵硬、低吼，不要硬抓，咨询专业训犬师。\"}},\"sources\":[\"召回训练方法参考 Pippa Mattinson《Total Recall》与 AKC \\\"Teaching Your Dog to Come When Called\\\" 公开指南\"]}"
+      },
+      {
+        "id": "potty_accidents",
+        "version": "v1.2",
+        "json": "{\"id\":\"potty_accidents\",\"name\":\"室内乱尿\",\"category\":\"house\",\"typical_age_weeks\":[8,20],\"diagnosis_tree\":[{\"q\":\"乱尿通常是什么情况？\",\"options\":[{\"text\":\"没什么规律，家里各处都可能尿\",\"next\":1},{\"text\":\"见到人、被摸、被说的时候漏一点\",\"next\":2},{\"text\":\"总是在固定几个地方（旧地毯、门口、尿垫旁边）\",\"next\":3}]},{\"q\":\"最近有没有这些情况：尿得很频繁、每次只尿一点点、尿里带血或颜色不对、喝水明显变多？\",\"options\":[{\"text\":\"有其中任何一个\",\"result\":\"rule_out_medical\"},{\"text\":\"都没有，吃喝精神都正常\",\"result\":\"house_training_reset\"}]},{\"q\":\"漏尿的时候狗是什么样？\",\"options\":[{\"text\":\"扭着身子、尾巴狂摇、整个很兴奋\",\"result\":\"excitement_urination\"},{\"text\":\"缩着、耳朵往后贴、翻肚皮\",\"result\":\"excitement_urination\"},{\"text\":\"不只是互动的时候，躺着、走着也会漏\",\"result\":\"rule_out_medical\"}]},{\"q\":\"那个固定的地方是？\",\"options\":[{\"text\":\"之前尿过的地方，反复尿同一处\",\"result\":\"house_training_reset\"},{\"text\":\"尿垫旁边、门口，离\\\"正确位置\\\"就差一点\",\"result\":\"pad_confusion\"}]}],\"solutions\":{\"house_training_reset\":{\"summary\":\"8-20 周的幼犬膀胱小、憋不住，\\\"随处尿\\\"基本都是定点训练还没建立，不是它故意的。核心就三件事：带得够勤、看得够紧、尿对了立刻奖励。如果它总回同一个地方尿，多半是那里的气味没清干净，先用含酶清洁剂彻底处理。\",\"skills\":[\"potty_training\",\"crate_intro\"],\"management\":[\"按固定时间带去尿点：睡醒、吃完饭后 10-15 分钟、玩完、以及中间每 1-2 小时一次。年龄每大一个月，可以多撑一小时。\",\"没人能盯着的时候，放进围栏或航空箱，别让它在家里自由活动。狗一般不会在自己睡觉的地方尿。\",\"在尿点尿完的 3 秒内给零食和夸奖，等回了屋再给就没用了。\",\"尿错地方用含酶的宠物专用清洁剂彻底清理，普通清洁剂和消毒水去不掉气味，它闻到还会回去尿。\",\"全家用同一个尿点、同一个口令、同一个作息表，贴在冰箱上，谁带都一样。\"],\"escalate_if\":\"严格按时间表带 3 周还没有任何进步，或者本来已经学会了又突然倒退，先去看兽医排除泌尿问题，再找训犬师。\"},\"pad_confusion\":{\"summary\":\"尿在尿垫旁边、门口，说明它已经知道\\\"大概要去那儿\\\"，只是位置概念还不精确。这一步离成功很近，稍微调整环境就行。\",\"skills\":[\"potty_training\"],\"management\":[\"把尿垫范围临时扩大：铺 2-3 张拼在一起，或用带围边的尿盆，等它稳定命中后再一张张撤。\",\"尿垫别频繁挪位置，固定一处至少两周；如果以后想改成户外，每天挪 20-30 厘米慢慢往门口移。\",\"尿垫上留一小块它尿过的（别全换新），气味能帮它定位。\",\"它走到尿垫附近开始转圈、嗅地，就把它引到垫子正中间，尿对了立刻奖励。\",\"门口总是尿，很可能是它想出去但你没发现，试着在门口挂个铃铛教它碰铃。\"],\"escalate_if\":\"调整环境 2-3 周后命中率没提高，或者开始出现尿频、尿量很少的情况，先去看兽医排除。\"},\"excitement_urination\":{\"summary\":\"幼犬在太兴奋或有点害怕的时候会控制不住漏一点尿，这跟定点训练无关，是情绪问题，大多数狗长大会自然好转。重点是把打招呼变得平淡，别让它过度激动。\",\"skills\":[\"sit\",\"calm_settle\",\"potty_training\"],\"management\":[\"回家、来客人时先不看它、不摸它、不说话，等它平静下来再低声打招呼。\",\"打招呼时蹲下来、侧身、不要从正上方俯身摸头，这个姿势对小狗有压迫感。\",\"漏尿了什么都别说，安静收拾，任何责备都会让它下次更紧张漏得更多。\",\"回家前先把它带到尿点尿空，再进屋互动。\",\"告诉所有家人和客人同样的规矩：\\\"进门先冷淡，平静了才摸\\\"。\"],\"escalate_if\":\"6 个月大以后还经常漏尿，或者漏尿时伴随明显害怕（发抖、躲藏），先去看兽医排除生理原因，再考虑训犬师介入。\"},\"rule_out_medical\":{\"summary\":\"尿频、尿量少、尿里带血、突然喝水变多，这些跟训练没关系，可能是身体不舒服。任何训练都先等兽医看过再说。\",\"skills\":[\"potty_training\"],\"management\":[\"尽快带去看兽医，带上最近一两天的观察记录：尿了几次、每次多少、有没有异常颜色。\",\"就医之前先不要调整训练方式，也不要因为乱尿说它。\",\"多准备几张尿垫铺在它常待的地方，方便它、也方便你观察。\",\"兽医确认没问题后，再回到定点训练的方案。\"],\"escalate_if\":\"这条本身就是升级：先就医排除泌尿或其他身体问题，兽医确认健康后再做训练。\"}},\"sources\":[\"定点训练流程参考 AKC 幼犬如厕训练公开指南及 Ian Dunbar《Before and After Getting Your Puppy》中的围栏管理方法\",\"兴奋 / 服从性漏尿的处理参考 ASPCA 公开行为资料\"]}"
+      },
+      {
+        "id": "resource_guarding",
+        "version": "v1.2",
+        "json": "{\"id\":\"resource_guarding\",\"name\":\"护食 / 护玩具\",\"category\":\"puppy_behavior\",\"typical_age_weeks\":[12,52],\"diagnosis_tree\":[{\"q\":\"它护的是什么？\",\"options\":[{\"text\":\"食物：狗粮、零食、骨头、咬胶\",\"next\":1},{\"text\":\"玩具、捡到的东西（袜子、纸巾、骨头）\",\"next\":2},{\"text\":\"地方或人：沙发、床、笼子，或者护着某个家人\",\"next\":3}]},{\"q\":\"你靠近它吃东西的时候，它有什么反应？\",\"options\":[{\"text\":\"吃得更快、身体挡着碗、眼睛盯着你，但没有出声\",\"result\":\"guarding_early\"},{\"text\":\"僵住不动、低吼、龇牙、或者有过咬人\",\"result\":\"guarding_escalated\"}]},{\"q\":\"你想拿走的时候它怎么样？\",\"options\":[{\"text\":\"叼着跑开、不肯松口，但没有凶你\",\"result\":\"guarding_objects\"},{\"text\":\"僵住、低吼、龇牙，或者有过咬人\",\"result\":\"guarding_escalated\"}]},{\"q\":\"你靠近或想让它下来的时候？\",\"options\":[{\"text\":\"不肯动，但没有低吼或龇牙\",\"result\":\"guarding_early\"},{\"text\":\"僵住、低吼、龇牙，或者有过咬人\",\"result\":\"guarding_escalated\"}]}],\"solutions\":{\"guarding_early\":{\"summary\":\"它已经有点紧张\\\"你会拿走我的东西\\\"，但还在用最轻的方式表达。这个阶段最重要的是让它相信\\\"有人靠近 = 好事发生\\\"，而不是去证明\\\"我能拿走\\\"。千万不要为了\\\"立规矩\\\"故意去碰它的碗或者拿走食物，那只会让它更确定你是威胁。\",\"skills\":[\"marker_intro\",\"name_response\",\"handling_body\"],\"management\":[\"它吃饭的时候所有人离远一点，不碰碗、不伸手、不站在旁边看，让它安安静静吃完。\",\"换着吃：它吃狗粮的时候，你从 2 米外走过顺手丢一块比狗粮好吃的零食到碗里然后走开，每天来几次，让它觉得你靠近碗是来加菜的。\",\"多犬家庭分开喂，各自在不同房间或围栏里吃，吃完再放出来。\",\"家里人尤其是小孩，吃饭时间不靠近狗，不逗它、不伸手拿它东西。\",\"想让它从沙发下来时不用手推不用拽，拿零食引导到地上，下来了就给。\"],\"escalate_if\":\"出现身体僵硬、低吼、龇牙中的任何一项，立即停止自行训练，咨询专业训犬师。\"},\"guarding_objects\":{\"summary\":\"它叼着东西跑是因为它学到\\\"被看到 = 东西会没了\\\"。追着抢只会让它跑得更快、护得更紧。目标是教它\\\"松口换更好的\\\"，让交出东西变成一件划算的事。\",\"skills\":[\"marker_intro\",\"redirect_to_toy\",\"lure_follow\"],\"management\":[\"不去拿：它叼着的东西只要不危险（袜子、纸巾），就不追不抢，装作没看见，它觉得没意思就会自己放下。\",\"把家里收干净，袜子、鞋、纸巾放高放好，它捡不到就不需要护。\",\"用更好的换：它叼着东西时你拿着零食坐在一边，它过来松口吃零食后再把东西收起来，或者把玩具还给它让它知道交出去还能拿回来。\",\"平时玩玩具时练\\\"换一个\\\"：它咬着 A 玩具，你拿 B 玩具逗它，它松开 A 咬 B 就说\\\"好\\\"，再把 A 还给它。\",\"分开管理：有多只狗或有小孩的家庭，给它特别珍贵的东西（咬胶、骨头）时让它单独在围栏里享用。\"],\"escalate_if\":\"出现身体僵硬、低吼、龇牙中的任何一项，立即停止自行训练，咨询专业训犬师。\"},\"guarding_escalated\":{\"summary\":\"僵住、低吼、龇牙、咬人，这些都是它在明确警告\\\"再靠近我就动手\\\"。这不是自己在家能练的问题，也不是它\\\"坏\\\"，而是它真的很怕失去东西。现在唯一要做的是避免冲突、保证家人安全，然后尽快找专业训犬师。\",\"skills\":[\"marker_intro\",\"handling_body\"],\"management\":[\"立即停止所有拿走食物、碰碗、抢玩具的行为，包括\\\"测试一下它现在还护不护\\\"。\",\"吃饭时把它关在单独房间或围栏里，吃完、碗空了再放它出来，碗在它不在场的时候收。\",\"它正在吃或咬的时候，所有人尤其是小孩保持至少 2 米距离，不靠近、不盯着看。\",\"暂时不给特别珍贵的东西（骨头、牛皮咬胶），减少它需要护的场合。\",\"如果它叼了危险的东西（药、小骨头），用一把好吃的零食撒在远处把它引开，趁它去吃的时候收东西，不要伸手去它嘴里掏。\"],\"escalate_if\":\"这个方案本身就是升级信号：只要出现过僵硬、低吼、龇牙、咬人中的任何一项，立即停止自行训练，咨询专业训犬师。不要等。\"}},\"sources\":[\"护资源处理方法参考 Jean Donaldson《Mine! A Practical Guide to Resource Guarding in Dogs》及 ASPCA \\\"Food Guarding\\\" 公开资料\"]}"
+      },
+      {
+        "id": "separation_crying",
+        "version": "v1.2",
+        "json": "{\"id\":\"separation_crying\",\"name\":\"独处时哭叫\",\"category\":\"anxiety\",\"typical_age_weeks\":[8,24],\"diagnosis_tree\":[{\"q\":\"狗来家里多久了？\",\"options\":[{\"text\":\"不到两周，刚到新家\",\"next\":1},{\"text\":\"已经两周以上\",\"next\":2}]},{\"q\":\"什么时候哭？\",\"options\":[{\"text\":\"主要是晚上睡觉的时候\",\"result\":\"new_home_night_crying\"},{\"text\":\"白天只要一个人待着就哭\",\"result\":\"alone_time_buildup\"}]},{\"q\":\"你出门后它一般怎样？\",\"options\":[{\"text\":\"哭一会儿（10 分钟内）就安静了\",\"result\":\"alone_time_buildup\"},{\"text\":\"一直哭，回来发现流口水、刨门、尿在笼里\",\"next\":3},{\"text\":\"只要你在另一个房间它也哭，人在家也不行\",\"result\":\"alone_time_buildup\"}]},{\"q\":\"它单独待的地方是？\",\"options\":[{\"text\":\"关在航空箱或围栏里\",\"next\":4},{\"text\":\"家里自由活动\",\"result\":\"separation_distress\"}]},{\"q\":\"平时你在家的时候，它愿意自己进笼子待着吗？\",\"options\":[{\"text\":\"不愿意，一进去就叫\",\"result\":\"crate_aversion\"},{\"text\":\"愿意，在家时进笼子没问题\",\"result\":\"separation_distress\"}]}],\"solutions\":{\"new_home_night_crying\":{\"summary\":\"刚离开妈妈和兄弟姐妹的幼犬，头几晚哭是正常的，它从来没有一个人睡过。这阶段不需要\\\"训练\\\"，需要的是让它有安全感，并顺便把笼子变成好地方。\",\"skills\":[\"crate_intro\"],\"management\":[\"头一两周把航空箱或围栏放在你床边，让它看得到、闻得到你，晚上哭了可以把手伸过去让它闻闻。\",\"笼子里放一件带你气味的旧 T 恤、一个有温度的暖水袋（裹好）和一个安全的啃咬玩具。\",\"睡前 1 小时停水，睡前带去尿一次，半夜叫得很急可能真的要尿，安静地带出去尿完再放回，不互动不开灯。\",\"白天多做几次\\\"进笼子吃好吃的\\\"，让它觉得笼子是自己的窝，而不是只有晚上才被关进去。\",\"别因为哭就抱上床，也别因为哭就吼它，前者学会\\\"哭有用\\\"，后者更害怕。安静等它停 3 秒再给关注。\"],\"escalate_if\":\"两周后晚上还是哭超过半小时，或者伴随不吃饭、拉稀、精神差，先去看兽医排除身体不适。\"},\"alone_time_buildup\":{\"summary\":\"狗还没学会\\\"你走了还会回来\\\"，哭是不安，不是故意闹。解决方式是从几秒钟开始练独处，一点点加长，让它积累\\\"一个人待着也没事\\\"的经验。\",\"skills\":[\"crate_intro\",\"alone_time\",\"down\",\"calm_settle\"],\"management\":[\"出门前 30 分钟带它好好活动或做一次嗅闻游戏，累了更容易安静。\",\"离开和回来都平淡处理，不说再见、不激动打招呼，回家后等它安静了再理它。\",\"每次离开给一个只有独处时才有的好东西，比如塞了食物的漏食玩具，回家就收走。\",\"先在家里练：你去另一个房间关门 10 秒再回来，不哭就慢慢加到 1 分钟、5 分钟，再练真的出门。\",\"全家统一：不要有人偷偷溜回去安慰它，也不要有人出门前跟它依依不舍。\"],\"escalate_if\":\"按步骤练 3-4 周，独处时间还没法超过 10 分钟，或者出现自残（咬自己、刨到流血）、不吃不喝，找训犬师，必要时先看兽医。\"},\"crate_aversion\":{\"summary\":\"问题不在独处，在笼子本身。它还没把笼子当成安全的窝，只当成\\\"被关起来的地方\\\"。先把笼子关系修好，再谈独处。\",\"skills\":[\"crate_intro\",\"alone_time\"],\"management\":[\"暂时别把它关进笼子出门，先用围栏或封闭的小房间过渡。\",\"笼子门先一直开着，每天往里丢零食、在里面喂饭，让它自己进出，谁都不许把它推进去。\",\"等它愿意自己进去待着，再练关门：关 2 秒开门给零食，慢慢加时间，你全程在旁边。\",\"笼子别用来\\\"冷静\\\"或作为出错后的去处，它应该只跟好事挂钩。\",\"家里每个人都要知道：笼子门关着的时候它没哭才开门，哭的时候等它停 3 秒再开，不然它学会\\\"哭了就能出来\\\"。\"],\"escalate_if\":\"2-3 周后在家时它仍然一进笼就持续叫，或者关门后出现狂刨、咬笼门到伤到自己，停止使用笼子并咨询训犬师。\"},\"separation_distress\":{\"summary\":\"长时间哭叫加上流口水、刨门、在不该尿的地方尿，说明它独处时是真的恐慌，不是在\\\"闹\\\"。这种情况单靠在家练很难，需要专业帮助，当下先尽量别让它再经历恐慌。\",\"skills\":[\"alone_time\",\"calm_settle\"],\"management\":[\"最近几周尽量别让它单独待着：找人帮忙照看、带它上班、或用日托，每次独自恐慌都会让问题加重。\",\"先去看兽医，排除身体不适，并和兽医聊聊目前的情况。\",\"装一个摄像头，记录你出门后它多久开始哭、哭多久、做了什么，这些记录训犬师会需要。\",\"如果它在笼里更恐慌，就别用笼子，改用封闭房间加围栏。\",\"回家时发现乱尿、东西被刨坏，不要说它，安静收拾，它当时是害怕不是捣乱。\"],\"escalate_if\":\"这条本身就是升级：先就医排除身体原因，然后尽快找有分离焦虑经验的训犬师或行为咨询师，不要自己硬扛。\"}},\"sources\":[\"独处训练与分离焦虑分级参考 ASPCA 分离焦虑公开资料及 Malena DeMartini《Treating Separation Anxiety in Dogs》\",\"幼犬夜间安抚和笼内训练参考 AKC 幼犬第一夜公开指南\"]}"
+      }
+    ],
+    "content_badges": [
+      {
+        "id": "first_step",
+        "version": "v1.2",
+        "json": "{\"id\":\"first_step\",\"name\":\"第一步\",\"icon\":\"badge_first_step.png\",\"condition_type\":\"first_checkin\",\"condition_value\":1,\"description\":\"完成第一次训练打卡\"}"
+      },
+      {
+        "id": "streak_7",
+        "version": "v1.2",
+        "json": "{\"id\":\"streak_7\",\"name\":\"一周不断\",\"icon\":\"badge_streak_7.png\",\"condition_type\":\"streak_days\",\"condition_value\":7,\"description\":\"连续打卡 7 天\"}"
+      },
+      {
+        "id": "streak_30",
+        "version": "v1.2",
+        "json": "{\"id\":\"streak_30\",\"name\":\"月度坚持\",\"icon\":\"badge_streak_30.png\",\"condition_type\":\"streak_days\",\"condition_value\":30,\"description\":\"连续打卡 30 天\"}"
+      },
+      {
+        "id": "streak_100",
+        "version": "v1.2",
+        "json": "{\"id\":\"streak_100\",\"name\":\"百日之约\",\"icon\":\"badge_streak_100.png\",\"condition_type\":\"streak_days\",\"condition_value\":100,\"description\":\"连续打卡 100 天\"}"
+      },
+      {
+        "id": "first_skill",
+        "version": "v1.2",
+        "json": "{\"id\":\"first_skill\",\"name\":\"开窍了\",\"icon\":\"badge_first_skill.png\",\"condition_type\":\"skills_mastered\",\"condition_value\":1,\"description\":\"掌握第一个技能\"}"
+      },
+      {
+        "id": "skills_5",
+        "version": "v1.2",
+        "json": "{\"id\":\"skills_5\",\"name\":\"小学毕业\",\"icon\":\"badge_skills_5.png\",\"condition_type\":\"skills_mastered\",\"condition_value\":5,\"description\":\"掌握 5 个技能\"}"
+      },
+      {
+        "id": "skills_10",
+        "version": "v1.2",
+        "json": "{\"id\":\"skills_10\",\"name\":\"中学毕业\",\"icon\":\"badge_skills_10.png\",\"condition_type\":\"skills_mastered\",\"condition_value\":10,\"description\":\"掌握 10 个技能\"}"
+      },
+      {
+        "id": "skills_all",
+        "version": "v1.2",
+        "json": "{\"id\":\"skills_all\",\"name\":\"全科优等生\",\"icon\":\"badge_skills_all.png\",\"condition_type\":\"skills_mastered\",\"condition_value\":18,\"description\":\"掌握首版全部 18 个技能\"}"
+      },
+      {
+        "id": "first_diagnosis",
+        "version": "v1.2",
+        "json": "{\"id\":\"first_diagnosis\",\"name\":\"对症下药\",\"icon\":\"badge_first_diagnosis.png\",\"condition_type\":\"first_diagnosis\",\"condition_value\":1,\"description\":\"完成第一次 AI 问题诊断\"}"
+      },
+      {
+        "id": "sessions_50",
+        "version": "v1.2",
+        "json": "{\"id\":\"sessions_50\",\"name\":\"五十次练习\",\"icon\":\"badge_sessions_50.png\",\"condition_type\":\"sessions_total\",\"condition_value\":50,\"description\":\"累计完成 50 次训练\"}"
+      },
+      {
+        "id": "team_effort",
+        "version": "v1.2",
+        "json": "{\"id\":\"team_effort\",\"name\":\"全家总动员\",\"icon\":\"badge_team_effort.png\",\"condition_type\":\"household_members\",\"condition_value\":2,\"description\":\"家庭里有第二位成员加入并完成打卡\"}"
+      }
+    ],
+    "content_care_items": [
+      {
+        "id": "care_calendar",
+        "version": "v1.2",
+        "json": "{\"disclaimer\":\"以下为常见默认日程，具体以兽医建议为准。疫苗间隔、品牌和针数因地区和疫苗种类不同，请和兽医确认后调整。\",\"items\":[{\"id\":\"vaccine_1\",\"type\":\"vaccine\",\"title\":\"第一针核心疫苗\",\"week_from\":6,\"week_to\":8,\"repeat\":null,\"note\":\"通常在 6-8 周龄接种第一针，接种前后一周避免洗澡和外出。\"},{\"id\":\"vaccine_2\",\"type\":\"vaccine\",\"title\":\"第二针核心疫苗\",\"week_from\":10,\"week_to\":12,\"repeat\":null,\"note\":\"与第一针间隔 3-4 周。\"},{\"id\":\"vaccine_3\",\"type\":\"vaccine\",\"title\":\"第三针核心疫苗\",\"week_from\":14,\"week_to\":16,\"repeat\":null,\"note\":\"与第二针间隔 3-4 周。\"},{\"id\":\"rabies_1\",\"type\":\"vaccine\",\"title\":\"狂犬疫苗\",\"week_from\":12,\"week_to\":16,\"repeat\":null,\"note\":\"具体周龄按当地规定，部分地区要求满 3 月龄。\"},{\"id\":\"vaccine_annual\",\"type\":\"vaccine\",\"title\":\"年度加强针\",\"week_from\":52,\"week_to\":56,\"repeat\":null,\"note\":\"首年完成后每年加强一次，由兽医安排。\"},{\"id\":\"deworm_internal_early\",\"type\":\"deworm_internal\",\"title\":\"体内驱虫（幼犬期）\",\"week_from\":2,\"week_to\":12,\"repeat\":{\"every_weeks\":2},\"note\":\"12 周龄前每 2 周一次。\"},{\"id\":\"deworm_internal_regular\",\"type\":\"deworm_internal\",\"title\":\"体内驱虫（常规）\",\"week_from\":12,\"week_to\":52,\"repeat\":{\"every_weeks\":4},\"note\":\"12 周龄后每月一次。\"},{\"id\":\"deworm_external\",\"type\":\"deworm_external\",\"title\":\"体外驱虫\",\"week_from\":8,\"week_to\":52,\"repeat\":{\"every_weeks\":4},\"note\":\"每月一次，部分产品有最低周龄和体重要求，用前看说明。\"}],\"milestones\":[{\"id\":\"socialization_window\",\"title\":\"社会化关键期结束\",\"week\":16,\"note\":\"16 周前尽量让狗安全接触不同的人、声音、地面、交通工具。疫苗未打完时抱着出门也算。\"},{\"id\":\"adolescence_start\",\"title\":\"进入青春期\",\"week\":24,\"note\":\"6 个月左右可能出现\\\"忘了会的东西\\\"、不听召回，是正常现象，回到基础复习。\"}]}"
+      }
+    ],
+    "content_ai_lexicons": [
+      {
+        "id": "ai_guard",
+        "version": "v1.2",
+        "json": "{\"hard\":[\"拉肚子\",\"拉稀\",\"腹泻\",\"呕吐\",\"吐了\",\"吃药\",\"喂药\",\"用药\",\"药物\",\"受伤\",\"流血\",\"出血\",\"骨折\",\"发烧\",\"发热\",\"跛了\",\"跛脚\",\"有点跛\",\"跛行\",\"瘸了\",\"瘸腿\",\"有点瘸\",\"不吃饭\",\"不吃东西\",\"不喝水\",\"抽搐\",\"癫痫\",\"昏迷\",\"中毒\",\"误食\",\"吞了\",\"呼吸困难\",\"咳嗽\",\"打喷嚏\",\"流鼻涕\",\"眼睛红\",\"眼屎\",\"耳朵臭\",\"很臭\",\"臭味\",\"耳螨\",\"皮肤病\",\"掉毛严重\",\"疹子\",\"肿了\",\"肿起\",\"有点肿\",\"红肿\",\"疫苗\",\"驱虫\",\"绝育\",\"发情\",\"怀孕\",\"寄生虫\",\"跳蚤\",\"蜱虫\",\"尿血\",\"便血\",\"尿频\",\"尿不出\",\"牙龈出血\",\"口臭\",\"兽医\",\"宠物医院\",\"看病\",\"生病\",\"病了\"],\"soft\":[\"不舒服\",\"没精神\",\"蔫了\",\"蔫蔫\",\"懒洋洋\",\"一直睡\",\"发抖\",\"哆嗦\",\"喘气\",\"喘得\",\"流口水\",\"不对劲\",\"不太对劲\",\"怪怪的\"],\"training_terms\":[\"训练\",\"练习\",\"练不\",\"练的\",\"坐下\",\"趴下\",\"口令\",\"响片\",\"零食\",\"奖励\",\"召回\",\"等待\",\"牵绳\",\"遛狗\",\"遛弯\",\"跟练\",\"步骤\",\"教它\",\"教狗\",\"学会\",\"学不\",\"打卡\",\"计划\",\"技能\"]}"
+      },
+      {
+        "id": "ai_terms",
+        "version": "v1.2",
+        "json": "{\"terms\":[{\"word\":\"坐下\",\"ids\":[\"sit\"]},{\"word\":\"说坐\",\"ids\":[\"sit\"]},{\"word\":\"坐着\",\"ids\":[\"sit\"]},{\"word\":\"坐好\",\"ids\":[\"sit\"]},{\"word\":\"不坐\",\"ids\":[\"sit\"]},{\"word\":\"趴下\",\"ids\":[\"down\"]},{\"word\":\"名字\",\"ids\":[\"name_response\",\"not_coming\"]},{\"word\":\"叫它\",\"ids\":[\"name_response\",\"not_coming\"]},{\"word\":\"叫名字\",\"ids\":[\"name_response\"]},{\"word\":\"不理我\",\"ids\":[\"name_response\",\"not_coming\"]},{\"word\":\"不看我\",\"ids\":[\"name_response\"]},{\"word\":\"响片\",\"ids\":[\"marker_intro\"]},{\"word\":\"标记词\",\"ids\":[\"marker_intro\"]},{\"word\":\"零食引导\",\"ids\":[\"lure_follow\"]},{\"word\":\"跟着手\",\"ids\":[\"lure_follow\"]},{\"word\":\"跟着零食\",\"ids\":[\"lure_follow\"]},{\"word\":\"零食\",\"ids\":[\"lure_follow\",\"marker_intro\"]},{\"word\":\"不跟\",\"ids\":[\"lure_follow\"]},{\"word\":\"尿尿\",\"ids\":[\"potty_training\",\"potty_accidents\"]},{\"word\":\"咬我\",\"ids\":[\"biting_hands\",\"bite_inhibition\"]},{\"word\":\"咬东西\",\"ids\":[\"chewing_furniture\"]},{\"word\":\"抢东西\",\"ids\":[\"resource_guarding\"]},{\"word\":\"诱导\",\"ids\":[\"lure_follow\"]},{\"word\":\"等待\",\"ids\":[\"stay_short\",\"stay_long\"]},{\"word\":\"坐不住\",\"ids\":[\"stay_short\",\"calm_settle\"]},{\"word\":\"站起来\",\"ids\":[\"stay_short\",\"stay_long\"]},{\"word\":\"安静\",\"ids\":[\"calm_settle\",\"excessive_barking\"]},{\"word\":\"趴垫\",\"ids\":[\"calm_settle\"]},{\"word\":\"垫子\",\"ids\":[\"calm_settle\"]},{\"word\":\"冷静\",\"ids\":[\"calm_settle\"]},{\"word\":\"兴奋\",\"ids\":[\"calm_settle\",\"jumping_on_people\",\"biting_hands\"]},{\"word\":\"太疯\",\"ids\":[\"calm_settle\"]},{\"word\":\"召回\",\"ids\":[\"recall_indoor\",\"recall_outdoor\",\"not_coming\"]},{\"word\":\"叫不回\",\"ids\":[\"not_coming\",\"recall_indoor\",\"recall_outdoor\"]},{\"word\":\"不回来\",\"ids\":[\"not_coming\",\"recall_indoor\",\"recall_outdoor\"]},{\"word\":\"过来\",\"ids\":[\"recall_indoor\",\"recall_outdoor\"]},{\"word\":\"跑了\",\"ids\":[\"not_coming\",\"recall_outdoor\"]},{\"word\":\"跑开\",\"ids\":[\"not_coming\",\"recall_outdoor\"]},{\"word\":\"长绳\",\"ids\":[\"recall_outdoor\"]},{\"word\":\"户外\",\"ids\":[\"recall_outdoor\",\"loose_leash\"]},{\"word\":\"放开\",\"ids\":[\"not_coming\",\"recall_outdoor\"]},{\"word\":\"大小便\",\"ids\":[\"potty_training\",\"potty_accidents\"]},{\"word\":\"便便\",\"ids\":[\"potty_training\",\"potty_accidents\"]},{\"word\":\"乱尿\",\"ids\":[\"potty_accidents\",\"potty_training\"]},{\"word\":\"随地\",\"ids\":[\"potty_accidents\"]},{\"word\":\"尿垫\",\"ids\":[\"potty_accidents\",\"potty_training\"]},{\"word\":\"定点\",\"ids\":[\"potty_training\"]},{\"word\":\"厕所\",\"ids\":[\"potty_training\",\"potty_accidents\"]},{\"word\":\"漏尿\",\"ids\":[\"potty_accidents\"]},{\"word\":\"航空箱\",\"ids\":[\"crate_intro\"]},{\"word\":\"笼子\",\"ids\":[\"crate_intro\",\"separation_crying\"]},{\"word\":\"围栏\",\"ids\":[\"crate_intro\"]},{\"word\":\"进笼\",\"ids\":[\"crate_intro\"]},{\"word\":\"不进笼\",\"ids\":[\"crate_intro\",\"separation_crying\"]},{\"word\":\"独处\",\"ids\":[\"alone_time\",\"separation_crying\"]},{\"word\":\"一个人\",\"ids\":[\"alone_time\",\"separation_crying\"]},{\"word\":\"自己待\",\"ids\":[\"alone_time\",\"separation_crying\"]},{\"word\":\"出门\",\"ids\":[\"alone_time\",\"separation_crying\",\"leash_intro\"]},{\"word\":\"不在家\",\"ids\":[\"alone_time\",\"separation_crying\",\"chewing_furniture\"]},{\"word\":\"分离焦虑\",\"ids\":[\"separation_crying\",\"alone_time\"]},{\"word\":\"哭叫\",\"ids\":[\"separation_crying\"]},{\"word\":\"刨门\",\"ids\":[\"separation_crying\"]},{\"word\":\"咬手\",\"ids\":[\"biting_hands\",\"bite_inhibition\"]},{\"word\":\"咬人\",\"ids\":[\"biting_hands\",\"bite_inhibition\"]},{\"word\":\"啃人\",\"ids\":[\"biting_hands\"]},{\"word\":\"换牙\",\"ids\":[\"biting_hands\",\"chewing_furniture\"]},{\"word\":\"咬合\",\"ids\":[\"bite_inhibition\"]},{\"word\":\"轻一点\",\"ids\":[\"bite_inhibition\"]},{\"word\":\"磨牙\",\"ids\":[\"chewing_furniture\",\"redirect_to_toy\"]},{\"word\":\"啃家具\",\"ids\":[\"chewing_furniture\"]},{\"word\":\"咬鞋\",\"ids\":[\"chewing_furniture\"]},{\"word\":\"鞋子\",\"ids\":[\"chewing_furniture\"]},{\"word\":\"沙发\",\"ids\":[\"chewing_furniture\",\"resource_guarding\"]},{\"word\":\"拆家\",\"ids\":[\"chewing_furniture\",\"separation_crying\"]},{\"word\":\"玩具\",\"ids\":[\"redirect_to_toy\",\"resource_guarding\"]},{\"word\":\"转移\",\"ids\":[\"redirect_to_toy\"]},{\"word\":\"牵绳\",\"ids\":[\"leash_intro\",\"loose_leash\",\"leash_pulling\"]},{\"word\":\"绳子\",\"ids\":[\"leash_intro\",\"loose_leash\",\"leash_pulling\"]},{\"word\":\"牵引绳\",\"ids\":[\"leash_intro\",\"loose_leash\",\"leash_pulling\"]},{\"word\":\"遛弯\",\"ids\":[\"loose_leash\",\"leash_pulling\"]},{\"word\":\"遛狗\",\"ids\":[\"loose_leash\",\"leash_pulling\"]},{\"word\":\"散步\",\"ids\":[\"loose_leash\",\"leash_pulling\"]},{\"word\":\"拉绳\",\"ids\":[\"leash_pulling\",\"loose_leash\"]},{\"word\":\"暴冲\",\"ids\":[\"leash_pulling\"]},{\"word\":\"往前冲\",\"ids\":[\"leash_pulling\",\"loose_leash\"]},{\"word\":\"拖着\",\"ids\":[\"leash_pulling\"]},{\"word\":\"松绳\",\"ids\":[\"loose_leash\"]},{\"word\":\"跟我\",\"ids\":[\"loose_leash\"]},{\"word\":\"不肯走\",\"ids\":[\"leash_intro\",\"leash_pulling\"]},{\"word\":\"项圈\",\"ids\":[\"leash_intro\"]},{\"word\":\"触摸\",\"ids\":[\"handling_body\"]},{\"word\":\"爪子\",\"ids\":[\"handling_body\"]},{\"word\":\"剪指甲\",\"ids\":[\"handling_body\"]},{\"word\":\"耳朵\",\"ids\":[\"handling_body\"]},{\"word\":\"嘴巴\",\"ids\":[\"handling_body\",\"bite_inhibition\"]},{\"word\":\"刷牙\",\"ids\":[\"handling_body\"]},{\"word\":\"洗澡\",\"ids\":[\"handling_body\"]},{\"word\":\"梳毛\",\"ids\":[\"handling_body\"]},{\"word\":\"敏感\",\"ids\":[\"handling_body\"]},{\"word\":\"扑人\",\"ids\":[\"jumping_on_people\"]},{\"word\":\"跳起来\",\"ids\":[\"jumping_on_people\"]},{\"word\":\"乱叫\",\"ids\":[\"excessive_barking\"]},{\"word\":\"吠叫\",\"ids\":[\"excessive_barking\"]},{\"word\":\"汪汪\",\"ids\":[\"excessive_barking\"]},{\"word\":\"护食\",\"ids\":[\"resource_guarding\"]},{\"word\":\"低吼\",\"ids\":[\"resource_guarding\",\"biting_hands\"]},{\"word\":\"龇牙\",\"ids\":[\"resource_guarding\",\"biting_hands\"]},{\"word\":\"不让碰\",\"ids\":[\"resource_guarding\",\"handling_body\"]},{\"word\":\"食盆\",\"ids\":[\"resource_guarding\"]},{\"word\":\"饭碗\",\"ids\":[\"resource_guarding\"]}]}"
+      }
+    ],
+    "users": [
+      {
+        "id": "local_user",
+        "phone_or_email": null,
+        "nickname": "我",
+        "avatar_url": null,
+        "created_at": "2026-11-17T03:19:58.728557Z"
+      }
+    ],
+    "households": [
+      {
+        "id": "hh_ho8f26x4jw",
+        "name": "Astra的家",
+        "creator_user_id": "local_user",
+        "invite_code": null,
+        "created_at": "2026-11-17T03:19:58.745415Z"
+      }
+    ],
+    "household_members": [
+      {
+        "household_id": "hh_ho8f26x4jw",
+        "user_id": "local_user",
+        "role": "creator",
+        "joined_at": "2026-11-17T03:19:58.745415Z"
+      }
+    ],
+    "dogs": [
+      {
+        "id": "dog_ho8f26x4jy",
+        "household_id": "hh_ho8f26x4jw",
+        "name": "Astra",
+        "birth_date": "2026-09-08",
+        "breed_id": "poodle",
+        "breed_text": "贵宾犬",
+        "sex": "male",
+        "home_date": "2026-11-17",
+        "living_env": "apartment",
+        "daily_minutes": 10,
+        "trainer_count": 1,
+        "created_at": "2026-11-17T03:19:58.745415Z",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      }
+    ],
+    "dog_concerns": [],
+    "dog_cues": [
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "alone_time",
+        "cue_word": "等我回来",
+        "gesture_text": "无（离开时不做夸张手势，平静走开）",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "bite_inhibition",
+        "cue_word": "轻一点",
+        "gesture_text": "无（咬重时手静止不动，然后收回）",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "calm_settle",
+        "cue_word": "去垫子",
+        "gesture_text": "手臂伸直，手指指向垫子",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "crate_intro",
+        "cue_word": "进窝",
+        "gesture_text": "手指向航空箱门口",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "down",
+        "cue_word": "趴",
+        "gesture_text": "手心向下，握着零食从狗鼻尖缓慢向下压到两只前爪之间的地面",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "handling_body",
+        "cue_word": "摸摸",
+        "gesture_text": "手掌摊开，缓慢伸向狗的肩膀",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "leash_intro",
+        "cue_word": "走吧",
+        "gesture_text": "拍一下自己大腿外侧",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "loose_leash",
+        "cue_word": "跟我",
+        "gesture_text": "手掌轻拍自己靠狗一侧的大腿",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "lure_follow",
+        "cue_word": "跟着",
+        "gesture_text": "握着零食的手放在狗鼻尖前 2-3 厘米，手往哪走狗就往哪走",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "marker_intro",
+        "cue_word": "对（标记词）",
+        "gesture_text": "无手势，响片声或标记词本身就是信号",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "name_response",
+        "cue_word": "狗的名字",
+        "gesture_text": "无手势，叫名字时身体微微前倾，眼睛看着狗",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "potty_training",
+        "cue_word": "去尿尿",
+        "gesture_text": "手指向定点位置",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "recall_indoor",
+        "cue_word": "来",
+        "gesture_text": "蹲下，双手张开拍大腿",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "recall_outdoor",
+        "cue_word": "来",
+        "gesture_text": "蹲下，双手张开拍大腿",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "redirect_to_toy",
+        "cue_word": "玩具",
+        "gesture_text": "把玩具举到狗鼻尖前方，左右小幅晃动",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "sit",
+        "cue_word": "坐",
+        "gesture_text": "手心向上，握着零食从狗鼻尖前方缓慢向上抬",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "stay_long",
+        "cue_word": "等",
+        "gesture_text": "手掌张开朝向狗，做\"停\"的手势，然后转身或后退",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "stay_short",
+        "cue_word": "等",
+        "gesture_text": "手掌张开朝向狗，像交警的\"停\"手势，放在狗面前约 30 厘米",
+        "updated_at": "2026-11-17T03:19:58.745415Z"
+      }
+    ],
+    "dog_skill_statuses": [
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "alone_time",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "bite_inhibition",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "calm_settle",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "crate_intro",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "down",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "handling_body",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "leash_intro",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "loose_leash",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "lure_follow",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "marker_intro",
+        "status": "in_progress",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 1
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "name_response",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "potty_training",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "recall_indoor",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "recall_outdoor",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "redirect_to_toy",
+        "status": "available",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "sit",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "stay_long",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      },
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "skill_id": "stay_short",
+        "status": "locked",
+        "mastered_at": null,
+        "full_success_count": 0,
+        "fail_count": 0
+      }
+    ],
+    "weekly_plans": [
+      {
+        "id": "plan_ho8f26x4jy",
+        "dog_id": "dog_ho8f26x4jy",
+        "week_start": "2026-11-09",
+        "generated_by": "system",
+        "status": "completed",
+        "created_at": "2026-11-17T03:19:58.745415Z",
+        "regenerate_next": 0,
+        "pending_diagnosis_skills": "[\"redirect_to_toy\",\"name_response\",\"sit\",\"calm_settle\"]"
+      },
+      {
+        "id": "plan_hoedjxdvoy",
+        "dog_id": "dog_ho8f26x4jy",
+        "week_start": "2026-11-16",
+        "generated_by": "system",
+        "status": "completed",
+        "created_at": "2026-11-22T13:01:42.538275Z",
+        "regenerate_next": 0,
+        "pending_diagnosis_skills": "[]"
+      },
+      {
+        "id": "plan_hoedjxe4h6",
+        "dog_id": "dog_ho8f26x4jy",
+        "week_start": "2026-11-23",
+        "generated_by": "system",
+        "status": "active",
+        "created_at": "2026-11-22T13:01:42.538275Z",
+        "regenerate_next": 0,
+        "pending_diagnosis_skills": "[]"
+      }
+    ],
+    "plan_goals": [
+      {
+        "plan_id": "plan_ho8f26x4jy",
+        "skill_id": "marker_intro",
+        "position": 0,
+        "target_sessions": 3,
+        "completed_sessions": 1,
+        "source": "age"
+      },
+      {
+        "plan_id": "plan_ho8f26x4jy",
+        "skill_id": "name_response",
+        "position": 1,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "age"
+      },
+      {
+        "plan_id": "plan_ho8f26x4jy",
+        "skill_id": "lure_follow",
+        "position": 2,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "age"
+      },
+      {
+        "plan_id": "plan_hoedjxdvoy",
+        "skill_id": "redirect_to_toy",
+        "position": 0,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "ai_diagnosis"
+      },
+      {
+        "plan_id": "plan_hoedjxdvoy",
+        "skill_id": "name_response",
+        "position": 1,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "ai_diagnosis"
+      },
+      {
+        "plan_id": "plan_hoedjxdvoy",
+        "skill_id": "marker_intro",
+        "position": 2,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "carryover"
+      },
+      {
+        "plan_id": "plan_hoedjxdvoy",
+        "skill_id": "lure_follow",
+        "position": 3,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "carryover"
+      },
+      {
+        "plan_id": "plan_hoedjxe4h6",
+        "skill_id": "redirect_to_toy",
+        "position": 0,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "carryover"
+      },
+      {
+        "plan_id": "plan_hoedjxe4h6",
+        "skill_id": "name_response",
+        "position": 1,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "carryover"
+      },
+      {
+        "plan_id": "plan_hoedjxe4h6",
+        "skill_id": "marker_intro",
+        "position": 2,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "carryover"
+      },
+      {
+        "plan_id": "plan_hoedjxe4h6",
+        "skill_id": "lure_follow",
+        "position": 3,
+        "target_sessions": 3,
+        "completed_sessions": 0,
+        "source": "carryover"
+      }
+    ],
+    "daily_mini_tasks": [
+      {
+        "plan_id": "plan_ho8f26x4jy",
+        "skill_id": "lure_follow",
+        "script_part": 0
+      },
+      {
+        "plan_id": "plan_hoedjxdvoy",
+        "skill_id": "lure_follow",
+        "script_part": 0
+      },
+      {
+        "plan_id": "plan_hoedjxe4h6",
+        "skill_id": "lure_follow",
+        "script_part": 0
+      }
+    ],
+    "onboarding_drafts": [],
+    "training_sessions": [
+      {
+        "id": "ses_ho8m6ttf03",
+        "dog_id": "dog_ho8f26x4jy",
+        "user_id": "local_user",
+        "skill_id": "marker_intro",
+        "script_part": 1,
+        "started_at": "2026-11-17T03:30:05.672655Z",
+        "ended_at": "2026-11-17T03:33:55.672655Z",
+        "duration_sec": 230,
+        "score": "none",
+        "note_text": null,
+        "note_video_url": "/data/user/0/com.puppytrainer.puppy_trainer/cache/30511c4c-2d77-4fb4-9411-3cf57bff78e4/1000000023.mp4",
+        "skipped_steps": "[]",
+        "clicker_count": 0,
+        "synced_at": null
+      }
+    ],
+    "streaks": [
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "current_days": 1,
+        "longest_days": 1,
+        "last_checkin_date": "2026-11-17"
+      }
+    ],
+    "weekly_reports": [
+      {
+        "id": "rep_hoedjxdx0v",
+        "dog_id": "dog_ho8f26x4jy",
+        "plan_id": "plan_ho8f26x4jy",
+        "summary_json": "{\"week_start\":\"2026-11-09\",\"checkin_days\":0,\"sessions_total\":0,\"goals\":[{\"skill_id\":\"marker_intro\",\"target\":3,\"completed\":0,\"scores\":{\"full\":0,\"partial\":0,\"none\":0},\"outcome\":\"carryover\"},{\"skill_id\":\"name_response\",\"target\":3,\"completed\":0,\"scores\":{\"full\":0,\"partial\":0,\"none\":0},\"outcome\":\"carryover\"},{\"skill_id\":\"lure_follow\",\"target\":3,\"completed\":0,\"scores\":{\"full\":0,\"partial\":0,\"none\":0},\"outcome\":\"carryover\"}],\"mini_task_days\":0,\"comment\":\"这周还没开始，下周从保底任务做起\"}",
+        "ai_comment": "这周还没开始，下周从保底任务做起",
+        "next_plan_id": "plan_hoedjxdvoy",
+        "created_at": "2026-11-22T13:01:42.538275Z",
+        "read_at": null
+      },
+      {
+        "id": "rep_hoedjxe5ms",
+        "dog_id": "dog_ho8f26x4jy",
+        "plan_id": "plan_hoedjxdvoy",
+        "summary_json": "{\"week_start\":\"2026-11-16\",\"checkin_days\":1,\"sessions_total\":1,\"goals\":[{\"skill_id\":\"redirect_to_toy\",\"target\":3,\"completed\":0,\"scores\":{\"full\":0,\"partial\":0,\"none\":0},\"outcome\":\"carryover\"},{\"skill_id\":\"name_response\",\"target\":3,\"completed\":0,\"scores\":{\"full\":0,\"partial\":0,\"none\":0},\"outcome\":\"carryover\"},{\"skill_id\":\"marker_intro\",\"target\":3,\"completed\":1,\"scores\":{\"full\":0,\"partial\":0,\"none\":1},\"outcome\":\"carryover\"},{\"skill_id\":\"lure_follow\",\"target\":3,\"completed\":0,\"scores\":{\"full\":0,\"partial\":0,\"none\":0},\"outcome\":\"carryover\"}],\"mini_task_days\":0,\"comment\":\"完全做到 = 第 4 步 3 次测试里 3 次都在 2 秒内转头找零食；部分做到 = 1-2 次；没做到 = 0 次，或者听到响片有躲闪反应。\"}",
+        "ai_comment": "完全做到 = 第 4 步 3 次测试里 3 次都在 2 秒内转头找零食；部分做到 = 1-2 次；没做到 = 0 次，或者听到响片有躲闪反应。",
+        "next_plan_id": "plan_hoedjxe4h6",
+        "created_at": "2026-11-22T13:01:42.538275Z",
+        "read_at": null
+      }
+    ],
+    "ai_conversations": [
+      {
+        "id": "conv_ho8m8p1njy001",
+        "dog_id": "dog_ho8f26x4jy",
+        "type": "course_qa",
+        "skill_id": "marker_intro",
+        "issue_id": null,
+        "created_at": "2026-11-17T07:40:29.463162Z",
+        "updated_at": "2026-11-17T07:40:29.463162Z"
+      },
+      {
+        "id": "conv_ho8mb2k98g002",
+        "dog_id": "dog_ho8f26x4jy",
+        "type": "diagnosis",
+        "skill_id": null,
+        "issue_id": "chewing_furniture",
+        "created_at": "2026-11-17T07:42:53.098425Z",
+        "updated_at": "2026-11-17T07:43:56.884046Z"
+      }
+    ],
+    "ai_messages": [
+      {
+        "id": "msg_ho8mbemfze003",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "assistant",
+        "content": "它一般什么时候啃？",
+        "cited_content_ids": "[]",
+        "kind": "diagnosis_q",
+        "created_at": "2026-11-17T07:43:13.355873Z"
+      },
+      {
+        "id": "msg_ho8mbemmag004",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "user",
+        "content": "你在家、它醒着的时候就啃",
+        "cited_content_ids": "[]",
+        "kind": "normal",
+        "created_at": "2026-11-17T07:43:13.364056Z"
+      },
+      {
+        "id": "msg_ho8mbs9l2x005",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "assistant",
+        "content": "现在多大？",
+        "cited_content_ids": "[]",
+        "kind": "diagnosis_q",
+        "created_at": "2026-11-17T07:43:36.270570Z"
+      },
+      {
+        "id": "msg_ho8mbs9xdt006",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "user",
+        "content": "7 个月以上，牙早换完了",
+        "cited_content_ids": "[]",
+        "kind": "normal",
+        "created_at": "2026-11-17T07:43:36.286529Z"
+      },
+      {
+        "id": "msg_ho8mc4j2im007",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "assistant",
+        "content": "它每天的活动量和互动大概是？",
+        "cited_content_ids": "[]",
+        "kind": "diagnosis_q",
+        "created_at": "2026-11-17T07:43:56.868477Z"
+      },
+      {
+        "id": "msg_ho8mc4j7o9008",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "user",
+        "content": "基本在家待着，遛得少，大部分时间没人陪",
+        "cited_content_ids": "[]",
+        "kind": "normal",
+        "created_at": "2026-11-17T07:43:56.875160Z"
+      },
+      {
+        "id": "msg_ho8mc4jej3009",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "role": "assistant",
+        "content": "牙换完了还一直啃，大多是精力没地方用，嘴闲不住。幼犬一天需要的活动和脑力游戏远比很多人以为的多，没得干就自己找乐子，家具就是乐子。",
+        "cited_content_ids": "[\"chewing_furniture\",\"redirect_to_toy\",\"name_response\",\"sit\",\"calm_settle\"]",
+        "kind": "diagnosis_result",
+        "created_at": "2026-11-17T07:43:56.884046Z"
+      }
+    ],
+    "diagnosis_results": [
+      {
+        "id": "diag_ho8mc4jirm010",
+        "conversation_id": "conv_ho8mb2k98g002",
+        "dog_id": "dog_ho8f26x4jy",
+        "issue_id": "chewing_furniture",
+        "result_key": "boredom_chewing",
+        "solution_skill_ids": "[\"redirect_to_toy\",\"name_response\",\"sit\",\"calm_settle\"]",
+        "added_to_plan_id": null,
+        "created_at": "2026-11-17T07:43:56.889556Z"
+      }
+    ],
+    "reminder_settings": [
+      {
+        "dog_id": "dog_ho8f26x4jy",
+        "enabled": 1,
+        "hour": 11,
+        "minute": 26,
+        "updated_at": "2026-11-17T03:23:28.926655Z"
+      }
+    ]
+  }
+}

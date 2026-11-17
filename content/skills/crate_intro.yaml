@@ -1,0 +1,102 @@
+id: crate_intro
+name: 航空箱 / 围栏适应
+category: house
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 2
+default_cue: 进窝
+default_gesture: 手指向航空箱门口
+sessions_to_master: 3
+tutorial:
+  summary: 让狗把航空箱或围栏当成自己的安全小窝，愿意主动进去待着，这是定点排泄、独处训练和以后出行的基础。
+  steps:
+    - text: 把航空箱放在家人常待的客厅角落，门拆掉或用东西固定全开，里面铺一块软垫。不要放在没人去的阳台或储物间。
+      image: crate_intro_step1.png
+    - text: 准备 15 块小零食。当着狗的面往箱子里扔一块，狗进去吃的时候不要关门、不要碰它，让它自己出来。重复 5 遍。
+      image: crate_intro_step2.png
+    - text: 狗能毫不犹豫进去后，在它四脚都进去的瞬间按响片，再往箱子里面多给一块。开始在它进门前说一次"进窝"。
+      image: crate_intro_step3.png
+    - text: 让狗在里面待久一点：把狗的正餐放在箱子最里面吃，或给一个塞了零食的漏食玩具，狗在里面啃的时候你坐在旁边。
+      image: crate_intro_step4.png
+    - text: 狗在里面安心吃东西时，轻轻把门合上 3 秒，再打开。它没反应就按响片给零食。慢慢加到 10 秒、30 秒、1 分钟，始终坐在旁边。
+      image: crate_intro_step5.png
+    - text: 关门时间到 1 分钟后，你起身在房间里走动，再回来开门。慢慢加到你离开房间 1-2 分钟再回来。
+      image: crate_intro_step6.png
+    - text: 平时狗自己走进箱子趴着时，悄悄给一块零食。把箱子变成"没事也想去"的地方。
+      image: crate_intro_step7.png
+  common_mistakes:
+    - 第一天就关门关好几个小时，狗哭叫也不管。这是最常见的翻车原因，狗会从此怕箱子。关门时间要从几秒钟开始，狗一直放松才往上加。
+    - 狗做错事就把它关进箱子。箱子一旦和"倒霉"挂钩就没法当小窝用了。箱子只用来休息、吃好吃的，惩罚性关禁闭绝对不行。
+    - 狗叫了就立刻开门。狗会学到"叫 = 门开"。正确做法是时间退回到它能安静的长度（比如关 3 秒），等它安静的那一瞬间开门。如果已经叫得很厉害，说明今天加太快了，下次缩短。
+    - 把狗推进去或抱进去关门。狗必须是自己走进去的，强行塞进去只会让它更抗拒。进不去就先把零食扔得离门口近一点。
+    - 箱子太大。幼犬能在一头尿、另一头睡的话，定点训练就失效了。箱子大小以狗能站起来转身躺下为准，大箱子用隔板隔小。
+    - 只有出门或睡觉才用箱子。平时狗在家也要能随时进去，把它当成正常的家具，而不是出门前的信号。
+  success_criteria: 说一次"进窝"，狗在 5 秒内自己走进箱子，关门后能安静待 2 分钟不叫不抓门，连续 3 天做到。
+script:
+  - step: 1
+    instruction: 箱子门固定全开，你坐在箱子旁边，准备好 15 块零食。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 当着狗的面往箱子里扔一块零食。狗四只脚都进去的瞬间按响片，再往里面多扔一块。它出来也没关系，重复 5 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 现在扔零食之前先说一次"进窝"，再把零食扔进去。狗进去就按响片。做 5 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 说"进窝"但手里不扔零食，手指向箱子。狗自己走进去就按响片，往里面给 3 块零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 给狗一个塞了零食的漏食玩具放在箱子里面。狗趴着啃的时候，轻轻把门合上 5 秒，狗没反应就按响片，然后打开门。做 3 遍，每遍多关 5 秒。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。把门打开固定住，让狗自己决定留在里面啃还是出来。不要把它叫出来。
+    duration_sec: 15
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 箱子门固定全开，坐在箱子旁边，准备好 10 块零食。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 当着狗的面往箱子里扔一块零食。狗四只脚都进去的瞬间按响片，再往里多扔一块。重复 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 扔零食之前先说一次"进窝"。狗进去就按响片。做 4 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 说"进窝"但手里不扔零食，手指向箱子。狗自己走进去就按响片，往里面给 3 块零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 给狗一个塞了零食的漏食玩具放在箱子里。狗趴着啃的时候轻轻把门合上 5 秒，没反应就按响片，打开门。做 2 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。门打开固定住，让狗自己决定留在里面还是出来。不要把它叫出来。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 只说口令不扔零食，3 次中 3 次狗自己进箱，并且关门 15 秒狗没有叫或抓门；部分做到 = 口令进箱 1-2 次，或关门时有轻微不安但没叫；没做到 = 不扔零食就不进去，或关门就叫。
+downgrade_to: null
+sources:
+  - 正向航空箱训练法（crate training：零食引诱、逐秒加时、不作惩罚），参见 Humane Society "Crate training 101" 与 AKC "How to Crate Train Your Dog" 公开资料
+  - 箱内喂食与漏食玩具建立正向联结的方法，参见 Karen Pryor Clicker Training 公开教程

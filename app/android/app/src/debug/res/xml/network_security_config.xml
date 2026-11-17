@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- M4：仅 debug 构建。真机演示时同步地址填笔记本局域网 IP（构建参数 SYNC_BASE_URL），
+     局域网 IP 无法逐个列举，debug 包放开明文；release 包仍用 src/main 的配置（只放开 10.0.2.2 与 localhost）。 -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

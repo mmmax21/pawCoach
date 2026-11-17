@@ -1,0 +1,24 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart
+00:00 +0: ON-2 counts a dog name by user-visible characters
+00:00 +0 -1: ON-2 counts a dog name by user-visible characters [E]
+  Expected: true
+    Actual: <false>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test/astra_regression_test.dart 12:5                main.<fn>
+  
+00:00 +0 -1: WP-2 uses local calendar date at 8-week boundary before 08:00
+00:00 +0 -2: WP-2 uses local calendar date at 8-week boundary before 08:00 [E]
+  Expected: <3>
+    Actual: <0>
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 473:18  expect
+  test/astra_regression_test.dart 24:5                main.<fn>
+  
+00:00 +0 -2: Some tests failed.
+
+Failing tests:
+  /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: ON-2 counts a dog name by user-visible characters
+  /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/test/astra_regression_test.dart: WP-2 uses local calendar date at 8-week boundary before 08:00

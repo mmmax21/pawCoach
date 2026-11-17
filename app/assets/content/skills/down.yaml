@@ -1,0 +1,101 @@
+id: down
+name: 趴下
+category: basic_obedience
+min_age_weeks: 10
+max_age_weeks: 52
+prerequisites: [sit]
+difficulty: 2
+default_cue: 趴
+default_gesture: 手心向下，握着零食从狗鼻尖缓慢向下压到两只前爪之间的地面
+sessions_to_master: 3
+tutorial:
+  summary: 趴下是比坐下更放松的姿势，狗兴奋过头时让它趴下最容易冷静，也是以后安静趴垫和长时间等待的基础。
+  steps:
+    - text: 准备 10 块软零食，在铺了地垫或地毯的地方练，硬地板很多幼犬不愿意趴。先让狗坐下。
+      image: down_step1.png
+    - text: 零食握在手心，放到狗鼻尖前让它闻到，然后手缓慢笔直往下移，一直移到狗两只前爪中间的地面。
+      image: down_step2.png
+    - text: 狗会低头跟着手，前肢慢慢往前滑。肘部一碰到地面，立刻按响片，把零食给它。
+      image: down_step3.png
+    - text: 如果狗只低头不趴，手贴着地面慢慢往狗胸口方向拖一点，或者往前拖一点，狗为了够零食会把前腿伸出去。一有向下的动作就先奖一次。
+      image: down_step4.png
+    - text: 重复 5 次。狗能稳定跟着手趴下后，在手往下移之前先说一次"趴"。
+      image: down_step5.png
+    - text: 手里不拿零食，只做向下压的手势加口令。趴下后从另一只手给零食。
+      image: down_step6.png
+    - text: 狗趴下后，隔 1-2 秒再给一块，让它知道趴着不动也有好处，然后说"好了"让它起来。
+      image: down_step7.png
+  common_mistakes:
+    - 用手按狗的背或肩膀把它压下去。狗会抗拒，而且学不会自己做。只用零食引导，狗不趴就回到上一步，多奖励"低头"这种中间动作。
+    - 零食往下移得太快，或者离狗鼻子太远，狗直接站起来去追。手要贴着狗鼻尖，慢到像在放慢动作。
+    - 狗趴下了，手一抬狗就跟着起来。按完响片把零食送到狗嘴边，在它趴着的时候给，不要让它起来够。
+    - 在冰凉或光滑的硬地板上练。换到地毯、垫子或床上，幼犬更愿意趴。
+    - 太早加口令。狗还要靠零食拖好几秒才趴，这时说"趴"它学不到关联。先练到手一往下狗就趴，再加口令。
+  success_criteria: 说一次"趴"，配合手势，狗在 3 秒内趴下（肘部碰地）并保持 2 秒以上，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 到地毯或垫子上。让狗坐下，坐下了按响片给一块零食。
+    duration_sec: 15
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 零食握在手心贴着狗鼻尖，手缓慢笔直往下移到它两只前爪中间的地面。肘部一碰地，马上按响片，把零食送到它嘴边。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 狗只低头不趴的话，手贴着地面慢慢往它胸口方向拖一点。狗一有向下趴的动作就按响片给零食，哪怕只趴了一半。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 再做 4 遍完整的趴下。每遍趴下后，隔 1 秒再多给一块，然后说"好了"让它起来。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 现在手往下移之前先说一次"趴"，然后再做手势。趴下就按响片给零食。做 4 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 最后 3 遍，手里不拿零食，只说口令加向下压的手势。趴下后从另一只手给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 7
+    instruction: 结束。给一块零食，摸摸狗，说"好了"，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 到地毯或垫子上。让狗坐下，坐下了按响片给一块零食。
+    duration_sec: 15
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 零食握在手心贴着狗鼻尖，手缓慢笔直往下移到两只前爪中间的地面。肘部一碰地，马上按响片，零食送到嘴边。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 手往下移之前先说一次"趴"，然后再做手势。趴下就按响片给零食。做 4 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 最后 3 遍，手里不拿零食，只说口令加向下压的手势。趴下后从另一只手给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。给一块零食，摸摸狗，说"好了"，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 最后 7 遍（第 5、6 步）里 6 遍以上只用口令加手势就趴下；部分做到 = 3-5 遍；没做到 = 2 遍以下或仍需零食拖到地上才趴。
+downgrade_to: sit
+sources:
+  - 诱导法教趴下（luring the down），参见 AKC "How to Teach Your Dog to Lie Down" 公开文章及 Karen Pryor Clicker Training 官网
+  - 中间动作分步奖励（shaping），参见 Karen Pryor《Don't Shoot the Dog》

@@ -1,0 +1,110 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4_astra_carryover_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             11.4s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          582ms
+00:00 +0: Astra M4 M3 carryovers: notification, remote controls, lifecycle, keyboard
+M4SHOT carry_01_notification_home
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T12:00:00.000 now=2026-11-17T20:03:06.998319
+M4SHOT carry_02_remote_paused_5s
+M4SHOT carry_03_remote_resumed
+TRAIN ENTER step=2 announceNext=false step=2/6 phase=running remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:03:14.106671
+M4SHOT carry_04_remote_next
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:03:17.741436
+TRAIN LIFECYCLE background step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:03:17.742032
+TRAIN LIFECYCLE foreground(before tick) step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:03:17.743354
+TRAIN LIFECYCLE foreground(after tick) step=2/6 phase=paused remaining=20000ms stepStartedAt=2026-11-17T12:00:07.000 now=2026-11-17T20:03:17.743524
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
+The following assertion was thrown while dispatching notifications for
+WidgetsBindingObserver.didChangeAppLifecycleState:
+Invalid state transition from AppLifecycleState.inactive to AppLifecycleState.paused
+'package:flutter/src/widgets/app_lifecycle_listener.dart':
+Failed assertion: line 258 pos 11: 'previousState == null || previousState ==
+AppLifecycleState.hidden'
+
+Either the assertion indicates an error in the framework itself, or we should provide substantially
+more information in this error message to help you determine and fix the underlying cause.
+In either case, please report this assertion by filing a bug on GitHub:
+  https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+
+When the exception was thrown, this was the stack:
+#2      AppLifecycleListener.didChangeAppLifecycleState (package:flutter/src/widgets/app_lifecycle_listener.dart:258:11)
+#3      WidgetsBinding.handleAppLifecycleStateChanged (package:flutter/src/widgets/binding.dart:1348:18)
+#4      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4_astra_carryover_test.dart:95:17)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 3 frames from class _AssertionError and package:stack_trace)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY WIDGETS LIBRARY ╞═══════════════════════════════════════════════════════════
+The following assertion was thrown while dispatching notifications for
+WidgetsBindingObserver.didChangeAppLifecycleState:
+Invalid state transition from AppLifecycleState.paused to AppLifecycleState.resumed
+'package:flutter/src/widgets/app_lifecycle_listener.dart':
+Failed assertion: line 226 pos 11: 'previousState == null ||
+              previousState == AppLifecycleState.inactive ||
+              previousState == AppLifecycleState.detached'
+
+Either the assertion indicates an error in the framework itself, or we should provide substantially
+more information in this error message to help you determine and fix the underlying cause.
+In either case, please report this assertion by filing a bug on GitHub:
+  https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+
+When the exception was thrown, this was the stack:
+#2      AppLifecycleListener.didChangeAppLifecycleState (package:flutter/src/widgets/app_lifecycle_listener.dart:226:11)
+#3      WidgetsBinding.handleAppLifecycleStateChanged (package:flutter/src/widgets/binding.dart:1348:18)
+#4      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4_astra_carryover_test.dart:98:17)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 3 frames from class _AssertionError and package:stack_trace)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+ASTRA lock paused_10s=20000 resumed=19000
+M4SHOT carry_05_lock_return
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: null
+  Actual: 'Multiple exceptions (2) were detected during the running of the current test, and at
+least one was unexpected.'
+carry_05_lock_return
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure>.shot (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4_astra_carryover_test.dart:57:7)
+<asynchronous suspension>
+#5      main.<anonymous closure> (file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4_astra_carryover_test.dart:109:7)
+<asynchronous suspension>
+#6      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#7      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1968:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///Users/maxlou/Documents/ChatGPT/1121%E4%B8%8A%E6%B5%B7%E9%BB%91%E5%AE%A2%E6%9D%BE-%E5%AE%A0%E7%89%A9%E8%AE%AD%E7%BB%83/app/integration_test/m4_astra_carryover_test.dart line 57
+The test description was:
+  Astra M4 M3 carryovers: notification, remote controls, lifecycle, keyboard
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:20 +0 -1: Astra M4 M3 carryovers: notification, remote controls, lifecycle, keyboard [E]
+  Test failed. See exception logs above.
+  The test description was: Astra M4 M3 carryovers: notification, remote controls, lifecycle, keyboard
+  
+00:20 +0 -1: (tearDownAll)
+00:20 +0 -1: Some tests failed.
+
+Failing tests:
+  /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m4_astra_carryover_test.dart: Astra M4 M3 carryovers: notification, remote controls, lifecycle, keyboard

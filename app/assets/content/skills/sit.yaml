@@ -1,0 +1,88 @@
+id: sit
+name: 坐下
+category: basic_obedience
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: [name_response, lure_follow]
+difficulty: 1
+default_cue: 坐
+default_gesture: 手心向上，握着零食从狗鼻尖前方缓慢向上抬
+sessions_to_master: 2
+tutorial:
+  summary: 坐下是几乎所有后续技能的基础，也是让幼犬在兴奋时快速安定下来的第一个工具。
+  steps:
+    - text: 准备 10 块小拇指甲大小的软零食，在安静、没有玩具的房间开始。
+      image: sit_step1.png
+    - text: 把零食握在手心，放到狗鼻尖前让它闻到，但不给。
+      image: sit_step2.png
+    - text: 手缓慢向上、略向狗头后方移动。狗抬头追零食时，屁股会自然落地。
+      image: sit_step3.png
+    - text: 屁股一碰地，立刻按响片（或说标记词），然后给零食。
+      image: sit_step4.png
+    - text: 重复 5 次。狗能稳定跟着手坐下后，在手抬起前先说一次"坐"。
+      image: sit_step5.png
+    - text: 逐渐减少手里的零食，手势保留，零食从另一只手给。
+      image: sit_step6.png
+  common_mistakes:
+    - 零食抬得太高或太快，狗会跳起来而不是坐下。保持零食贴着鼻尖移动。
+    - 口令重复喊好几遍。只说一次，狗没反应就回到用手引导，不要加口令。
+    - 奖励给得太晚。响片要在屁股碰地的瞬间按，晚 1 秒狗就不知道奖的是什么。
+    - 狗坐下后主人往后退，狗立刻站起来追。先原地奖励，站立训练放到以后。
+    - 练太久。幼犬注意力只有几分钟，一次 5-8 遍就停。
+  success_criteria: 说一次"坐"，手势配合，狗在 3 秒内坐下并保持 2 秒以上，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 拿一块零食，握在手心，放到狗鼻尖前面让它闻。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+  - step: 2
+    instruction: 手缓慢向上、向狗头后方移动。狗的屁股一碰地，马上按响片，然后给零食。
+    duration_sec: 20
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 再做 4 遍，每遍之间让狗站起来走两步。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 现在手抬起前先说一次"坐"，然后再做手势。坐下就按响片给零食。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 最后 3 遍，手里不拿零食，只做手势说口令。坐下后从另一只手给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 结束。给一块零食，摸摸狗，说"好了"，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 拿一块零食握在手心，放到狗鼻尖前让它闻。手缓慢向上、向狗头后方移动。屁股一碰地，马上按响片，给零食。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 现在手抬起前先说一次"坐"，再做手势。坐下就按响片给零食。做 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 最后 3 遍，手里不拿零食，只做手势说口令。坐下后从另一只手给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 结束。给一块零食，摸摸狗，说"好了"，让它自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 最后 5 遍中 4 遍以上只用口令加手势就坐下；部分做到 = 2-3 遍；没做到 = 1 遍以下或仍需零食引导。
+downgrade_to: lure_follow
+sources:
+  - 正向训练中的诱导法（luring），参见 Karen Pryor 响片训练体系与 AKC 幼犬基础训练公开资料

@@ -1,0 +1,57 @@
+--------- beginning of main
+         1794811450.508  4698  4796 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794811450.674  4698  4805 I flutter : The Dart VM service is listening on http://127.0.0.1:34501/WTKb9uORqG0=/
+         1794811705.130  5153  5175 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794811705.391  5153  5181 I flutter : The Dart VM service is listening on http://127.0.0.1:39903/8BIgDfxo-vg=/
+         1794812405.021  5425  5490 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794812405.816  5425  5497 I flutter : The Dart VM service is listening on http://127.0.0.1:44815/SkgEoCzrvgw=/
+         1794812584.252  5628  5679 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794812584.628  5628  5686 I flutter : The Dart VM service is listening on http://127.0.0.1:38999/CP-8qUoSZzI=/
+         1794812794.760  5882  5928 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794812795.107  5882  5935 I flutter : The Dart VM service is listening on http://127.0.0.1:38809/lKGdwytclAM=/
+         1794812929.734  6129  6174 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794812929.962  6129  6181 I flutter : The Dart VM service is listening on http://127.0.0.1:37197/DCtnRh7cTm8=/
+         1794813058.886  6329  6362 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794813059.094  6329  6369 I flutter : The Dart VM service is listening on http://127.0.0.1:40031/EPrZAoqttbQ=/
+         1794813203.826  6570  6610 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794813204.043  6570  6617 I flutter : The Dart VM service is listening on http://127.0.0.1:33131/Jow4oVqJ6q8=/
+         1794813398.770  6780  6818 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794813398.881  6780  6825 I flutter : The Dart VM service is listening on http://127.0.0.1:38865/v3GhPbixnxs=/
+         1794813770.150  7043  7092 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794813852.001  7247  7266 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814063.404  7247  7247 I flutter : ASTRA_HOME_READY
+         1794814070.220  7577  7596 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814073.386  7577  7577 I flutter : ASTRA_HOME_READY
+         1794814077.104  7632  7632 I ASTRA   : M1_COLD_0
+         1794814080.608  7639  7657 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814084.499  7639  7639 I flutter : ASTRA_HOME_READY
+         1794814085.179  7683  7683 I ASTRA   : M1_COLD_1
+         1794814087.630  7690  7708 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814090.890  7690  7690 I flutter : ASTRA_HOME_READY
+         1794814092.374  7728  7728 I ASTRA   : M1_COLD_2
+         1794814094.887  7735  7753 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814096.775  7735  7735 I flutter : ASTRA_HOME_READY
+         1794814304.821  7806  7806 I ASTRA   : M1_COLD_0
+         1794814309.816  7825  7864 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814309.950  7825  7825 I flutter : ASTRA_MAIN_ENTER
+         1794814309.952  7825  7825 I flutter : ASTRA_BINDING_READY
+         1794814310.048  7825  7825 I flutter : ASTRA_CONTENT_START
+         1794814310.105  7825  7825 I flutter : ASTRA_FIRST_FRAME
+         1794814310.733  7825  7825 I flutter : ASTRA_CONTENT_READY
+         1794814313.700  7825  7825 I flutter : ASTRA_HOME_READY
+         1794814315.794  7889  7889 I ASTRA   : M1_COLD_1
+         1794814319.641  7896  7915 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814319.719  7896  7896 I flutter : ASTRA_MAIN_ENTER
+         1794814319.722  7896  7896 I flutter : ASTRA_BINDING_READY
+         1794814319.734  7896  7896 I flutter : ASTRA_CONTENT_START
+         1794814319.825  7896  7896 I flutter : ASTRA_FIRST_FRAME
+         1794814320.798  7896  7896 I flutter : ASTRA_CONTENT_READY
+         1794814322.173  7896  7896 I flutter : ASTRA_HOME_READY
+         1794814326.048  7936  7936 I ASTRA   : M1_COLD_2
+         1794814329.061  7944  7961 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(105)] Using the Impeller rendering backend (OpenGLES).
+         1794814329.088  7944  7944 I flutter : ASTRA_MAIN_ENTER
+         1794814329.108  7944  7944 I flutter : ASTRA_BINDING_READY
+         1794814329.161  7944  7944 I flutter : ASTRA_CONTENT_START
+         1794814329.183  7944  7944 I flutter : ASTRA_FIRST_FRAME
+         1794814329.843  7944  7944 I flutter : ASTRA_CONTENT_READY
+         1794814332.082  7944  7944 I flutter : ASTRA_HOME_READY

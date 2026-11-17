@@ -1,0 +1,99 @@
+id: lure_follow
+name: 跟随零食
+category: basic_obedience
+min_age_weeks: 8
+max_age_weeks: 52
+prerequisites: []
+difficulty: 1
+default_cue: 跟着
+default_gesture: 握着零食的手放在狗鼻尖前 2-3 厘米，手往哪走狗就往哪走
+sessions_to_master: 2
+tutorial:
+  summary: 教狗用鼻子跟着你手里的零食走，之后坐下、趴下、转圈都是靠这只"磁铁手"引导出来的。
+  steps:
+    - text: 准备 10 块软零食，一块握在手心，手指半合，狗能闻到、舔到但吃不到。
+      image: lure_follow_step1.png
+    - text: 把手放到狗鼻尖前 2-3 厘米，让它闻一下。狗鼻子贴上来就按响片，把这块零食给它。
+      image: lure_follow_step2.png
+    - text: 再拿一块，手慢慢向左移 10 厘米。狗的鼻子跟着手动了就按响片给零食。再向右做一次。
+      image: lure_follow_step3.png
+    - text: 手保持在狗鼻子的高度，你向后退两步。狗跟着走过来就按响片给零食。
+      image: lure_follow_step4.png
+    - text: 用手带着狗走一个小圆圈，转完一圈按响片给零食。左转一圈，右转一圈。
+      image: lure_follow_step5.png
+    - text: 狗跟得稳以后，手里不拿零食，只做同样的手势。狗跟着走就按响片，从另一只手给零食。
+      image: lure_follow_step6.png
+  common_mistakes:
+    - 手移得太快，狗跟丢了就放弃。手的速度要和狗鼻子一样慢，狗一跟不上就停下来等它。
+    - 零食露在手指外面，狗直接抢走或者一直啃手。零食要包在手心里，狗闻得到但拿不到。
+    - 手抬得比狗头高，狗变成跳起来够。手始终保持在狗鼻尖的高度。
+    - 跟了一长段才给奖励，狗中途就走神了。一开始跟 10 厘米就奖，慢慢再加长。
+    - 狗没兴趣跟。换一种更香的零食（比如小块鸡肉），或者在狗饭前练。
+  success_criteria: 手里不拿零食，只做手势，狗鼻子跟着手走出 2 米以上，并能跟着转一个完整的圈，5 次中至少 4 次做到。
+script:
+  - step: 1
+    instruction: 一块零食握在手心，手放到狗鼻尖前面让它闻。鼻子贴上来就按响片，给零食。
+    duration_sec: 10
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 再拿一块，手慢慢向左移 10 厘米。狗鼻子跟着动就按响片给零食。然后向右做一次。
+    duration_sec: 20
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 手保持在狗鼻子高度，你向后退两步。狗跟着走过来就按响片给零食。做 4 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 用手带狗走一个小圆圈，转完就按响片给零食。左转 2 圈，右转 2 圈，每圈都奖。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 手慢慢向下带到地面，再慢慢抬回鼻子高度。狗鼻子一直跟着就按响片给零食。做 3 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 6
+    instruction: 最后 3 遍手里不拿零食，只做手势带狗走 3 步。狗跟着走就按响片，从另一只手给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 7
+    instruction: 结束。给一块零食，说"好了"，让狗自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+mini_script:
+  - step: 1
+    instruction: 一块零食握在手心，手放到狗鼻尖前让它闻。鼻子贴上来就按响片，给零食。
+    duration_sec: 10
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 手保持在狗鼻子高度，你向后退两步。狗跟着走过来就按响片给零食。做 3 遍。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 用手带狗走一个小圆圈，转完就按响片给零食。左转 1 圈，右转 1 圈。
+    duration_sec: 40
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 最后 3 遍手里不拿零食，只做手势带狗走 3 步。狗跟着走就按响片，从另一只手给零食。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。给一块零食，说"好了"，让狗自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 最后 3 遍空手手势里 3 遍狗都跟着走完；部分做到 = 1-2 遍；没做到 = 0 遍，或者有零食在手也跟不到 1 米。
+downgrade_to: null
+sources:
+  - 诱导法（luring）基础，参见 Karen Pryor Clicker Training 官网 "Luring" 词条及 AKC 幼犬基础训练公开资料
+  - Ian Dunbar《Before and After Getting Your Puppy》中的 lure-reward training

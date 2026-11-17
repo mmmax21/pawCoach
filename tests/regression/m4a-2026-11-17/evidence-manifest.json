@@ -1,0 +1,254 @@
+{
+  "pytest.log": {
+    "bytes": 99,
+    "sha256": "d5ac3ed60e8799367adee6bddfe0e8f199da68310f824c72b1bf167093bc5ba1"
+  },
+  "source-review.md": {
+    "bytes": 2991,
+    "sha256": "071a0ff9d462f5a7b037a70e9601e5413c9e529405813b1c2fc585a8848546bf"
+  },
+  "legacy-integration.log": {
+    "bytes": 15753,
+    "sha256": "7f54ee7bffa43658372056ef4330bee8e5f145a7e6b81dfc6bcfe29fe2607c42"
+  },
+  "flutter-test-final.log": {
+    "bytes": 334827,
+    "sha256": "6631eb464c9a2c3ea262c21a9e8907190f893908df134ff79c810c3fbbce3a2f"
+  },
+  "care-alarm-summary.json": {
+    "bytes": 2237,
+    "sha256": "442f468e88bf641455730211ac6c90b3647a3003516359ab4b2de087a53b900f"
+  },
+  "carry_07_keyboard_return_no_overflow.png": {
+    "bytes": 169009,
+    "sha256": "fcbe6e5fc204c43ac2ba717d47e121275e38132da22b8ad98e8ad4e8c58675ff"
+  },
+  "visibility-1.json": {
+    "bytes": 173,
+    "sha256": "582808aae8d22266a56377695bd8459813012fcaa22b23af561ade2b0a0341ef"
+  },
+  "tour_07_home_updated_by_b.png": {
+    "bytes": 163221,
+    "sha256": "c511025d5fe4505ad3cb40fbc8549f6d5340e7693c3668276276fb2b7ee1cac8"
+  },
+  "tour_04_family_two_members.png": {
+    "bytes": 139996,
+    "sha256": "92487d3ebbc889760f95496b2c7e80099f6fc28d1d467a4c80819a8ba5368046"
+  },
+  "carry_06_keyboard_open.png": {
+    "bytes": 151810,
+    "sha256": "a00d2bf41d8cf11db3794ca06f6a7993faa6c7b2f1e356d9d5604fd643360b1d"
+  },
+  "migration.log": {
+    "bytes": 237,
+    "sha256": "e75758b913d5c3de8f145259a6a5ba5e0c3b8c5e49c83fe940402a47e96b2d04"
+  },
+  "device-tour.log": {
+    "bytes": 1931,
+    "sha256": "7c5f9c524f9d88884862008aba0a0b0b0f92884b3ebfe56ca84cc593d9388f46"
+  },
+  "carry_04_remote_next.png": {
+    "bytes": 152388,
+    "sha256": "c7df02969df16a42a1e63745d590c7de8bdf41411cee810a025fcc2880040060"
+  },
+  "tour_03_family_invite_code.png": {
+    "bytes": 129525,
+    "sha256": "666e91b38fb84807ce893e9fa4d0146ef4ac9474de094fa9c503e8110bc03016"
+  },
+  "tour_10_diagnosis_jumping_add_this_week.png": {
+    "bytes": 490709,
+    "sha256": "4d3456fb90d71079e07c52550b3b28855ba69201ad901adf0e89cd090ded67a7"
+  },
+  "analyze-final.log": {
+    "bytes": 96,
+    "sha256": "18586c4ad6ecf80134c4c629a96d27cfe7d27a0a2410c50cd35df1b59dc4f4d7"
+  },
+  "carryover.log": {
+    "bytes": 4318,
+    "sha256": "dae5e45adda8280843f9c7beba70a4fa39dbf85872c1dbf3e4f40a73ba64aaba"
+  },
+  "tour_02_me.png": {
+    "bytes": 124912,
+    "sha256": "5abff5db2a44b360b1dbfe584f10152b8d919ed2db5682acbd9389f7006b3b16"
+  },
+  "alarms.txt": {
+    "bytes": 45105,
+    "sha256": "c252cd314fa0c3548751c6b9d5b321b09f8902fa9577ad89de7407e9294529e9"
+  },
+  "flutter-test.log": {
+    "bytes": 331521,
+    "sha256": "fc9f059a9e3d54739a5afa2b0a08679491f61e09b0ba7c3b6991aaa6a93553fb"
+  },
+  "carry_02_remote_paused_5s.png": {
+    "bytes": 135194,
+    "sha256": "7634a8baa232ea579b40173e0b00c36da38378b4286badf7b42d3db2465f6b7d"
+  },
+  "carryover-first-test-harness-error.log": {
+    "bytes": 9069,
+    "sha256": "ad690a93b8feb81d02ae1517a9ee577350ad98d98533040b6b2c8009ea23024a"
+  },
+  "run_carryover.py": {
+    "bytes": 1604,
+    "sha256": "96e8b2395a5dc68d6690d77332773a7f6578adec3aa6d6206c19b2231a41390f"
+  },
+  "care-notifications.txt": {
+    "bytes": 120134,
+    "sha256": "37da69054a1e98e5f1978927b5c13495131ba846b87a23a6698921b90593a97e"
+  },
+  "http-server.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "m3-before.json": {
+    "bytes": 187012,
+    "sha256": "0d5a425aad838239dff64de2d05a701c015c5318e5935d97f8158bdbca320c7f"
+  },
+  "visibility-2.log": {
+    "bytes": 728,
+    "sha256": "e85a8acb97441b89f8824e3f328b3d2e380a6ccba2bfa6da5241ed251dd5b020"
+  },
+  "legacy-server.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "report-draft.md": {
+    "bytes": 14955,
+    "sha256": "9a9ae8e8536fcadbb139b3d5954a9eb520b3be4732df1990f4ef5f2d12277346"
+  },
+  "apk-inventory.json": {
+    "bytes": 467,
+    "sha256": "9d3839e321d09c6a3fcf2e59f91b9ed6e5b317764bb11aaf58a3479f255a7691"
+  },
+  "visibility-3.log": {
+    "bytes": 728,
+    "sha256": "d48c35439cd613e84dbb92d717462e2c7e1a43578c918050c4c82948e0aab7e6"
+  },
+  "visibility-1.log": {
+    "bytes": 728,
+    "sha256": "74c8d4e61e966bae232a5bb92e14f1c14d69eed412ccdcc0bad1f2991acd3d43"
+  },
+  "care-prefs.xml": {
+    "bytes": 74,
+    "sha256": "93798604d3e46ad21bf13d7c3d536e238fe5032f2cf15dafa3ce3c9ab0ea4e5d"
+  },
+  "legacy-server-rerun.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "run_legacy_m3.py": {
+    "bytes": 1291,
+    "sha256": "06da01916faba0d2e49d20a98c8057230f2e8bdfed8ff967dba5da9f171dcbd7"
+  },
+  "m3-upgrade.sqlite": {
+    "bytes": 462848,
+    "sha256": "e2f683cf6b0af5620779d4acdfd4bddbbc93a8fcb4897c531a85dbadb575de6d"
+  },
+  "care-scheduled-notifications.xml": {
+    "bytes": 56,
+    "sha256": "55496bb6afd5c2e0b582da9e3190f474ee871cf448d43b0e55eac1ca6be19919"
+  },
+  "http-regression.log": {
+    "bytes": 7328,
+    "sha256": "40ee0464b35fed282c11643ec75c97713736a01488e445bca1584879b4d7315a"
+  },
+  "care-alarms.txt": {
+    "bytes": 52664,
+    "sha256": "86bdac0703aa2d70d7e6f3bc3053bb74054db87de3244c62c20b2123306974f7"
+  },
+  "tour_09_badge_wall.png": {
+    "bytes": 157759,
+    "sha256": "5ebaa61b57eafb58f655e3f518cb9d8aa9e341b17e0eb731d723aa74b8d1f1d5"
+  },
+  "tour_08_records_show_b.png": {
+    "bytes": 132839,
+    "sha256": "39f1965aac351fc3271ea46550f11f59dd2f61df2f968f768290bb3328b02455"
+  },
+  "carry_05_background_return.png": {
+    "bytes": 155191,
+    "sha256": "85dc7e719e4a0bc7e5010f51b6dcf118c355d1cf4daec8592c8a18ba5d4551ed"
+  },
+  "static-audit.json": {
+    "bytes": 2659,
+    "sha256": "de0fd215cc114f550b7bb4effd2f5e25595e3712395a53adb40b0433f959ef24"
+  },
+  "pytest-final.log": {
+    "bytes": 508,
+    "sha256": "cce4a842fa25caa6523b4cd608049658bf8e64dd59f7faeecc61f7b3224a354c"
+  },
+  "device-flutter.log": {
+    "bytes": 5393,
+    "sha256": "00c950bdde44e5d31b374f323ad1fb3735a33a12782299ea7ebda311b942e512"
+  },
+  "migration-result.json": {
+    "bytes": 799,
+    "sha256": "b6204b2edc3739f438577c901fe36e50c4cb70baf0d77c1186040cea756ac715"
+  },
+  "tour_10a_badge_popup_first_diagnosis.png": {
+    "bytes": 343640,
+    "sha256": "08614157cb0ef461758b7ddc4a2699dc267a3ef1a6eaec276d67199175618b9b"
+  },
+  "tour_05_badge_popup_first_step.png": {
+    "bytes": 194734,
+    "sha256": "a7af6c106b8a808ab74b268b33b144db5c2cc6e1592393278781d4cad146d494"
+  },
+  "carry_08_care_scheduled.png": {
+    "bytes": 341062,
+    "sha256": "91d8fc9d9be5657fb3e7c20cc5a41bdaa7538513fcc2be6c30ce6d5e59cb55e1"
+  },
+  "legacy-m3-rerun.log": {
+    "bytes": 2631,
+    "sha256": "eef91a1efb4cbb4b0d95d65480278437e73c471e63b1a1d2f48b20e256b8f31e"
+  },
+  "tour_11_care_page.png": {
+    "bytes": 341432,
+    "sha256": "9bf9759385a79cd0d3a78972fc75662011548c93808a02d08d2f0da07e90a7de"
+  },
+  "carryover-second-test-harness-error.log": {
+    "bytes": 5819,
+    "sha256": "a6e5f1b2ba2b26172e32abb9b8dd9d5f357fc19913d39b005cebccf42dfa170a"
+  },
+  "carry_03_remote_resumed.png": {
+    "bytes": 134117,
+    "sha256": "d9d996a4b1212d0a110f2c6389ebd789c5fc8540d6ab21b3a0b1711f4db32b10"
+  },
+  "care-scheduled-prefs.xml": {
+    "bytes": 11654,
+    "sha256": "3c39e4cd63cf6419cee80da9fc6e6b3bcfa6945a4bd91fb9afc7ee3129c758ea"
+  },
+  "visibility-3.json": {
+    "bytes": 169,
+    "sha256": "1669eff4d611eb00a712044fee25bca449219141ba8b4e7e18862c8304b2ce27"
+  },
+  "tour_06_badge_popup_team_effort_by_b.png": {
+    "bytes": 199157,
+    "sha256": "17d33a42792a7d7067c429e686fe8c26f0fe96c601875a000694110c5c589726"
+  },
+  "visibility-2.json": {
+    "bytes": 169,
+    "sha256": "0836011c1db78dfd8c8a873df457a4232e1556d3d71ee9f9513bfa6610584f5e"
+  },
+  "tour_01_home.png": {
+    "bytes": 165384,
+    "sha256": "8f3a8cbc64639fb32314cefc473ebc322966e3bad819e23feaf7a26237a92bce"
+  },
+  "notification-preferences.xml": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "tour_12_skill_tree.png": {
+    "bytes": 233986,
+    "sha256": "6d4f9aa2d62b716d4f3c29ebb37ea119cc1448982b2f2db38febee52086a61c9"
+  },
+  "carry_01_notification_home.png": {
+    "bytes": 165443,
+    "sha256": "87ea283d1dae622ebf38c8b0cda93f6a95b407c94eab1e153e81cdbdfcd5431d"
+  },
+  "analyze.log": {
+    "bytes": 96,
+    "sha256": "454709ed5f2b2037a18faeeeca6deb771cf58d909628019a9d8eb012064f6038"
+  },
+  "carry_05_lock_return.png": {
+    "bytes": 151130,
+    "sha256": "57f6528e457c43cf8b6fae1a99a6388e1e4310f50f1295d90f4321bcb84537d3"
+  }
+}

@@ -1,0 +1,86 @@
+# 疫苗 / 驱虫默认日历
+# 按狗的出生日期计算 due 日期。week_from / week_to 表示周龄区间，
+# 客户端取区间中点生成默认提醒日，主人可改。
+# repeat: null 表示一次性；否则为重复间隔。
+# App 内固定展示：默认日程仅供参考，请以兽医建议为准。
+
+disclaimer: 以下为常见默认日程，具体以兽医建议为准。疫苗间隔、品牌和针数因地区和疫苗种类不同，请和兽医确认后调整。
+
+items:
+  - id: vaccine_1
+    type: vaccine
+    title: 第一针核心疫苗
+    week_from: 6
+    week_to: 8
+    repeat: null
+    note: 通常在 6-8 周龄接种第一针，接种前后一周避免洗澡和外出。
+
+  - id: vaccine_2
+    type: vaccine
+    title: 第二针核心疫苗
+    week_from: 10
+    week_to: 12
+    repeat: null
+    note: 与第一针间隔 3-4 周。
+
+  - id: vaccine_3
+    type: vaccine
+    title: 第三针核心疫苗
+    week_from: 14
+    week_to: 16
+    repeat: null
+    note: 与第二针间隔 3-4 周。
+
+  - id: rabies_1
+    type: vaccine
+    title: 狂犬疫苗
+    week_from: 12
+    week_to: 16
+    repeat: null
+    note: 具体周龄按当地规定，部分地区要求满 3 月龄。
+
+  - id: vaccine_annual
+    type: vaccine
+    title: 年度加强针
+    week_from: 52
+    week_to: 56
+    repeat: null
+    note: 首年完成后每年加强一次，由兽医安排。
+
+  - id: deworm_internal_early
+    type: deworm_internal
+    title: 体内驱虫（幼犬期）
+    week_from: 2
+    week_to: 12
+    repeat:
+      every_weeks: 2
+    note: 12 周龄前每 2 周一次。
+
+  - id: deworm_internal_regular
+    type: deworm_internal
+    title: 体内驱虫（常规）
+    week_from: 12
+    week_to: 52
+    repeat:
+      every_weeks: 4
+    note: 12 周龄后每月一次。
+
+  - id: deworm_external
+    type: deworm_external
+    title: 体外驱虫
+    week_from: 8
+    week_to: 52
+    repeat:
+      every_weeks: 4
+    note: 每月一次，部分产品有最低周龄和体重要求，用前看说明。
+
+milestones:
+  - id: socialization_window
+    title: 社会化关键期结束
+    week: 16
+    note: 16 周前尽量让狗安全接触不同的人、声音、地面、交通工具。疫苗未打完时抱着出门也算。
+
+  - id: adolescence_start
+    title: 进入青春期
+    week: 24
+    note: 6 个月左右可能出现"忘了会的东西"、不听召回，是正常现象，回到基础复习。

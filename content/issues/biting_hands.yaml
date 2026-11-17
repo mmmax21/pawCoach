@@ -1,0 +1,55 @@
+id: biting_hands
+name: 咬手 / 啃人
+category: puppy_behavior
+typical_age_weeks: [8, 24]
+diagnosis_tree:
+  - q: 狗通常在什么时候咬人？
+    options:
+      - text: 玩耍或兴奋的时候
+        next: 1
+      - text: 被摸到某个部位的时候
+        next: 2
+      - text: 几乎任何时候都咬
+        next: 1
+  - q: 咬的力度怎么样？
+    options:
+      - text: 轻咬、含着，没有破皮
+        result: play_biting
+      - text: 用力咬，有破皮或淤青
+        result: hard_biting
+  - q: 被摸哪里会咬？
+    options:
+      - text: 爪子、耳朵、嘴巴、尾巴
+        result: handling_sensitivity
+      - text: 没有固定部位，摸哪都可能
+        result: play_biting
+solutions:
+  play_biting:
+    summary: 幼犬 8-24 周正在换牙，用嘴探索和玩耍是正常行为。重点不是禁止咬，而是教它控制力度，并学会把嘴转移到玩具上。
+    skills: [bite_inhibition, redirect_to_toy, calm_settle]
+    management:
+      - 准备至少 3 种不同材质的磨牙玩具（橡胶、绳结、冷冻毛巾），轮换使用。
+      - 牙齿碰到皮肤时立刻停止一切互动，把手收回、转身 10 秒，然后再回来。
+      - 兴奋到失控时结束游戏，放进围栏或航空箱安静 2-3 分钟，不是惩罚，是降温。
+      - 家里所有人规则一致，任何人都不能用手逗狗玩咬手游戏。
+      - 保证每天足够的睡眠，幼犬困的时候咬得最凶。
+    escalate_if: 持续练习 4 周没有改善，或开始出现低吼、龇牙、咬了不松口。
+  hard_biting:
+    summary: 用力到破皮的咬合超出了幼犬正常探索范围，可能是过度兴奋、缺乏咬合抑制训练，也可能是恐惧或疼痛引起。先排除身体原因，再从管理入手。
+    skills: [bite_inhibition, calm_settle, handling_body]
+    management:
+      - 先带去兽医检查是否有口腔、换牙疼痛或其他不适。
+      - 暂停所有用手的游戏，改用长玩具或拉绳保持距离。
+      - 被咬时不喊叫不挣扎，手静止不动，等它松口后立刻离开 30 秒。
+      - 记录每次用力咬发生的时间、前后发生了什么，带给训犬师看。
+    escalate_if: 任何一次破皮咬合后都建议尽快咨询专业训犬师；如伴随低吼、僵硬、护食，立即咨询。
+  handling_sensitivity:
+    summary: 狗对特定部位被碰触敏感，咬是它表达"不要碰"的方式。需要做触摸脱敏，让它把被碰触和好事联系起来。
+    skills: [handling_body, marker_intro]
+    management:
+      - 暂时避免碰触敏感部位，尤其不要强行剪指甲、掏耳朵。
+      - 从它能接受的距离开始，碰一下给零食，逐步靠近敏感部位。
+      - 如果该部位近期有受伤、发炎或刚做过处理，先让兽医看。
+    escalate_if: 碰触时出现僵硬、龇牙、低吼，或该部位可能有伤痛，先就医再训练。
+sources:
+  - 咬合抑制与转移训练参考 Ian Dunbar 幼犬社会化方法及 AKC 幼犬行为公开资料

@@ -1,0 +1,38 @@
+00:00 +0: loading /Users/maxlou/Documents/ChatGPT/1121上海黑客松-宠物训练/app/integration_test/m3_ai_coach_test.dart
+Running Gradle task 'assembleDebug'...                          
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): flutter_tts, workmanager_android
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Running Gradle task 'assembleDebug'...                             12.4s
+✓ Built build/app/outputs/flutter-apk/app-debug.apk
+Installing build/app/outputs/flutter-apk/app-debug.apk...          720ms
+00:00 +0: 课程内提问：技能页"问教练" → 经本地服务端流式回答 → 参考内容 → 健康问题固定话术
+ASTRA_PERMISSION rc=0 
+M3SHOT 01_home
+M3SHOT 02_course_qa_refs
+[ai] guard_health HealthGuard(hard: 吐了)
+[ai] guard_health Retrieval(context: [marker_intro], scored: [])
+[ai] guard_no_hit Retrieval(context: [], scored: [])
+M3SHOT 03_guards
+00:13 +1: 跟练中问教练：进入时暂停，返回后恢复，倒计时不丢
+TRAIN ENTER step=1 announceNext=false step=1/6 phase=running remaining=10000ms stepStartedAt=2026-11-17T20:17:37.545705 now=2026-11-17T20:17:37.546275
+M3SHOT 04_training_ask_coach
+00:27 +2: 诊断：选 issue → 追问按钮 → 结果页 → 加入本周 → 首页立即出现
+M3SHOT 05_coach_home
+M3SHOT 06_diagnosis_question
+M3SHOT 07_diagnosis_result
+M3SHOT 08_add_this_week
+M3SHOT 09_home_after_add
+00:44 +3: 提醒：打开开关 → 已调度每日通知；打卡后改到明天
+M3SHOT 10_reminder
+00:49 +4: 网络断开：对话页显示"教练暂时联系不上，稍后再试"，消息不入库
+[ai] 网络失败：AiClientException: 请求失败 (DioException [connection error]: The connection errored: Connection refused This indicates an error which most likely cannot be solved by the library.
+Error: SocketException: Connection refused (OS Error: Connection refused, errno = 111), address = 10.0.2.2, port = 57656)
+M3SHOT 11_offline
+00:52 +5: (tearDownAll)
+00:53 +5: All tests passed!

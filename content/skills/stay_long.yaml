@@ -1,0 +1,110 @@
+id: stay_long
+name: 延长等待（30 秒 + 距离）
+category: impulse
+min_age_weeks: 16
+max_age_weeks: 52
+prerequisites: [stay_short]
+difficulty: 3
+default_cue: 等
+default_gesture: 手掌张开朝向狗，做"停"的手势，然后转身或后退
+sessions_to_master: 3
+script_parts: 2
+tutorial:
+  summary: 把 3 秒的等待拉长到 30 秒，并且你能走开 5 步狗还不动。距离和时长分开练，一次只加一样难度。
+  steps:
+    - text: 准备 15 块软零食。在安静房间让狗坐下，先复习 2 次 3 秒等待，确认它今天状态在线。
+      image: stay_long_step1.png
+    - text: 练距离（第一段）：说"等"做手势，向后退 1 步，马上走回狗身边，狗没动就按响片，零食送到嘴边，再说"好了"释放。
+      image: stay_long_step2.png
+    - text: 每 5 次成功就多退 1 步，退到 5 步为止。每次都要走回狗身边再奖励，不要在远处叫狗过来拿零食。
+      image: stay_long_step3.png
+    - text: 练时长（第二段）：站在狗身边不走开，说"等"，每隔 3-5 秒送一块"保持费"，等满 10 秒按响片释放。
+      image: stay_long_step4.png
+    - text: 10 秒稳了加到 20 秒，再加到 30 秒。保持费的间隔慢慢拉长，最后 30 秒里只给 2 块。
+      image: stay_long_step5.png
+    - text: 两段都稳了以后才合起来：退 3 步，站 10 秒，走回来奖励。再慢慢往 5 步 30 秒靠。
+      image: stay_long_step6.png
+    - text: 狗一旦起身，不说话，让它重新坐下，把距离或时间退回上一个成功的档位，做 2 次成功再往前加。
+      image: stay_long_step7.png
+  common_mistakes:
+    - 距离和时长一起加，比如退 5 步同时等 30 秒。狗一下子失败好几次就不愿意等了。一次只加一样，另一样保持最低。
+    - 站在远处叫狗过来拿零食。狗会学到"等一会儿就能跑过来"，等待就变成了起跑。永远走回狗身边再给奖励和释放。
+    - 走开的时候一直盯着狗、倒着走。狗会觉得气氛紧张。正常地转身走，正常地走回来，但退 1-2 步时可以先面对狗。
+    - 长时间等待中间完全不给奖励。30 秒对幼犬很长，中间要送"保持费"，让它知道坐着不动一直有好处。
+    - 狗起身了就说"不对"或者拉它回去。不说话，重新坐下，退一档。连续失败 2 次就说明今天到这里了，结束，换天再练。
+    - 一次练太久。两段各 3-4 分钟，中间休息，不要一口气把两段连着做完。
+  success_criteria: 距离：你退 5 步再走回来，狗坐着不动，5 次中至少 4 次做到。时长：你站在狗身边，狗等满 30 秒直到"好了"才起身，3 次中至少 2 次做到。
+script:
+  - step: 1
+    part: 1
+    instruction: 让狗坐下。复习 2 次 3 秒等待，说"等"，数 3 秒，按响片给零食，说"好了"。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 2
+    part: 1
+    instruction: 说"等"做手势，向后退 1 步，马上走回狗身边。狗没动就按响片，零食送到嘴边，说"好了"。做 5 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 3
+    part: 1
+    instruction: 退 3 步再走回来。狗没动就按响片给零食，说"好了"。做 5 遍。狗起身了就不说话，重新坐下，退回 1 步做 2 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 4
+    part: 1
+    instruction: 退 5 步再走回来。狗没动就按响片，给 2 块零食，说"好了"。做 5 遍。然后第一段结束，让狗休息一下。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 5
+    part: 2
+    instruction: 第二段。让狗坐下，你站在它身边不走开。说"等"，每隔 3 秒送一块零食，等满 10 秒按响片，说"好了"。做 3 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 6
+    part: 2
+    instruction: 加到 20 秒。说"等"，第 5 秒、第 12 秒各送一块零食，等满 20 秒按响片，说"好了"。做 2 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 7
+    part: 2
+    instruction: 加到 30 秒。说"等"，第 10 秒、第 20 秒各送一块零食，等满 30 秒按响片，给 2 块零食，说"好了"。做 2 遍，然后结束，让狗自由活动。
+    duration_sec: 90
+    voice: true
+    clicker_hint: true
+mini_script:
+  - step: 1
+    instruction: 让狗坐下。复习 2 次 3 秒等待，说"等"，数 3 秒，按响片给零食，说"好了"。
+    duration_sec: 30
+    voice: true
+    clicker_hint: true
+  - step: 2
+    instruction: 说"等"做手势，向后退 3 步再走回来。狗没动就按响片给零食，说"好了"。做 3 遍。狗起身了就不说话，重新坐下，退回 1 步做 1 遍。
+    duration_sec: 75
+    voice: true
+    clicker_hint: true
+  - step: 3
+    instruction: 站在狗身边不走开。说"等"，每隔 3 秒送一块零食，等满 10 秒按响片，说"好了"。做 2 遍。
+    duration_sec: 45
+    voice: true
+    clicker_hint: true
+  - step: 4
+    instruction: 加到 20 秒。说"等"，第 5 秒、第 12 秒各送一块零食，等满 20 秒按响片，说"好了"。做 2 遍。
+    duration_sec: 60
+    voice: true
+    clicker_hint: true
+  - step: 5
+    instruction: 结束。说"好了"，给一块零食，让狗自由活动。
+    duration_sec: 10
+    voice: true
+    clicker_hint: false
+scoring_hint: 完全做到 = 第 4 步退 5 步 5 遍里 4 遍以上没动，并且第 7 步 30 秒 2 遍都等住；部分做到 = 只有距离或只有时长达标；没做到 = 两样都没达标，或退 3 步就起身。
+downgrade_to: stay_short
+sources:
+  - 等待的三要素分开训练（3 D's：distance / duration / distraction），参见 Pat Miller 在 Whole Dog Journal 的公开文章及 AKC "How to Teach Your Dog to Stay"
+  - 回到狗身边释放、保持费奖励，参见 Kikopup（Emily Larlham）YouTube 公开教程
