@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../data/ai/agent_client.dart';
 import '../data/ai/ai_client.dart';
 import '../data/ai/ai_coach_engine.dart' show AiMode, buildAiMode;
 import '../data/content/content_repository.dart';
@@ -195,6 +196,53 @@ final aiModeProvider = Provider<AiMode>((ref) => buildAiMode);
 
 /// 模型调用只走服务端代理；只在 model 模式下被读取。测试 override 成 FakeAiClient。
 final aiClientProvider = Provider<AiClient>((ref) => HttpAiClient());
+
+// ---------------------------------------------------------------------------
+// 在线模式：AI 助理训犬师（2026-11-18）
+// ---------------------------------------------------------------------------
+
+/// 构建参数 AI_ONLINE=true 时默认在线；否则默认离线（内容库直出、零网络）。
+const aiOnlineByDefault = bool.fromEnvironment('AI_ONLINE', defaultValue: false);
+
+/// 离线 / 在线开关，用户在 AI 教练页切换，存在本机文件（不进数据库、不同步）。
+class AiOnlineController extends StateNotifier<bool> {
+  AiOnlineController({bool initial = aiOnlineByDefault, Future<File> Function()? file})
+      : _file = file,
+        super(initial) {
+    _load();
+  }
+  final Future<File> Function()? _file;
+
+  Future<File> _target() async {
+    if (_file != null) return _file();
+    final dir = await getApplicationDocumentsDirectory();
+    return File(p.join(dir.path, 'ai_mode.txt'));
+  }
+
+  Future<void> _load() async {
+    try {
+      final f = await _target();
+      if (f.existsSync()) {
+        final v = f.readAsStringSync().trim();
+        if (mounted) state = v == 'online';
+      }
+    } catch (_) {
+      // 测试环境没有文档目录：保持默认
+    }
+  }
+
+  Future<void> set(bool online) async {
+    state = online;
+    try {
+      (await _target()).writeAsStringSync(online ? 'online' : 'offline');
+    } catch (_) {}
+  }
+}
+
+final aiOnlineProvider = StateNotifierProvider<AiOnlineController, bool>((ref) => AiOnlineController());
+
+/// 在线模式的模型转发（服务端 /v1/agent）。测试 override 成假实现。
+final agentClientProvider = Provider<AgentClient>((ref) => HttpAgentClient());
 
 final aiRepositoryProvider = Provider(
     (ref) => AiRepository(ref.watch(databaseProvider), clock: ref.watch(clockProvider)));

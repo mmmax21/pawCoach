@@ -11,6 +11,7 @@ import '../../core/providers.dart';
 import '../../data/db/database.dart';
 import '../../data/repositories/ai_repository.dart';
 import '../../domain/models.dart';
+import 'agent_widgets.dart';
 
 final dogConversationsProvider = StreamProvider.autoDispose<List<AiConversation>>((ref) async* {
   final dog = await ref.watch(currentDogProvider.future);
@@ -39,11 +40,13 @@ class CoachHomePage extends ConsumerWidget {
     final lib = ref.watch(contentLibraryProvider).valueOrNull;
     final t = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('AI 教练')),
+      appBar: AppBar(title: const Text('AI 教练'), actions: const [AiModeToggle()]),
       bottomNavigationBar: const AppBottomNav(current: AppTab.coach),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          _ModeHint(online: ref.watch(aiOnlineProvider)),
+          const SizedBox(height: 12),
           Card(
             key: const Key('coach_diagnosis_entry'),
             color: Theme.of(context).colorScheme.primaryContainer,
@@ -100,4 +103,22 @@ String _shortTime(String iso) {
   final t = DateTime.parse(iso).toLocal();
   String two(int n) => n.toString().padLeft(2, '0');
   return '${t.month}-${two(t.day)} ${two(t.hour)}:${two(t.minute)}';
+}
+
+class _ModeHint extends StatelessWidget {
+  const _ModeHint({required this.online});
+  final bool online;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Row(
+      key: const Key('ai_mode_hint'),
+      children: [
+        Icon(online ? Icons.auto_awesome : Icons.menu_book_outlined, size: 16, color: Theme.of(context).colorScheme.primary),
+        const SizedBox(width: 6),
+        Expanded(child: Text(online ? AgentStrings.onlineHint : AgentStrings.offlineHint, style: t.bodySmall)),
+      ],
+    );
+  }
 }

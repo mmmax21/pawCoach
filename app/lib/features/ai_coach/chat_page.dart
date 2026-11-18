@@ -18,10 +18,12 @@ import 'package:material_ui/material_ui.dart';
 import '../../core/providers.dart';
 import '../../data/ai/ai_client.dart';
 import '../../data/ai/ai_coach_engine.dart';
+import '../../data/ai/coach_agent.dart';
 import '../../data/db/database.dart';
 import '../../domain/answer_composer.dart';
 import '../../domain/models.dart';
 import '../../domain/retrieval.dart';
+import 'agent_widgets.dart';
 
 class ChatStrings {
   const ChatStrings._();
@@ -78,6 +80,8 @@ class _ChatPageState extends ConsumerState<ChatPage> {
   final _scroll = ScrollController();
   AiConversation? _conv;
   String? _dogId;
+  /// 在线模式进行中：已执行的工具（界面逐条显示）。null 表示不在在线流程中。
+  List<String>? _agentSteps;
   String? _error;
   bool _sending = false;
   String? _pendingQuestion;
@@ -130,6 +134,50 @@ class _ChatPageState extends ConsumerState<ChatPage> {
     return null;
   }
 
+  /// 在线模式：AI 助理训犬师。成功返回 true；连不上服务返回 false（调用方改走离线）。
+  Future<bool> _sendOnline(String q, AiConversation conv, String dogId) async {
+    final repo = ref.read(aiRepositoryProvider);
+    setState(() => _agentSteps = []);
+    try {
+      final lib = await ref.read(contentLibraryProvider.future);
+      final agent = CoachAgent(
+        library: lib,
+        client: ref.read(agentClientProvider),
+        toolbox: AgentToolbox(
+          db: ref.read(databaseProvider),
+          library: lib,
+          dogId: dogId,
+          clock: ref.read(clockProvider),
+        ),
+      );
+      final history = await repo.recentTurns(conv.id);
+      CoachAnswer? done;
+      await for (final e in agent.ask(question: q, history: history, contextSkillId: _skillId)) {
+        switch (e) {
+          case AgentStep(:final label):
+            if (mounted) setState(() => _agentSteps = [...?_agentSteps, label]);
+            _scrollToEnd();
+          case AgentDone(:final answer):
+            done = answer;
+        }
+      }
+      if (done != null) await repo.addExchange(conversationId: conv.id, question: q, answer: done);
+      if (mounted) {
+        setState(() {
+          _sending = false;
+          _pendingQuestion = null;
+          _agentSteps = null;
+        });
+        _scrollToEnd();
+      }
+      return true;
+    } on AiClientException catch (e) {
+      debugPrint('[agent] 在线失败：$e');
+      if (mounted) setState(() => _agentSteps = null);
+      return false;
+    }
+  }
+
   Future<void> _send() async {
     final q = _input.text.trim();
     final conv = _conv;
@@ -143,6 +191,16 @@ class _ChatPageState extends ConsumerState<ChatPage> {
     _input.clear();
     final repo = ref.read(aiRepositoryProvider);
     final mode = ref.read(aiModeProvider);
+    if (ref.read(aiOnlineProvider)) {
+      final ok = await _sendOnline(q, conv, dogId);
+      if (ok) return;
+      // 在线失败：自动改用离线模式回答（内容库直出），并提示
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(key: Key('chat_fell_back'), content: Text(AgentStrings.fellBack)),
+        );
+      }
+    }
     try {
       final lib = await ref.read(contentLibraryProvider.future);
       // library 模式不读 aiClientProvider：HTTP 客户端根本不会被创建（16.8 零网络）。
@@ -254,7 +312,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       _scrollToEnd();
     }
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title), actions: const [AiModeToggle()]),
       body: SafeArea(
         child: Column(
           children: [
@@ -282,8 +340,14 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                       message: m,
                       library: lib,
                       question: _questionBefore(messages, i),
+                      dogId: _dogId,
                     ),
+                  if (_pendingQuestion != null && _agentSteps != null) ...[
+                    _Bubble(text: _pendingQuestion!, fromUser: true),
+                    AgentWorking(steps: _agentSteps!),
+                  ],
                   if (_pendingQuestion != null &&
+                      _agentSteps == null &&
                       ref.read(aiModeProvider) == AiMode.model) ...[
                     _Bubble(text: _pendingQuestion!, fromUser: true),
                     _Bubble(
@@ -388,9 +452,10 @@ class _Bubble extends StatelessWidget {
 }
 
 class _MessageBubble extends StatelessWidget {
-  const _MessageBubble({required this.message, required this.library, this.question});
+  const _MessageBubble({required this.message, required this.library, this.question, this.dogId});
   final AiMessage message;
   final ContentLibrary library;
+  final String? dogId;
 
   /// 这条回复对应的用户提问；没命中时据此给出"你可能想问"。
   final String? question;
@@ -407,6 +472,25 @@ class _MessageBubble extends StatelessWidget {
     ];
     final guard =
         kind == AiMessageKind.guardHealth || kind == AiMessageKind.guardNoHit;
+    // 在线模式（AI 助理训犬师）的回答：正文 + 查看过的信息 + 操作卡片
+    final agent = AgentMessageParts.parse(message.content);
+    if (agent.isAgent) {
+      return _Bubble(
+        key: Key('msg_${message.id}'),
+        text: agent.text,
+        fromUser: false,
+        tone: guard ? cs.tertiaryContainer : null,
+        body: SelectableText(agent.text),
+        footer: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AgentAnswerExtras(parts: agent, library: library, dogId: dogId),
+            if (cited.isNotEmpty) _RefsFold(ids: cited, library: library),
+          ],
+        ),
+      );
+    }
     return _Bubble(
       key: Key('msg_${message.id}'),
       text: message.content,

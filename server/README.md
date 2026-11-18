@@ -111,6 +111,30 @@ curl -s localhost:8000/healthz             # upstream 应为 "cli"
 - temperature 同样不传；`max_tokens` 无法透传给命令行，忽略。
 - 消耗的是登录账号的订阅额度。
 
+## 在线模式：AI 助理训犬师（agent.py，2026-11-18）
+
+App 的 AI 教练有"离线 / 在线"两种模式。在线模式由 App 跑 Agent 循环、在本机执行工具，这里只把每一轮交给模型：
+
+```
+POST /v1/agent
+body: {system, messages: [Messages API 格式，含 tool_use / tool_result 块], tools: [{name, description, input_schema}]}
+resp: {stop_reason, content: [块...], upstream: "api_key" | "cli" | "fake"}   上游失败 → HTTP 502
+```
+
+| 上游 | 怎么开 | 说明 |
+|---|---|---|
+| API key | 设 `ANTHROPIC_API_KEY` | Claude 原生工具调用，模型 `AGENT_MODEL`（默认 `claude-opus-5-5`），effort `AGENT_EFFORT`（默认 `medium`），开启服务端拒答兜底 |
+| 命令行订阅登录 | `CLI_UPSTREAM=1` | 命令行不开放工具，改为把工具清单写进系统提示、要求模型只回 JSON，服务端解析成与原生相同的块。仅测试 / 演示 |
+| 假上游 | `FAKE_UPSTREAM=1` | 固定剧本（查档案和记录 → 提议加入计划 → 回答），不调模型 |
+
+演示（没有 API key 时用命令行订阅登录）：
+
+```bash
+CLI_UPSTREAM=1 .venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+`GET /healthz` 会返回 `agent_model` 与当前 `upstream`。
+
 ## M4：账号、家庭与同步（sync.py / store.py）
 
 FastAPI + 标准库 `sqlite3`，**没有新增依赖**。数据库文件由环境变量 `DB_PATH` 指定，默认 `server/data/app.db`
@@ -131,7 +155,7 @@ GET   /v1/sync/pull?household_id=&since_seq=N   该家庭 server_seq > N 的记�
 - 冲突：`client_updated_at` 较新者胜，相同时先到者为准；`dog_badges` 已存在即拒绝覆盖。
 - 邀请码只出现在请求 / 响应体里，不出现在 URL；token 与邀请码不写日志。
 
-自测：`.venv/bin/python -m pytest -q`（`test_main.py` 代理 16 项 + `test_sync.py` 同步 14 项）。
+自测：`.venv/bin/python -m pytest -q`（`test_main.py` 代理 + `test_sync.py` 同步 + `test_agent.py` 在线模式，共 41 项）。
 
 双端可见性端到端（需要 Android 模拟器 emulator-5554）：
 

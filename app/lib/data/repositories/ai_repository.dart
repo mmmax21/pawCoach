@@ -294,6 +294,43 @@ class AiRepository {
     });
   }
 
+  /// 在线模式（AI 助理训犬师）的"加入本周计划"确认卡片：主人点确认时执行。
+  /// 按 [addDiagnosisToWeek] 同一套规则重新校验一次（卡片生成后情况可能变了），再写入当前活动计划。
+  Future<DiagnosisWeekAddition> addSkillsToThisWeek({
+    required String dogId,
+    required List<String> skillIds,
+    required ContentLibrary content,
+  }) async {
+    return db.transaction(() async {
+      final plan = await PlanRepository(db).activePlan(dogId);
+      if (plan == null) throw StateError('没有活动计划');
+      final goals = await PlanRepository(db).goals(plan.id);
+      final statuses = await skillStatusMap(dogId);
+      final dog = await (db.select(db.dogs)..where((t) => t.id.equals(dogId))).getSingle();
+      final result = addDiagnosisToWeek(
+        solutionSkills: skillIds,
+        currentGoalIds: [for (final g in goals) g.skillId],
+        mastered: {
+          for (final e in statuses.entries)
+            if (e.value == 'mastered') e.key,
+        },
+        ageWeeks: ageWeeksOn(parseDateOnly(dog.birthDate), _clock().toLocal()),
+        skills: content.skills,
+      );
+      var position = goals.isEmpty ? 0 : goals.map((g) => g.position).reduce((a, b) => a > b ? a : b) + 1;
+      for (final g in result.added) {
+        await db.into(db.planGoals).insert(PlanGoalsCompanion.insert(
+              planId: plan.id,
+              skillId: g.skillId,
+              position: position++,
+              targetSessions: g.targetSessions,
+              source: sourceToDb(g.source),
+            ));
+      }
+      return result;
+    });
+  }
+
   /// "加入下周"弹窗用的预览：与本周同一规则（第 9 节），周龄按下周一计算，
   /// 当前目标视为空。实际下周生成时在 nextWeekPlan() 里按当时的掌握情况再算一次。
   Future<DiagnosisWeekAddition> previewNextWeek({

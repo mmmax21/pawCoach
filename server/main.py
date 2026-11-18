@@ -14,6 +14,9 @@ API key 只从服务端环境变量 ANTHROPIC_API_KEY 读，客户端不持有�
   CLAUDE_BIN         CLI_UPSTREAM 用的可执行文件，默认在 PATH 里找 `claude`
   CLI_TIMEOUT        CLI_UPSTREAM 单次请求超时秒数，默认 180
 
+  AGENT_MODEL        在线模式（/v1/agent，见 agent.py）用的模型，默认 claude-opus-5-5
+  AGENT_EFFORT       在线模式的 effort，默认 medium
+
 上游优先级：FAKE_UPSTREAM > CLI_UPSTREAM > API key。
 """
 
@@ -316,7 +319,9 @@ async def cli_stream(req: ChatRequest) -> AsyncIterator[str]:
 
 @app.get("/healthz")
 async def healthz() -> dict:
-    return {"ok": True, "model": MODEL, "fake": FAKE_UPSTREAM, "upstream": upstream_mode()}
+    from agent import AGENT_MODEL
+
+    return {"ok": True, "model": MODEL, "agent_model": AGENT_MODEL, "fake": FAKE_UPSTREAM, "upstream": upstream_mode()}
 
 
 @app.post("/v1/chat")
@@ -342,6 +347,12 @@ async def chat(req: ChatRequest) -> StreamingResponse:
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+
+# 在线模式（2026-11-18）：AI 助理训犬师的工具调用转发，见 agent.py。
+from agent import AGENT_MODEL, router as agent_router  # noqa: E402
+
+app.include_router(agent_router)
 
 
 if __name__ == "__main__":
