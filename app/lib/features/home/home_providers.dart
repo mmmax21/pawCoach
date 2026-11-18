@@ -36,6 +36,23 @@ final streakDaysProvider = StreamProvider<int>((ref) async* {
   }
 });
 
+/// 今天是否已经打卡（Streak.last_checkin_date 是今天）。首页据此切换"今天已打卡"的提示。
+final checkedInTodayProvider = StreamProvider<bool>((ref) async* {
+  final dog = await ref.watch(currentDogProvider.future);
+  if (dog == null) {
+    yield false;
+    return;
+  }
+  final db = ref.watch(databaseProvider);
+  final clock = ref.read(clockProvider);
+  await for (final row in (db.select(db.streaks)..where((t) => t.dogId.equals(dog.id))).watchSingleOrNull()) {
+    final last = row?.lastCheckinDate;
+    final now = clock().toLocal();
+    final today = '${now.year.toString().padLeft(4, '0')}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    yield last == today;
+  }
+});
+
 /// 最近一份未读周报；补跑生成新周报后会随 [weeklyCatchUpProvider] 重新计算。
 final unreadReportProvider = FutureProvider<WeeklyReport?>((ref) async {
   final dog = await ref.watch(currentDogProvider.future);

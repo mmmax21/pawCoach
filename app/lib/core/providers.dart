@@ -87,7 +87,61 @@ final clockProvider = Provider<DateTime Function()>((ref) => DateTime.now);
 // ---------------------------------------------------------------------------
 
 /// 服务端接口（--dart-define=SYNC_BASE_URL=...）。测试 override 成内存替身。
-final syncApiProvider = Provider<SyncApi>((ref) => DioSyncApi());
+// ---------------------------------------------------------------------------
+// 服务器地址（2026-11-19 真机彩排）：在线模式与家庭同步共用 server/。
+// 默认取构建参数 SYNC_BASE_URL；用户可在"我的 → 服务器地址"里修改（换 Wi-Fi 后 IP 会变，不用重新打包）。
+// 存在本机文件 server_url.txt，不进数据库、不同步。
+// ---------------------------------------------------------------------------
+
+class ServerUrlController extends StateNotifier<String> {
+  ServerUrlController({String initial = syncBaseUrl, Future<File> Function()? file})
+      : _file = file,
+        super(initial) {
+    _load();
+  }
+  final Future<File> Function()? _file;
+
+  Future<File> _target() async {
+    if (_file != null) return _file();
+    final dir = await getApplicationDocumentsDirectory();
+    return File(p.join(dir.path, 'server_url.txt'));
+  }
+
+  Future<void> _load() async {
+    try {
+      final f = await _target();
+      if (f.existsSync()) {
+        final v = f.readAsStringSync().trim();
+        if (v.isNotEmpty && mounted) state = v;
+      }
+    } catch (_) {}
+  }
+
+  /// 规范化：补 http://、去掉末尾斜杠。返回保存后的地址。
+  static String normalize(String raw) {
+    var v = raw.trim();
+    if (v.isEmpty) return v;
+    if (!v.startsWith('http://') && !v.startsWith('https://')) v = 'http://$v';
+    while (v.endsWith('/')) {
+      v = v.substring(0, v.length - 1);
+    }
+    return v;
+  }
+
+  Future<String> set(String raw) async {
+    final v = normalize(raw);
+    if (v.isEmpty) return state;
+    state = v;
+    try {
+      (await _target()).writeAsStringSync(v);
+    } catch (_) {}
+    return v;
+  }
+}
+
+final serverUrlProvider = StateNotifierProvider<ServerUrlController, String>((ref) => ServerUrlController());
+
+final syncApiProvider = Provider<SyncApi>((ref) => DioSyncApi(baseUrl: ref.watch(serverUrlProvider)));
 
 final derivedStateProvider =
     Provider((ref) => DerivedState(ref.watch(databaseProvider), clock: ref.watch(clockProvider)));
@@ -242,7 +296,7 @@ class AiOnlineController extends StateNotifier<bool> {
 final aiOnlineProvider = StateNotifierProvider<AiOnlineController, bool>((ref) => AiOnlineController());
 
 /// 在线模式的模型转发（服务端 /v1/agent）。测试 override 成假实现。
-final agentClientProvider = Provider<AgentClient>((ref) => HttpAgentClient());
+final agentClientProvider = Provider<AgentClient>((ref) => HttpAgentClient(baseUrl: ref.watch(serverUrlProvider)));
 
 final aiRepositoryProvider = Provider(
     (ref) => AiRepository(ref.watch(databaseProvider), clock: ref.watch(clockProvider)));

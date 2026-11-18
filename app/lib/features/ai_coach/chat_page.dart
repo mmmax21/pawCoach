@@ -138,6 +138,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
   Future<bool> _sendOnline(String q, AiConversation conv, String dogId) async {
     final repo = ref.read(aiRepositoryProvider);
     setState(() => _agentSteps = []);
+    _scrollToEnd();
     try {
       final lib = await ref.read(contentLibraryProvider.future);
       final agent = CoachAgent(
@@ -189,6 +190,9 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       _streaming = '';
     });
     _input.clear();
+    // 真机彩排：发送后收起键盘并滚到底部，让提问与"正在处理…"的过程可见
+    FocusManager.instance.primaryFocus?.unfocus();
+    _scrollToEnd();
     final repo = ref.read(aiRepositoryProvider);
     final mode = ref.read(aiModeProvider);
     if (ref.read(aiOnlineProvider)) {

@@ -133,6 +133,9 @@ void main() {
     expect(textOf(t, 'home_streak'), '1');
     expect(textOf(t, 'home_goal_count_marker_intro'), '1 / 3');
     expect(textOf(t, 'home_week_progress_text'), '1 / 9');
+    // 2026-11-19 真机彩排：今天已打卡时，首页大卡片不再写"练完就到第 N+1 天"
+    expect(find.textContaining('今天已打卡'), findsOneWidget);
+    expect(find.textContaining('连续打卡就到第'), findsNothing);
 
     // 保底任务打卡：连续天数不变（同一天），进度不变。
     await t.runAsync(() => SessionRepository(db).save(

@@ -9,3 +9,6 @@ server/data/
 .DS_Store
 .idea/
 *.iml
+
+# 演示用安装包（本机打包，不提交）
+build_demo/

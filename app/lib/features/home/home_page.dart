@@ -78,7 +78,11 @@ class HomePage extends ConsumerWidget {
                 error: (e, _) => Text('读取计划失败：$e'),
                 data: (v) => v == null
                     ? const EmptyState(title: '还没有计划')
-                    : _PlanSection(view: v, streakDays: streak),
+                    : _PlanSection(
+                        view: v,
+                        streakDays: streak,
+                        checkedInToday: ref.watch(checkedInTodayProvider).valueOrNull ?? false,
+                      ),
               ),
             ],
           );
@@ -158,9 +162,10 @@ class _Header extends StatelessWidget {
 }
 
 class _PlanSection extends StatelessWidget {
-  const _PlanSection({required this.view, required this.streakDays});
+  const _PlanSection({required this.view, required this.streakDays, this.checkedInToday = false});
   final PlanView view;
   final int streakDays;
+  final bool checkedInToday;
 
   @override
   Widget build(BuildContext context) {
@@ -190,11 +195,11 @@ class _PlanSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (mt != null) ...[
-          _TodayHero(task: mt, streakDays: streakDays),
+          _TodayHero(task: mt, streakDays: streakDays, checkedInToday: checkedInToday),
           const SizedBox(height: AppSpace.lg),
         ],
         if (progress.target > 0) ...[
-          _WeekProgressCard(completed: progress.completed, target: progress.target),
+          _WeekProgressCard(completed: progress.completed, target: progress.target, checkedInToday: checkedInToday),
           const SizedBox(height: AppSpace.xl),
         ],
         Row(
@@ -216,9 +221,10 @@ class _PlanSection extends StatelessWidget {
 
 /// 首页最显眼的一块：今天练什么（每日保底任务），一步进入。
 class _TodayHero extends StatelessWidget {
-  const _TodayHero({required this.task, required this.streakDays});
+  const _TodayHero({required this.task, required this.streakDays, this.checkedInToday = false});
   final MiniTaskView task;
   final int streakDays;
+  final bool checkedInToday;
 
   @override
   Widget build(BuildContext context) {
@@ -269,7 +275,11 @@ class _TodayHero extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        streakDays > 0 ? '今天练完，连续打卡就到第 ${streakDays + 1} 天' : '练完一次，就开始连续打卡',
+                        checkedInToday
+                            ? '今天已打卡，连续 $streakDays 天。想多练可以再来一次'
+                            : streakDays > 0
+                                ? '今天练完，连续打卡就到第 ${streakDays + 1} 天'
+                                : '练完一次，就开始连续打卡',
                         style: t.bodySmall?.copyWith(color: white70),
                       ),
                     ),
@@ -298,9 +308,10 @@ class _TodayHero extends StatelessWidget {
 
 /// 本周进度：圆环 + 一句话。
 class _WeekProgressCard extends StatelessWidget {
-  const _WeekProgressCard({required this.completed, required this.target});
+  const _WeekProgressCard({required this.completed, required this.target, this.checkedInToday = false});
   final int completed;
   final int target;
+  final bool checkedInToday;
 
   @override
   Widget build(BuildContext context) {
@@ -308,7 +319,7 @@ class _WeekProgressCard extends StatelessWidget {
     final ratio = completed / target;
     final left = target - completed;
     final hint = completed == 0
-        ? '完成第一次训练，进度环就会亮起来'
+        ? (checkedInToday ? '保底任务不计入本周进度；练一次下面的目标技能，进度环就会亮起来' : '练一次下面的目标技能，进度环就会亮起来')
         : left <= 0
             ? '本周目标全部完成，做得好！'
             : '已练 $completed 次，还差 $left 次';
