@@ -13,6 +13,7 @@ import 'features/dog_profile/dog_profile_page.dart';
 import 'features/settings/reminder_page.dart';
 import 'features/home/home_page.dart';
 import 'features/home/skill_detail_page.dart';
+import 'features/video/video_check_page.dart';
 import 'features/onboarding/onboarding_page.dart';
 import 'features/onboarding/plan_preview_page.dart';
 import 'features/record/record_page.dart';
@@ -100,6 +101,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, s) => SkillDetailPage(
           skillId: s.pathParameters['skillId']!,
           part: int.tryParse(s.uri.queryParameters['part'] ?? ''),
+        ),
+      ),
+      // M5（AI-4）：视频纠错与历史结果
+      GoRoute(
+        path: '/skill/:skillId/video',
+        builder: (_, s) => VideoCheckPage(skillId: s.pathParameters['skillId']!),
+      ),
+      GoRoute(
+        path: '/skill/:skillId/video/:analysisId',
+        builder: (_, s) => VideoHistoryResultPage(
+          skillId: s.pathParameters['skillId']!,
+          analysisId: s.pathParameters['analysisId']!,
         ),
       ),
     ],

@@ -129,19 +129,20 @@ void main() {
   });
 
   // M3 起最低版本升到 v1.2（ai_guard.yaml / ai_terms.yaml 必填），v1.0 / v1.1 都报错。
+  // M5 起最低版本升到 v1.3（video_checks.yaml 必填，M5 简报 4.1），v1.2 也报错。
   group('版本门槛：读到 v1.0 / v1.1 报错，不静默兼容', () {
     test('v1.0 / v1.1 抛异常', () {
-      for (final v in ['v1.0', 'v1.1']) {
+      for (final v in ['v1.0', 'v1.1', 'v1.2']) {
         expect(
           () => requireSupportedContentVersion('VERSION.md', v),
           throwsA(isA<ContentParseException>()
-              .having((e) => e.message, 'message', contains('v1.2'))),
+              .having((e) => e.message, 'message', contains('v1.3'))),
         );
       }
     });
 
     test('v1.2 / v2.0 通过', () {
-      for (final v in ['v1.2', 'v1.3', 'v2.0', 'v10.0']) {
+      for (final v in ['v1.3', 'v2.0', 'v10.0']) {
         requireSupportedContentVersion('VERSION.md', v);
       }
     });

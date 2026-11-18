@@ -11409,6 +11409,444 @@ class BadgePopupsSeenCompanion extends UpdateCompanion<BadgePopupsSeenData> {
   }
 }
 
+class $VideoAnalysesTable extends VideoAnalyses
+    with TableInfo<$VideoAnalysesTable, VideoAnalyse> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VideoAnalysesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _dogIdMeta = const VerificationMeta('dogId');
+  @override
+  late final GeneratedColumn<String> dogId = GeneratedColumn<String>(
+      'dog_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _skillIdMeta =
+      const VerificationMeta('skillId');
+  @override
+  late final GeneratedColumn<String> skillId = GeneratedColumn<String>(
+      'skill_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<String> createdAt = GeneratedColumn<String>(
+      'created_at', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+      'status', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _metricsJsonMeta =
+      const VerificationMeta('metricsJson');
+  @override
+  late final GeneratedColumn<String> metricsJson = GeneratedColumn<String>(
+      'metrics_json', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _findingsJsonMeta =
+      const VerificationMeta('findingsJson');
+  @override
+  late final GeneratedColumn<String> findingsJson = GeneratedColumn<String>(
+      'findings_json', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _contentVersionMeta =
+      const VerificationMeta('contentVersion');
+  @override
+  late final GeneratedColumn<String> contentVersion = GeneratedColumn<String>(
+      'content_version', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        dogId,
+        skillId,
+        createdAt,
+        status,
+        metricsJson,
+        findingsJson,
+        contentVersion
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'video_analyses';
+  @override
+  VerificationContext validateIntegrity(Insertable<VideoAnalyse> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('dog_id')) {
+      context.handle(
+          _dogIdMeta, dogId.isAcceptableOrUnknown(data['dog_id']!, _dogIdMeta));
+    } else if (isInserting) {
+      context.missing(_dogIdMeta);
+    }
+    if (data.containsKey('skill_id')) {
+      context.handle(_skillIdMeta,
+          skillId.isAcceptableOrUnknown(data['skill_id']!, _skillIdMeta));
+    } else if (isInserting) {
+      context.missing(_skillIdMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(_statusMeta,
+          status.isAcceptableOrUnknown(data['status']!, _statusMeta));
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('metrics_json')) {
+      context.handle(
+          _metricsJsonMeta,
+          metricsJson.isAcceptableOrUnknown(
+              data['metrics_json']!, _metricsJsonMeta));
+    } else if (isInserting) {
+      context.missing(_metricsJsonMeta);
+    }
+    if (data.containsKey('findings_json')) {
+      context.handle(
+          _findingsJsonMeta,
+          findingsJson.isAcceptableOrUnknown(
+              data['findings_json']!, _findingsJsonMeta));
+    } else if (isInserting) {
+      context.missing(_findingsJsonMeta);
+    }
+    if (data.containsKey('content_version')) {
+      context.handle(
+          _contentVersionMeta,
+          contentVersion.isAcceptableOrUnknown(
+              data['content_version']!, _contentVersionMeta));
+    } else if (isInserting) {
+      context.missing(_contentVersionMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  VideoAnalyse map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VideoAnalyse(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      dogId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}dog_id'])!,
+      skillId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}skill_id'])!,
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}created_at'])!,
+      status: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}status'])!,
+      metricsJson: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}metrics_json'])!,
+      findingsJson: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}findings_json'])!,
+      contentVersion: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}content_version'])!,
+    );
+  }
+
+  @override
+  $VideoAnalysesTable createAlias(String alias) {
+    return $VideoAnalysesTable(attachedDatabase, alias);
+  }
+}
+
+class VideoAnalyse extends DataClass implements Insertable<VideoAnalyse> {
+  final String id;
+  final String dogId;
+  final String skillId;
+  final String createdAt;
+  final String status;
+  final String metricsJson;
+  final String findingsJson;
+  final String contentVersion;
+  const VideoAnalyse(
+      {required this.id,
+      required this.dogId,
+      required this.skillId,
+      required this.createdAt,
+      required this.status,
+      required this.metricsJson,
+      required this.findingsJson,
+      required this.contentVersion});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['dog_id'] = Variable<String>(dogId);
+    map['skill_id'] = Variable<String>(skillId);
+    map['created_at'] = Variable<String>(createdAt);
+    map['status'] = Variable<String>(status);
+    map['metrics_json'] = Variable<String>(metricsJson);
+    map['findings_json'] = Variable<String>(findingsJson);
+    map['content_version'] = Variable<String>(contentVersion);
+    return map;
+  }
+
+  VideoAnalysesCompanion toCompanion(bool nullToAbsent) {
+    return VideoAnalysesCompanion(
+      id: Value(id),
+      dogId: Value(dogId),
+      skillId: Value(skillId),
+      createdAt: Value(createdAt),
+      status: Value(status),
+      metricsJson: Value(metricsJson),
+      findingsJson: Value(findingsJson),
+      contentVersion: Value(contentVersion),
+    );
+  }
+
+  factory VideoAnalyse.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return VideoAnalyse(
+      id: serializer.fromJson<String>(json['id']),
+      dogId: serializer.fromJson<String>(json['dogId']),
+      skillId: serializer.fromJson<String>(json['skillId']),
+      createdAt: serializer.fromJson<String>(json['createdAt']),
+      status: serializer.fromJson<String>(json['status']),
+      metricsJson: serializer.fromJson<String>(json['metricsJson']),
+      findingsJson: serializer.fromJson<String>(json['findingsJson']),
+      contentVersion: serializer.fromJson<String>(json['contentVersion']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'dogId': serializer.toJson<String>(dogId),
+      'skillId': serializer.toJson<String>(skillId),
+      'createdAt': serializer.toJson<String>(createdAt),
+      'status': serializer.toJson<String>(status),
+      'metricsJson': serializer.toJson<String>(metricsJson),
+      'findingsJson': serializer.toJson<String>(findingsJson),
+      'contentVersion': serializer.toJson<String>(contentVersion),
+    };
+  }
+
+  VideoAnalyse copyWith(
+          {String? id,
+          String? dogId,
+          String? skillId,
+          String? createdAt,
+          String? status,
+          String? metricsJson,
+          String? findingsJson,
+          String? contentVersion}) =>
+      VideoAnalyse(
+        id: id ?? this.id,
+        dogId: dogId ?? this.dogId,
+        skillId: skillId ?? this.skillId,
+        createdAt: createdAt ?? this.createdAt,
+        status: status ?? this.status,
+        metricsJson: metricsJson ?? this.metricsJson,
+        findingsJson: findingsJson ?? this.findingsJson,
+        contentVersion: contentVersion ?? this.contentVersion,
+      );
+  VideoAnalyse copyWithCompanion(VideoAnalysesCompanion data) {
+    return VideoAnalyse(
+      id: data.id.present ? data.id.value : this.id,
+      dogId: data.dogId.present ? data.dogId.value : this.dogId,
+      skillId: data.skillId.present ? data.skillId.value : this.skillId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      status: data.status.present ? data.status.value : this.status,
+      metricsJson:
+          data.metricsJson.present ? data.metricsJson.value : this.metricsJson,
+      findingsJson: data.findingsJson.present
+          ? data.findingsJson.value
+          : this.findingsJson,
+      contentVersion: data.contentVersion.present
+          ? data.contentVersion.value
+          : this.contentVersion,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VideoAnalyse(')
+          ..write('id: $id, ')
+          ..write('dogId: $dogId, ')
+          ..write('skillId: $skillId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('status: $status, ')
+          ..write('metricsJson: $metricsJson, ')
+          ..write('findingsJson: $findingsJson, ')
+          ..write('contentVersion: $contentVersion')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, dogId, skillId, createdAt, status,
+      metricsJson, findingsJson, contentVersion);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is VideoAnalyse &&
+          other.id == this.id &&
+          other.dogId == this.dogId &&
+          other.skillId == this.skillId &&
+          other.createdAt == this.createdAt &&
+          other.status == this.status &&
+          other.metricsJson == this.metricsJson &&
+          other.findingsJson == this.findingsJson &&
+          other.contentVersion == this.contentVersion);
+}
+
+class VideoAnalysesCompanion extends UpdateCompanion<VideoAnalyse> {
+  final Value<String> id;
+  final Value<String> dogId;
+  final Value<String> skillId;
+  final Value<String> createdAt;
+  final Value<String> status;
+  final Value<String> metricsJson;
+  final Value<String> findingsJson;
+  final Value<String> contentVersion;
+  final Value<int> rowid;
+  const VideoAnalysesCompanion({
+    this.id = const Value.absent(),
+    this.dogId = const Value.absent(),
+    this.skillId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.status = const Value.absent(),
+    this.metricsJson = const Value.absent(),
+    this.findingsJson = const Value.absent(),
+    this.contentVersion = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  VideoAnalysesCompanion.insert({
+    required String id,
+    required String dogId,
+    required String skillId,
+    required String createdAt,
+    required String status,
+    required String metricsJson,
+    required String findingsJson,
+    required String contentVersion,
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        dogId = Value(dogId),
+        skillId = Value(skillId),
+        createdAt = Value(createdAt),
+        status = Value(status),
+        metricsJson = Value(metricsJson),
+        findingsJson = Value(findingsJson),
+        contentVersion = Value(contentVersion);
+  static Insertable<VideoAnalyse> custom({
+    Expression<String>? id,
+    Expression<String>? dogId,
+    Expression<String>? skillId,
+    Expression<String>? createdAt,
+    Expression<String>? status,
+    Expression<String>? metricsJson,
+    Expression<String>? findingsJson,
+    Expression<String>? contentVersion,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (dogId != null) 'dog_id': dogId,
+      if (skillId != null) 'skill_id': skillId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (status != null) 'status': status,
+      if (metricsJson != null) 'metrics_json': metricsJson,
+      if (findingsJson != null) 'findings_json': findingsJson,
+      if (contentVersion != null) 'content_version': contentVersion,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  VideoAnalysesCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? dogId,
+      Value<String>? skillId,
+      Value<String>? createdAt,
+      Value<String>? status,
+      Value<String>? metricsJson,
+      Value<String>? findingsJson,
+      Value<String>? contentVersion,
+      Value<int>? rowid}) {
+    return VideoAnalysesCompanion(
+      id: id ?? this.id,
+      dogId: dogId ?? this.dogId,
+      skillId: skillId ?? this.skillId,
+      createdAt: createdAt ?? this.createdAt,
+      status: status ?? this.status,
+      metricsJson: metricsJson ?? this.metricsJson,
+      findingsJson: findingsJson ?? this.findingsJson,
+      contentVersion: contentVersion ?? this.contentVersion,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (dogId.present) {
+      map['dog_id'] = Variable<String>(dogId.value);
+    }
+    if (skillId.present) {
+      map['skill_id'] = Variable<String>(skillId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<String>(createdAt.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (metricsJson.present) {
+      map['metrics_json'] = Variable<String>(metricsJson.value);
+    }
+    if (findingsJson.present) {
+      map['findings_json'] = Variable<String>(findingsJson.value);
+    }
+    if (contentVersion.present) {
+      map['content_version'] = Variable<String>(contentVersion.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VideoAnalysesCompanion(')
+          ..write('id: $id, ')
+          ..write('dogId: $dogId, ')
+          ..write('skillId: $skillId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('status: $status, ')
+          ..write('metricsJson: $metricsJson, ')
+          ..write('findingsJson: $findingsJson, ')
+          ..write('contentVersion: $contentVersion, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -11454,6 +11892,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $SyncFlagsTable syncFlags = $SyncFlagsTable(this);
   late final $BadgePopupsSeenTable badgePopupsSeen =
       $BadgePopupsSeenTable(this);
+  late final $VideoAnalysesTable videoAnalyses = $VideoAnalysesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -11489,7 +11928,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         syncStates,
         syncOutbox,
         syncFlags,
-        badgePopupsSeen
+        badgePopupsSeen,
+        videoAnalyses
       ];
 }
 
@@ -17433,6 +17873,227 @@ typedef $$BadgePopupsSeenTableProcessedTableManager = ProcessedTableManager<
     ),
     BadgePopupsSeenData,
     PrefetchHooks Function()>;
+typedef $$VideoAnalysesTableCreateCompanionBuilder = VideoAnalysesCompanion
+    Function({
+  required String id,
+  required String dogId,
+  required String skillId,
+  required String createdAt,
+  required String status,
+  required String metricsJson,
+  required String findingsJson,
+  required String contentVersion,
+  Value<int> rowid,
+});
+typedef $$VideoAnalysesTableUpdateCompanionBuilder = VideoAnalysesCompanion
+    Function({
+  Value<String> id,
+  Value<String> dogId,
+  Value<String> skillId,
+  Value<String> createdAt,
+  Value<String> status,
+  Value<String> metricsJson,
+  Value<String> findingsJson,
+  Value<String> contentVersion,
+  Value<int> rowid,
+});
+
+class $$VideoAnalysesTableFilterComposer
+    extends Composer<_$AppDatabase, $VideoAnalysesTable> {
+  $$VideoAnalysesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get dogId => $composableBuilder(
+      column: $table.dogId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get skillId => $composableBuilder(
+      column: $table.skillId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get metricsJson => $composableBuilder(
+      column: $table.metricsJson, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get findingsJson => $composableBuilder(
+      column: $table.findingsJson, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get contentVersion => $composableBuilder(
+      column: $table.contentVersion,
+      builder: (column) => ColumnFilters(column));
+}
+
+class $$VideoAnalysesTableOrderingComposer
+    extends Composer<_$AppDatabase, $VideoAnalysesTable> {
+  $$VideoAnalysesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get dogId => $composableBuilder(
+      column: $table.dogId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get skillId => $composableBuilder(
+      column: $table.skillId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get metricsJson => $composableBuilder(
+      column: $table.metricsJson, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get findingsJson => $composableBuilder(
+      column: $table.findingsJson,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get contentVersion => $composableBuilder(
+      column: $table.contentVersion,
+      builder: (column) => ColumnOrderings(column));
+}
+
+class $$VideoAnalysesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $VideoAnalysesTable> {
+  $$VideoAnalysesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get dogId =>
+      $composableBuilder(column: $table.dogId, builder: (column) => column);
+
+  GeneratedColumn<String> get skillId =>
+      $composableBuilder(column: $table.skillId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get metricsJson => $composableBuilder(
+      column: $table.metricsJson, builder: (column) => column);
+
+  GeneratedColumn<String> get findingsJson => $composableBuilder(
+      column: $table.findingsJson, builder: (column) => column);
+
+  GeneratedColumn<String> get contentVersion => $composableBuilder(
+      column: $table.contentVersion, builder: (column) => column);
+}
+
+class $$VideoAnalysesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $VideoAnalysesTable,
+    VideoAnalyse,
+    $$VideoAnalysesTableFilterComposer,
+    $$VideoAnalysesTableOrderingComposer,
+    $$VideoAnalysesTableAnnotationComposer,
+    $$VideoAnalysesTableCreateCompanionBuilder,
+    $$VideoAnalysesTableUpdateCompanionBuilder,
+    (
+      VideoAnalyse,
+      BaseReferences<_$AppDatabase, $VideoAnalysesTable, VideoAnalyse>
+    ),
+    VideoAnalyse,
+    PrefetchHooks Function()> {
+  $$VideoAnalysesTableTableManager(_$AppDatabase db, $VideoAnalysesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$VideoAnalysesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$VideoAnalysesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$VideoAnalysesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<String> dogId = const Value.absent(),
+            Value<String> skillId = const Value.absent(),
+            Value<String> createdAt = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<String> metricsJson = const Value.absent(),
+            Value<String> findingsJson = const Value.absent(),
+            Value<String> contentVersion = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VideoAnalysesCompanion(
+            id: id,
+            dogId: dogId,
+            skillId: skillId,
+            createdAt: createdAt,
+            status: status,
+            metricsJson: metricsJson,
+            findingsJson: findingsJson,
+            contentVersion: contentVersion,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required String dogId,
+            required String skillId,
+            required String createdAt,
+            required String status,
+            required String metricsJson,
+            required String findingsJson,
+            required String contentVersion,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              VideoAnalysesCompanion.insert(
+            id: id,
+            dogId: dogId,
+            skillId: skillId,
+            createdAt: createdAt,
+            status: status,
+            metricsJson: metricsJson,
+            findingsJson: findingsJson,
+            contentVersion: contentVersion,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$VideoAnalysesTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $VideoAnalysesTable,
+    VideoAnalyse,
+    $$VideoAnalysesTableFilterComposer,
+    $$VideoAnalysesTableOrderingComposer,
+    $$VideoAnalysesTableAnnotationComposer,
+    $$VideoAnalysesTableCreateCompanionBuilder,
+    $$VideoAnalysesTableUpdateCompanionBuilder,
+    (
+      VideoAnalyse,
+      BaseReferences<_$AppDatabase, $VideoAnalysesTable, VideoAnalyse>
+    ),
+    VideoAnalyse,
+    PrefetchHooks Function()>;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -17498,4 +18159,6 @@ class $AppDatabaseManager {
       $$SyncFlagsTableTableManager(_db, _db.syncFlags);
   $$BadgePopupsSeenTableTableManager get badgePopupsSeen =>
       $$BadgePopupsSeenTableTableManager(_db, _db.badgePopupsSeen);
+  $$VideoAnalysesTableTableManager get videoAnalyses =>
+      $$VideoAnalysesTableTableManager(_db, _db.videoAnalyses);
 }

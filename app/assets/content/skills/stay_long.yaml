@@ -105,6 +105,9 @@ mini_script:
     clicker_hint: false
 scoring_hint: 完全做到 = 第 4 步退 5 步 5 遍里 4 遍以上没动，并且第 7 步 30 秒 2 遍都等住；部分做到 = 只有距离或只有时长达标；没做到 = 两样都没达标，或退 3 步就起身。
 downgrade_to: stay_short
+video_checks:                    # v1.3：视频纠错。mistake = tutorial.common_mistakes 下标（从 0 起）
+  - { detector: no_hold_marker, mistake: 3 }
+  - { detector: verbal_correction, mistake: 4 }
 sources:
   - 等待的三要素分开训练（3 D's：distance / duration / distraction），参见 Pat Miller 在 Whole Dog Journal 的公开文章及 AKC "How to Teach Your Dog to Stay"
   - 回到狗身边释放、保持费奖励，参见 Kikopup（Emily Larlham）YouTube 公开教程

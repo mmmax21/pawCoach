@@ -6,11 +6,14 @@ cli.py 的 `analyze` 子命令和 app 后端的 `POST /analyze` 都调 `analyze_
 
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
 
 from pawcoach import store
 from pawcoach.audio.asr import AsrAudioExtractor
 from pawcoach.coach.llm import LLMCoach
+from pawcoach.coach.template import TemplateCoach
+from pawcoach.config import coach_mode
 from pawcoach.coach.safety import referral_text, triggered_flags
 from pawcoach.events.align import align, gate_trials, unclear_seconds
 from pawcoach.reward.merged import MergedRewardExtractor
@@ -19,6 +22,45 @@ from pawcoach.video.normalize import normalize_video
 from pawcoach.video.probe import load_video
 
 NORMALIZED_DIR = "data/normalized"
+POSE_DIR = "data/pose"
+ASR_DIR = "data/asr"
+
+
+def purge_artifacts(
+    video_path: str | Path,
+    normalized_dir: str | Path = NORMALIZED_DIR,
+    pose_dir: str | Path = POSE_DIR,
+    asr_dir: str | Path = ASR_DIR,
+    delete_source: bool = False,
+) -> list[Path]:
+    """M5 3.4：删除一段视频的所有中间产物（标准化视频、姿态 / 检测缓存、转写缓存），返回删掉的路径。
+
+    缓存键都以原视频名（stem）开头：标准化产物 <stem>.norm.mp4、姿态 <stem>[.norm]_superanimal*.h5、
+    检测 <stem>[.norm]_dogbox.npy、转写 <stem>.json。delete_source=True 时连原视频一起删
+    （API 上传的视频；CLI 分析 data/raw/ 下的素材时不删）。
+    """
+    video_path = Path(video_path)
+    stem = video_path.stem
+    removed: list[Path] = []
+    candidates: list[Path] = []
+    for d in (Path(normalized_dir), Path(pose_dir)):
+        if d.exists():
+            candidates += [p for p in d.iterdir() if p.name.startswith(stem)]
+    candidates.append(Path(asr_dir) / f"{stem}.json")
+    if delete_source:
+        candidates.append(video_path)
+    for p in candidates:
+        try:
+            if p.is_dir():
+                shutil.rmtree(p)
+            elif p.exists():
+                p.unlink()
+            else:
+                continue
+            removed.append(p)
+        except OSError:
+            pass
+    return removed
 
 
 def _make_pose_extractor():
@@ -95,13 +137,33 @@ def analyze_video(
     path: str | Path,
     normalized_dir: str = NORMALIZED_DIR,
     meta: MetaInfo | None = None,
+    cleanup: bool = False,
 ) -> AnalysisResult:
     """分析一段视频，返回 AnalysisResult（含 coach 建议），并落库。
 
     meta 传入时用它（app 后端上传的 meta）；否则按视频文件名找 <video_id>.meta.json。
+    cleanup=True（API 上传用）：无论成功失败，结束后删除原视频与全部中间产物，只留数据库里的数字。
     """
-    path = Path(path)
+    if not cleanup:
+        return _analyze(Path(path), normalized_dir, meta)
+    try:
+        return _analyze(Path(path), normalized_dir, meta)
+    finally:
+        purge_artifacts(path, normalized_dir, delete_source=True)
+
+
+class VideoTooLong(ValueError):
+    """视频超过 meta.max_duration（M5：App 限制 120 秒）。错误信息以 video_too_long 开头，App 据此提示。"""
+
+
+def _analyze(path: Path, normalized_dir: str, meta: MetaInfo | None) -> AnalysisResult:
     video_id = path.stem
+
+    # 0) M5：时长上限（在标准化与推理之前检查，超长视频不浪费算力）
+    if meta is not None and meta.max_duration:
+        src = load_video(path)
+        if (src.duration or 0.0) > meta.max_duration + 0.5:
+            raise VideoTooLong(f"video_too_long: {src.duration:.1f}s > {meta.max_duration:.0f}s")
 
     # 1) 标准化
     norm = normalize_video(path, normalized_dir)
@@ -115,7 +177,8 @@ def analyze_video(
     # 3) 三条流水线
     pose_extractor, _ = _make_pose_extractor()
     pose = pose_extractor.extract(video)
-    audio = AsrAudioExtractor().extract(video, meta)
+    asr = AsrAudioExtractor()
+    audio = asr.extract(video, meta)
     rewards = MergedRewardExtractor().extract(meta, audio)
 
     # 4) 对齐
@@ -124,6 +187,8 @@ def analyze_video(
     # 5) 聚合（C1 门控）
     confs = [s.conf for s in pose]
     reliable, _unreliable = gate_trials(trials)
+    for t in reliable:  # M5：每轮标明是否可靠（同一门控），App 只用可靠轮次判定
+        t.reliable = True
     unclear_s = unclear_seconds(pose)
     duration = video.duration or 0.0
     result = AnalysisResult(
@@ -134,6 +199,7 @@ def analyze_video(
             pose_conf_mean=(sum(confs) / len(confs)) if confs else 0.0,
             unclear_seconds=unclear_s,
             unclear_ratio=round(unclear_s / duration, 3) if duration > 0 else 0.0,
+            asr=asr.last_status,
         ),
         trials=trials,
         summary=Summary(
@@ -147,12 +213,18 @@ def analyze_video(
         target_hold=meta.target_hold,
     )
 
-    # 6) coach（C4 安全层优先；完全空数据时给诚实提示，不调 LLM 避免幻觉）
+    # 6) coach（M5：COACH_MODE 默认 off → 空串、不发任何外部请求；
+    #    template / llm 时沿用原逻辑：C4 安全层优先，完全空数据时给诚实提示，不调 LLM 避免幻觉）
+    mode = coach_mode()
     flags = triggered_flags(meta)
-    if flags:
+    if mode == "off":
+        result.coach = ""
+    elif flags:
         result.coach = referral_text(flags)
     elif not result.trials and not result.unpaired:
         result.coach = _insufficient_data_text(result)
+    elif mode == "template":
+        result.coach = TemplateCoach().plan(result, [])
     else:
         result.coach = LLMCoach().plan(result, [])
 

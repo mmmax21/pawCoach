@@ -6,6 +6,7 @@ library;
 import 'package:yaml/yaml.dart';
 
 import '../../domain/models.dart';
+import '../../domain/video_checks.dart' show implementedVideoDetectors, videoDetectorParams;
 
 class ContentParseException implements Exception {
   ContentParseException(this.file, this.message, [this.cause]);
@@ -203,6 +204,61 @@ Skill skillFromMap(String file, Map map) {
     scoringHint: r.str('scoring_hint'),
     downgradeTo: r.strOrNull('downgrade_to'),
     sources: r.strList('sources'),
+    videoChecks: _videoChecks(r, tutorial.commonMistakes.length),
+  );
+}
+
+/// v1.3 可选字段 `video_checks: [{detector, mistake}]`；下标越界、检测器重复视为解析错误。
+List<VideoCheckMapping> _videoChecks(_Reader r, int mistakeCount) {
+  if (r.opt('video_checks') == null) return const [];
+  final out = <VideoCheckMapping>[];
+  for (final c in r.mapList('video_checks')) {
+    final m = VideoCheckMapping(detector: c.str('detector'), mistake: c.integer('mistake'));
+    if (m.mistake < 0 || m.mistake >= mistakeCount) {
+      throw ContentParseException(
+          r.file, 'video_checks 的 mistake 下标 ${m.mistake} 越界（共 $mistakeCount 条常见错误）');
+    }
+    if (out.any((o) => o.detector == m.detector)) {
+      throw ContentParseException(r.file, 'video_checks 检测器 ${m.detector} 重复');
+    }
+    out.add(m);
+  }
+  return out;
+}
+
+/// video_checks.yaml（v1.3 起必填）。检测器 ID 必须是客户端已实现的，阈值字段必须齐全。
+VideoChecksConfig parseVideoChecks(String file, String text) =>
+    videoChecksFromMap(file, _loadRoot(file, text));
+
+VideoChecksConfig videoChecksFromMap(String file, Map map) {
+  final r = _Reader(file, map);
+  num number(_Reader x, String key) {
+    final v = x.req(key);
+    if (v is num) return v;
+    x._fail(key, '应为数字，实际 ${v.runtimeType}');
+  }
+
+  final detectors = <String, VideoDetectorRule>{};
+  for (final d in r.mapList('detectors')) {
+    final id = d.str('id');
+    if (!implementedVideoDetectors.contains(id)) {
+      throw ContentParseException(file, '未知检测器 $id（客户端没有对应实现）');
+    }
+    if (detectors.containsKey(id)) throw ContentParseException(file, '检测器 $id 重复');
+    detectors[id] = VideoDetectorRule(
+      id: id,
+      name: d.str('name'),
+      params: {for (final k in videoDetectorParams[id]!) k: number(d, k)},
+    );
+  }
+  final ratio = number(r, 'retake_unclear_ratio').toDouble();
+  return VideoChecksConfig(
+    minReliableTrials: r.integer('min_reliable_trials'),
+    retakeUnclearRatio: ratio,
+    markerWords: r.strList('marker_words', allowEmpty: false),
+    releaseWords: r.strList('release_words', allowEmpty: false),
+    correctionWords: r.strList('correction_words', allowEmpty: false),
+    detectors: detectors,
   );
 }
 
@@ -323,8 +379,9 @@ String parseContentVersion(String file, String text) {
 }
 
 /// 客户端要求的最低内容库版本：v1.1 起 mini_script 必填，
-/// v1.2 起 ai_guard.yaml / ai_terms.yaml 必填（M3 简报第 11 节）。读到更低版本直接报错。
-const minContentVersion = (major: 1, minor: 2);
+/// v1.2 起 ai_guard.yaml / ai_terms.yaml 必填（M3 简报第 11 节），
+/// v1.3 起 video_checks.yaml 必填（M5 简报 4.1）。读到更低版本直接报错。
+const minContentVersion = (major: 1, minor: 3);
 
 /// 版本号 `v1.1` → (1, 1)。
 ({int major, int minor}) parseVersionNumber(String file, String version) {
@@ -342,7 +399,7 @@ void requireSupportedContentVersion(String file, String version) {
       (v.major == minContentVersion.major && v.minor < minContentVersion.minor);
   if (tooOld) {
     throw ContentParseException(file,
-        '内容库 $version 版本过低，本客户端要求 v${minContentVersion.major}.${minContentVersion.minor} 及以上（mini_script、ai_guard.yaml、ai_terms.yaml 必填）');
+        '内容库 $version 版本过低，本客户端要求 v${minContentVersion.major}.${minContentVersion.minor} 及以上（mini_script、ai_guard.yaml、ai_terms.yaml、video_checks.yaml 必填）');
   }
 }
 
@@ -407,6 +464,17 @@ void validateReferences(ContentLibrary lib) {
     for (final id in t.ids) {
       if (!lib.skillById.containsKey(id) && !lib.issueById.containsKey(id)) {
         throw ContentParseException('ai_terms.yaml', '词 ${t.word} 引用不存在的内容 $id');
+      }
+    }
+  }
+  final vc = lib.videoChecks;
+  if (vc != null) {
+    for (final s in lib.skills) {
+      for (final c in s.videoChecks) {
+        if (!vc.detectors.containsKey(c.detector)) {
+          throw ContentParseException(
+              'skills/${s.id}.yaml', 'video_checks 引用不存在的检测器 ${c.detector}');
+        }
       }
     }
   }

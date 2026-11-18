@@ -15,26 +15,12 @@ import json
 import time
 from pathlib import Path
 
-DEFAULT_MODEL = "base"
+# M5：转写逻辑已抽到 pawcoach/audio/transcribe.py（AsrAudioExtractor 缓存缺失时自动调用），这里复用
+import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-def transcribe(video: Path, model_name: str = DEFAULT_MODEL, language: str | None = None) -> dict:
-    import whisper
-
-    model = whisper.load_model(model_name)
-    t0 = time.time()
-    result = model.transcribe(str(video), language=language, verbose=False)
-    return {
-        "video": video.name,
-        "model": model_name,
-        "language": result.get("language"),
-        "text": (result.get("text") or "").strip(),
-        "segments": [
-            {"start": round(s["start"], 2), "end": round(s["end"], 2), "text": s["text"].strip()}
-            for s in result.get("segments", [])
-        ],
-        "elapsed_s": round(time.time() - t0, 1),
-    }
+from pawcoach.audio.transcribe import DEFAULT_MODEL, transcribe  # noqa: E402
 
 
 def main() -> None:
@@ -43,10 +29,11 @@ def main() -> None:
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--language", default=None, help="强制语言，如 zh / en；默认自动检测")
     ap.add_argument("--out-dir", default="data/asr")
+    ap.add_argument("--mode", default=None, choices=["chunked", "whole"], help="默认 chunked（分句转写）")
     args = ap.parse_args()
 
     video = Path(args.video)
-    result = transcribe(video, args.model, args.language)
+    result = transcribe(video, args.model, args.language, mode=args.mode)
     print(f"语言={result['language']}  模型={result['model']}  耗时 {result['elapsed_s']}s")
     print(f"全文: {result['text'] or '(空)'}")
     for s in result["segments"]:

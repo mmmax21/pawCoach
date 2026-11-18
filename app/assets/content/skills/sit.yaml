@@ -84,5 +84,9 @@ mini_script:
     clicker_hint: false
 scoring_hint: 完全做到 = 最后 5 遍中 4 遍以上只用口令加手势就坐下；部分做到 = 2-3 遍；没做到 = 1 遍以下或仍需零食引导。
 downgrade_to: lure_follow
+video_checks:                    # v1.3：视频纠错。mistake = tutorial.common_mistakes 下标（从 0 起）
+  - { detector: late_reward, mistake: 2 }
+  - { detector: repeated_cue, mistake: 1 }
+  - { detector: session_too_long, mistake: 4 }
 sources:
   - 正向训练中的诱导法（luring），参见 Karen Pryor 响片训练体系与 AKC 幼犬基础训练公开资料

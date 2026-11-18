@@ -118,7 +118,7 @@ void main() {
     expect(await db.select(db.careReminders).get(), isEmpty);
     await (db.update(db.dogs)..where((t) => t.id.equals(o.dogId))).write(const DogsCompanion(name: Value('豆豆2')));
     expect((await db.select(db.syncOutbox).get()).map((q) => q.tbl), contains('dogs'));
-    expect(db.schemaVersion, 4);
+    expect(db.schemaVersion, 5); // M5：schema 升到 5（video_analyses）
     await db.close();
     await dir.delete(recursive: true);
   });

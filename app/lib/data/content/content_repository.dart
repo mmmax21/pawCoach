@@ -91,6 +91,7 @@ class ContentRepository {
     final care = parseCareCalendar(
         'care_calendar.yaml', await source.read('care_calendar.yaml'));
     final ai = await _loadAiLexicons();
+    final videoChecks = parseVideoChecks('video_checks.yaml', await _must('video_checks.yaml', 'v1.3'));
     final lib = ContentLibrary(
       version: version,
       skills: skills,
@@ -99,9 +100,18 @@ class ContentRepository {
       careCalendar: care,
       aiGuard: ai.guard,
       aiTerms: ai.terms,
+      videoChecks: videoChecks,
     );
     validateReferences(lib);
     return lib;
+  }
+
+  Future<String> _must(String path, String since) async {
+    try {
+      return await source.read(path);
+    } catch (e) {
+      throw ContentParseException(path, '缺失（内容库 $since 起必填）', e);
+    }
   }
 
   /// 从内容源读 ai_guard.yaml / ai_terms.yaml。文件缺失抛 [ContentParseException]，不静默降级。
@@ -167,7 +177,8 @@ class ContentRepository {
             version: lib.version,
             json: jsonEncode(careMap),
           ));
-      for (final name in ['ai_guard', 'ai_terms']) {
+      // video_checks.yaml（v1.3）与两个 AI 词表同表存放：id → 整份 JSON。
+      for (final name in ['ai_guard', 'ai_terms', 'video_checks']) {
         final map = _plain(loadYaml(await source.read('$name.yaml'))) as Map;
         await db.into(db.contentAiLexicons).insert(ContentAiLexiconsCompanion.insert(
               id: name,
@@ -196,7 +207,8 @@ class ContentRepository {
     if (skillRows.isEmpty ||
         careRow == null ||
         aiRows['ai_guard'] == null ||
-        aiRows['ai_terms'] == null) {
+        aiRows['ai_terms'] == null ||
+        aiRows['video_checks'] == null) {
       return null;
     }
 
@@ -205,6 +217,8 @@ class ContentRepository {
           'db:content_ai_lexicons/ai_guard', jsonDecode(aiRows['ai_guard']!) as Map),
       aiTerms: aiTermsFromMap(
           'db:content_ai_lexicons/ai_terms', jsonDecode(aiRows['ai_terms']!) as Map),
+      videoChecks: videoChecksFromMap('db:content_ai_lexicons/video_checks',
+          jsonDecode(aiRows['video_checks']!) as Map),
       version: version,
       skills: [
         for (final r in skillRows)

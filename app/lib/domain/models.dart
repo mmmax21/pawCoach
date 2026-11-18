@@ -4,6 +4,10 @@
 /// docs/content-library.md 一一对应，只做解析，不含任何训练内容。
 library;
 
+import 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig;
+
+export 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig, VideoDetectorRule;
+
 class TutorialStep {
   const TutorialStep({required this.text, this.image});
   final String text;
@@ -59,6 +63,7 @@ class Skill {
     required this.scoringHint,
     required this.downgradeTo,
     required this.sources,
+    this.videoChecks = const [],
   });
 
   final String id;
@@ -80,6 +85,9 @@ class Skill {
   final String scoringHint;
   final String? downgradeTo;
   final List<String> sources;
+
+  /// v1.3 可选字段：视频纠错检测器 → common_mistakes 下标。为空表示本技能不支持视频纠错。
+  final List<VideoCheckMapping> videoChecks;
 
   /// 手势文案以"无"开头时不展示手势图（content/VERSION.md 审核说明）。
   bool get showsGestureImage => !defaultGesture.startsWith('无');
@@ -259,6 +267,7 @@ class ContentLibrary {
     required this.careCalendar,
     required this.aiGuard,
     required List<AiTerm> aiTerms,
+    this.videoChecks,
   })  : aiTerms = List.unmodifiable(aiTerms),
         skills = List.unmodifiable(skills),
         issues = List.unmodifiable(issues),
@@ -272,6 +281,9 @@ class ContentLibrary {
   final CareCalendar careCalendar;
   final AiGuardLexicon aiGuard;
   final List<AiTerm> aiTerms;
+
+  /// v1.3 起：video_checks.yaml。客户端加载内容库时必填；手工构造（测试）可省略。
+  final VideoChecksConfig? videoChecks;
   final Map<String, Skill> skillById;
   final Map<String, Issue> issueById;
 }

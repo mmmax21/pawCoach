@@ -57,7 +57,7 @@ void main() {
         .data
         .values
         .single;
-    expect(version, 4);
+    expect(version, 5); // M5：schema 升到 5（video_analyses），3 → 5 连续迁移
     File('${dir.path}/migration-result.json')
         .writeAsStringSync(const JsonEncoder.withIndent('  ').convert({
       'source': before['source'],

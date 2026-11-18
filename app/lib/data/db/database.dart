@@ -37,12 +37,13 @@ part 'database.g.dart';
   SyncOutbox,
   SyncFlags,
   BadgePopupsSeen,
+  VideoAnalyses,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -68,6 +69,10 @@ class AppDatabase extends _$AppDatabase {
           }
           if (from < 4 && to >= 4) {
             await migrateToV4(m);
+          }
+          if (from < 5 && to >= 5) {
+            // M4 → M5：视频纠错结果表（本机，不同步）。不动任何现有数据。
+            await m.createTable(videoAnalyses);
           }
         },
         beforeOpen: (details) async {

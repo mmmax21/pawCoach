@@ -26,6 +26,9 @@ import '../data/repositories/household_repository.dart';
 import '../data/sync/derived_state.dart';
 import '../data/sync/sync_scheduler.dart';
 import '../data/sync/sync_service.dart';
+import '../data/repositories/video_repository.dart';
+import '../data/video/video_api.dart';
+import '../data/video/video_picker.dart';
 import '../services/care_reminder_service.dart';
 import '../services/nudge_service.dart';
 import '../domain/models.dart';
@@ -208,3 +211,26 @@ final reminderServiceProvider = Provider((ref) => ReminderService(
       notifier: ref.watch(reminderNotifierProvider),
       clock: ref.watch(clockProvider),
     ));
+
+// ---------------------------------------------------------------------------
+// M5：视频纠错（PRD AI-4）
+// ---------------------------------------------------------------------------
+
+/// 构建参数 VIDEO_ANALYSIS（默认关闭）。测试可 override。
+final videoAnalysisEnabledProvider = Provider<bool>((ref) => videoAnalysisEnabled);
+
+/// 视频分析服务客户端（VIDEO_BASE_URL）。测试 override 成替身。
+final videoAnalysisApiProvider = Provider<VideoAnalysisApi>((ref) => DioVideoAnalysisApi());
+
+/// 选视频（相册 / 现场录）。测试 override。
+final videoPickerProvider = Provider<VideoPicker>((ref) => ImagePickerVideoPicker());
+
+/// 轮询间隔与超时（简报 4.3：每 3 秒一次，5 分钟超时）。测试可缩短。
+final videoPollingProvider =
+    Provider<({Duration interval, Duration timeout})>((ref) => (
+          interval: const Duration(seconds: 3),
+          timeout: const Duration(minutes: 5),
+        ));
+
+final videoRepositoryProvider =
+    Provider((ref) => VideoRepository(ref.watch(databaseProvider)));

@@ -23,6 +23,8 @@ cp "$SRC"/issues/*.yaml "$DST/issues/"
 cp "$SRC/badges.yaml" "$SRC/care_calendar.yaml" "$SRC/VERSION.md" "$DST/"
 # 内容库 v1.2 起：AI 健康拦截词表与检索词表（M3）
 cp "$SRC/ai_guard.yaml" "$SRC/ai_terms.yaml" "$DST/"
+# 内容库 v1.3 起：视频纠错检测规则（M5）
+cp "$SRC/video_checks.yaml" "$DST/"
 
 # 生成清单，Flutter 不能枚举 assets 目录，启动时按清单逐个读取。
 {

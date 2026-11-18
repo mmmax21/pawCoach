@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/providers.dart';
 import '../../core/theme.dart';
 import '../../domain/models.dart';
+import '../video/video_check_page.dart';
 
 /// 技能详情 / 教程页（TR-1）：summary、steps、common_mistakes、success_criteria，
 /// 底部"开始跟练"进入全屏跟练。
@@ -84,6 +85,9 @@ class SkillDetailPage extends ConsumerWidget {
               Text('成功标准', style: t.titleMedium),
               const SizedBox(height: 8),
               Text(skill.tutorial.successCriteria),
+              const SizedBox(height: 24),
+              // M5（AI-4）：视频纠错入口与最近记录，仅有 video_checks 的技能且开关打开时显示
+              VideoCheckSection(skill: skill),
               const SizedBox(height: 32),
             ],
           ),

@@ -54,3 +54,14 @@ def llm_config() -> dict[str, str]:
     for field, env_key in _ENV_KEYS.items():
         cfg[field] = os.environ.get(env_key) or file_env.get(env_key) or _DEFAULTS[field]
     return cfg
+
+
+# M5：教练文字模式。off（默认）= coach 为空串、不发任何外部请求；template = 本地模板；llm = 调大模型。
+COACH_MODES = ("off", "template", "llm")
+
+
+def coach_mode() -> str:
+    """COACH_MODE：环境变量 > .env > 默认 off；非法取值按 off 处理（宁可不调大模型）。"""
+    raw = os.environ.get("COACH_MODE") or _load_dotenv(_ENV_PATH).get("COACH_MODE") or "off"
+    mode = raw.strip().lower()
+    return mode if mode in COACH_MODES else "off"

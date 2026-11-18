@@ -20,8 +20,8 @@ from pydantic import BaseModel, Field
 # 狗姿态标签：sit 坐 / stand 站 / down 卧 / unclear 看不清
 PoseLabel = Literal["sit", "stand", "down", "unclear"]
 
-# 音频事件类型：cue 口令 / marker 标记词 / release 释放词 / other 其它
-AudioKind = Literal["cue", "marker", "release", "other"]
+# 音频事件类型：cue 口令 / marker 标记词 / release 释放词 / correction 纠正词（M5）/ other 其它
+AudioKind = Literal["cue", "marker", "release", "correction", "other"]
 
 # 奖励事件来源：tap 用户打点 / marker 标记词 / visual 视觉
 RewardSource = Literal["tap", "marker", "visual"]
@@ -40,6 +40,10 @@ class MetaInfo:
     reward_taps: list[float] = field(default_factory=list) # 手动打点的奖励时刻（秒）
     target_hold: Optional[float] = None  # 本次训练的目标保持时长（秒），可选（C3 规则层用）
     red_flags: list[str] = field(default_factory=list)  # 安全红旗（C4）：用户勾选的攻击/恐惧/打踢信号
+    # M5 新增（可选）：
+    correction_words: list[str] = field(default_factory=list)  # 纠正词，如 ["不对", "不行"]，匹配方式同口令词
+    language: Optional[str] = None  # 转写语言（如 "zh"）；None = Whisper 自动检测
+    max_duration: Optional[float] = None  # 视频时长上限（秒）；超出则直接失败（错误信息含 video_too_long）
 
 
 # 常见口令默认表：不传 meta 时兜底，覆盖常见中英文口令；用户传自己的 meta 时整体覆盖这些默认。
@@ -73,6 +77,9 @@ class MetaModel(BaseModel):
     reward_taps: list[float] = Field(default_factory=list) # 手动打点奖励时刻（秒）
     target_hold: Optional[float] = None  # 本次训练的目标保持时长（秒），可选
     red_flags: list[str] = Field(default_factory=list)  # 安全红旗（C4）
+    correction_words: list[str] = Field(default_factory=list)  # M5：纠正词
+    language: Optional[str] = None  # M5：转写语言，None = 自动检测
+    max_duration: Optional[float] = None  # M5：视频时长上限（秒）
 
 
 @dataclass
@@ -116,6 +123,11 @@ class Trial:
     hold: Optional[float] = None           # 保持时长 = sit_end - sit_start
     reward_delay: Optional[float] = None   # 奖励延迟
     conf: float = 0.0                      # 本轮整体置信度
+    # M5 新增（只增不改）：
+    cue_times: list[float] = field(default_factory=list)  # 本轮内、狗坐下之前识别到的所有口令时刻
+    markers_during_hold: int = 0           # 坐下到起身之间识别到的标记词次数
+    corrections: list[dict] = field(default_factory=list)  # 本轮内识别到的纠正词 [{word, t}]
+    reliable: bool = False                 # 是否通过置信度门控（gate_trials），App 只用可靠轮次判定
 
 
 @dataclass
@@ -127,6 +139,7 @@ class Quality:
     pose_conf_mean: float = 0.0
     unclear_seconds: float = 0.0   # 无法可靠判断的片段总时长（狗出画/低置信/正面视角）
     unclear_ratio: float = 0.0     # unclear_seconds / 视频时长
+    asr: str = ""                  # M5：转写来源 cache / transcribed / no_audio / unavailable: … / failed: …
 
 
 @dataclass
@@ -184,4 +197,7 @@ def meta_from_dict(raw: dict) -> MetaInfo:
         reward_taps=m.reward_taps,
         target_hold=m.target_hold,
         red_flags=m.red_flags,
+        correction_words=m.correction_words,
+        language=m.language,
+        max_duration=m.max_duration,
     )

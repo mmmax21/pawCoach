@@ -424,3 +424,18 @@ class BadgePopupsSeen extends Table {
   @override
   Set<Column> get primaryKey => {dogId, badgeId};
 }
+
+/// M5（PRD AI-4）：视频纠错结果，本机保存、不同步。只存数字与判定，不存视频。
+/// metrics_json = VideoMetrics.toJson；findings_json = [VideoFinding.toJson]（检测器、mistake 下标、证据数字）。
+class VideoAnalyses extends Table {
+  TextColumn get id => text()();
+  TextColumn get dogId => text()();
+  TextColumn get skillId => text()();
+  TextColumn get createdAt => text()(); // ISO 8601 UTC
+  TextColumn get status => text()(); // ok | retake
+  TextColumn get metricsJson => text()();
+  TextColumn get findingsJson => text()();
+  TextColumn get contentVersion => text()();
+  @override
+  Set<Column> get primaryKey => {id};
+}
