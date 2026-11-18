@@ -108,7 +108,7 @@ class _BadgeCelebrationHostState extends ConsumerState<BadgeCelebrationHost> {
       barrierDismissible: false,
       builder: (c) => AlertDialog(
         key: const Key('badge_popup'),
-        icon: Icon(badgeIcon(def.conditionType), size: 48, color: Theme.of(c).colorScheme.primary),
+        icon: BadgeMedal(conditionType: def.conditionType, earned: true, size: 88),
         title: Text('获得徽章：${def.name}', key: Key('badge_popup_${def.id}')),
         content: Column(
           mainAxisSize: MainAxisSize.min,

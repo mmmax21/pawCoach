@@ -48,47 +48,82 @@ class SkillDetailPage extends ConsumerWidget {
             ],
           ),
           body: ListView(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpace.page, AppSpace.xs, AppSpace.page, AppSpace.xl),
             children: [
-              Text(
-                  '${difficultyStars(skill.difficulty)} · ${skill.minAgeWeeks} 周起 · 掌握需 ${skill.sessionsToMaster} 次完全做到',
-                  style: t.labelMedium),
-              const SizedBox(height: 12),
+              Wrap(
+                spacing: AppSpace.sm,
+                runSpacing: AppSpace.sm,
+                children: [
+                  _MetaChip(icon: Icons.star_rounded, text: '难度 ${difficultyStars(skill.difficulty)}'),
+                  _MetaChip(icon: Icons.cake_outlined, text: '${skill.minAgeWeeks} 周起'),
+                  _MetaChip(icon: Icons.emoji_events_outlined, text: '掌握需 ${skill.sessionsToMaster} 次完全做到'),
+                ],
+              ),
+              const SizedBox(height: AppSpace.lg),
               Text(skill.tutorial.summary, style: t.bodyLarge),
-              const SizedBox(height: 16),
-              Text('口令：${skill.defaultCue}', style: t.titleSmall),
-              Text('手势：${skill.defaultGesture}', style: t.bodyMedium),
-              const SizedBox(height: 16),
-              Text('步骤', style: t.titleMedium),
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSpace.lg),
+              _CueCard(cue: skill.defaultCue, gesture: skill.defaultGesture),
+              const SizedBox(height: AppSpace.xl),
+              _SectionTitle(icon: Icons.format_list_numbered_rounded, text: '步骤', trailing: '${skill.tutorial.steps.length} 步'),
+              const SizedBox(height: AppSpace.sm),
               for (var i = 0; i < skill.tutorial.steps.length; i++)
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: CircleAvatar(radius: 14, child: Text('${i + 1}')),
-                  title: Text(skill.tutorial.steps[i].text),
-                ),
-              const SizedBox(height: 16),
-              Text('常见错误', style: t.titleMedium),
-              const SizedBox(height: 8),
-              for (final m in skill.tutorial.commonMistakes)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                _StepCard(index: i + 1, text: skill.tutorial.steps[i].text, last: i == skill.tutorial.steps.length - 1),
+              const SizedBox(height: AppSpace.lg),
+              Card(
+                key: const Key('skill_mistakes'),
+                child: Theme(
+                  data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                  child: ExpansionTile(
+                    leading: const Icon(Icons.warning_amber_rounded, color: AppColors.streak),
+                    title: Text('常见错误（${skill.tutorial.commonMistakes.length} 条）', style: t.titleMedium),
+                    childrenPadding: const EdgeInsets.fromLTRB(AppSpace.lg, 0, AppSpace.lg, AppSpace.md),
+                    expandedCrossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('• '),
-                      Expanded(child: Text(m)),
+                      for (final m in skill.tutorial.commonMistakes)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: AppSpace.sm),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.only(top: 7, right: 8),
+                                child: Icon(Icons.circle, size: 6, color: AppColors.streak),
+                              ),
+                              Expanded(child: Text(m, style: t.bodyMedium)),
+                            ],
+                          ),
+                        ),
                     ],
                   ),
                 ),
-              const SizedBox(height: 16),
-              Text('成功标准', style: t.titleMedium),
-              const SizedBox(height: 8),
-              Text(skill.tutorial.successCriteria),
-              const SizedBox(height: 24),
-              // M5（AI-4）：视频纠错入口与最近记录，仅有 video_checks 的技能且开关打开时显示
+              ),
+              const SizedBox(height: AppSpace.sm),
+              Container(
+                padding: const EdgeInsets.all(AppSpace.lg),
+                decoration: BoxDecoration(
+                  color: AppColors.successSoft,
+                  borderRadius: BorderRadius.circular(AppSpace.radius),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.verified_rounded, color: AppColors.success, size: 20),
+                        const SizedBox(width: AppSpace.sm),
+                        Text('成功标准', style: t.titleMedium?.copyWith(color: const Color(0xFF1F5233))),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpace.sm),
+                    Text(skill.tutorial.successCriteria, style: t.bodyMedium),
+                  ],
+                ),
+              ),
+              const SizedBox(height: AppSpace.xl),
+              // M5（AI-4）：视频纠错入口（默认显示"敬请期待"）
               VideoCheckSection(skill: skill),
-              const SizedBox(height: 32),
+              const SizedBox(height: AppSpace.lg),
             ],
           ),
           bottomNavigationBar: SafeArea(
@@ -103,6 +138,144 @@ class SkillDetailPage extends ConsumerWidget {
   }
 }
 
+class _MetaChip extends StatelessWidget {
+  const _MetaChip({required this.icon, required this.text});
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: AppColors.outline),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 15, color: AppColors.primary),
+            const SizedBox(width: 4),
+            Text(text, style: Theme.of(context).textTheme.labelMedium),
+          ],
+        ),
+      );
+}
+
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle({required this.icon, required this.text, this.trailing});
+  final IconData icon;
+  final String text;
+  final String? trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Row(
+      children: [
+        Icon(icon, size: 20, color: AppColors.primary),
+        const SizedBox(width: AppSpace.sm),
+        Text(text, style: t.titleMedium),
+        if (trailing != null) ...[
+          const SizedBox(width: AppSpace.sm),
+          Text(trailing!, style: t.bodySmall?.copyWith(color: AppColors.textSecondary)),
+        ],
+      ],
+    );
+  }
+}
+
+/// 口令与手势：现场最常回看的两样，放大显示。
+class _CueCard extends StatelessWidget {
+  const _CueCard({required this.cue, required this.gesture});
+  final String cue;
+  final String gesture;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Container(
+      padding: const EdgeInsets.all(AppSpace.lg),
+      decoration: BoxDecoration(
+        color: AppColors.primarySoft,
+        borderRadius: BorderRadius.circular(AppSpace.radius),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.record_voice_over_outlined, size: 20, color: AppColors.primaryDeep),
+              const SizedBox(width: AppSpace.sm),
+              Text('口令：', style: t.titleSmall?.copyWith(color: AppColors.primaryDeep)),
+              Text(cue, style: t.titleLarge?.copyWith(color: AppColors.primaryDeep)),
+            ],
+          ),
+          const SizedBox(height: AppSpace.sm),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 2),
+                child: Icon(Icons.back_hand_outlined, size: 20, color: AppColors.primaryDeep),
+              ),
+              const SizedBox(width: AppSpace.sm),
+              Expanded(child: Text('手势：$gesture', style: t.bodyMedium)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 一步一张卡，左侧编号与竖线串起来。
+class _StepCard extends StatelessWidget {
+  const _StepCard({required this.index, required this.text, required this.last});
+  final int index;
+  final String text;
+  final bool last;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(
+            width: 32,
+            child: Column(
+              children: [
+                const SizedBox(height: 14),
+                Container(
+                  width: 28,
+                  height: 28,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+                  child: Text('$index', style: t.labelLarge?.copyWith(color: Colors.white)),
+                ),
+                if (!last)
+                  Expanded(
+                    child: Container(width: 2, color: AppColors.primarySoft),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(width: AppSpace.sm),
+          Expanded(
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(AppSpace.md + 2),
+                child: Text(text, style: t.bodyLarge),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 /// 开始跟练按钮。保底入口（part == 0）只出一个按钮；
 /// 正式入口按 script_parts 出 1 个或多个按钮。

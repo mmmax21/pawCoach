@@ -18,6 +18,10 @@ class TrainingStrings {
   static const finish = '完成';
   static const yourCue = '你的口令：';
   static const imagePlaceholder = '图片占位';
+  static const seconds = '秒';
+  static const paused = '已暂停';
+  static const contrastOn = '户外高对比';
+  static const contrastOff = '关闭高对比';
   static const quitTitle = '退出这次跟练？';
   static const quitBody = '现在退出会丢弃本次，不计入打卡。';
   static const quitConfirm = '退出并丢弃';

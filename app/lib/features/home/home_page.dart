@@ -2,7 +2,9 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/mascot.dart';
 import '../../core/app_nav.dart';
+import '../../core/dog_avatar.dart';
 import '../../core/providers.dart';
 import '../../core/theme.dart';
 import '../../data/repositories/repositories.dart';
@@ -69,13 +71,13 @@ class HomePage extends ConsumerWidget {
                 ),
                 const SizedBox(height: 12),
               ],
-              _Header(dogName: d.name, ageWeeks: ageWeeks, streakDays: streak),
+              _Header(dogId: d.id, dogName: d.name, ageWeeks: ageWeeks, streakDays: streak),
               const SizedBox(height: AppSpace.lg),
               plan.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
                 error: (e, _) => Text('读取计划失败：$e'),
                 data: (v) => v == null
-                    ? const Text('还没有计划')
+                    ? const EmptyState(title: '还没有计划')
                     : _PlanSection(view: v, streakDays: streak),
               ),
             ],
@@ -98,10 +100,12 @@ String _greeting(DateTime now) {
 /// 顶部：狗的头像、名字、周龄，右侧连续打卡（琥珀色火苗）。
 class _Header extends StatelessWidget {
   const _Header({
+    required this.dogId,
     required this.dogName,
     required this.ageWeeks,
     required this.streakDays,
   });
+  final String dogId;
   final String dogName;
   final int ageWeeks;
   final int streakDays;
@@ -111,19 +115,7 @@ class _Header extends StatelessWidget {
     final t = Theme.of(context).textTheme;
     return Row(
       children: [
-        Container(
-          width: 56,
-          height: 56,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFFF6B27A), AppColors.primary],
-            ),
-          ),
-          child: const Icon(Icons.pets, color: Colors.white, size: 28),
-        ),
+        DogAvatar(dogId: dogId, size: 56, editable: true),
         const SizedBox(width: AppSpace.md),
         Expanded(
           child: Column(

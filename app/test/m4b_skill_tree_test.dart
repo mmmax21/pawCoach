@@ -159,6 +159,11 @@ void main() {
 
     await settle(find.byKey(const Key('nav_skills')));
     await t.tap(find.byKey(const Key('nav_skills')));
+    // 2026-11-18 起默认是"成长路径"：先看路径分区，再切到"全图"验证原来的依赖树
+    await settle(find.byKey(const Key('skill_tree_path')));
+    expect(find.text('现在可以练'), findsOneWidget);
+    expect(find.byKey(const Key('skill_tree_lure_follow')), findsOneWidget);
+    await t.tap(find.byKey(const Key('skill_tree_view_graph')));
     await settle(find.byKey(const Key('skill_tree_canvas')));
     final canvas = t.getRect(find.byKey(const Key('skill_tree_canvas')));
     for (final s in lib.skills) {

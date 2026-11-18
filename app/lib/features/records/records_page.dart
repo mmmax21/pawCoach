@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../core/mascot.dart';
 import '../../core/app_nav.dart';
 import '../../core/providers.dart';
 import '../../data/db/database.dart';
@@ -127,7 +128,7 @@ class SessionsList extends ConsumerWidget {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => Center(child: Text('读取失败：$e')),
       data: (list) {
-        if (list.isEmpty) return const Center(child: Text('还没有训练记录'));
+        if (list.isEmpty) return const Center(child: EmptyState(title: '还没有训练记录', hint: '跟练一次，记录就会出现在这里'));
         Widget tile(TrainingSession s, {required bool showSkill}) {
           final who = displayNickname(names, s.userId, meId: me);
           final part = s.scriptPart == miniScriptPart ? '保底任务' : '第 ${s.scriptPart} 部分';
@@ -210,7 +211,7 @@ class ReportsList extends ConsumerWidget {
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (e, _) => Center(child: Text('读取失败：$e')),
       data: (list) {
-        if (list.isEmpty) return const Center(child: Text('还没有周报，每周日晚上自动生成'));
+        if (list.isEmpty) return const Center(child: EmptyState(title: '还没有周报', hint: '每周日晚上自动生成'));
         return ListView(
           key: const Key('reports_list'),
           children: [

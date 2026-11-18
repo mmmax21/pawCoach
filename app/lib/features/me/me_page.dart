@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/app_nav.dart';
+import '../../core/dog_avatar.dart';
 import '../../core/providers.dart';
 
 class MePage extends ConsumerWidget {
@@ -22,7 +23,7 @@ class MePage extends ConsumerWidget {
         children: [
           if (dog != null)
             ListTile(
-              leading: const CircleAvatar(child: Icon(Icons.pets)),
+              leading: DogAvatar(dogId: dog.id, size: 48, editable: true),
               title: Text(dog.name, style: Theme.of(context).textTheme.titleMedium),
               subtitle: Text(hh?.name ?? ''),
             ),

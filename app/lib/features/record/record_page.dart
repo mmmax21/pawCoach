@@ -9,8 +9,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/providers.dart';
+import '../../core/theme.dart';
 import '../../data/repositories/session_repository.dart';
 import '../../domain/models.dart';
+import 'checkin_celebration.dart';
 
 class RecordStrings {
   const RecordStrings._();
@@ -65,8 +67,8 @@ class _RecordPageState extends ConsumerState<RecordPage> {
 
   Future<void> _pickVideo() async {
     // 只做本地选取并存路径，不压缩不上传（M2 简报第 2 节 RC-1）。
-    final f = await ImagePicker()
-        .pickVideo(source: ImageSource.gallery, maxDuration: const Duration(seconds: 60));
+    final f = await ImagePicker().pickVideo(
+        source: ImageSource.gallery, maxDuration: const Duration(seconds: 60));
     if (f != null && mounted) setState(() => _videoPath = f.path);
   }
 
@@ -88,7 +90,32 @@ class _RecordPageState extends ConsumerState<RecordPage> {
     } catch (e) {
       debugPrint('提醒重新调度失败：$e');
     }
+    // 情感化：打卡成功庆祝（约 2.6 秒自动关闭）。读不到连续天数时不显示，直接回首页。
+    if (!mounted) return;
+    final days = await _streakDays(d.dogId);
+    if (!mounted) return;
+    if (days != null) {
+      final lib = ref.read(contentLibraryProvider).valueOrNull;
+      await showCheckinCelebration(
+        context,
+        score: score,
+        streakDays: days,
+        skillName: lib?.skillById[d.skillId]?.name ?? d.skillId,
+      );
+    }
     if (mounted) context.go('/home');
+  }
+
+  Future<int?> _streakDays(String dogId) async {
+    try {
+      final db = ref.read(databaseProvider);
+      final row = await (db.select(db.streaks)
+            ..where((t) => t.dogId.equals(dogId)))
+          .getSingleOrNull();
+      return row?.currentDays;
+    } catch (_) {
+      return null;
+    }
   }
 
   @override
@@ -138,20 +165,21 @@ class _RecordPageState extends ConsumerState<RecordPage> {
                 child: Text(skill.scoringHint, style: t.bodySmall),
               ),
             const SizedBox(height: 8),
-            SegmentedButton<Score>(
+            Row(
               key: const Key('record_score'),
-              segments: const [
-                ButtonSegment(
-                    value: Score.full, label: Text(RecordStrings.full)),
-                ButtonSegment(
-                    value: Score.partial, label: Text(RecordStrings.partial)),
-                ButtonSegment(
-                    value: Score.none, label: Text(RecordStrings.none)),
+              children: [
+                for (final (i, opt) in _scoreOptions.indexed) ...[
+                  if (i > 0) const SizedBox(width: AppSpace.sm),
+                  Expanded(
+                    child: _ScoreButton(
+                      option: opt,
+                      selected: _score == opt.score,
+                      onTap: () => setState(() =>
+                          _score = _score == opt.score ? null : opt.score),
+                    ),
+                  ),
+                ],
               ],
-              selected: _score == null ? {} : {_score!},
-              emptySelectionAllowed: true,
-              onSelectionChanged: (s) =>
-                  setState(() => _score = s.isEmpty ? null : s.first),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -181,6 +209,89 @@ class _RecordPageState extends ConsumerState<RecordPage> {
               key: const Key('record_save'),
               onPressed: _score == null || _saving ? null : _save,
               child: const Text(RecordStrings.save),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// 三档评分（跟练现场：大按钮、表情一眼可辨，单手可点）。
+typedef _ScoreOption = ({
+  Score score,
+  String emoji,
+  String label,
+  Color color,
+  Color soft
+});
+
+const List<_ScoreOption> _scoreOptions = [
+  (
+    score: Score.full,
+    emoji: '😄',
+    label: RecordStrings.full,
+    color: AppColors.success,
+    soft: AppColors.successSoft
+  ),
+  (
+    score: Score.partial,
+    emoji: '🙂',
+    label: RecordStrings.partial,
+    color: AppColors.streak,
+    soft: AppColors.streakSoft
+  ),
+  (
+    score: Score.none,
+    emoji: '😕',
+    label: RecordStrings.none,
+    color: Color(0xFF8C7B6E),
+    soft: Color(0xFFF2EBE5)
+  ),
+];
+
+class _ScoreButton extends StatelessWidget {
+  const _ScoreButton(
+      {required this.option, required this.selected, required this.onTap});
+  final _ScoreOption option;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Semantics(
+      selected: selected,
+      button: true,
+      child: AnimatedContainer(
+        key: Key('record_score_${option.score.name}'),
+        duration: const Duration(milliseconds: 160),
+        decoration: BoxDecoration(
+          color: selected ? option.soft : Colors.white,
+          borderRadius: BorderRadius.circular(AppSpace.radius),
+          border: Border.all(
+              color: selected ? option.color : AppColors.outline,
+              width: selected ? 2 : 1),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(AppSpace.radius),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+              children: [
+                AnimatedScale(
+                  scale: selected ? 1.15 : 1.0,
+                  duration: const Duration(milliseconds: 160),
+                  child:
+                      Text(option.emoji, style: const TextStyle(fontSize: 36)),
+                ),
+                const SizedBox(height: 6),
+                Text(option.label,
+                    style: t.labelLarge?.copyWith(
+                        color:
+                            selected ? option.color : AppColors.textPrimary)),
+              ],
             ),
           ),
         ),

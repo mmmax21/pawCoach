@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/providers.dart';
+import '../../core/theme.dart';
 import '../../data/repositories/session_repository.dart';
 import '../../services/training_audio_service.dart';
 import 'training_controller.dart';
@@ -197,7 +198,10 @@ class _TrainingPageState extends ConsumerState<TrainingPage>
   }
 }
 
-class _TrainingView extends StatelessWidget {
+/// 户外强光：高对比模式（黑底白字、按钮更醒目）。本次运行内记住。
+final trainingHighContrastProvider = StateProvider<bool>((ref) => false);
+
+class _TrainingView extends ConsumerWidget {
   const _TrainingView({
     required this.runner,
     required this.cue,
@@ -210,20 +214,41 @@ class _TrainingView extends StatelessWidget {
   final VoidCallback onAskCoach;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final hc = ref.watch(trainingHighContrastProvider);
     final m = runner.machine;
     final t = Theme.of(context).textTheme;
-    final cs = Theme.of(context).colorScheme;
     final step = m.currentStep;
     final paused = m.phase == TrainingPhase.paused;
     final remaining = m.remainingSec();
     final total = step.durationSec;
     final progress = total == 0 ? 0.0 : 1 - (m.remainingMs() / (total * 1000));
 
+    // 两套配色：普通 / 高对比
+    final bg = hc ? Colors.black : AppColors.background;
+    final fg = hc ? Colors.white : AppColors.textPrimary;
+    final sub = hc ? const Color(0xFFE0E0E0) : AppColors.textSecondary;
+    final accent = hc ? const Color(0xFFFFC14D) : AppColors.primary;
+    final track = hc ? const Color(0xFF333333) : AppColors.primarySoft;
+    final outline = hc ? Colors.white : const Color(0xFFE2CFC0);
+
+    ButtonStyle outlined() => OutlinedButton.styleFrom(
+          foregroundColor: hc ? Colors.white : AppColors.primaryDeep,
+          side: BorderSide(color: outline, width: hc ? 2 : 1),
+          minimumSize: const Size(64, 56),
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          iconSize: 18,
+          textStyle: t.titleSmall,
+        );
+
     return Scaffold(
+      backgroundColor: bg,
       // 跟练页没有输入框；从"问教练"返回时键盘还在收起，若按键盘让位会把整列挤溢出（M3 设备实测 47px）。
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        backgroundColor: bg,
+        foregroundColor: fg,
+        titleTextStyle: t.titleLarge?.copyWith(color: fg),
         title: Text(runner.skill.name),
         leading: IconButton(
           key: const Key('training_quit'),
@@ -231,8 +256,15 @@ class _TrainingView extends StatelessWidget {
           onPressed: onQuit,
         ),
         actions: [
+          IconButton(
+            key: const Key('training_contrast'),
+            tooltip: hc ? TrainingStrings.contrastOff : TrainingStrings.contrastOn,
+            icon: Icon(hc ? Icons.wb_sunny : Icons.wb_sunny_outlined),
+            onPressed: () => ref.read(trainingHighContrastProvider.notifier).state = !hc,
+          ),
           TextButton.icon(
             key: const Key('training_ask_coach'),
+            style: TextButton.styleFrom(foregroundColor: accent),
             icon: const Icon(Icons.chat_bubble_outline),
             label: const Text('问教练'),
             onPressed: onAskCoach,
@@ -241,121 +273,177 @@ class _TrainingView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+          padding: const EdgeInsets.fromLTRB(AppSpace.page, 4, AppSpace.page, AppSpace.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (cue != null)
-                Text('${TrainingStrings.yourCue}$cue',
-                    key: const Key('training_cue'),
-                    style: t.titleSmall,
-                    textAlign: TextAlign.center),
-              const SizedBox(height: 8),
-              Text('${m.stepIndex + 1} / ${m.stepCount}',
-                  key: const Key('training_step_no'),
-                  style: t.labelLarge,
-                  textAlign: TextAlign.center),
-              const SizedBox(height: 8),
-              // 配图占位：内容库的图片文件本期不存在，不依赖文件（M2 简报第 6 节）。
-              Container(
-                height: 120,
-                decoration: BoxDecoration(
-                  color: cs.surfaceContainerHighest,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                    '${TrainingStrings.imagePlaceholder} · ${m.stepIndex + 1}',
-                    style: t.bodyMedium),
+              // 步骤进度：一格一步
+              Row(
+                children: [
+                  for (var i = 0; i < m.stepCount; i++) ...[
+                    if (i > 0) const SizedBox(width: 4),
+                    Expanded(
+                      child: Container(
+                        height: 6,
+                        decoration: BoxDecoration(
+                          color: i <= m.stepIndex ? accent : track,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpace.sm),
+              Row(
+                children: [
+                  Text('${m.stepIndex + 1} / ${m.stepCount}',
+                      key: const Key('training_step_no'),
+                      style: t.titleMedium?.copyWith(color: sub)),
+                  const Spacer(),
+                  if (cue != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: hc ? const Color(0xFF222222) : AppColors.primarySoft,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text('${TrainingStrings.yourCue}$cue',
+                          key: const Key('training_cue'),
+                          style: t.titleMedium?.copyWith(color: hc ? Colors.white : AppColors.primaryDeep)),
+                    ),
+                ],
+              ),
+              const SizedBox(height: AppSpace.lg),
               Expanded(
                 child: SingleChildScrollView(
                   child: Text(step.instruction,
                       key: const Key('training_instruction'),
-                      style: t.titleLarge),
+                      style: t.headlineSmall?.copyWith(
+                          color: fg, height: 1.4, fontSize: hc ? 28 : 25)),
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: AppSpace.sm),
+              // 倒计时大圆环
               Center(
-                child: Text(
-                  '$remaining',
-                  key: const Key('training_remaining'),
-                  style: t.displayLarge?.copyWith(
-                      color: paused ? cs.outline : cs.primary),
+                child: SizedBox(
+                  width: 128,
+                  height: 128,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      CircularProgressIndicator(
+                        value: progress.clamp(0.0, 1.0),
+                        strokeWidth: 10,
+                        strokeCap: StrokeCap.round,
+                        color: paused ? sub : accent,
+                        backgroundColor: track,
+                      ),
+                      Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '$remaining',
+                              key: const Key('training_remaining'),
+                              style: t.displaySmall?.copyWith(
+                                  color: paused ? sub : fg, fontWeight: FontWeight.w700, height: 1.0),
+                            ),
+                            Text(paused ? TrainingStrings.paused : TrainingStrings.seconds,
+                                style: t.labelMedium?.copyWith(color: sub)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              LinearProgressIndicator(value: progress.clamp(0.0, 1.0)),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpace.md),
               if (step.clickerHint)
-                Text(TrainingStrings.clickerPrompt,
-                    key: const Key('training_clicker_prompt'),
-                    style: t.titleMedium?.copyWith(color: cs.primary),
-                    textAlign: TextAlign.center),
-              const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpace.sm),
+                  child: Text(TrainingStrings.clickerPrompt,
+                      key: const Key('training_clicker_prompt'),
+                      style: t.titleMedium?.copyWith(color: accent),
+                      textAlign: TextAlign.center),
+                ),
               // 大面积响片按钮：始终可按，clicker_hint 的步骤高亮。
               SizedBox(
-                height: 96,
+                height: 104,
                 child: FilledButton(
                   key: const Key('training_clicker'),
                   style: FilledButton.styleFrom(
-                    backgroundColor:
-                        step.clickerHint ? cs.primary : cs.secondaryContainer,
-                    foregroundColor:
-                        step.clickerHint ? cs.onPrimary : cs.onSecondaryContainer,
+                    backgroundColor: step.clickerHint
+                        ? accent
+                        : (hc ? const Color(0xFF2A2A2A) : AppColors.primarySoft),
+                    foregroundColor: step.clickerHint
+                        ? (hc ? Colors.black : Colors.white)
+                        : (hc ? Colors.white : AppColors.primaryDeep),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                   ),
                   onPressed: runner.clicker,
-                  child: Text(
-                      '${TrainingStrings.clickerButton} · ${m.clickerCount}',
-                      style: t.headlineSmall?.copyWith(
-                          color: step.clickerHint
-                              ? cs.onPrimary
-                              : cs.onSecondaryContainer)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.touch_app_rounded, size: 34),
+                      const SizedBox(width: AppSpace.md),
+                      Text('${TrainingStrings.clickerButton} · ${m.clickerCount}',
+                          style: t.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              color: step.clickerHint
+                                  ? (hc ? Colors.black : Colors.white)
+                                  : (hc ? Colors.white : AppColors.primaryDeep))),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpace.md),
               Row(
                 children: [
                   Expanded(
-                    child: OutlinedButton(
+                    child: OutlinedButton.icon(
                       key: const Key('training_restart'),
+                      style: outlined(),
                       onPressed: runner.restart,
-                      child: const Text(TrainingStrings.restart),
+                      icon: const Icon(Icons.replay_rounded),
+                      label: const Text(TrainingStrings.restart),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: AppSpace.sm),
                   Expanded(
-                    child: OutlinedButton(
+                    child: OutlinedButton.icon(
+                      key: const Key('training_pause'),
+                      style: outlined(),
+                      onPressed: runner.togglePause,
+                      icon: Icon(paused ? Icons.play_arrow_rounded : Icons.pause_rounded),
+                      label: Text(paused ? TrainingStrings.resume : TrainingStrings.pause),
+                    ),
+                  ),
+                  const SizedBox(width: AppSpace.sm),
+                  Expanded(
+                    child: OutlinedButton.icon(
                       key: const Key('training_skip'),
+                      style: outlined(),
                       onPressed: runner.skip,
-                      child: const Text(TrainingStrings.skip),
+                      icon: const Icon(Icons.skip_next_rounded),
+                      label: const Text(TrainingStrings.skip),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      key: const Key('training_pause'),
-                      onPressed: runner.togglePause,
-                      child: Text(paused
-                          ? TrainingStrings.resume
-                          : TrainingStrings.pause),
-                    ),
+              const SizedBox(height: AppSpace.sm),
+              SizedBox(
+                height: 56,
+                child: FilledButton.icon(
+                  key: const Key('training_next'),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: hc ? Colors.white : AppColors.success,
+                    foregroundColor: hc ? Colors.black : Colors.white,
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: FilledButton.tonal(
-                      key: const Key('training_next'),
-                      onPressed: runner.next,
-                      child: Text(m.isLastStep
-                          ? TrainingStrings.finish
-                          : TrainingStrings.next),
-                    ),
-                  ),
-                ],
+                  onPressed: runner.next,
+                  icon: Icon(m.isLastStep ? Icons.check_rounded : Icons.arrow_forward_rounded),
+                  label: Text(m.isLastStep ? TrainingStrings.finish : TrainingStrings.next),
+                ),
               ),
             ],
           ),

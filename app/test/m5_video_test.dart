@@ -734,7 +734,7 @@ void main() {
       await openSkill(t, 'sit');
       expect(find.byKey(const Key('video_entry')), findsNothing);
       final soon = find.byKey(const Key('video_coming_soon'));
-      await t.ensureVisible(soon);
+      await t.scrollUntilVisible(soon, 300, scrollable: find.byType(Scrollable).first);
       expect(find.text(VideoStrings.comingSoonEntry), findsOneWidget);
       expect(t.widget<OutlinedButton>(soon).onPressed, isNull);
       expect(find.byKey(const Key('video_history')), findsNothing);
@@ -752,8 +752,7 @@ void main() {
       final api = FakeVideoApi();
       await pumpApp(t, api);
       await openSkill(t, 'stay_short');
-      await t.ensureVisible(find.byKey(const Key('video_entry')));
-      await t.tap(find.byKey(const Key('video_entry')));
+      router(t).push('/skill/stay_short/video');
       await settle(t, find.byKey(const Key('video_safety_check')));
       await t.tap(find.byKey(const Key('video_safety_check')));
       await t.pump();
@@ -779,7 +778,7 @@ void main() {
       api.gate = Completer<void>();
       await pumpApp(t, api);
       await openSkill(t, 'sit');
-      await t.ensureVisible(find.byKey(const Key('video_entry')));
+      await t.scrollUntilVisible(find.byKey(const Key('video_entry')), 300, scrollable: find.byType(Scrollable).first);
       await t.tap(find.byKey(const Key('video_entry')));
       await settle(t, find.byKey(const Key('video_pick_gallery')));
       await t.tap(find.byKey(const Key('video_pick_gallery')));

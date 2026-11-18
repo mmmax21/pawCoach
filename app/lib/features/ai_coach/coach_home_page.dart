@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../core/mascot.dart';
 import '../../core/app_nav.dart';
 import '../../core/providers.dart';
 import '../../data/db/database.dart';
@@ -71,7 +72,7 @@ class CoachHomePage extends ConsumerWidget {
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (e, _) => Text('读取对话失败：$e'),
             data: (list) => list.isEmpty
-                ? const Text('还没有对话')
+                ? const EmptyState(title: '还没有对话', hint: '遇到问题时，试试上面的问题诊断', compact: true)
                 : Column(
                     children: [
                       for (final c in list)

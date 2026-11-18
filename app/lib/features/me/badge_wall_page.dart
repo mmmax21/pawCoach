@@ -36,24 +36,23 @@ class BadgeWallPage extends ConsumerWidget {
               key: const Key('badge_wall'),
               crossAxisCount: 2,
               padding: const EdgeInsets.all(12),
-              childAspectRatio: 0.95,
+              childAspectRatio: 0.82,
               children: [
                 for (final b in lib.badges)
                   Card(
                     key: Key('badge_${b.id}_${earned.containsKey(b.id) ? 'earned' : 'locked'}'),
-                    color: earned.containsKey(b.id) ? cs.primaryContainer : cs.surfaceContainerHighest,
+                    color: earned.containsKey(b.id) ? Colors.white : const Color(0xFFFBF6F1),
                     child: Padding(
                       padding: const EdgeInsets.all(12),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(badgeIcon(b.conditionType),
-                              size: 40, color: earned.containsKey(b.id) ? cs.primary : cs.outline),
-                          const SizedBox(height: 8),
+                          BadgeMedal(conditionType: b.conditionType, earned: earned.containsKey(b.id), size: 64),
+                          const SizedBox(height: 10),
                           Text(b.name,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: earned.containsKey(b.id) ? null : cs.outline)),
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                  color: earned.containsKey(b.id) ? null : cs.onSurfaceVariant)),
                           const SizedBox(height: 4),
                           if (earned[b.id] case final e?)
                             Text(
@@ -64,7 +63,9 @@ class BadgeWallPage extends ConsumerWidget {
                           else
                             Text(b.description,
                                 textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: cs.outline)),
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant)),
                         ],
                       ),
                     ),
