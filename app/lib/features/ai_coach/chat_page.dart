@@ -21,6 +21,7 @@ import '../../data/ai/ai_coach_engine.dart';
 import '../../data/db/database.dart';
 import '../../domain/answer_composer.dart';
 import '../../domain/models.dart';
+import '../../domain/retrieval.dart';
 
 class ChatStrings {
   const ChatStrings._();
@@ -29,6 +30,18 @@ class ChatStrings {
   static const hint = '问问教练';
   static const refs = '参考内容';
   static const empty = '回答只依据内容库。健康问题请咨询兽医。';
+  // 补检索（2026-11-18）：没命中时不再是死胡同
+  static const maybe = '你可能想问';
+  static const tryDiagnosis = '试试问题诊断';
+  static const browseSkills = '浏览技能树';
+  static const examplesTitle = '可以这样问';
+  /// 示例问题：都是内容库能直接回答的问法（有测试保证命中）。
+  static const examples = [
+    '坐下练了三天还是不坐怎么办',
+    '在家叫得回来，出门就叫不回',
+    '一出门就拽着绳子往前冲',
+    '换牙期老咬手怎么办',
+  ];
 }
 
 final _messagesProvider =
@@ -107,6 +120,14 @@ class _ChatPageState extends ConsumerState<ChatPage> {
 
   String? get _skillId => widget.skillId ?? _conv?.skillId;
   String? get _issueId => widget.issueId ?? _conv?.issueId;
+
+  /// 第 [i] 条消息之前最近的一条用户提问（给"没命中"的回复算"你可能想问"）。
+  String? _questionBefore(List<AiMessage> messages, int i) {
+    for (var k = i - 1; k >= 0; k--) {
+      if (messages[k].role == 'user') return messages[k].content;
+    }
+    return null;
+  }
 
   Future<void> _send() async {
     final q = _input.text.trim();
@@ -242,14 +263,25 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                 controller: _scroll,
                 padding: const EdgeInsets.all(12),
                 children: [
-                  if (messages.isEmpty && _pendingQuestion == null)
+                  if (messages.isEmpty && _pendingQuestion == null) ...[
                     const Padding(
                       padding: EdgeInsets.all(24),
                       child:
                           Text(ChatStrings.empty, textAlign: TextAlign.center),
                     ),
-                  for (final m in messages)
-                    _MessageBubble(message: m, library: lib),
+                    // 课程内提问已带技能上下文，不需要示例
+                    if (_skillId == null)
+                      _ExampleQuestions(onPick: (q) {
+                        _input.text = q;
+                        _send();
+                      }),
+                  ],
+                  for (final (i, m) in messages.indexed)
+                    _MessageBubble(
+                      message: m,
+                      library: lib,
+                      question: _questionBefore(messages, i),
+                    ),
                   if (_pendingQuestion != null &&
                       ref.read(aiModeProvider) == AiMode.model) ...[
                     _Bubble(text: _pendingQuestion!, fromUser: true),
@@ -355,9 +387,12 @@ class _Bubble extends StatelessWidget {
 }
 
 class _MessageBubble extends StatelessWidget {
-  const _MessageBubble({required this.message, required this.library});
+  const _MessageBubble({required this.message, required this.library, this.question});
   final AiMessage message;
   final ContentLibrary library;
+
+  /// 这条回复对应的用户提问；没命中时据此给出"你可能想问"。
+  final String? question;
 
   @override
   Widget build(BuildContext context) {
@@ -379,7 +414,14 @@ class _MessageBubble extends StatelessWidget {
       body: guard
           ? null
           : _AnswerBody(snapshot: message.content, library: library),
-      footer: cited.isEmpty
+      footer: kind == AiMessageKind.guardNoHit
+          ? _NoHitHelp(
+              suggestions: question == null
+                  ? const []
+                  : retrieve(message: question!, library: library).suggestions,
+              library: library,
+            )
+          : cited.isEmpty
           ? null
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -566,6 +608,83 @@ class _RefsFold extends StatelessWidget {
                 trailing: const Icon(Icons.chevron_right, size: 18),
                 onTap: () => context.push('/coach/diagnosis?issue=${i.id}'),
               ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 没命中时的出路：内容库里相近的条目 + 问题诊断 / 技能树入口。回复文字本身不变。
+class _NoHitHelp extends StatelessWidget {
+  const _NoHitHelp({required this.suggestions, required this.library});
+  final List<String> suggestions;
+  final ContentLibrary library;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Padding(
+      key: const Key('nohit_help'),
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (suggestions.isNotEmpty) ...[
+            Text(ChatStrings.maybe, style: t.labelLarge),
+            _AnswerActions(ids: suggestions, library: library),
+            const SizedBox(height: 6),
+          ],
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            children: [
+              ActionChip(
+                key: const Key('nohit_diagnosis'),
+                avatar: const Icon(Icons.psychology_alt_outlined, size: 18),
+                label: const Text(ChatStrings.tryDiagnosis),
+                onPressed: () => context.push('/coach/diagnosis'),
+              ),
+              ActionChip(
+                key: const Key('nohit_skills'),
+                avatar: const Icon(Icons.account_tree_outlined, size: 18),
+                label: const Text(ChatStrings.browseSkills),
+                onPressed: () => context.go('/skills'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 空对话时的示例问题，点一下直接提问。
+class _ExampleQuestions extends StatelessWidget {
+  const _ExampleQuestions({required this.onPick});
+  final void Function(String q) onPick;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Padding(
+      key: const Key('chat_examples'),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(ChatStrings.examplesTitle, style: t.titleSmall),
+          const SizedBox(height: 8),
+          for (final (i, q) in ChatStrings.examples.indexed)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: OutlinedButton(
+                key: Key('chat_example_$i'),
+                style: OutlinedButton.styleFrom(alignment: Alignment.centerLeft),
+                onPressed: () => onPick(q),
+                child: Text(q),
+              ),
+            ),
         ],
       ),
     );

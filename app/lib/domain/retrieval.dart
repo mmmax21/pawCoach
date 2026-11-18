@@ -6,8 +6,14 @@
 ///    `message.contains(word)`，命中则该词映射的每个 ID 计 1 分（一个词命中多次只计一次），
 ///    取得分 > 0 的前 3 个追加。
 /// 无命中：上下文直取为空，且关键词最高分为 0。
+///
+/// 2026-11-18 补检索（fulltext_search.dart）：
+/// 3. 关键词打分前先做同义展开（"蹲下"→"坐下"等，目标都是词表里已有的词）；
+/// 4. 关键词仍无命中时，用内容库全文检索兜底：只有强命中（≥3 个片段、得分 ≥0.6、明显领先第二名）
+///    才当作命中直出；其余较弱的结果只放进 [RetrievalResult.suggestions]，界面显示为"你可能想问"，不当作回答。
 library;
 
+import 'fulltext_search.dart';
 import 'models.dart';
 
 /// 关键词打分最多追加的条目数。
@@ -28,7 +34,15 @@ class RetrievalResult {
     required this.scored,
     required this.matchedWords,
     this.keywordMaxScore = 0,
+    this.fulltextHit = false,
+    this.suggestions = const [],
   });
+
+  /// 命中来自全文检索兜底（关键词无命中）。
+  final bool fulltextHit;
+
+  /// 无命中时的"你可能想问"（技能或问题行为 ID），不当作回答内容。
+  final List<String> suggestions;
 
   /// 上下文直取的 ID（skill_id / issue_id），按顺序。
   final List<String> contextIds;
@@ -95,7 +109,7 @@ RetrievalResult retrieve({
     if (issueId != null && library.issueById.containsKey(issueId)) issueId,
   ];
 
-  final kw = scoreKeywords(message, library.aiTerms);
+  final kw = scoreKeywords(expandSynonyms(message), library.aiTerms);
   // 同分按"首次命中顺序"：词按长度降序检查，先命中的（更长、更具体的词）映射的 ID 排前。
   // Map 保持插入顺序；List.sort 不稳定，所以带下标排。
   final entries = [
@@ -108,18 +122,41 @@ RetrievalResult retrieve({
     return d != 0 ? d : a.$1 - b.$1;
   });
   final ranked = [for (final (_, e) in indexed) ScoredContent(e.key, e.value)];
+  final keywordMax = kw.scores.values.fold(0, (a, b) => b > a ? b : a);
+
+  // 关键词与上下文都没有命中：全文检索兜底
+  if (context.isEmpty && ranked.isEmpty) {
+    final hits = fulltextSearch(message, library);
+    final strong = fulltextStrongHit(hits);
+    if (strong != null) {
+      return RetrievalResult(
+        contextIds: context,
+        scored: [ScoredContent(strong.id, 1)],
+        matchedWords: kw.words,
+        keywordMaxScore: keywordMax,
+        fulltextHit: true,
+      );
+    }
+    return RetrievalResult(
+      contextIds: context,
+      scored: const [],
+      matchedWords: kw.words,
+      keywordMaxScore: keywordMax,
+      suggestions: [for (final h in fulltextSuggestions(hits)) h.id],
+    );
+  }
 
   return RetrievalResult(
     contextIds: context,
     scored: ranked.take(topK).toList(),
     matchedWords: kw.words,
-    keywordMaxScore: kw.scores.values.fold(0, (a, b) => b > a ? b : a),
+    keywordMaxScore: keywordMax,
   );
 }
 
 /// 诊断入口"输入描述"：只在问题行为里取最高分的一个；没有命中返回 null（→ guard_no_hit）。
 String? bestIssueFor(String message, ContentLibrary library) {
-  final kw = scoreKeywords(message, library.aiTerms);
+  final kw = scoreKeywords(expandSynonyms(message), library.aiTerms);
   String? best;
   var bestScore = 0;
   // 同分取首次命中的（与 retrieve() 一致）。
