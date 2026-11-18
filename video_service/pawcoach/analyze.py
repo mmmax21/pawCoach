@@ -7,6 +7,7 @@ cli.py 的 `analyze` 子命令和 app 后端的 `POST /analyze` 都调 `analyze_
 from __future__ import annotations
 
 import shutil
+from dataclasses import asdict
 from pathlib import Path
 
 from pawcoach import store
@@ -17,13 +18,26 @@ from pawcoach.config import coach_mode
 from pawcoach.coach.safety import referral_text, triggered_flags
 from pawcoach.events.align import align, gate_trials, unclear_seconds
 from pawcoach.reward.merged import MergedRewardExtractor
-from pawcoach.schema import AnalysisResult, MetaInfo, Quality, Summary, default_meta, load_meta
+from pawcoach.schema import (
+    AnalysisResult,
+    AudioEvent,
+    MetaInfo,
+    PoseSegment,
+    Quality,
+    Summary,
+    default_meta,
+    load_meta,
+)
 from pawcoach.video.normalize import normalize_video
 from pawcoach.video.probe import load_video
 
 NORMALIZED_DIR = "data/normalized"
 POSE_DIR = "data/pose"
 ASR_DIR = "data/asr"
+
+# /realign：用户确认的坐姿起点与姿态段起点的匹配容差（秒），补的口令放在坐下后多少秒
+_SIT_MATCH_TOL = 0.05
+_USER_CUE_OFFSET = 0.15  # 要大于 align 的 _EPS（0.1），才会走「口令落在进行中的坐姿里」分支
 
 
 def purge_artifacts(
@@ -138,16 +152,20 @@ def analyze_video(
     normalized_dir: str = NORMALIZED_DIR,
     meta: MetaInfo | None = None,
     cleanup: bool = False,
+    precheck: bool = False,
+    on_stage=None,
 ) -> AnalysisResult:
     """分析一段视频，返回 AnalysisResult（含 coach 建议），并落库。
 
     meta 传入时用它（app 后端上传的 meta）；否则按视频文件名找 <video_id>.meta.json。
     cleanup=True（API 上传用）：无论成功失败，结束后删除原视频与全部中间产物，只留数据库里的数字。
+    precheck=True（API 上传用）：先抽帧预检（pawcoach/precheck.py），明显拍坏的视频直接返回，不跑整段分析。
+    on_stage(stage)：进度回调，stage 为 "precheck" / "analyzing"，供 API 轮询时告诉 App 进行到哪一步。
     """
     if not cleanup:
-        return _analyze(Path(path), normalized_dir, meta)
+        return _analyze(Path(path), normalized_dir, meta, precheck, on_stage)
     try:
-        return _analyze(Path(path), normalized_dir, meta)
+        return _analyze(Path(path), normalized_dir, meta, precheck, on_stage)
     finally:
         purge_artifacts(path, normalized_dir, delete_source=True)
 
@@ -156,7 +174,86 @@ class VideoTooLong(ValueError):
     """视频超过 meta.max_duration（M5：App 限制 120 秒）。错误信息以 video_too_long 开头，App 据此提示。"""
 
 
-def _analyze(path: Path, normalized_dir: str, meta: MetaInfo | None) -> AnalysisResult:
+def assemble(
+    video_id: str,
+    pose: list[PoseSegment],
+    audio: list[AudioEvent],
+    meta: MetaInfo,
+    quality: Quality,
+    user_cue_sits: list[float] | None = None,
+) -> AnalysisResult:
+    """三条时间线 → AnalysisResult（对齐、门控、汇总），不含 coach 与落库。
+
+    user_cue_sits：用户在 App 里确认「这几次是听口令坐下的」的坐姿起点（/realign）。
+    每个起点对应的坐姿段里补一个口令事件（坐下后 _USER_CUE_OFFSET 秒），
+    走 align 已有的「口令落在进行中的坐姿里」分支：latency 为 None、cue_times 为空——
+    用户只确认了喊过口令，没说是什么时候喊的，反应快慢和口令次数都不能算。
+    """
+    orig_audio = list(audio)  # events 只存识别出的事件；用户补的口令不存，再次补标时以新的选择为准
+    audio = list(audio)
+    user_cues: list[float] = []
+    for t in user_cue_sits or []:
+        seg = next(
+            (s for s in pose if s.label == "sit" and abs(s.t_start - t) <= _SIT_MATCH_TOL), None
+        )
+        if seg is None:
+            continue
+        ct = min(seg.t_start + _USER_CUE_OFFSET, (seg.t_start + seg.t_end) / 2)
+        user_cues.append(ct)
+        word = meta.cues[0] if meta.cues else "cue"
+        audio.append(AudioEvent(word=word, t_start=ct, t_end=ct, kind="cue"))
+    audio.sort(key=lambda e: e.t_start)
+
+    rewards = MergedRewardExtractor().extract(meta, audio)
+    trials, unpaired = align(pose, audio, rewards, meta)
+    for t in trials:
+        if t.cue_t is not None and any(abs(t.cue_t - c) < 1e-6 for c in user_cues):
+            t.cue_source = "user"
+    reliable, _unreliable = gate_trials(trials)
+    for t in reliable:  # M5：每轮标明是否可靠（同一门控），App 只用可靠轮次判定
+        t.reliable = True
+    return AnalysisResult(
+        video_id=video_id,
+        quality=quality,
+        trials=trials,
+        summary=Summary(
+            trials=len(trials),
+            reliable_trials=len(reliable),
+            unreliable_trials=len(trials) - len(reliable),
+            success_rate=_success_rate(reliable),
+            median_hold=_median([t.hold for t in reliable if t.hold is not None]),
+        ),
+        unpaired=unpaired,
+        target_hold=meta.target_hold,
+        events={"pose": [asdict(p) for p in pose], "audio": [asdict(a) for a in orig_audio]},
+    )
+
+
+def realign(result: dict, meta: MetaInfo, user_cue_sits: list[float]) -> AnalysisResult:
+    """用户补标口令后重新对齐（不需要视频：只用上次结果里的 events 与 quality）。不落库、不生成 coach。"""
+    ev = result.get("events") or {}
+    if not ev.get("pose"):
+        raise ValueError("结果里没有 events，无法重新对齐（旧版本服务的结果）")
+    pose = [PoseSegment(**p) for p in ev["pose"]]
+    audio = [AudioEvent(**a) for a in ev.get("audio", [])]
+    q = result.get("quality") or {}
+    quality = Quality(**{k: q[k] for k in Quality.__dataclass_fields__ if k in q})
+    out = assemble(result.get("video_id", ""), pose, audio, meta, quality, user_cue_sits)
+    out.precheck = result.get("precheck")
+    return out
+
+
+def _stage(on_stage, stage: str) -> None:
+    if on_stage is not None:
+        try:
+            on_stage(stage)
+        except Exception:  # noqa: BLE001  进度回调失败不影响分析
+            pass
+
+
+def _analyze(
+    path: Path, normalized_dir: str, meta: MetaInfo | None, precheck: bool = False, on_stage=None
+) -> AnalysisResult:
     video_id = path.stem
 
     # 0) M5：时长上限（在标准化与推理之前检查，超长视频不浪费算力）
@@ -174,44 +271,52 @@ def _analyze(path: Path, normalized_dir: str, meta: MetaInfo | None) -> Analysis
         meta_path = path.with_name(f"{video_id}.meta.json")
         meta = load_meta(meta_path) if meta_path.exists() else default_meta()
 
+    # 2.5) 预检：明显拍坏（没拍到狗 / 几乎全程看不出姿势）就不跑整段分析，十几秒内返回
+    pose_extractor, pose_kind = _make_pose_extractor()
+    if precheck and pose_kind == "superanimal":
+        _stage(on_stage, "precheck")
+        from pawcoach.precheck import precheck as run_precheck
+
+        pc = run_precheck(video)
+        if pc["issues"]:
+            frames = max(pc["frames"], 1)
+            result = AnalysisResult(
+                video_id=video_id,
+                quality=Quality(
+                    dog_visible_ratio=round(pc["dog_frames"] / frames, 3),
+                    audio_ok=video.has_audio,
+                    unclear_ratio=round(1 - pc["side_frames"] / frames, 3),
+                    unclear_seconds=round((video.duration or 0.0) * (1 - pc["side_frames"] / frames), 3),
+                    asr="skipped",
+                ),
+                target_hold=meta.target_hold,
+                precheck=pc,
+            )
+            store.save_result(result)
+            return result
+    else:
+        pc = None
+    _stage(on_stage, "analyzing")
+
     # 3) 三条流水线
-    pose_extractor, _ = _make_pose_extractor()
     pose = pose_extractor.extract(video)
     asr = AsrAudioExtractor()
     audio = asr.extract(video, meta)
-    rewards = MergedRewardExtractor().extract(meta, audio)
 
-    # 4) 对齐
-    trials, unpaired = align(pose, audio, rewards, meta)
-
-    # 5) 聚合（C1 门控）
-    confs = [s.conf for s in pose]
-    reliable, _unreliable = gate_trials(trials)
-    for t in reliable:  # M5：每轮标明是否可靠（同一门控），App 只用可靠轮次判定
-        t.reliable = True
-    unclear_s = unclear_seconds(pose)
+    # 4)–5) 对齐与聚合（/realign 复用同一份逻辑）
+    confs = [seg.conf for seg in pose]
     duration = video.duration or 0.0
-    result = AnalysisResult(
-        video_id=video_id,
-        quality=Quality(
-            dog_visible_ratio=_dog_visible_ratio(video),
-            audio_ok=video.has_audio,
-            pose_conf_mean=(sum(confs) / len(confs)) if confs else 0.0,
-            unclear_seconds=unclear_s,
-            unclear_ratio=round(unclear_s / duration, 3) if duration > 0 else 0.0,
-            asr=asr.last_status,
-        ),
-        trials=trials,
-        summary=Summary(
-            trials=len(trials),
-            reliable_trials=len(reliable),
-            unreliable_trials=len(trials) - len(reliable),
-            success_rate=_success_rate(reliable),
-            median_hold=_median([t.hold for t in reliable if t.hold is not None]),
-        ),
-        unpaired=unpaired,
-        target_hold=meta.target_hold,
+    unclear_s = unclear_seconds(pose)
+    quality = Quality(
+        dog_visible_ratio=_dog_visible_ratio(video),
+        audio_ok=video.has_audio,
+        pose_conf_mean=(sum(confs) / len(confs)) if confs else 0.0,
+        unclear_seconds=unclear_s,
+        unclear_ratio=round(unclear_s / duration, 3) if duration > 0 else 0.0,
+        asr=asr.last_status,
     )
+    result = assemble(video_id, pose, audio, meta, quality)
+    result.precheck = pc
 
     # 6) coach（M5：COACH_MODE 默认 off → 空串、不发任何外部请求；
     #    template / llm 时沿用原逻辑：C4 安全层优先，完全空数据时给诚实提示，不调 LLM 避免幻觉）

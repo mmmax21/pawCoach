@@ -128,6 +128,7 @@ class Trial:
     markers_during_hold: int = 0           # 坐下到起身之间识别到的标记词次数
     corrections: list[dict] = field(default_factory=list)  # 本轮内识别到的纠正词 [{word, t}]
     reliable: bool = False                 # 是否通过置信度门控（gate_trials），App 只用可靠轮次判定
+    cue_source: str = "asr"                # 口令来源：asr 转写识别 / user 用户在 App 里确认（/realign）
 
 
 @dataclass
@@ -170,6 +171,13 @@ class AnalysisResult:
     unpaired: list[dict] = field(default_factory=list)  # 无法配对的事件，作反馈素材
     coach: str = ""                                     # 教练建议文本
     target_hold: Optional[float] = None                 # 本次训练目标保持时长（来自 meta，C3 规则层用）
+    # 减少重拍（2026-11-18）：
+    # events = {"pose": [PoseSegment…], "audio": [AudioEvent…]}，只有数字和命中的词。
+    # 视频分析完就删了，用户在 App 里补标口令时由 /realign 用它重新对齐，不必重传视频。
+    events: dict = field(default_factory=dict)
+    # 预检结果（只在 API 开启预检时有）：{frames, dog_frames, side_frames, voice, issues: [...]}。
+    # issues 非空时整段分析被跳过，trials 为空，App 按 issues 给出具体的重拍原因。
+    precheck: Optional[dict] = None
 
 
 def to_json(result: AnalysisResult) -> str:

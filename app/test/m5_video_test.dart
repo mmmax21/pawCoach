@@ -75,6 +75,24 @@ Map<String, Object?> res(List<Map<String, Object?>> trials, {double unclear = 0.
       'coach': '这段文字来自视频服务，App 不应展示',
     };
 
+/// 减少重拍：1 轮识别到口令，另外两次坐下没听清口令（带 events，可以补标）。
+Map<String, Object?> cueMissed({bool withEvents = true, bool audioOk = true}) => {
+      ...res([tr(cue: 0, sit: 1, end: 5, reward: 1.4)]),
+      'quality': {'unclear_ratio': 0.1, 'audio_ok': audioOk, 'asr': 'transcribed'},
+      'unpaired': [
+        {'type': 'sit_without_cue', 't_start': 20.0, 't_end': 25.0},
+        {'type': 'cue_without_sit', 'word': '坐', 't': 30.0},
+        {'type': 'sit_without_cue', 't_start': 40.0, 't_end': 44.5},
+      ],
+      if (withEvents)
+        'events': {
+          'pose': [
+            {'t_start': 1.0, 't_end': 5.0, 'label': 'sit', 'conf': 0.9},
+          ],
+          'audio': [],
+        },
+    };
+
 /// 一组"干净"的轮次：每轮一次口令、坐下即奖励、听释放词结束、保持 4 秒。
 List<Map<String, Object?>> clean(int n, {double hold = 4, int markers = 0}) => [
       for (var i = 0; i < n; i++)
@@ -333,6 +351,74 @@ void main() {
     });
   });
 
+  // =========================================================================
+  group('减少重拍：按原因提示、可补标口令', () {
+    RetakeReason? reasonOf(Map<String, Object?> r) =>
+        judgeVideo(result: r, skillChecks: allChecks, config: cfg).retakeReasons.firstOrNull;
+
+    test('服务端预检拦下：没拍到狗 / 角度不对，优先于其他原因', () {
+      Map<String, Object?> pre(String issue) =>
+          {...res(const [], unclear: 1.0), 'precheck': {'issues': [issue], 'voice': true}};
+      expect(reasonOf(pre('no_dog')), RetakeReason.noDog);
+      expect(reasonOf(pre('angle')), RetakeReason.wrongAngle);
+    });
+
+    test('看到坐下但没听清口令 → cueNotHeard，列出可补标的坐下', () {
+      final r = cueMissed();
+      expect(reasonOf(r), RetakeReason.cueNotHeard);
+      final c = cueCandidates(r);
+      expect([for (final x in c) (x.start, x.end)], [(20.0, 25.0), (40.0, 44.5)]);
+    });
+
+    test('旧版服务结果没有 events → 不能补标，按轮次不足提示', () {
+      final r = cueMissed(withEvents: false);
+      expect(cueCandidates(r), isEmpty);
+      expect(reasonOf(r), RetakeReason.tooFewReliable);
+    });
+
+    test('没录到声音 → noVoice', () {
+      expect(reasonOf(cueMissed(audioOk: false)), RetakeReason.noVoice);
+      final r = {...cueMissed(), 'precheck': {'issues': [], 'voice': false}};
+      expect(reasonOf(r), RetakeReason.noVoice);
+    });
+
+    test('补标了也凑不够 min_reliable_trials → 轮次不足', () {
+      final r = {...cueMissed(), 'unpaired': []};
+      expect(reasonOf(r), RetakeReason.tooFewReliable);
+    });
+
+    test('看不清的时间过多仍是原来的重拍句', () {
+      expect(reasonOf(res(clean(3), unclear: 0.8)), RetakeReason.tooUnclear);
+      expect(VideoStrings.retakeFor(RetakeReason.tooUnclear), VideoStrings.retake);
+    });
+
+    test('每个重拍原因都有对应的句子，且都属于模板集合', () {
+      final texts = {for (final r in RetakeReason.values) VideoStrings.retakeFor(r, minTrials: cfg.minReliableTrials)};
+      expect(texts.length, RetakeReason.values.length);
+      for (final t in [...texts, VideoStrings.sitCandidate(20, 25.5), VideoStrings.confirmTitle,
+          VideoStrings.confirmNote, VideoStrings.confirmButton, VideoStrings.prechecking]) {
+        expect(VideoStrings.isTemplate(t), isTrue, reason: t);
+      }
+      expect(VideoStrings.retakeFor(RetakeReason.tooFewReliable, minTrials: 2), contains('不到 2 轮'));
+    });
+
+    test('重拍原因随记录保存；旧记录没有原因字段也能读', () async {
+      final db = memoryDb();
+      final repo = VideoRepository(db);
+      final j = judgeVideo(result: cueMissed(), skillChecks: allChecks, config: cfg);
+      final id = await repo.save(dogId: 'd', skillId: 'sit', judgement: j, contentVersion: 'v1.3', now: DateTime(2026, 11, 18));
+      expect((await repo.byId(id))!.judgement.retakeReasons, [RetakeReason.cueNotHeard]);
+      // 补标后覆盖同一条
+      final ok = judgeVideo(result: res(clean(3)), skillChecks: const [], config: cfg);
+      await repo.replace(id, ok);
+      final after = await repo.byId(id);
+      expect(after!.status, VideoStatus.ok);
+      expect(after.judgement.retakeReasons, isEmpty);
+      expect(await repo.watchRecent('d', 'sit').first, hasLength(1));
+      await db.close();
+    });
+  });
+
   test('metrics：中位数与成功率只用可靠轮次', () {
     final r = res([
       tr(cue: 0, sit: 1, end: 3, reward: 1.2), // latency 1, hold 2
@@ -515,7 +601,11 @@ void main() {
           }
           expect(texts, isNot(contains(contains('App 不应展示'))));
           if (e.key == 'retake') {
-            expect(texts.toSet(), {VideoStrings.retake, VideoStrings.reupload});
+            // 重拍句按原因选（减少重拍）；这里构造的是"可靠轮次不足"
+            expect(texts.toSet(), {
+              VideoStrings.retakeFor(e.value.retakeReasons.first, minTrials: cfg.minReliableTrials),
+              VideoStrings.reupload,
+            });
           }
           if (e.key == 'bad') {
             for (final c in skill.videoChecks) {
@@ -782,6 +872,73 @@ void main() {
       expect(find.byKey(const Key('video_retry')), findsNothing);
       await teardown(t);
     });
+
+    testWidgets('预检中显示"正在检查画面"；预检拦下 → 角度提示，不能补标', (t) async {
+      await seed(t);
+      final api = FakeVideoApi(script: [
+        const VideoJobPending('precheck'),
+        const VideoJobPending('precheck'),
+        const VideoJobPending('precheck'),
+        VideoJobDone(Map<String, dynamic>.from(
+            {...res(const [], unclear: 1.0), 'precheck': {'issues': ['angle'], 'voice': true}})),
+      ]);
+      await pumpApp(t, api);
+      await openSkill(t, 'sit');
+      router(t).push('/skill/sit/video');
+      await settle(t, find.byKey(const Key('video_pick_gallery')));
+      await t.tap(find.byKey(const Key('video_pick_gallery')));
+      await settle(t, find.text(VideoStrings.prechecking));
+      await settle(t, find.byKey(const Key('video_retake')));
+      expect(find.text(VideoStrings.retakeAngle), findsOneWidget);
+      expect(find.byKey(const Key('video_cue_confirm')), findsNothing);
+      await teardown(t);
+    });
+
+    testWidgets('没听清口令 → 补标两次坐下 → 重新判定出结果，覆盖同一条记录', (t) async {
+      await seed(t);
+      final api = FakeVideoApi(script: [VideoJobDone(Map<String, dynamic>.from(cueMissed()))]);
+      await pumpApp(t, api);
+      await openSkill(t, 'sit');
+      router(t).push('/skill/sit/video');
+      await settle(t, find.byKey(const Key('video_pick_gallery')));
+      await t.tap(find.byKey(const Key('video_pick_gallery')));
+      await settle(t, find.byKey(const Key('video_cue_confirm')));
+      expect(find.text(VideoStrings.retakeCueNotHeard), findsOneWidget);
+      expect(find.text(VideoStrings.sitCandidate(20, 25)), findsOneWidget);
+      expect(find.text(VideoStrings.sitCandidate(40, 44.5)), findsOneWidget);
+      // 原文性：重拍页每个文本块都属于模板集合
+      for (final s in _allTexts(t).where((s) => s != VideoStrings.pageTitle)) {
+        expect(VideoStrings.isTemplate(s), isTrue, reason: s);
+      }
+      // 没勾选时按钮不可用
+      expect(t.widget<FilledButton>(find.byKey(const Key('video_cue_confirm_button'))).onPressed, isNull);
+
+      // 第一次：服务失败 → 提示，勾选保留
+      await t.tap(find.byKey(const Key('video_cue_candidate_1')));
+      await t.tap(find.byKey(const Key('video_cue_candidate_0')));
+      await t.pump();
+      await t.ensureVisible(find.byKey(const Key('video_cue_confirm_button')));
+      await t.tap(find.byKey(const Key('video_cue_confirm_button')));
+      await settle(t, find.byKey(const Key('video_realign_error')));
+      expect(api.realigns.single.sits, [20.0, 40.0]);
+      expect(api.realigns.single.meta['cues'], api.submits.single.meta['cues']);
+      expect(api.realigns.single.result['events'], isNotNull);
+
+      // 第二次：成功 → 结果页
+      api.realignResult = Map<String, dynamic>.from(res([
+        tr(cue: 0, sit: 1, end: 5, reward: 1.4),
+        tr(cue: 20.15, sit: 20, end: 25, reward: 23.0)..['latency'] = null..['cue_times'] = <double>[],
+        tr(cue: 40.15, sit: 40, end: 44.5, reward: 40.3)..['latency'] = null..['cue_times'] = <double>[],
+      ]));
+      await t.ensureVisible(find.byKey(const Key('video_cue_confirm_button')));
+      await t.tap(find.byKey(const Key('video_cue_confirm_button')));
+      await settle(t, find.byKey(const Key('video_result')));
+      expect(find.text(lib.skillById['sit']!.tutorial.commonMistakes[2]), findsOneWidget); // 奖励太晚
+      final saved = await t.runAsync(() => VideoRepository(db).watchRecent(dogId, 'sit').first);
+      expect(saved!, hasLength(1));
+      expect(saved.single.status, VideoStatus.ok);
+      await teardown(t);
+    });
   });
 }
 
@@ -837,6 +994,22 @@ class FakeVideoApi implements VideoAnalysisApi {
     if (gate != null) await gate!.future;
     if (unreachable) throw VideoApiException(VideoErrorKind.unreachable);
     return 'job${submits.length}';
+  }
+
+  /// realign 的返回；为 null 时抛错（模拟服务失败）。
+  Map<String, dynamic>? realignResult;
+  final realigns = <({Map<String, dynamic> result, Map<String, Object?> meta, List<double> sits})>[];
+
+  @override
+  Future<Map<String, dynamic>> realign({
+    required Map<String, dynamic> result,
+    required Map<String, Object?> meta,
+    required List<double> userCueSits,
+  }) async {
+    realigns.add((result: result, meta: meta, sits: userCueSits));
+    final r = realignResult;
+    if (r == null) throw VideoApiException(VideoErrorKind.failed, 'boom');
+    return r;
   }
 
   @override

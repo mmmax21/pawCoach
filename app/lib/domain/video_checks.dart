@@ -6,7 +6,8 @@
 ///
 /// 规则：
 /// - 只用可靠轮次（result.trials[].reliable == true）。
-/// - 可靠轮次 < min_reliable_trials 或 quality.unclear_ratio > retake_unclear_ratio → retake，不做任何纠错判定。
+/// - 可靠轮次 < min_reliable_trials 或 quality.unclear_ratio > retake_unclear_ratio（或服务端预检拦下）
+///   → retake，不做任何纠错判定；重拍原因见 [RetakeReason]。
 /// - 8 个检测器严格按 video_checks.yaml 的 rule 实现，阈值全部来自 [VideoChecksConfig]，本文件不写任何阈值。
 /// - 本文件不产生任何文字；展示文字只有内容库原文与 `features/video/video_strings.dart` 的模板。
 library;
@@ -24,7 +25,8 @@ class VideoCheckMapping {
 
 /// `video_checks.yaml` 里的一个检测器：id、名称、阈值（数字字段原样保留）。
 class VideoDetectorRule {
-  const VideoDetectorRule({required this.id, required this.name, required this.params});
+  const VideoDetectorRule(
+      {required this.id, required this.name, required this.params});
   final String id;
   final String name;
   final Map<String, num> params;
@@ -117,12 +119,16 @@ class VideoTrial {
         latency: _d(json['latency']),
         hold: _d(json['hold']),
         cueTimes: [
-          for (final v in (json['cue_times'] as List? ?? const [])) (v as num).toDouble(),
+          for (final v in (json['cue_times'] as List? ?? const []))
+            (v as num).toDouble(),
         ],
         markersDuringHold: (json['markers_during_hold'] as num?)?.toInt() ?? 0,
         corrections: [
           for (final c in (json['corrections'] as List? ?? const []))
-            (word: (c as Map)['word'].toString(), t: (c['t'] as num).toDouble()),
+            (
+              word: (c as Map)['word'].toString(),
+              t: (c['t'] as num).toDouble()
+            ),
         ],
         // 旧版服务没有 reliable 字段：一律按不可靠处理（宁可提示重拍，不误判）
         reliable: json['reliable'] == true,
@@ -135,8 +141,62 @@ class VideoTrial {
 
 enum VideoStatus { retake, ok }
 
-/// 为什么要重拍。
-enum RetakeReason { tooFewReliable, tooUnclear }
+/// 为什么要重拍（减少重拍：按原因给出能照着做的提示）。只取最主要的一个原因，按下面的顺序判断：
+/// 1. 服务端预检拦下：[noDog] 没拍到狗 / [wrongAngle] 看不出姿势（俯拍、正面）；
+/// 2. [tooUnclear]：整段分析后看不清的时间超过门槛；
+/// 3. 可靠轮次不够：[noVoice] 没录到说话声 / [cueNotHeard] 看到狗坐下但没听清口令（可以补标口令）/
+///    [tooFewReliable] 其余情况（练的轮次太少）。
+enum RetakeReason {
+  noDog,
+  wrongAngle,
+  tooUnclear,
+  noVoice,
+  cueNotHeard,
+  tooFewReliable
+}
+
+/// 一次没配上口令的坐下（服务端 unpaired 里的 sit_without_cue），用户可以确认"这次是听口令坐下的"。
+class VideoSitCandidate {
+  const VideoSitCandidate(this.start, this.end);
+  final double start;
+  final double end;
+}
+
+/// 可以补标口令的坐下。结果里没有 events（旧版服务）时无法重新对齐，返回空。
+List<VideoSitCandidate> cueCandidates(Map result) {
+  final pose = ((result['events'] as Map?)?['pose'] as List?) ?? const [];
+  if (pose.isEmpty) return const [];
+  return [
+    for (final u in (result['unpaired'] as List? ?? const []))
+      if ((u as Map)['type'] == 'sit_without_cue')
+        VideoSitCandidate(
+            (u['t_start'] as num).toDouble(), (u['t_end'] as num).toDouble()),
+  ];
+}
+
+RetakeReason? _retakeReason(
+    Map result, int reliable, VideoChecksConfig config) {
+  final quality = (result['quality'] as Map?) ?? const {};
+  final precheck = result['precheck'] as Map?;
+  final issues = [
+    for (final i in (precheck?['issues'] as List? ?? const [])) '$i'
+  ];
+  if (issues.contains('no_dog')) return RetakeReason.noDog;
+  if (issues.contains('angle')) return RetakeReason.wrongAngle;
+  final unclearRatio = (quality['unclear_ratio'] as num?)?.toDouble() ?? 0.0;
+  if (unclearRatio > config.retakeUnclearRatio) return RetakeReason.tooUnclear;
+  if (reliable >= config.minReliableTrials) return null;
+  final asr = '${quality['asr'] ?? ''}';
+  final noVoice = quality['audio_ok'] == false ||
+      asr == 'no_audio' ||
+      precheck?['voice'] == false;
+  if (noVoice) return RetakeReason.noVoice;
+  final candidates = cueCandidates(result).length;
+  if (candidates > 0 && reliable + candidates >= config.minReliableTrials) {
+    return RetakeReason.cueNotHeard;
+  }
+  return RetakeReason.tooFewReliable;
+}
 
 class VideoMetrics {
   const VideoMetrics({
@@ -183,12 +243,14 @@ class VideoMetrics {
 /// 一个命中的检测器。[evidence] 只含数字与时间（以及内容库词表里的纠正词），
 /// 由模板句式渲染成一行证据。
 class VideoFinding {
-  const VideoFinding({required this.detector, required this.mistake, required this.evidence});
+  const VideoFinding(
+      {required this.detector, required this.mistake, required this.evidence});
   final String detector;
   final int mistake;
   final Map<String, Object?> evidence;
 
-  Map<String, Object?> toJson() => {'detector': detector, 'mistake': mistake, 'evidence': evidence};
+  Map<String, Object?> toJson() =>
+      {'detector': detector, 'mistake': mistake, 'evidence': evidence};
 
   factory VideoFinding.fromJson(Map j) => VideoFinding(
         detector: j['detector'] as String,
@@ -231,32 +293,37 @@ VideoJudgement judgeVideo({
   double? targetHold,
 }) {
   final all = [
-    for (final t in (result['trials'] as List? ?? const [])) VideoTrial.fromJson(t as Map),
+    for (final t in (result['trials'] as List? ?? const []))
+      VideoTrial.fromJson(t as Map),
   ];
   final rewardOf = _ownRewards(all);
-  final reliable = [for (var i = 0; i < all.length; i++) if (all[i].reliable) i];
-  final unclearRatio =
-      ((result['quality'] as Map?)?['unclear_ratio'] as num?)?.toDouble() ?? 0.0;
+  final reliable = [
+    for (var i = 0; i < all.length; i++)
+      if (all[i].reliable) i
+  ];
 
-  final holds = [for (final i in reliable) all[i].hold].whereType<double>().toList();
+  final holds =
+      [for (final i in reliable) all[i].hold].whereType<double>().toList();
   final metrics = VideoMetrics(
     totalTrials: all.length,
     reliableTrials: reliable.length,
-    latencyMedian: _median([for (final i in reliable) all[i].latency].whereType<double>()),
+    latencyMedian:
+        _median([for (final i in reliable) all[i].latency].whereType<double>()),
     holdMedian: _median(holds),
     successRate: (targetHold == null || reliable.isEmpty)
         ? null
-        : _r2(reliable.where((i) => (all[i].hold ?? -1) >= targetHold).length / reliable.length),
+        : _r2(reliable.where((i) => (all[i].hold ?? -1) >= targetHold).length /
+            reliable.length),
     targetHold: targetHold,
   );
 
-  final reasons = <RetakeReason>[
-    if (reliable.length < config.minReliableTrials) RetakeReason.tooFewReliable,
-    if (unclearRatio > config.retakeUnclearRatio) RetakeReason.tooUnclear,
-  ];
-  if (reasons.isNotEmpty) {
+  final reason = _retakeReason(result, reliable.length, config);
+  if (reason != null) {
     return VideoJudgement(
-        status: VideoStatus.retake, metrics: metrics, findings: const [], retakeReasons: reasons);
+        status: VideoStatus.retake,
+        metrics: metrics,
+        findings: const [],
+        retakeReasons: [reason]);
   }
 
   final ctx = _Ctx(
@@ -271,10 +338,12 @@ VideoJudgement judgeVideo({
     if (rule == null) continue; // 解析阶段已拒绝，兜底
     final ev = _detectors[m.detector]?.call(ctx, rule);
     if (ev != null) {
-      findings.add(VideoFinding(detector: m.detector, mistake: m.mistake, evidence: ev));
+      findings.add(
+          VideoFinding(detector: m.detector, mistake: m.mistake, evidence: ev));
     }
   }
-  return VideoJudgement(status: VideoStatus.ok, metrics: metrics, findings: findings);
+  return VideoJudgement(
+      status: VideoStatus.ok, metrics: metrics, findings: findings);
 }
 
 /// 每轮自己的奖励时刻：服务端按"坐下后最近的奖励"配对，没给奖励的一轮可能借到下一轮的奖励；
@@ -315,7 +384,8 @@ final Map<String, _Detector> _detectors = {
     for (var i = 0; i < c.trials.length; i++) {
       final t = c.trials[i];
       final rw = c.rewards[i];
-      if (rw != null && t.sitStart != null) rewarded.add((t, rw, rw - t.sitStart!));
+      if (rw != null && t.sitStart != null)
+        rewarded.add((t, rw, rw - t.sitStart!));
     }
     if (rewarded.isEmpty) return null;
     final late = rewarded.where((e) => e.$3 > th).toList();
@@ -339,7 +409,8 @@ final Map<String, _Detector> _detectors = {
     if (withCue.isEmpty) return null;
     final rep = withCue.where((t) => t.cueTimes.length >= th).toList();
     if (rep.length / withCue.length < r.p('min_ratio')) return null;
-    final worst = rep.reduce((a, b) => b.cueTimes.length > a.cueTimes.length ? b : a);
+    final worst =
+        rep.reduce((a, b) => b.cueTimes.length > a.cueTimes.length ? b : a);
     return {
       'cue_times': worst.cueTimes,
       'count': worst.cueTimes.length,
@@ -394,7 +465,8 @@ final Map<String, _Detector> _detectors = {
 
   // 保持时长 ≥ min_hold_sec 的轮次中，保持期间没有任何标记词的占比 ≥ min_ratio
   'no_hold_marker': (c, r) {
-    final long = c.trials.where((t) => (t.hold ?? -1) >= r.p('min_hold_sec')).toList();
+    final long =
+        c.trials.where((t) => (t.hold ?? -1) >= r.p('min_hold_sec')).toList();
     if (long.isEmpty) return null;
     final silent = long.where((t) => t.markersDuringHold == 0).toList();
     if (silent.length / long.length < r.p('min_ratio')) return null;

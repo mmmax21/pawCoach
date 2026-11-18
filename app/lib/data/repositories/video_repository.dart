@@ -18,6 +18,7 @@ class StoredVideoAnalysis {
     required this.metrics,
     required this.findings,
     required this.contentVersion,
+    this.retakeReasons = const [],
   });
   final String id;
   final String dogId;
@@ -27,9 +28,13 @@ class StoredVideoAnalysis {
   final VideoMetrics metrics;
   final List<VideoFinding> findings;
   final String contentVersion;
+  final List<RetakeReason> retakeReasons;
 
-  VideoJudgement get judgement =>
-      VideoJudgement(status: status, metrics: metrics, findings: findings);
+  VideoJudgement get judgement => VideoJudgement(
+      status: status,
+      metrics: metrics,
+      findings: findings,
+      retakeReasons: retakeReasons);
 
   factory StoredVideoAnalysis.fromRow(VideoAnalyse r) => StoredVideoAnalysis(
         id: r.id,
@@ -39,11 +44,25 @@ class StoredVideoAnalysis {
         status: r.status == 'retake' ? VideoStatus.retake : VideoStatus.ok,
         metrics: VideoMetrics.fromJson(jsonDecode(r.metricsJson) as Map),
         findings: [
-          for (final f in jsonDecode(r.findingsJson) as List) VideoFinding.fromJson(f as Map),
+          for (final f in jsonDecode(r.findingsJson) as List)
+            VideoFinding.fromJson(f as Map),
         ],
         contentVersion: r.contentVersion,
+        retakeReasons: _reasons(jsonDecode(r.metricsJson) as Map),
       );
+
+  /// 重拍原因存在 metrics_json 的 retake_reasons 里（不改表结构）；旧记录没有这个字段 → 空。
+  static List<RetakeReason> _reasons(Map m) => [
+        for (final n in (m['retake_reasons'] as List? ?? const []))
+          ...RetakeReason.values.where((r) => r.name == n),
+      ];
 }
+
+String _metricsJson(VideoJudgement j) => jsonEncode({
+      ...j.metrics.toJson(),
+      if (j.retakeReasons.isNotEmpty)
+        'retake_reasons': [for (final r in j.retakeReasons) r.name],
+    });
 
 class VideoRepository {
   VideoRepository(this.db);
@@ -66,11 +85,23 @@ class VideoRepository {
           skillId: skillId,
           createdAt: now.toUtc().toIso8601String(),
           status: judgement.status.name,
-          metricsJson: jsonEncode(judgement.metrics.toJson()),
-          findingsJson: jsonEncode([for (final f in judgement.findings) f.toJson()]),
+          metricsJson: _metricsJson(judgement),
+          findingsJson:
+              jsonEncode([for (final f in judgement.findings) f.toJson()]),
           contentVersion: contentVersion,
         ));
     return id;
+  }
+
+  /// 用户补标口令、重新判定后，覆盖同一条记录（一次上传在历史里只占一行）。
+  Future<void> replace(String id, VideoJudgement judgement) async {
+    await (db.update(db.videoAnalyses)..where((t) => t.id.equals(id)))
+        .write(VideoAnalysesCompanion(
+      status: Value(judgement.status.name),
+      metricsJson: Value(_metricsJson(judgement)),
+      findingsJson:
+          Value(jsonEncode([for (final f in judgement.findings) f.toJson()])),
+    ));
   }
 
   Stream<List<StoredVideoAnalysis>> watchRecent(String dogId, String skillId) {
@@ -78,11 +109,14 @@ class VideoRepository {
       ..where((t) => t.dogId.equals(dogId) & t.skillId.equals(skillId))
       ..orderBy([(t) => OrderingTerm.desc(t.createdAt)])
       ..limit(historyLimit);
-    return q.watch().map((rows) => [for (final r in rows) StoredVideoAnalysis.fromRow(r)]);
+    return q
+        .watch()
+        .map((rows) => [for (final r in rows) StoredVideoAnalysis.fromRow(r)]);
   }
 
   Future<StoredVideoAnalysis?> byId(String id) async {
-    final r = await (db.select(db.videoAnalyses)..where((t) => t.id.equals(id))).getSingleOrNull();
+    final r = await (db.select(db.videoAnalyses)..where((t) => t.id.equals(id)))
+        .getSingleOrNull();
     return r == null ? null : StoredVideoAnalysis.fromRow(r);
   }
 }

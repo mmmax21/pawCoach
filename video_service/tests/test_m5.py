@@ -489,6 +489,7 @@ def test_chunked_transcription_uses_voice_onsets(monkeypatch, tmp_path):
 
     model = ChunkModel()
     monkeypatch.setattr(tr, "_MODELS", {tr.DEFAULT_MODEL: model})
+    monkeypatch.setattr(tr, "DEFAULT_MODE", "chunked")
     monkeypatch.setattr(tr, "_load_audio", lambda p: _bursts([(1.0, 1.3), (2.5, 2.8), (4.2, 4.5)]))
     ext = AsrAudioExtractor(asr_dir=str(tmp_path / "asr"))
     events = ext.extract(_video_file(tmp_path), MetaInfo(cues=["坐"], marker_words=["好"], language="zh"))
@@ -497,3 +498,80 @@ def test_chunked_transcription_uses_voice_onsets(monkeypatch, tmp_path):
     assert got == [("cue", 1.0), ("cue", 2.5), ("marker", 4.2)]
     data = json.loads((tmp_path / "asr" / "abc.json").read_text(encoding="utf-8"))
     assert data["mode"] == "chunked"
+
+
+# ---------------------------------------------------------------- 合并转写（hybrid）
+
+
+def _ev(word, t, kind, dur=0.3):
+    return AudioEvent(word=word, t_start=t, t_end=t + dur, kind=kind)
+
+
+def test_hybrid_is_default_and_stores_both(monkeypatch, tmp_path):
+    class Model:
+        def __init__(self):
+            self.calls = []
+
+        def transcribe(self, x, **kw):
+            whole = isinstance(x, str)
+            self.calls.append(("whole" if whole else "chunk", kw.get("language")))
+            if whole:  # 整段：认出「坐」，语言 zh
+                return {"language": "zh", "text": "坐", "segments": [
+                    {"start": 1.0, "end": 1.4, "text": "坐", "words": [_w("坐", 1.0, 1.4)]}]}
+            return {"language": "ja", "segments": [  # 分句：把「坐」听成「走」
+                {"start": 0.0, "end": 0.5, "text": "走", "words": [_w("走", 0.0, 0.4)]}]}
+
+    model = Model()
+    assert tr.DEFAULT_MODE == "hybrid"
+    monkeypatch.setattr(tr, "_MODELS", {tr.DEFAULT_MODEL: model})
+    monkeypatch.setattr(tr, "_load_audio", lambda p: _bursts([(1.0, 1.3)]))
+    ext = AsrAudioExtractor(asr_dir=str(tmp_path / "asr"))
+    meta = MetaInfo(cues=["坐"], marker_words=["好"], language=None)
+    events = ext.extract(_video_file(tmp_path), meta)
+    # 先整段，再用整段检测出的语言跑分句（而不是让每句各自检测）
+    assert model.calls == [("whole", None), ("chunk", "zh")]
+    data = json.loads((tmp_path / "asr" / "abc.json").read_text(encoding="utf-8"))
+    assert data["mode"] == "hybrid" and data["language"] == "zh"
+    assert data["segments"][0]["text"] == "走" and data["alt_segments"][0]["text"] == "坐"
+    # 分句漏掉的口令由整段补上
+    assert [(e.kind, e.word, e.t_start) for e in events] == [("cue", "坐", 1.0)]
+
+
+def test_unknown_mode_rejected(monkeypatch):
+    monkeypatch.setattr(tr, "_MODELS", {tr.DEFAULT_MODEL: object()})
+    with pytest.raises(ValueError):
+        tr.transcribe(Path("x.mp4"), mode="fast")
+
+
+def test_merge_events_dedups_one_to_one():
+    from pawcoach.audio.asr import merge_events
+
+    primary = [_ev("坐", 8.0, "cue"), _ev("坐", 9.4, "cue"), _ev("好", 12.6, "marker")]
+    # 整段时间戳早约 1 秒：两次「坐」各配一个，不能合成一次；12.6 的「好」配上；20.0 的「好」是漏识，补进来
+    extra = [_ev("坐", 7.1, "cue"), _ev("坐", 8.5, "cue"), _ev("好", 11.7, "marker"), _ev("好", 20.0, "marker")]
+    got = [(e.word, e.t_start) for e in merge_events(primary, extra)]
+    assert got == [("坐", 8.0), ("坐", 9.4), ("好", 12.6), ("好", 20.0)]
+
+
+def test_merge_events_keeps_extra_repeat_and_respects_kind():
+    from pawcoach.audio.asr import merge_events
+
+    # 主结果只认出一次「坐」，整段认出两次：多出的一次补进来（口令重复要靠它）
+    got = merge_events([_ev("坐", 2.0, "cue")], [_ev("坐", 1.2, "cue"), _ev("坐", 2.6, "cue")])
+    assert [e.t_start for e in got] == [2.0, 2.6]
+    # 主结果的「好了」（释放词）附近，整段只转出「好」：长词优先，不多算标记词
+    got = merge_events([_ev("好了", 15.5, "release")], [_ev("好", 15.6, "marker")])
+    assert [(e.kind, e.word) for e in got] == [("release", "好了")]
+    # 离得远的「好」照常补进来
+    got = merge_events([_ev("好了", 15.5, "release")], [_ev("好", 12.0, "marker")])
+    assert [(e.kind, e.word) for e in got] == [("marker", "好"), ("release", "好了")]
+
+
+def test_old_cache_without_alt_segments_unchanged(tmp_path):
+    asr_dir = tmp_path / "asr"
+    asr_dir.mkdir()
+    (asr_dir / "abc.json").write_text(json.dumps({"segments": SEGMENTS}, ensure_ascii=False), encoding="utf-8")
+    ext = AsrAudioExtractor(asr_dir=str(asr_dir), auto_transcribe=False)
+    events = ext.extract(_video_file(tmp_path), META)
+    assert [(e.kind, e.t_start) for e in events] == [
+        ("cue", 1.0), ("cue", 2.0), ("marker", 4.0), ("release", 8.0), ("correction", 12.0)]

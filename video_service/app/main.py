@@ -17,6 +17,12 @@ GET /results/<job_id>
     {"status": "done", "result": {…}}              # 完成，result 是完整 AnalysisResult（含 quality/trials/summary/unpaired/coach）
     {"status": "failed", "error": "…"}             # 失败
 
+    （减少重拍）pending 时可能带 "stage": "precheck" / "analyzing"；
+    result.precheck.issues 非空表示预检判定拍坏（no_dog / angle），整段分析被跳过。
+
+POST /realign   （减少重拍）JSON {result, meta, user_cue_sits: [坐姿起点秒…]}
+  用户确认「这几次是听口令坐下的」后，用上次 result.events 重新对齐，同步返回 {"status": "done", "result": {…}}。
+
 GET /  健康检查，返回 {"status": "ok", "asr": …, "pose": …, "coach_mode": …}（M5：后三项供 App 与演示前自查）
 
 M5：上传的视频与全部中间产物在分析完成或失败后删除（只留 data/pawcoach.db 里的数字）；
@@ -37,7 +43,9 @@ from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 
-from pawcoach.analyze import analyze_video
+from pydantic import BaseModel
+
+from pawcoach.analyze import analyze_video, realign
 from pawcoach.config import coach_mode
 from pawcoach.schema import meta_from_dict, to_json
 
@@ -49,9 +57,13 @@ _JOBS: dict[str, dict] = {}
 
 
 def _run(job_id: str, video_path: Path, meta) -> None:
+    def on_stage(stage: str) -> None:
+        _JOBS[job_id]["stage"] = stage
+
     try:
         # M5 3.4：cleanup=True → 无论成功失败都删除上传视频、标准化视频、姿态与转写缓存
-        result = analyze_video(video_path, meta=meta, cleanup=True)
+        # 减少重拍：precheck=True → 先抽帧预检，明显拍坏的视频十几秒内返回（result.precheck.issues）
+        result = analyze_video(video_path, meta=meta, cleanup=True, precheck=True, on_stage=on_stage)
         _JOBS[job_id] = {"status": "done", "result": to_json(result), "error": None}
     except Exception as e:  # noqa: BLE001  兜底，把错误转成 failed 状态而非崩线程
         _JOBS[job_id] = {"status": "failed", "result": None, "error": str(e)}
@@ -163,4 +175,27 @@ def results(job_id: str) -> dict:
         return {"status": "done", "result": json.loads(job["result"])}
     if job["status"] == "failed":
         return {"status": "failed", "error": job["error"]}
-    return {"status": "pending"}
+    out = {"status": "pending"}
+    if job.get("stage"):
+        out["stage"] = job["stage"]
+    return out
+
+
+class RealignRequest(BaseModel):
+    result: dict
+    meta: dict
+    user_cue_sits: list[float]
+
+
+@app.post("/realign")
+def realign_endpoint(req: RealignRequest) -> dict:
+    """用户在 App 里确认了哪几次坐下是听口令坐下的 → 用上次结果的 events 重新对齐。
+
+    不需要视频（视频分析完已删除），同步返回：{"status": "done", "result": {…}}。
+    """
+    try:
+        meta_info = meta_from_dict(req.meta)
+        result = realign(req.result, meta_info, req.user_cue_sits)
+    except Exception as e:  # noqa: BLE001
+        raise HTTPException(status_code=400, detail=f"无法重新对齐：{e}") from e
+    return {"status": "done", "result": json.loads(to_json(result))}

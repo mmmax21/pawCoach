@@ -34,7 +34,7 @@ Map<String, Object?> buildVideoMeta({
       'max_duration': videoMaxDurationSec,
     };
 
-enum _Phase { intro, uploading, waiting, result, error }
+enum _Phase { intro, uploading, waiting, realigning, result, error }
 
 class VideoCheckPage extends ConsumerStatefulWidget {
   const VideoCheckPage({super.key, required this.skillId});
@@ -50,6 +50,12 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
   String? _videoPath;
   VideoErrorKind? _error;
   VideoJudgement? _judgement;
+  // 减少重拍：补标口令要用到上次的原始结果与 meta；重新判定后覆盖同一条记录
+  Map<String, dynamic>? _result;
+  Map<String, Object?>? _meta;
+  String? _savedId;
+  String? _stage;
+  List<double>? _realignFailedCues; // 重新判定失败时记下用户的选择，重试用
   int _run = 0; // 每次上传自增；页面关闭或重新开始时让旧的轮询自行退出
 
   @override
@@ -76,18 +82,23 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
     String? cue;
     if (dog != null) {
       final cues = await ref.read(profileRepositoryProvider).cues(dog.id);
-      cue = cues.where((c) => c.skillId == skill.id).map((c) => c.cueWord).firstOrNull;
+      cue = cues
+          .where((c) => c.skillId == skill.id)
+          .map((c) => c.cueWord)
+          .firstOrNull;
     }
     final run = ++_run;
     setState(() {
       _phase = _Phase.uploading;
       _error = null;
+      _stage = null;
+      _realignFailedCues = null;
     });
     final api = ref.read(videoAnalysisApiProvider);
     final polling = ref.read(videoPollingProvider);
+    final meta = buildVideoMeta(skill: skill, config: config, dogCue: cue);
     try {
-      final job = await api.submit(
-          filePath: path, meta: buildVideoMeta(skill: skill, config: config, dogCue: cue));
+      final job = await api.submit(filePath: path, meta: meta);
       if (!mounted || run != _run) return;
       setState(() => _phase = _Phase.waiting);
       final deadline = DateTime.now().add(polling.timeout);
@@ -104,8 +115,12 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
             result = r;
           case VideoJobFailed(:final error):
             throw VideoApiException(
-                isTooLongError(error) ? VideoErrorKind.tooLong : VideoErrorKind.failed, error);
-          case VideoJobPending():
+                isTooLongError(error)
+                    ? VideoErrorKind.tooLong
+                    : VideoErrorKind.failed,
+                error);
+          case VideoJobPending(:final stage):
+            if (stage != _stage) setState(() => _stage = stage);
             if (waited >= polling.timeout || DateTime.now().isAfter(deadline)) {
               throw VideoApiException(VideoErrorKind.timeout);
             }
@@ -117,8 +132,9 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
         config: config,
         targetHold: videoTargetHoldSec[skill.id]?.toDouble(),
       );
+      String? savedId;
       if (dog != null) {
-        await ref.read(videoRepositoryProvider).save(
+        savedId = await ref.read(videoRepositoryProvider).save(
               dogId: dog.id,
               skillId: skill.id,
               judgement: j,
@@ -129,6 +145,9 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
       if (!mounted || run != _run) return;
       setState(() {
         _judgement = j;
+        _result = result;
+        _meta = meta;
+        _savedId = savedId;
         _phase = _Phase.result;
       });
     } on VideoApiException catch (e) {
@@ -146,6 +165,45 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
     }
   }
 
+  /// 用户确认了哪几次坐下是听口令坐下的 → 服务端重新对齐（不用重传视频）→ 重新判定，覆盖同一条记录。
+  Future<void> _confirmCues(List<double> sitStarts) async {
+    final result = _result, meta = _meta;
+    if (result == null || meta == null) return;
+    final lib = await ref.read(contentLibraryProvider.future);
+    final skill = lib.skillById[widget.skillId]!;
+    final config = lib.videoChecks!;
+    final run = ++_run;
+    setState(() {
+      _phase = _Phase.realigning;
+      _realignFailedCues = null;
+    });
+    try {
+      final r = await ref
+          .read(videoAnalysisApiProvider)
+          .realign(result: result, meta: meta, userCueSits: sitStarts);
+      final j = judgeVideo(
+        result: r,
+        skillChecks: skill.videoChecks,
+        config: config,
+        targetHold: videoTargetHoldSec[skill.id]?.toDouble(),
+      );
+      final id = _savedId;
+      if (id != null) await ref.read(videoRepositoryProvider).replace(id, j);
+      if (!mounted || run != _run) return;
+      setState(() {
+        _judgement = j;
+        _result = r;
+        _phase = _Phase.result;
+      });
+    } catch (_) {
+      if (!mounted || run != _run) return;
+      setState(() {
+        _realignFailedCues = sitStarts;
+        _phase = _Phase.result;
+      });
+    }
+  }
+
   void _restart() {
     _run++;
     setState(() {
@@ -153,6 +211,11 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
       _judgement = null;
       _error = null;
       _videoPath = null;
+      _result = null;
+      _meta = null;
+      _savedId = null;
+      _stage = null;
+      _realignFailedCues = null;
     });
   }
 
@@ -166,17 +229,25 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
         error: (e, _) => Center(child: Text('$e')),
         data: (lib) {
           final skill = lib.skillById[widget.skillId];
-          if (skill == null || lib.videoChecks == null) return const SizedBox.shrink();
+          if (skill == null || lib.videoChecks == null)
+            return const SizedBox.shrink();
           return switch (_phase) {
             _Phase.intro => _intro(context, skill),
             _Phase.uploading => _busy(VideoStrings.uploading),
-            _Phase.waiting => _busy(VideoStrings.analyzing),
+            _Phase.waiting => _busy(_stage == 'precheck'
+                ? VideoStrings.prechecking
+                : VideoStrings.analyzing),
+            _Phase.realigning => _busy(VideoStrings.realigning),
             _Phase.error => _errorView(),
             _Phase.result => VideoResultView(
                 skill: skill,
                 judgement: _judgement!,
                 config: lib.videoChecks!,
                 onReupload: _restart,
+                candidates:
+                    _result == null ? const [] : cueCandidates(_result!),
+                onConfirmCues: _confirmCues,
+                realignFailedCues: _realignFailedCues,
               ),
           };
         },
@@ -284,37 +355,63 @@ class VideoResultView extends StatelessWidget {
     required this.judgement,
     required this.config,
     this.onReupload,
+    this.candidates = const [],
+    this.onConfirmCues,
+    this.realignFailedCues,
   });
   final Skill skill;
   final VideoJudgement judgement;
   final VideoChecksConfig config;
   final VoidCallback? onReupload;
 
+  /// 减少重拍：可以补标口令的坐下；[onConfirmCues] 为 null（历史页）时不显示补标。
+  final List<VideoSitCandidate> candidates;
+  final void Function(List<double> sitStarts)? onConfirmCues;
+
+  /// 上次重新判定失败时用户的选择（显示失败提示，保留勾选）。
+  final List<double>? realignFailedCues;
+
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context).textTheme;
     if (judgement.status == VideoStatus.retake) {
       // 简报 4.3 第 1 条：retake 时只显示重拍提示与重新上传按钮，不显示任何纠错
-      return Padding(
+      final reason = judgement.retakeReasons.firstOrNull;
+      final canConfirm = onConfirmCues != null &&
+          candidates.isNotEmpty &&
+          (reason == RetakeReason.cueNotHeard ||
+              reason == RetakeReason.noVoice);
+      return ListView(
         key: const Key('video_retake'),
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Text(VideoStrings.retake),
+        children: [
+          Text(
+              VideoStrings.retakeFor(reason,
+                  minTrials: config.minReliableTrials),
+              key: const Key('video_retake_text')),
+          if (canConfirm) ...[
             const SizedBox(height: 16),
-            if (onReupload != null)
-              FilledButton(
-                key: const Key('video_reupload'),
-                onPressed: onReupload,
-                child: const Text(VideoStrings.reupload),
-              ),
+            _CueConfirmCard(
+              key: const Key('video_cue_confirm'),
+              candidates: candidates,
+              initial: realignFailedCues,
+              failed: realignFailedCues != null,
+              onConfirm: onConfirmCues!,
+            ),
           ],
-        ),
+          const SizedBox(height: 16),
+          if (onReupload != null)
+            FilledButton(
+              key: const Key('video_reupload'),
+              onPressed: onReupload,
+              child: const Text(VideoStrings.reupload),
+            ),
+        ],
       );
     }
     final m = judgement.metrics;
-    String secOr(double? v) => v == null ? VideoStrings.noData : VideoStrings.seconds(v);
+    String secOr(double? v) =>
+        v == null ? VideoStrings.noData : VideoStrings.seconds(v);
     return ListView(
       key: const Key('video_result'),
       padding: const EdgeInsets.all(16),
@@ -333,9 +430,12 @@ class VideoResultView extends StatelessWidget {
                 if (m.targetHold != null)
                   _row(
                     VideoStrings.successRate(m.targetHold!),
-                    m.successRate == null ? VideoStrings.noData : VideoStrings.percent(m.successRate!),
+                    m.successRate == null
+                        ? VideoStrings.noData
+                        : VideoStrings.percent(m.successRate!),
                   ),
-                _row(VideoStrings.reliable, VideoStrings.ratio(m.reliableTrials, m.totalTrials)),
+                _row(VideoStrings.reliable,
+                    VideoStrings.ratio(m.reliableTrials, m.totalTrials)),
               ],
             ),
           ),
@@ -353,10 +453,12 @@ class VideoResultView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // 常见错误原文（逐字取自内容库）
-                    Text(skill.tutorial.commonMistakes[f.mistake], style: t.bodyLarge),
+                    Text(skill.tutorial.commonMistakes[f.mistake],
+                        style: t.bodyLarge),
                     const SizedBox(height: 8),
                     Text(VideoStrings.evidence(f),
-                        style: t.bodySmall?.copyWith(color: Theme.of(context).colorScheme.outline)),
+                        style: t.bodySmall?.copyWith(
+                            color: Theme.of(context).colorScheme.outline)),
                   ],
                 ),
               ),
@@ -375,7 +477,9 @@ class VideoResultView extends StatelessWidget {
             child: FilledButton(
               key: Key('video_practice_$p'),
               onPressed: () => context.push('/training/${skill.id}/$p'),
-              child: Text(skill.scriptParts <= 1 ? VideoStrings.practice : VideoStrings.practicePart(p)),
+              child: Text(skill.scriptParts <= 1
+                  ? VideoStrings.practice
+                  : VideoStrings.practicePart(p)),
             ),
           ),
         OutlinedButton(
@@ -406,12 +510,78 @@ class VideoResultView extends StatelessWidget {
       );
 }
 
+/// 补标口令：列出没配上口令的坐下，用户勾选"这次是听口令坐下的"。
+class _CueConfirmCard extends StatefulWidget {
+  const _CueConfirmCard({
+    super.key,
+    required this.candidates,
+    required this.onConfirm,
+    this.initial,
+    this.failed = false,
+  });
+  final List<VideoSitCandidate> candidates;
+  final void Function(List<double> sitStarts) onConfirm;
+  final List<double>? initial;
+  final bool failed;
+
+  @override
+  State<_CueConfirmCard> createState() => _CueConfirmCardState();
+}
+
+class _CueConfirmCardState extends State<_CueConfirmCard> {
+  late final Set<double> _picked = {...?widget.initial};
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(VideoStrings.confirmTitle, style: t.titleMedium),
+            const SizedBox(height: 4),
+            Text(VideoStrings.confirmNote, style: t.bodySmall),
+            for (final (i, c) in widget.candidates.indexed)
+              CheckboxListTile(
+                key: Key('video_cue_candidate_$i'),
+                contentPadding: EdgeInsets.zero,
+                controlAffinity: ListTileControlAffinity.leading,
+                value: _picked.contains(c.start),
+                onChanged: (v) => setState(() =>
+                    v == true ? _picked.add(c.start) : _picked.remove(c.start)),
+                title: Text(VideoStrings.sitCandidate(c.start, c.end)),
+              ),
+            if (widget.failed) ...[
+              Text(VideoStrings.errRealign,
+                  key: const Key('video_realign_error'),
+                  style: t.bodyMedium
+                      ?.copyWith(color: Theme.of(context).colorScheme.error)),
+              const SizedBox(height: 8),
+            ],
+            FilledButton(
+              key: const Key('video_cue_confirm_button'),
+              onPressed: _picked.isEmpty
+                  ? null
+                  : () => widget.onConfirm(_picked.toList()..sort()),
+              child: const Text(VideoStrings.confirmButton),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 /// 历史里的一次结果（只读，从本机表还原）。
-final _storedAnalysisProvider = FutureProvider.autoDispose.family<StoredVideoAnalysis?, String>(
-    (ref, id) => ref.watch(videoRepositoryProvider).byId(id));
+final _storedAnalysisProvider = FutureProvider.autoDispose
+    .family<StoredVideoAnalysis?, String>(
+        (ref, id) => ref.watch(videoRepositoryProvider).byId(id));
 
 class VideoHistoryResultPage extends ConsumerWidget {
-  const VideoHistoryResultPage({super.key, required this.skillId, required this.analysisId});
+  const VideoHistoryResultPage(
+      {super.key, required this.skillId, required this.analysisId});
   final String skillId;
   final String analysisId;
 
@@ -424,7 +594,8 @@ class VideoHistoryResultPage extends ConsumerWidget {
       appBar: AppBar(title: const Text(VideoStrings.pageTitle)),
       body: (a == null || skill == null || lib?.videoChecks == null)
           ? const Center(child: CircularProgressIndicator())
-          : VideoResultView(skill: skill, judgement: a.judgement, config: lib!.videoChecks!),
+          : VideoResultView(
+              skill: skill, judgement: a.judgement, config: lib!.videoChecks!),
     );
   }
 }
@@ -452,7 +623,9 @@ class VideoCheckSection extends ConsumerWidget {
         ),
         if (dog != null)
           StreamBuilder(
-            stream: ref.watch(videoRepositoryProvider).watchRecent(dog.id, skill.id),
+            stream: ref
+                .watch(videoRepositoryProvider)
+                .watchRecent(dog.id, skill.id),
             builder: (context, snap) {
               final items = snap.data ?? const [];
               if (items.isEmpty) return const SizedBox.shrink();
@@ -471,9 +644,11 @@ class VideoCheckSection extends ConsumerWidget {
                           ? VideoStrings.historyRetake
                           : a.findings.isEmpty
                               ? VideoStrings.noFindings
-                              : VideoStrings.historyFindings(a.findings.length)),
+                              : VideoStrings.historyFindings(
+                                  a.findings.length)),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () => context.push('/skill/${skill.id}/video/${a.id}'),
+                      onTap: () =>
+                          context.push('/skill/${skill.id}/video/${a.id}'),
                     ),
                 ],
               );

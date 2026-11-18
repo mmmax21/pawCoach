@@ -29,7 +29,7 @@ def main() -> None:
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--language", default=None, help="强制语言，如 zh / en；默认自动检测")
     ap.add_argument("--out-dir", default="data/asr")
-    ap.add_argument("--mode", default=None, choices=["chunked", "whole"], help="默认 chunked（分句转写）")
+    ap.add_argument("--mode", default=None, choices=["hybrid", "chunked", "whole"], help="默认 hybrid（分句 + 整段合并）")
     args = ap.parse_args()
 
     video = Path(args.video)

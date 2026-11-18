@@ -15,7 +15,12 @@ segments 里每段额外带可选的 `words`（词级时间戳），旧缓存没
 - `chunked`（默认）：先按音量切出一句句话（能量 VAD），每句单独交给 Whisper，时刻取该句的声音起点。
   训练视频里的口令是短促的单字（坐 / 好 / 好了），整段直接转写时 Whisper 常漏掉孤立短词、
   时间戳也会提前约 1 秒（合成口令实测：整段 10 个词只识别 6 个）；分句后逐句转写更稳。
-- `whole`：原 b5 脚本的整段转写，保留作对照。
+- `whole`：原 b5 脚本的整段转写。
+- `hybrid`（默认）：两种都跑，分句结果放 `segments`，整段结果放 `alt_segments`，
+  由 AsrAudioExtractor 在事件层合并（同类同词、时刻相近的算同一次）。
+  两种方式各有漏识：合成口令上分句更准（10/10 对 6/10），中文实拍上整段更准
+  （「坐」2/2 对 0/2，分句把两次都听成「走」），合并后取并集。
+  language=None 时先跑整段，用它检测出的语言去跑分句（分句逐句检测语言会乱，实测出现日文、韩文）。
 """
 
 from __future__ import annotations
@@ -26,7 +31,8 @@ import time
 from pathlib import Path
 
 DEFAULT_MODEL = "base"
-DEFAULT_MODE = "chunked"
+DEFAULT_MODE = "hybrid"
+MODES = ("hybrid", "chunked", "whole")
 SAMPLE_RATE = 16000
 
 # 能量 VAD 参数（秒）：20ms 帧；相邻语音间隔短于 MERGE_GAP 合成一句；短于 MIN_VOICE 的丢弃；前后各补 PAD
@@ -166,6 +172,21 @@ def _transcribe_chunked(model, video: Path, language: str | None) -> tuple[list[
     return segments, detected
 
 
+def _transcribe_whole(model, video: Path, language: str | None) -> tuple[list[dict], str | None, str]:
+    # 词级时间戳：口令「坐，坐」或等待中的多次「好」常落在同一句段里，按句段只能计一次
+    result = model.transcribe(
+        str(video), language=language, verbose=None, word_timestamps=True, fp16=False
+    )
+    segments = []
+    for s in result.get("segments", []):
+        words = [
+            {"start": round(float(w["start"]), 2), "end": round(float(w["end"]), 2), "word": w["word"]}
+            for w in (s.get("words") or [])
+        ]
+        segments.append(_seg(s["start"], s["end"], s.get("text") or "", words))
+    return segments, result.get("language"), (result.get("text") or "").strip()
+
+
 def transcribe(
     video: Path,
     model_name: str = DEFAULT_MODEL,
@@ -176,41 +197,26 @@ def transcribe(
     video = Path(video)
     model = load_model(model_name)
     mode = mode or DEFAULT_MODE
+    if mode not in MODES:
+        raise ValueError(f"未知转写方式 {mode!r}，可选 {MODES}")
     t0 = time.time()
-    if mode == "chunked":
+    out: dict = {"video": video.name, "model": model_name, "mode": mode}
+    if mode == "whole":
+        segments, lang, text = _transcribe_whole(model, video, language)
+        out.update(language=lang, text=text, segments=segments)
+    elif mode == "chunked":
         segments, lang = _transcribe_chunked(model, video, language)
-        return {
-            "video": video.name,
-            "model": model_name,
-            "mode": mode,
-            "language": lang or language,
-            "text": " ".join(s["text"] for s in segments),
-            "segments": segments,
-            "elapsed_s": round(time.time() - t0, 1),
-        }
-    # 词级时间戳：口令「坐，坐」或等待中的多次「好」常落在同一句段里，按句段只能计一次
-    result = model.transcribe(
-        str(video), language=language, verbose=None, word_timestamps=True, fp16=False
-    )
-    segments = []
-    for s in result.get("segments", []):
-        seg = {"start": round(s["start"], 2), "end": round(s["end"], 2), "text": s["text"].strip()}
-        words = s.get("words") or []
-        if words:
-            seg["words"] = [
-                {"start": round(w["start"], 2), "end": round(w["end"], 2), "word": w["word"]}
-                for w in words
-            ]
-        segments.append(seg)
-    return {
-        "video": video.name,
-        "model": model_name,
-        "mode": "whole",
-        "language": result.get("language"),
-        "text": (result.get("text") or "").strip(),
-        "segments": segments,
-        "elapsed_s": round(time.time() - t0, 1),
-    }
+        out.update(language=lang or language, text=" ".join(s["text"] for s in segments), segments=segments)
+    else:  # hybrid
+        alt, whole_lang, _ = _transcribe_whole(model, video, language)
+        lang = language or whole_lang
+        segments, _ = _transcribe_chunked(model, video, lang)
+        out.update(
+            language=lang, text=" ".join(s["text"] for s in segments),
+            segments=segments, alt_segments=alt,
+        )
+    out["elapsed_s"] = round(time.time() - t0, 1)
+    return out
 
 
 def transcribe_to_cache(

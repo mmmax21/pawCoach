@@ -34,13 +34,39 @@ class VideoStrings {
   // ---- 等待与错误提示
   static const uploading = '正在上传视频…';
   static const analyzing = '正在分析，约一两分钟';
+  static const prechecking = '正在检查画面，约十几秒';
+  static const realigning = '正在重新判定…';
   static const errUnreachable = '连不上视频分析服务。请确认电脑上的服务已启动，手机和电脑在同一网络。';
   static const errFailed = '分析失败，请重试。';
   static const errTimeout = '分析超过 5 分钟还没有结果，请重试。';
   static const errTooLong = '视频超过 120 秒，请剪短后重新上传。';
+  static const errRealign = '重新判定失败，请重试。';
 
   // ---- 固定模板句（简报 4.3 / 4.4 原句）
   static const retake = '画面里大部分时间看不清狗的姿势，请从侧面拍到狗全身后重拍';
+
+  // ---- 按原因的重拍提示（减少重拍，2026-11-18 起草，待 Fable 确认；只讲拍摄与录音，不含训练方法）
+  static const retakeNoDog = '画面里大部分时间没有拍到完整的狗，请把狗全身放进画面后重拍';
+  static const retakeAngle = '从这个角度看不出狗是坐着还是站着，请从侧面拍到狗全身后重拍';
+  static const retakeNoVoice = '这段视频没有录到说话声，听不到口令和奖励词，请打开声音、离手机近一些后重拍';
+  static const retakeCueNotHeard =
+      '看到狗坐下了，但没听清口令。可以在下面标出哪几次是听口令坐下的，或者离手机近一些、清楚地说口令后重拍';
+  static String retakeTooFew(int n) => '能确认的完整轮次不到 $n 轮，请多练几轮后重拍';
+
+  static String retakeFor(RetakeReason? r, {int minTrials = 2}) => switch (r) {
+        RetakeReason.noDog => retakeNoDog,
+        RetakeReason.wrongAngle => retakeAngle,
+        RetakeReason.noVoice => retakeNoVoice,
+        RetakeReason.cueNotHeard => retakeCueNotHeard,
+        RetakeReason.tooFewReliable => retakeTooFew(minTrials),
+        RetakeReason.tooUnclear || null => retake,
+      };
+
+  // ---- 补标口令
+  static const confirmTitle = '标出听口令坐下的几次';
+  static const confirmNote = '你标出的几轮不计算反应快慢和口令次数';
+  static const confirmButton = '确认并重新判定';
+  static String sitCandidate(num a, num b) => '第 ${sec(a)}–${sec(b)} 秒 狗坐下';
   static const noFindings = '这段视频里没有发现常见错误';
   static const safetyStop = '视频里出现攻击或恐惧信号时，请先暂停自行训练，咨询兽医或专业训犬师。';
 
@@ -75,7 +101,9 @@ class VideoStrings {
         return '第 ${sec(n('sit_start'))} 秒坐下，第 ${sec(n('reward_t'))} 秒才奖励，晚了 ${sec(n('delay'))} 秒'
             '（有奖励的 ${n('rewarded')} 轮里 ${n('late')} 轮晚于 ${sec(n('threshold_sec'))} 秒）';
       case 'repeated_cue':
-        final times = [for (final t in e['cue_times'] as List) '第 ${sec(t as num)} 秒'].join('、');
+        final times = [
+          for (final t in e['cue_times'] as List) '第 ${sec(t as num)} 秒'
+        ].join('、');
         return '$times各识别到一次口令，共 ${n('count')} 次后狗才坐下'
             '（${n('trials')} 轮里 ${n('repeated')} 轮口令重复）';
       case 'session_too_long':
@@ -101,10 +129,45 @@ class VideoStrings {
 
   /// 所有固定字符串。
   static const fixed = <String>{
-    entry, pageTitle, shootingHint, pickGallery, pickCamera, safetyCheck, metricsTitle, latency,
-    hold, reliable, findingsTitle, successCriteria, practice, tutorial, reupload, retry, repick,
-    history, noData, uploading, analyzing, errUnreachable, errFailed, errTimeout, errTooLong,
-    retake, noFindings, safetyStop, historyRetake,
+    entry,
+    pageTitle,
+    shootingHint,
+    pickGallery,
+    pickCamera,
+    safetyCheck,
+    metricsTitle,
+    latency,
+    hold,
+    reliable,
+    findingsTitle,
+    successCriteria,
+    practice,
+    tutorial,
+    reupload,
+    retry,
+    repick,
+    history,
+    noData,
+    uploading,
+    analyzing,
+    errUnreachable,
+    errFailed,
+    errTimeout,
+    errTooLong,
+    retake,
+    noFindings,
+    safetyStop,
+    historyRetake,
+    prechecking,
+    realigning,
+    errRealign,
+    retakeNoDog,
+    retakeAngle,
+    retakeNoVoice,
+    retakeCueNotHeard,
+    confirmTitle,
+    confirmNote,
+    confirmButton,
   };
 
   static const _num = r'\d+(?:\.\d+)?';
@@ -119,6 +182,8 @@ class VideoStrings {
     RegExp('^$practice 第 \\d+ 部分\$'),
     RegExp(r'^\d+ 月 \d+ 日 \d\d:\d\d$'),
     RegExp(r'^发现 \d+ 个问题$'),
+    RegExp(r'^能确认的完整轮次不到 \d+ 轮，请多练几轮后重拍$'),
+    RegExp('^第 $_num–$_num 秒 狗坐下\$'),
     RegExp('^$_t坐下，$_t才奖励，晚了 $_num 秒（有奖励的 \\d+ 轮里 \\d+ 轮晚于 $_num 秒）\$'),
     RegExp('^$_t(?:、$_t)*各识别到一次口令，共 \\d+ 次后狗才坐下（\\d+ 轮里 \\d+ 轮口令重复）\$'),
     RegExp(r'^这段视频一共练了 \d+ 轮$'),
@@ -139,7 +204,8 @@ class VideoStrings {
   }
 
   /// 一段文字是否属于模板集合。
-  static bool isTemplate(String text, {List<String> correctionWords = const []}) =>
+  static bool isTemplate(String text,
+          {List<String> correctionWords = const []}) =>
       fixed.contains(text) ||
       patterns.any((r) => r.hasMatch(text)) ||
       _isCorrectionEvidence(text, correctionWords);
