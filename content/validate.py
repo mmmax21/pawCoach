@@ -10,6 +10,8 @@
   - 问题行为 diagnosis_tree 每条路径都落到 result，next 不越界
   - solutions.skills 引用存在，escalate_if 非空
   - 禁用词（惩罚性手段）扫描
+  - video_checks.yaml（v1.3 起必填）：检测器 ID 唯一、阈值字段齐全；技能 video_checks 引用的
+    检测器存在、mistake 下标不越界、同一技能内检测器不重复
 """
 import glob
 import os
@@ -281,7 +283,58 @@ def main() -> int:
             if not item.get("ids"):
                 err(tp, f"词「{w}」没有映射 ID")
 
-    print(f"技能 {len(skills)} 个，问题行为 {issues} 个")
+    vp = os.path.join(ROOT, "video_checks.yaml")
+    v = load(vp) if os.path.exists(vp) else err(vp, "文件不存在（v1.3 起必填）")
+    detector_ids: set[str] = set()
+    if v:
+        for k in ("min_reliable_trials", "retake_unclear_ratio", "marker_words", "release_words",
+                  "correction_words", "detectors"):
+            if k not in v:
+                err(vp, f"缺 {k}")
+        for w in v.get("marker_words", []) + v.get("release_words", []) + v.get("correction_words", []):
+            if not isinstance(w, str) or not w.strip():
+                err(vp, f"词表含空词: {w!r}")
+        need = {
+            "late_reward": ["threshold_sec", "min_ratio"],
+            "repeated_cue": ["threshold_count", "min_ratio"],
+            "session_too_long": ["max_trials"],
+            "target_too_long": ["max_success_ratio"],
+            "reward_after_standup": ["min_ratio"],
+            "self_release": ["min_ratio"],
+            "no_hold_marker": ["min_hold_sec", "min_ratio"],
+            "verbal_correction": [],
+        }
+        for d in v.get("detectors", []):
+            did = d.get("id")
+            if did in detector_ids:
+                err(vp, f"检测器 {did} 重复")
+            detector_ids.add(did)
+            if did not in need:
+                err(vp, f"未知检测器 {did}（客户端没有对应实现）")
+                continue
+            for k in ["name", "rule", "evidence"] + need[did]:
+                if k not in d:
+                    err(vp, f"检测器 {did} 缺 {k}")
+    video_skills = 0
+    for sid, s in skills.items():
+        checks = s.get("video_checks")
+        if checks is None:
+            continue
+        video_skills += 1
+        path = os.path.join(ROOT, "skills", f"{sid}.yaml")
+        mistakes = s.get("tutorial", {}).get("common_mistakes", [])
+        seen_d: set[str] = set()
+        for c in checks:
+            d, m = c.get("detector"), c.get("mistake")
+            if d not in detector_ids:
+                err(path, f"video_checks 引用不存在的检测器 {d}")
+            if d in seen_d:
+                err(path, f"video_checks 检测器 {d} 重复")
+            seen_d.add(d)
+            if not isinstance(m, int) or not 0 <= m < len(mistakes):
+                err(path, f"video_checks 的 mistake 下标 {m} 越界（共 {len(mistakes)} 条常见错误）")
+
+    print(f"技能 {len(skills)} 个，问题行为 {issues} 个，视频纠错技能 {video_skills} 个")
     for w in warnings:
         print(f"WARN  {w}")
     for e in errors:

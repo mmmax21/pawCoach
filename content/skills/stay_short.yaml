@@ -94,6 +94,11 @@ mini_script:
     clicker_hint: false
 scoring_hint: 完全做到 = 第 5 步 5 遍 3 秒等待里 4 遍以上没起身；部分做到 = 2-3 遍；没做到 = 1 遍以下，或 2 秒都等不住。
 downgrade_to: sit
+video_checks:                    # v1.3：视频纠错。mistake = tutorial.common_mistakes 下标（从 0 起）
+  - { detector: target_too_long, mistake: 0 }
+  - { detector: reward_after_standup, mistake: 1 }
+  - { detector: self_release, mistake: 2 }
+  - { detector: verbal_correction, mistake: 3 }
 sources:
   - 等待的逐秒递增法（building duration in stay），参见 AKC "How to Teach Your Dog to Stay" 公开文章
   - 释放词与"保持费"奖励，参见 Kikopup（Emily Larlham）YouTube 公开教程 "How to teach your dog to stay"

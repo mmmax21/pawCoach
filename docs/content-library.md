@@ -179,6 +179,20 @@ potty_training / redirect_to_toy / handling_body（无前置）
 
 实际日程以兽医为准，App 内标注"默认日程，请按兽医建议调整"。
 
+## 6.5 视频纠错规则（v1.3 起）
+
+- `content/video_checks.yaml` 定义检测器：每个检测器用视频服务的测量结果（口令、坐下、起身、奖励时刻，结束方式，口令次数，等待中的标记词，纠正性话语）判定主人是否犯了某个错误，阈值写在这里，由 Fable 维护。
+- 技能 YAML 的可选字段 `video_checks` 把检测器映射到本技能 `tutorial.common_mistakes` 的下标：
+
+```yaml
+video_checks:
+  - { detector: late_reward, mistake: 2 }
+```
+
+- App 命中检测器后展示该条常见错误的**原文**，附测量证据（时间点、秒数），再引导进入本技能跟练。任何一方都不生成训练建议文字，保持 AI-1 边界。
+- 只用可靠轮次判定；可靠轮次少于 `min_reliable_trials` 或画面无法判断占比超过 `retake_unclear_ratio` 时，只提示重拍。
+- 首版只覆盖 sit、stay_short、stay_long。新增检测器需要客户端同步实现，`validate.py` 会拒绝客户端没有实现的检测器 ID。
+
 ## 7. 内容审核清单（Fable 使用）
 
 每个技能 / 问题行为入库前核对：

@@ -1,0 +1,67 @@
+# 视频纠错检测规则（v1.3 起）
+# 视频分析服务（video_service）只负责测量：每一轮的口令时刻、坐下 / 起身时刻、奖励时刻、
+# 结束方式、口令次数、等待中的标记词、纠正性话语。
+# 本文件决定"测量结果满足什么条件，算主人犯了某个常见错误"。
+# 检测命中后，App 展示的是技能 YAML 里 tutorial.common_mistakes 对应条目的原文，
+# 本文件和 App 都不生成任何训练建议文字。
+#
+# 判定只用可靠轮次（视频服务置信度门控后的 reliable trials）。
+
+min_reliable_trials: 2        # 可靠轮次少于此数，不做任何纠错判定，只提示重拍
+retake_unclear_ratio: 0.5     # 画面无法判断的时长占比超过此值，提示重拍，不做纠错判定
+
+# 上传时传给视频服务的词表。口令词另取自该狗的口令表（DogCue），不在此处。
+marker_words: [好, 对, 真棒, 棒]
+release_words: [好了, 可以了, 去吧]
+correction_words: [不对, 不行, 不可以, 不许]
+
+detectors:
+  - id: late_reward
+    name: 奖励太晚
+    rule: 有奖励的轮次中，奖励时刻比坐下时刻晚超过 threshold_sec 秒的占比 ≥ min_ratio
+    threshold_sec: 1.0
+    min_ratio: 0.3
+    evidence: 列出最晚的一轮：坐下时刻、奖励时刻、相差秒数
+
+  - id: repeated_cue
+    name: 口令重复
+    rule: 狗坐下之前识别到的口令次数 ≥ threshold_count 的轮次占比 ≥ min_ratio
+    threshold_count: 2
+    min_ratio: 0.3
+    evidence: 列出口令次数最多的一轮：口令时刻列表
+
+  - id: session_too_long
+    name: 一次练太久
+    rule: 本段视频的总轮次 > max_trials
+    max_trials: 8
+    evidence: 总轮次
+
+  - id: target_too_long
+    name: 目标时长定得太长
+    rule: 达到本次目标保持时长的可靠轮次占比 < max_success_ratio
+    max_success_ratio: 0.5
+    evidence: 达标轮次 / 可靠轮次，以及目标秒数
+
+  - id: reward_after_standup
+    name: 起身后才给奖励
+    rule: 有奖励的轮次中，奖励时刻晚于狗起身时刻的占比 ≥ min_ratio
+    min_ratio: 0.3
+    evidence: 列出一轮：起身时刻、奖励时刻
+
+  - id: self_release
+    name: 狗自己结束等待
+    rule: 结束方式为"狗自行起身"（而不是听到释放词）的可靠轮次占比 ≥ min_ratio
+    min_ratio: 0.5
+    evidence: 自行起身轮次 / 可靠轮次
+
+  - id: no_hold_marker
+    name: 长等待中没有保持费
+    rule: 保持时长 ≥ min_hold_sec 的轮次中，保持期间没有任何标记词的占比 ≥ min_ratio
+    min_hold_sec: 10
+    min_ratio: 0.5
+    evidence: 列出一轮：保持时长、期间标记词次数
+
+  - id: verbal_correction
+    name: 失败时出声纠正
+    rule: 任一轮中识别到 correction_words 中的词
+    evidence: 列出识别到的词与时刻
