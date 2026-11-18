@@ -607,8 +607,16 @@ class VideoCheckSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (!ref.watch(videoAnalysisEnabledProvider) || skill.videoChecks.isEmpty) {
-      return const SizedBox.shrink();
+    if (skill.videoChecks.isEmpty) return const SizedBox.shrink();
+    if (!ref.watch(videoAnalysisEnabledProvider)) {
+      // 暂不开放（2026-11-18 用户决定）：入口显示为"敬请期待"，不可点；
+      // 构建时加 --dart-define=VIDEO_ANALYSIS=true 仍可打开完整功能（开发 / 内测用）。
+      return OutlinedButton.icon(
+        key: const Key('video_coming_soon'),
+        icon: const Icon(Icons.video_camera_back_outlined),
+        label: const Text(VideoStrings.comingSoonEntry),
+        onPressed: null,
+      );
     }
     final dog = ref.watch(currentDogProvider).valueOrNull;
     final t = Theme.of(context).textTheme;

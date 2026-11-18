@@ -727,11 +727,23 @@ void main() {
       await teardown(t);
     });
 
-    testWidgets('开关关闭（默认）时不显示入口', (t) async {
+    testWidgets('开关关闭（默认）时入口显示"敬请期待"且不可点，不发任何请求', (t) async {
       await seed(t);
-      await pumpApp(t, FakeVideoApi(), enabled: false);
+      final api = FakeVideoApi();
+      await pumpApp(t, api, enabled: false);
       await openSkill(t, 'sit');
       expect(find.byKey(const Key('video_entry')), findsNothing);
+      final soon = find.byKey(const Key('video_coming_soon'));
+      await t.ensureVisible(soon);
+      expect(find.text(VideoStrings.comingSoonEntry), findsOneWidget);
+      expect(t.widget<OutlinedButton>(soon).onPressed, isNull);
+      expect(find.byKey(const Key('video_history')), findsNothing);
+      // 没有 video_checks 的技能不显示
+      router(t).push('/skill/down');
+      await settle(t, find.text('趴下'));
+      await t.pump(const Duration(milliseconds: 300));
+      expect(find.byKey(const Key('video_coming_soon')), findsNothing);
+      expect(api.submits, isEmpty);
       await teardown(t);
     });
 

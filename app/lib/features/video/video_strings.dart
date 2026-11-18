@@ -12,6 +12,8 @@ class VideoStrings {
 
   // ---- 字段标签 / 按钮
   static const entry = '上传训练视频纠错';
+  static const comingSoon = '敬请期待';
+  static const comingSoonEntry = '$entry（$comingSoon）';
   static const pageTitle = '视频纠错';
   static const shootingHint = '拍摄要求：从侧面拍到狗全身，视频不超过 120 秒';
   static const pickGallery = '从相册选择';
@@ -130,6 +132,8 @@ class VideoStrings {
   /// 所有固定字符串。
   static const fixed = <String>{
     entry,
+    comingSoon,
+    comingSoonEntry,
     pageTitle,
     shootingHint,
     pickGallery,
