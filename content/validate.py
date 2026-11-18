@@ -12,6 +12,8 @@
   - 禁用词（惩罚性手段）扫描
   - video_checks.yaml（v1.3 起必填）：检测器 ID 唯一、阈值字段齐全；技能 video_checks 引用的
     检测器存在、mistake 下标不越界、同一技能内检测器不重复
+  - faq.yaml（v1.4 起）：id 唯一且以 faq_ 开头、不与技能 / 问题行为重名；question、answer、sources 非空；
+    keywords ≥2 字、不重复、不含健康拦截词；related 引用存在
 """
 import glob
 import os
@@ -334,7 +336,47 @@ def main() -> int:
             if not isinstance(m, int) or not 0 <= m < len(mistakes):
                 err(path, f"video_checks 的 mistake 下标 {m} 越界（共 {len(mistakes)} 条常见错误）")
 
-    print(f"技能 {len(skills)} 个，问题行为 {issues} 个，视频纠错技能 {video_skills} 个")
+    # v1.4: 常见问题
+    fp = os.path.join(ROOT, "faq.yaml")
+    faq_count = 0
+    if os.path.exists(fp):
+        scan_banned(fp)
+        fq = load(fp)
+        health_words = set((g or {}).get("hard", [])) | set((g or {}).get("soft", []))
+        seen_ids: set[str] = set()
+        seen_kw: dict[str, str] = {}
+        for item in (fq or {}).get("faqs", []):
+            faq_count += 1
+            fid = item.get("id", "")
+            if not fid.startswith("faq_"):
+                err(fp, f"{fid}: id 要以 faq_ 开头")
+            if fid in seen_ids:
+                err(fp, f"{fid}: id 重复")
+            if fid in all_ids:
+                err(fp, f"{fid}: 与技能 / 问题行为重名")
+            seen_ids.add(fid)
+            for k in ("question", "answer"):
+                if not str(item.get(k, "")).strip():
+                    err(fp, f"{fid}: {k} 为空")
+            if not item.get("sources"):
+                err(fp, f"{fid}: 缺来源 sources")
+            kws = item.get("keywords") or []
+            if not kws:
+                err(fp, f"{fid}: keywords 为空")
+            for w in kws:
+                if len(str(w)) < 2:
+                    err(fp, f"{fid}: 检索词「{w}」少于 2 字")
+                if w in seen_kw:
+                    err(fp, f"{fid}: 检索词「{w}」与 {seen_kw[w]} 重复")
+                seen_kw[w] = fid
+                hit = [h for h in health_words if h in str(w)]
+                if hit:
+                    err(fp, f"{fid}: 检索词「{w}」含健康拦截词 {hit}")
+            for r in item.get("related") or []:
+                if r not in all_ids:
+                    err(fp, f"{fid}: related 引用不存在的 ID {r}")
+
+    print(f"技能 {len(skills)} 个，问题行为 {issues} 个，视频纠错技能 {video_skills} 个，常见问题 {faq_count} 条")
     for w in warnings:
         print(f"WARN  {w}")
     for e in errors:

@@ -436,6 +436,39 @@ List<AiTerm> aiTermsFromMap(String file, Map map) {
   return out;
 }
 
+/// faq.yaml（v1.4 起，可缺省）：`faqs: [{id, question, keywords, answer, tips?, related?, sources}]`。
+List<FaqEntry> parseFaqs(String file, String text) => faqsFromMap(file, _loadRoot(file, text));
+
+List<FaqEntry> faqsFromMap(String file, Map map) {
+  final r = _Reader(file, map);
+  final out = <FaqEntry>[];
+  final ids = <String>{};
+  final words = <String>{};
+  for (final f in r.mapList('faqs')) {
+    List<String> optList(String k) => f.opt(k) == null ? const [] : f.strList(k, allowEmpty: true);
+    final e = FaqEntry(
+      id: f.str('id'),
+      question: f.str('question'),
+      keywords: f.strList('keywords', allowEmpty: false),
+      answer: f.str('answer'),
+      tips: optList('tips'),
+      related: optList('related'),
+      sources: f.strList('sources', allowEmpty: false),
+    );
+    if (!e.id.startsWith('faq_')) throw ContentParseException(file, 'FAQ id ${e.id} 要以 faq_ 开头');
+    if (!ids.add(e.id)) throw ContentParseException(file, 'FAQ id ${e.id} 重复');
+    if (e.question.trim().isEmpty || e.answer.trim().isEmpty) {
+      throw ContentParseException(file, 'FAQ ${e.id} 的 question / answer 为空');
+    }
+    for (final w in e.keywords) {
+      if (w.length < 2) throw ContentParseException(file, 'FAQ ${e.id} 检索词「$w」少于 2 字');
+      if (!words.add(w)) throw ContentParseException(file, 'FAQ 检索词「$w」重复');
+    }
+    out.add(e);
+  }
+  return out;
+}
+
 /// manifest.yaml 由 tool/sync_content.sh 生成。
 ({List<String> skills, List<String> issues}) parseManifest(
     String file, String text) {
@@ -464,6 +497,16 @@ void validateReferences(ContentLibrary lib) {
     for (final id in t.ids) {
       if (!lib.skillById.containsKey(id) && !lib.issueById.containsKey(id)) {
         throw ContentParseException('ai_terms.yaml', '词 ${t.word} 引用不存在的内容 $id');
+      }
+    }
+  }
+  for (final f in lib.faqs) {
+    if (lib.skillById.containsKey(f.id) || lib.issueById.containsKey(f.id)) {
+      throw ContentParseException('faq.yaml', 'FAQ id ${f.id} 与技能 / 问题行为重名');
+    }
+    for (final id in f.related) {
+      if (!lib.skillById.containsKey(id) && !lib.issueById.containsKey(id)) {
+        throw ContentParseException('faq.yaml', 'FAQ ${f.id} 的 related 引用不存在的内容 $id');
       }
     }
   }

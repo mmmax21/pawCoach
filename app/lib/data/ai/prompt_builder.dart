@@ -83,8 +83,29 @@ String buildSystemPrompt({
       continue;
     }
     final issue = library.issueById[id];
-    if (issue != null) b.writeln(renderIssueMaterial(issue));
+    if (issue != null) {
+      b.writeln(renderIssueMaterial(issue));
+      continue;
+    }
+    final faq = library.faqById[id];
+    if (faq != null) b.writeln(renderFaqMaterial(faq));
   }
+  return b.toString();
+}
+
+/// 常见问题资料（v1.4）。
+String renderFaqMaterial(FaqEntry f) {
+  final b = StringBuffer()
+    ..writeln('<material id="${f.id}" type="faq" name="${f.question}">')
+    ..writeln('回答：${f.answer}');
+  if (f.tips.isNotEmpty) {
+    b.writeln('要点：');
+    for (final t in f.tips) {
+      b.writeln('- $t');
+    }
+  }
+  if (f.related.isNotEmpty) b.writeln('相关内容：${f.related.join('、')}');
+  b.writeln('</material>');
   return b.toString();
 }
 

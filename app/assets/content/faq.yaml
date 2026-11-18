@@ -1,0 +1,258 @@
+# 常见问题（FAQ，v1.4 起）
+#
+# 主人最常问、但不属于某一个技能或问题行为的训练通识问题。AI 教练检索命中后原文直出：
+#   question → 标题，answer → 正文，tips → 要点列表，related → 相关技能 / 问题行为入口。
+# 字段：
+#   id        faq_ 开头，全库唯一
+#   question  标准问法（也参与检索）
+#   keywords  检索词（≥2 字）：用户问题里出现任意一个即命中本条；不要用单字、不要用健康词
+#   answer    回答正文（2-4 句，正向训练方法，不含医疗建议）
+#   tips      可选，要点（每条一句）
+#   related   可选，相关技能 / 问题行为 ID
+#   sources   来源（公开资料）
+# 不收：健康、疾病、用药、喂养量、品种选择等问题（AI 教练对健康问题一律建议就医），
+#       以及内容库没有覆盖的新技能教法（如握手、转圈）。
+
+faqs:
+  - id: faq_start_age
+    question: 幼犬多大可以开始训练？
+    keywords: [多大开始训练, 几个月开始训练, 多大可以训练, 几个月可以训练, 什么时候开始训练, 太小了能练吗, 开始训练的年龄]
+    answer: 幼犬到家安顿一两天后就可以开始，通常 8 周左右。这个阶段学东西最快，先从最简单、最好玩的开始，每次只练几分钟。
+    tips:
+      - 先练建立标记词、听名字看主人、跟随零食，这三项是后面所有技能的基础。
+      - 训练要像游戏，狗愿意参与比练得多更重要。
+    related: [marker_intro, name_response, lure_follow]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+      - Ian Dunbar《Before & After Getting Your Puppy》
+
+  - id: faq_session_length
+    question: 每天练多久合适？一次练几遍？
+    keywords: [练多久, 每天练几次, 一天练几次, 一次练几遍, 一次练多久, 训练时间多长, 每次练多长时间]
+    answer: 幼犬注意力只有几分钟，一次练 3-5 分钟、5-8 遍就停，一天分 2-3 次。短而多次，比一次练很久效果好。
+    tips:
+      - 在狗还想继续的时候结束，下次它会更期待。
+      - 每次结束在一个成功的动作上。
+    related: [sit]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+      - Karen Pryor Clicker Training 公开资料（训练时长与频率）
+
+  - id: faq_treats
+    question: 训练用什么零食做奖励？
+    keywords: [用什么零食, 什么零食, 奖励用什么, 零食怎么选, 训练零食, 零食多大, 奖励零食]
+    answer: 选小块、软、狗特别爱吃的零食，掰成小拇指甲大小，一口就能吃完，不用嚼很久。难的练习、外面干扰大的时候，用更好吃的零食。
+    tips:
+      - 训练零食的量从当天正餐里扣掉，避免吃太多。
+      - 在家练可以直接用一部分狗粮颗粒，出门再换更好吃的。
+    related: [marker_intro, lure_follow]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（奖励物的选择）
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_not_food_motivated
+    question: 狗对零食不感兴趣怎么办？
+    keywords: [对零食不感兴趣, 不爱吃零食, 零食没兴趣, 不要零食, 零食不管用, 不肯吃零食]
+    answer: 先换一种更好吃的零食，再换个时间练：在两餐之间或饭前练，刚吃饱时狗对零食没兴趣。如果在外面不吃，多半是周围太吸引它，先回到安静的地方练。
+    tips:
+      - 喜欢玩的狗，可以用拔河、扔玩具当奖励。
+      - 降低难度，让狗容易成功，奖励来得多了它会更投入。
+    related: [marker_intro, redirect_to_toy]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（奖励物的选择）
+
+  - id: faq_clicker_vs_word
+    question: 一定要用响片吗？用标记词可以吗？
+    keywords: [一定要用响片, 不用响片, 没有响片, 响片和标记词, 用嘴说可以吗, 响片还是标记词]
+    answer: 不一定要用响片。响片和标记词（比如短促的"对"或"好"）作用一样：在狗做对的那一瞬间告诉它"就是这个，马上有奖励"。响片声音更统一、更准，标记词随时都能用，选一种坚持用就行。
+    tips:
+      - 标记词要短，平时说话少用，免得被冲淡。
+      - 先花一两次课建立标记：标记一次，马上给一块零食。
+    related: [marker_intro]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（标记信号）
+
+  - id: faq_reward_timing
+    question: 奖励要多快给？
+    keywords: [奖励要多快, 什么时候给奖励, 奖励的时机, 多久给零食, 奖励晚了, 给零食太慢]
+    answer: 越快越好，狗做对后 1 秒内要按响片或说标记词，零食可以在 2-3 秒内跟上。晚了狗不知道奖的是哪个动作，可能把奖励记到后面的动作上。
+    tips:
+      - 零食提前拿在手里或放在腰包，别现找。
+      - 来不及给零食时，先准时标记，再补零食。
+    related: [marker_intro, sit]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（标记时机）
+
+  - id: faq_punishment
+    question: 狗犯错了可以打骂吗？
+    keywords: [打骂, 可以打吗, 能不能打, 惩罚有用吗, 要不要惩罚, 犯错了怎么罚, 骂它有用吗, 吼它]
+    answer: 不建议。打骂会让狗害怕主人、甚至变得更有攻击性，也不能告诉它应该做什么。更有效的做法是：管理好环境让它没机会犯错，同时教它一个替代行为，做对了就奖励。
+    tips:
+      - 发生错误时平静地打断、引导到正确行为，再奖励正确行为。
+      - 想一想狗为什么这么做（无聊、精力过剩、没人教过），从原因入手。
+    related: [redirect_to_toy, calm_settle]
+    sources:
+      - AVSAB（美国兽医动物行为学会）关于人道训练的立场声明
+      - AKC（美国养犬俱乐部）公开文章：正向强化训练
+
+  - id: faq_family_consistency
+    question: 家里几个人一起训练，要注意什么？
+    keywords: [家里几个人, 全家一起训练, 家人一起训练, 口令不统一, 口令不一样, 每个人说法不同, 多人训练]
+    answer: 全家用同一套口令和手势，规则也要一致，比如有人允许上沙发、有人不允许，狗就会糊涂。可以在"口令表"里定好每个技能的口令，大家照着说。
+    tips:
+      - 一个人教会以后，再让其他家人用同样的方式练。
+      - 打卡记录会显示是谁练的，方便家人之间分工。
+    related: [name_response]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_generalize
+    question: 在家会了，换个地方就不会，怎么办？
+    keywords: [换个地方就不会, 出门就不会, 在家会出门不会, 换地方不听, 外面就不听, 到外面就不会]
+    answer: 这很正常，狗不会自动把在家学会的带到新地方。换到新地方时先把难度降回去，从最简单的版本开始，成功了再慢慢加难度；从安静的地方逐步换到热闹的地方。
+    tips:
+      - 每换一个新地方，先用更好吃的零食。
+      - 一次只加一种难度：距离、时长、干扰，不要同时加。
+    related: [recall_outdoor, stay_long]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（泛化）
+      - Pat Miller 在 Whole Dog Journal 的公开文章（3 D's）
+
+  - id: faq_learned
+    question: 怎么判断狗已经学会了一个技能？
+    keywords: [怎么算学会, 怎么判断学会, 学会了没有, 算不算学会, 什么时候算会了, 是不是学会了]
+    answer: 看三点：说一次口令就能做到；在不同地方、不同的人说都能做到；10 次里大概 8 次能做到。每个技能页都写了"成功标准"，App 里一个技能有 2 次"完全做到"就会记为掌握。
+    tips:
+      - 学会以后也要偶尔复习，否则会慢慢忘。
+    related: [sit]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_fade_treats
+    question: 什么时候可以不用零食？
+    keywords: [不用零食, 戒掉零食, 一直要零食, 离不开零食, 没零食就不做, 不给零食就不听]
+    answer: 狗稳定做到以后，从"每次都给"慢慢变成"有时给"，同时用摸摸、玩耍、出门这些它喜欢的事当奖励。零食不用完全停，偶尔给反而让狗更愿意做。
+    tips:
+      - 零食从手里拿开，改成做完后再从口袋里拿。
+      - 新技能、新环境时，仍然每次都给。
+    related: [lure_follow, sit]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（奖励频率的递减）
+
+  - id: faq_lure_then_cue
+    question: 先教手势还是先教口令？
+    keywords: [先教手势, 先教口令, 什么时候加口令, 口令什么时候说, 手势和口令]
+    answer: 先用零食引导和手势让狗做出动作，等它能稳定跟着手做到，再在动作前说一次口令。太早加口令，狗还没理解，口令就失去意义了。
+    tips:
+      - 口令只说一次，说完等两三秒，没反应就回到手势引导。
+    related: [lure_follow, sit]
+    sources:
+      - 正向训练中的诱导法（luring），参见 Karen Pryor 响片训练体系与 AKC 幼犬基础训练公开资料
+
+  - id: faq_repeat_cue
+    question: 口令说一遍狗没反应，要多说几遍吗？
+    keywords: [说几遍, 多说几遍, 说一遍没反应, 口令要重复吗, 叫好几遍, 喊好几遍]
+    answer: 不要重复喊。一遍一遍地说，狗会学会"要听好几遍才动"。说一次，等两三秒，没反应就回到用手引导或降低难度，做到了再奖励。
+    related: [sit, name_response]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_how_many_skills
+    question: 可以同时教几个技能？
+    keywords: [同时教几个, 一次教几个, 几个技能一起, 同时练几个, 一起教多个]
+    answer: 一周同时推进 2-4 个技能没问题，但每一次练习只专注一个。App 的周计划就是按这个思路排的：每周几个目标，每天自己挑一个练。
+    related: [sit, name_response]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_distracted
+    question: 训练时狗总是走神、不配合怎么办？
+    keywords: [走神, 不配合, 注意力不集中, 心不在焉, 东张西望, 不专心]
+    answer: 先检查三件事：环境是不是太吵太好玩、零食是不是够吸引、难度是不是太高。换到安静的地方，用更好吃的零食，把动作拆小，让狗容易成功；练习也可以再缩短一点。
+    tips:
+      - 狗刚睡醒、刚玩疯或者很困的时候都不适合练。
+    related: [name_response, calm_settle]
+    sources:
+      - Karen Pryor Clicker Training 公开资料
+
+  - id: faq_too_excited
+    question: 一练习狗就特别兴奋、乱扑乱咬怎么办？
+    keywords: [一练习就兴奋, 训练时太兴奋, 练的时候很疯, 一拿零食就疯, 太激动, 特别兴奋, 练习时兴奋, 训练时兴奋]
+    answer: 先让狗消耗一点精力（玩一会儿、闻一闻），再开始练。给零食的动作放慢、放低，狗冷静时再给。也可以先练"安静趴垫"，让它学会平静本身也有奖励。
+    related: [calm_settle, bite_inhibition]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_regression
+    question: 之前会的技能现在又不会了，怎么回事？
+    keywords: [之前会现在不会, 又不会了, 退步了, 忘了怎么做, 以前会的, 突然不听了]
+    answer: 退步很常见，可能是一段时间没复习、换了环境，或者幼犬进入青春期（大约 6-12 个月）变得更爱探索。回到上一步、降低难度重新练几次，通常很快就能找回来。
+    tips:
+      - 不要因为退步就加重语气或惩罚，回到狗能成功的难度。
+    related: [sit, recall_indoor]
+    sources:
+      - Ian Dunbar《Before & After Getting Your Puppy》
+
+  - id: faq_slow_learner
+    question: 狗学得很慢，是不是比较笨？
+    keywords: [学得慢, 是不是笨, 学不会是不是笨, 别的狗都会, 怎么教都学不会]
+    answer: 每只狗的学习速度不一样，和聪不聪明关系不大。学得慢通常是步子迈得太大，把一个动作拆成更小的几步，每一小步都奖励，进步会快很多。
+    tips:
+      - 和自己狗的昨天比，不和别人家的狗比。
+    related: [lure_follow]
+    sources:
+      - Karen Pryor Clicker Training 公开资料（塑形与拆分）
+
+  - id: faq_meal_timing
+    question: 训练放在饭前还是饭后？
+    keywords: [饭前还是饭后, 饭前练, 饭后练, 吃饭前训练, 吃完饭训练, 什么时间练]
+    answer: 放在饭前或两餐之间，狗对零食更有兴趣。刚吃饱时对零食兴趣低，也容易犯困。不要为了训练故意让狗饿着。
+    related: [marker_intro]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_end_session
+    question: 一次训练什么时候结束比较好？
+    keywords: [什么时候结束, 怎么结束训练, 练到什么时候停, 什么时候停下来]
+    answer: 在狗做对一次、拿到奖励之后结束，最好是它还很想继续的时候。如果连着几次都没做到，降低难度让它成功一次，再结束。
+    related: [sit]
+    sources:
+      - Karen Pryor Clicker Training 公开资料
+
+  - id: faq_tired_puppy
+    question: 狗困了还要坚持练吗？
+    keywords: [困了还练吗, 犯困, 想睡觉, 累了还练吗, 刚睡醒]
+    answer: 不用坚持。幼犬一天大部分时间在睡觉，困的时候学不进去，还容易变得暴躁爱咬。等它睡醒、玩过一会儿、精神好的时候再练。
+    related: [calm_settle]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_kids
+    question: 家里小孩可以一起训练狗吗？
+    keywords: [小孩训练, 孩子训练, 小朋友训练, 孩子一起练, 小孩一起练]
+    answer: 可以，但要有大人在旁边。让孩子练最简单的技能，比如坐下、听名字看人，口令和规则跟大人一致。给零食时手掌摊平，避免被咬到手。
+    tips:
+      - 不要让孩子单独和幼犬玩追逐、拔河这类容易兴奋的游戏。
+    related: [sit, name_response, bite_inhibition]
+    sources:
+      - AKC（美国养犬俱乐部）公开文章：儿童与狗
+
+  - id: faq_new_home
+    question: 搬家、换新环境以后要重新训练吗？
+    keywords: [搬家, 换新家, 新环境, 搬到新家, 换了环境]
+    answer: 不用从零开始，但前几天把要求降低，像在新地方练习一样从简单版本复习一遍。如厕训练尤其要重新带它熟悉新的固定地点。
+    related: [potty_training, crate_intro]
+    sources:
+      - AKC（美国养犬俱乐部）公开幼犬训练文章
+
+  - id: faq_socialization
+    question: 幼犬社会化要怎么做？
+    keywords: [社会化, 多见世面, 接触陌生人, 见别的狗, 熟悉外面的环境, 适应外面]
+    answer: 社会化是让幼犬在愉快的体验里认识各种人、狗、声音、地面和场所。每次接触都配上零食，让狗自己决定靠多近；它退缩时就拉开距离，不要硬拉过去。带出门前按兽医建议确认疫苗进度。
+    tips:
+      - 3-14 周是社会化的关键时期，越早开始越好。
+      - 一次只接触一样新东西，时间短一点。
+    related: [handling_body, leash_intro]
+    sources:
+      - AVSAB（美国兽医动物行为学会）关于幼犬社会化的立场声明
+      - Ian Dunbar《Before & After Getting Your Puppy》

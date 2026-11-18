@@ -10,7 +10,7 @@ import 'helpers.dart';
 void main() {
   test('加载真实 content/：技能 18、问题 9、徽章 11，引用关系可解析', () async {
     final lib = await loadRepoContent();
-    expect(lib.version, 'v1.3'); // M5：内容库 v1.3（原 M3 断言 v1.2）
+    expect(lib.version, 'v1.4'); // 内容库 v1.4（FAQ）；M5 为 v1.3，M3 为 v1.2
     expect(lib.skills.length, 18);
     expect(lib.issues.length, 9);
     expect(lib.badges.length, 11);
@@ -55,7 +55,7 @@ void main() {
     final lib1 = await repo1.ensureLoaded();
 
     final versions = await db.select(db.contentVersions).get();
-    expect(versions.single.version, 'v1.3'); // M5：内容库 v1.3
+    expect(versions.single.version, 'v1.4'); // 内容库 v1.4
     expect((await db.select(db.contentSkills).get()).length, 18);
     expect((await db.select(db.contentIssues).get()).length, 9);
     expect((await db.select(db.contentBadges).get()).length, 11);

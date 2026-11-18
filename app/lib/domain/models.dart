@@ -257,6 +257,26 @@ class AiTerm {
   final List<String> ids;
 }
 
+/// 常见问题（v1.4 起，content/faq.yaml）：训练通识问答，AI 教练命中后原文直出。
+class FaqEntry {
+  const FaqEntry({
+    required this.id,
+    required this.question,
+    required this.keywords,
+    required this.answer,
+    this.tips = const [],
+    this.related = const [],
+    this.sources = const [],
+  });
+  final String id;
+  final String question;
+  final List<String> keywords;
+  final String answer;
+  final List<String> tips;
+  final List<String> related;
+  final List<String> sources;
+}
+
 /// 整个内容库的内存快照。
 class ContentLibrary {
   ContentLibrary({
@@ -268,7 +288,16 @@ class ContentLibrary {
     required this.aiGuard,
     required List<AiTerm> aiTerms,
     this.videoChecks,
+    List<FaqEntry> faqs = const [],
   })  : aiTerms = List.unmodifiable(aiTerms),
+        faqs = List.unmodifiable(faqs),
+        faqById = {for (final f in faqs) f.id: f},
+        // 检索用词表 = ai_terms + 每条 FAQ 的检索词（映射到该 FAQ）
+        searchTerms = List.unmodifiable([
+          ...aiTerms,
+          for (final f in faqs)
+            for (final w in f.keywords) AiTerm(word: w, ids: [f.id]),
+        ]),
         skills = List.unmodifiable(skills),
         issues = List.unmodifiable(issues),
         skillById = {for (final s in skills) s.id: s},
@@ -284,6 +313,13 @@ class ContentLibrary {
 
   /// v1.3 起：video_checks.yaml。客户端加载内容库时必填；手工构造（测试）可省略。
   final VideoChecksConfig? videoChecks;
+
+  /// v1.4 起：faq.yaml（可缺省，缺省为空）。
+  final List<FaqEntry> faqs;
+  final Map<String, FaqEntry> faqById;
+
+  /// 关键词检索用的完整词表：ai_terms.yaml + FAQ 检索词。
+  final List<AiTerm> searchTerms;
   final Map<String, Skill> skillById;
   final Map<String, Issue> issueById;
 }

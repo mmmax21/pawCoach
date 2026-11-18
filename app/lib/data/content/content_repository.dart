@@ -92,6 +92,8 @@ class ContentRepository {
         'care_calendar.yaml', await source.read('care_calendar.yaml'));
     final ai = await _loadAiLexicons();
     final videoChecks = parseVideoChecks('video_checks.yaml', await _must('video_checks.yaml', 'v1.3'));
+    final faqText = await _optional('faq.yaml');
+    final faqs = faqText == null ? const <FaqEntry>[] : parseFaqs('faq.yaml', faqText);
     final lib = ContentLibrary(
       version: version,
       skills: skills,
@@ -101,9 +103,19 @@ class ContentRepository {
       aiGuard: ai.guard,
       aiTerms: ai.terms,
       videoChecks: videoChecks,
+      faqs: faqs,
     );
     validateReferences(lib);
     return lib;
+  }
+
+  /// v1.4 的 faq.yaml 可缺省（旧内容包没有）；读不到返回 null。
+  Future<String?> _optional(String path) async {
+    try {
+      return await source.read(path);
+    } catch (_) {
+      return null;
+    }
   }
 
   Future<String> _must(String path, String since) async {
@@ -186,6 +198,15 @@ class ContentRepository {
               json: jsonEncode(map),
             ));
       }
+      // v1.4：faq.yaml（可缺省）同表存放，id 固定为 faq
+      final faqText = await _optional('faq.yaml');
+      if (faqText != null) {
+        await db.into(db.contentAiLexicons).insert(ContentAiLexiconsCompanion.insert(
+              id: 'faq',
+              version: lib.version,
+              json: jsonEncode(_plain(loadYaml(faqText))),
+            ));
+      }
       await db.into(db.contentVersions).insert(ContentVersionsCompanion.insert(
             version: lib.version,
             loadedAt: now,
@@ -219,6 +240,9 @@ class ContentRepository {
           'db:content_ai_lexicons/ai_terms', jsonDecode(aiRows['ai_terms']!) as Map),
       videoChecks: videoChecksFromMap('db:content_ai_lexicons/video_checks',
           jsonDecode(aiRows['video_checks']!) as Map),
+      faqs: aiRows['faq'] == null
+          ? const []
+          : faqsFromMap('db:content_ai_lexicons/faq', jsonDecode(aiRows['faq']!) as Map),
       version: version,
       skills: [
         for (final r in skillRows)

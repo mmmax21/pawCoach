@@ -42,6 +42,8 @@ Set<String> rawValues(ContentLibrary lib, Map<String, CueView> cues) => {
         for (final st in [...s.script, ...s.miniScript]) st.instruction,
       ],
       for (final i in lib.issues) i.name,
+      // v1.4：常见问题的 question / answer / tips 原文
+      for (final f in lib.faqs) ...[f.question, f.answer, ...f.tips],
       for (final c in cues.values) ...[c.cueWord, c.gesture],
     };
 
@@ -292,7 +294,7 @@ void main() {
     });
 
     test('模板集合是封闭的常量：不代入任何内容', () {
-      expect(answerTemplates.length, 13);
+      expect(answerTemplates.length, 15); // v1.4 新增【要点】【相关技能】两个字段标签
     });
   });
 

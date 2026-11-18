@@ -24,6 +24,8 @@ const tplLabelCue = '【你的口令】';
 const tplLabelGesture = '【手势】';
 const tplIssueGuide = '这个问题需要先做一次问题诊断，回答几个问题后会给出方案：';
 const tplDowngradeGuide = '最近两次都没做到，可以先练更基础的技能：';
+const tplLabelTips = '【要点】';
+const tplLabelRelated = '【相关技能】';
 
 /// 16.3：有上下文、关键词最高分为 0 时追加。
 const tplCourseOutOfScope = '如果问的不是这个技能，内容库暂时没有覆盖，建议咨询专业训犬师。';
@@ -40,6 +42,8 @@ const answerTemplates = <String>{
   tplLabelGesture,
   tplIssueGuide,
   tplDowngradeGuide,
+  tplLabelTips,
+  tplLabelRelated,
   tplCourseOutOfScope,
   healthGuardReply,
   noHitGuardReply,
@@ -166,6 +170,12 @@ ComposedAnswer composeAnswer({
       ));
       continue;
     }
+    final faq = library.faqById[id];
+    if (faq != null) {
+      cited.add(id);
+      blocks.addAll(_faqBlocks(faq, library));
+      continue;
+    }
     final issue = library.issueById[id];
     if (issue != null) {
       cited.add(id);
@@ -198,6 +208,28 @@ ComposedAnswer composeAnswer({
     blocks.add(const AnswerBlock(AnswerBlockType.note, tplCourseOutOfScope));
   }
   return ComposedAnswer(blocks: blocks, cited: cited);
+}
+
+/// FAQ（v1.4）：标题 = question，正文 = answer，要点 = tips，相关技能 = related 中技能的 name（可点进技能页）。
+List<AnswerBlock> _faqBlocks(FaqEntry f, ContentLibrary library) {
+  final out = <AnswerBlock>[
+    AnswerBlock(AnswerBlockType.title, f.question, targetId: f.id, source: '${f.id}.question'),
+    AnswerBlock(AnswerBlockType.text, f.answer, source: '${f.id}.answer'),
+  ];
+  if (f.tips.isNotEmpty) {
+    out.add(const AnswerBlock(AnswerBlockType.label, tplLabelTips));
+    for (var i = 0; i < f.tips.length; i++) {
+      out.add(AnswerBlock(AnswerBlockType.bullet, f.tips[i], source: '${f.id}.tips[$i]'));
+    }
+  }
+  final related = [for (final id in f.related) if (library.skillById[id] case final s?) s];
+  if (related.isNotEmpty) {
+    out.add(const AnswerBlock(AnswerBlockType.label, tplLabelRelated));
+    for (final s in related) {
+      out.add(AnswerBlock(AnswerBlockType.downgradeLink, s.name, targetId: s.id, source: '${s.id}.name'));
+    }
+  }
+  return out;
 }
 
 List<AnswerBlock> _skillBlocks(Skill s, {int? step, int? part, CueView? cue}) {

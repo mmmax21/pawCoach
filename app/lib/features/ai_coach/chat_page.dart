@@ -41,6 +41,7 @@ class ChatStrings {
     '在家叫得回来，出门就叫不回',
     '一出门就拽着绳子往前冲',
     '换牙期老咬手怎么办',
+    '每天练多久合适？一次练几遍？', // v1.4 常见问题
   ];
 }
 
@@ -597,6 +598,14 @@ class _RefsFold extends StatelessWidget {
                 title: Text('技能 · ${s.name}'),
                 trailing: const Icon(Icons.chevron_right, size: 18),
                 onTap: () => context.push('/skill/${s.id}'),
+              )
+            else if (library.faqById[id] case final f?)
+              ListTile(
+                key: Key('ref_$id'),
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                leading: const Icon(Icons.help_outline, size: 18),
+                title: Text('常见问题 · ${f.question}'),
               )
             else if (library.issueById[id] case final i?)
               ListTile(

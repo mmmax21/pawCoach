@@ -2,6 +2,8 @@
 
 本文档定义内容库的结构、首版技能清单和问题行为清单。内容本身由 Fable 整理并审核，开发（Opus 5.5）只实现加载与展示，不在代码里写死任何训练内容。
 
+> 2026-11-18 起 Fable 停用，用户授权由 Opus 5.5 维护内容库（整理、来源标注与校验仍按本文档执行）。
+
 ---
 
 ## 0. 版本规则
@@ -192,6 +194,26 @@ video_checks:
 - App 命中检测器后展示该条常见错误的**原文**，附测量证据（时间点、秒数），再引导进入本技能跟练。任何一方都不生成训练建议文字，保持 AI-1 边界。
 - 只用可靠轮次判定；可靠轮次少于 `min_reliable_trials` 或画面无法判断占比超过 `retake_unclear_ratio` 时，只提示重拍。
 - 首版只覆盖 sit、stay_short、stay_long。新增检测器需要客户端同步实现，`validate.py` 会拒绝客户端没有实现的检测器 ID。
+
+## 6.6 常见问题（FAQ，v1.4 起）
+
+- `content/faq.yaml` 收录主人最常问、但不属于某一个技能或问题行为的训练通识问题。
+- 每条：`id`（faq_ 开头）、`question`（标准问法）、`keywords`（检索词，≥2 字）、`answer`（2-4 句）、可选 `tips`（要点）、可选 `related`（相关技能 / 问题行为 ID）、`sources`。
+
+```yaml
+faqs:
+  - id: faq_session_length
+    question: 每天练多久合适？一次练几遍？
+    keywords: [练多久, 一次练几遍]
+    answer: 幼犬注意力只有几分钟，一次练 3-5 分钟、5-8 遍就停，一天分 2-3 次。
+    tips: [在狗还想继续的时候结束。]
+    related: [sit]
+    sources: [AKC 公开幼犬训练文章]
+```
+
+- AI 教练：检索词与 `ai_terms.yaml` 一起参与关键词打分，全文检索也包含 FAQ；命中后按"标题 = question、正文 = answer、要点 = tips、相关内容 = related 的名称"原文直出。
+- 不收：健康、疾病、用药、喂养量、品种选择；内容库未覆盖的新技能教法。检索词不能含 `ai_guard.yaml` 的健康词。
+- 新增 FAQ 后，确认 `tests/ai_boundary/out_of_library.yaml` 的库外题仍然全部无命中（App 测试会检查）。
 
 ## 7. 内容审核清单（Fable 使用）
 

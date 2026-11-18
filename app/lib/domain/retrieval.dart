@@ -7,6 +7,8 @@
 ///    取得分 > 0 的前 3 个追加。
 /// 无命中：上下文直取为空，且关键词最高分为 0。
 ///
+/// v1.4：词表 = ai_terms.yaml + faq.yaml 的检索词（[ContentLibrary.searchTerms]），FAQ 与技能、问题行为同等参与打分。
+///
 /// 2026-11-18 补检索（fulltext_search.dart）：
 /// 3. 关键词打分前先做同义展开（"蹲下"→"坐下"等，目标都是词表里已有的词）；
 /// 4. 关键词仍无命中时，用内容库全文检索兜底：只有强命中（≥3 个片段、得分 ≥0.6、明显领先第二名）
@@ -109,7 +111,7 @@ RetrievalResult retrieve({
     if (issueId != null && library.issueById.containsKey(issueId)) issueId,
   ];
 
-  final kw = scoreKeywords(expandSynonyms(message), library.aiTerms);
+  final kw = scoreKeywords(expandSynonyms(message), library.searchTerms);
   // 同分按"首次命中顺序"：词按长度降序检查，先命中的（更长、更具体的词）映射的 ID 排前。
   // Map 保持插入顺序；List.sort 不稳定，所以带下标排。
   final entries = [
@@ -156,7 +158,7 @@ RetrievalResult retrieve({
 
 /// 诊断入口"输入描述"：只在问题行为里取最高分的一个；没有命中返回 null（→ guard_no_hit）。
 String? bestIssueFor(String message, ContentLibrary library) {
-  final kw = scoreKeywords(expandSynonyms(message), library.aiTerms);
+  final kw = scoreKeywords(expandSynonyms(message), library.searchTerms);
   String? best;
   var bestScore = 0;
   // 同分取首次命中的（与 retrieve() 一致）。

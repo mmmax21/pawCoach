@@ -437,7 +437,7 @@ void main() {
   // =========================================================================
   group('内容库 v1.3', () {
     test('video_checks.yaml 与三个技能的映射', () {
-      expect(lib.version, 'v1.3');
+      expect(lib.version, 'v1.4');
       expect(cfg.detectors.keys.toSet(), allDetectors.toSet());
       expect(cfg.minReliableTrials, 2);
       expect(cfg.markerWords, contains('好'));
@@ -801,7 +801,7 @@ void main() {
 
       final saved = await t.runAsync(() => VideoRepository(db).watchRecent(dogId, 'sit').first);
       expect(saved!.single.findings.single.detector, 'late_reward');
-      expect(saved.single.contentVersion, 'v1.3');
+      expect(saved.single.contentVersion, 'v1.4');
 
       await t.ensureVisible(find.byKey(const Key('video_practice_1')));
       await t.tap(find.byKey(const Key('video_practice_1')));

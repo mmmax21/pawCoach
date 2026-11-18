@@ -155,6 +155,16 @@ String _docText(Object item) {
     for (final m in item.tutorial.commonMistakes) {
       b.writeln(m);
     }
+  } else if (item is FaqEntry) {
+    b
+      ..writeln(item.question)
+      ..writeln(item.answer);
+    for (final k in item.keywords) {
+      b.writeln(k);
+    }
+    for (final t in item.tips) {
+      b.writeln(t);
+    }
   } else if (item is Issue) {
     b.writeln(item.name);
     for (final n in item.diagnosisTree) {
@@ -181,6 +191,7 @@ _Index _indexFor(ContentLibrary lib) {
   final docs = <String, Set<String>>{
     for (final s in lib.skills) s.id: _grams(_docText(s)),
     for (final i in lib.issues) i.id: _grams(_docText(i)),
+    for (final f in lib.faqs) f.id: _grams(_docText(f)),
   };
   // 名称里的片段额外记一遍（名称最能代表条目）：用前缀标记，打分时加权
   for (final s in lib.skills) {
@@ -188,6 +199,9 @@ _Index _indexFor(ContentLibrary lib) {
   }
   for (final i in lib.issues) {
     docs[i.id]!.addAll(_grams(i.name).map((g) => '#$g'));
+  }
+  for (final f in lib.faqs) {
+    docs[f.id]!.addAll(_grams(f.question).map((g) => '#$g'));
   }
   final n = docs.length;
   final df = <String, int>{};
