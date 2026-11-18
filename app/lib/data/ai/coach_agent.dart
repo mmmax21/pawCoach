@@ -174,7 +174,8 @@ String agentSystemPrompt({String? contextSkillName}) => '''
 3. 只用正向训练：拒绝打骂、惩罚、恐吓等方法，并简单说明原因、给出替代做法。
 4. 计划由规则说了算：建议练某个技能前先 check_skill_eligibility；要改计划只能调用 propose_plan_change，它只会生成确认卡片——不要说"已经帮你加好了"，要说"点下面的卡片确认后就会加入"。
 5. 业务判断：同一技能最近连续两次"没做到"，按规则建议先退回更基础的技能；出现健康、受伤、疑似疼痛的迹象 → refer_to_professional(kind=vet)，不给任何医疗建议；攻击性强或持续恶化 → refer_to_professional(kind=trainer)。
-6. 表达：中文，简洁、具体、像同事一样说话，200 字以内；先给结论，再给 1-3 个可以马上做的步骤。
+6. 事实只来自工具：狗的周龄、训练次数、评分、计划等数字和事实，只能引用工具结果，不要猜；只查了某个技能的记录时，不要推断成整只狗的情况。前后回答不一致时以最新的工具结果为准，并直接说明。
+7. 表达：中文，简洁、具体、像同事一样说话，200 字以内；先给结论，再给 1-3 个可以马上做的步骤。
 ${contextSkillName == null ? '' : '\n主人当前正在看的技能：$contextSkillName。\n'}''';
 
 /// 执行工具。读本机数据库；写操作只产生待确认的 [AgentAction]。
@@ -267,14 +268,22 @@ class AgentToolbox {
   }
 
   Future<Map<String, dynamic>> _history(String? skillId, int limit) async {
+    final filter = (skillId == null || skillId.isEmpty) ? null : skillId;
+    // 技能 ID 写错（例如传了中文名）时报错，让模型改正，而不是返回"没有记录"误导它
+    if (filter != null && !library.skillById.containsKey(filter)) {
+      throw ArgumentError('技能 $filter 不存在。可用技能 ID：${library.skills.map((s) => s.id).join(', ')}');
+    }
     final q = db.select(db.trainingSessions)
       ..where((t) => t.dogId.equals(dogId))
       ..orderBy([(t) => OrderingTerm.desc(t.startedAt)])
       ..limit(limit.clamp(1, 10));
-    if (skillId != null && skillId.isNotEmpty) q.where((t) => t.skillId.equals(skillId));
+    if (filter != null) q.where((t) => t.skillId.equals(filter));
     final rows = await q.get();
+    final all = await (db.select(db.trainingSessions)..where((t) => t.dogId.equals(dogId))).get();
     final streak = await (db.select(db.streaks)..where((t) => t.dogId.equals(dogId))).getSingleOrNull();
     return {
+      if (filter != null) 'filtered_by_skill': _name(filter),
+      'total_sessions_all_skills': all.length,
       'streak_days': streak?.currentDays ?? 0,
       'sessions': [
         for (final r in rows)
@@ -286,7 +295,10 @@ class AgentToolbox {
             'minutes': (r.durationSec / 60).toStringAsFixed(1),
           },
       ],
-      if (rows.isEmpty) 'note': '还没有训练记录',
+      if (rows.isEmpty)
+        'note': filter == null
+            ? '这只狗还没有任何训练记录'
+            : '「${_name(filter)}」这个技能还没有训练记录（不代表没有其他技能的记录，全部技能共有 ${all.length} 条）',
     };
   }
 

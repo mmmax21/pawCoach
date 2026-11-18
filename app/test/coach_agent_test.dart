@@ -133,6 +133,14 @@ void main() {
       final sessions = h['sessions'] as List;
       expect(sessions, hasLength(2));
       expect((sessions.first as Map)['score'], '没做到');
+      // 只查另一个技能、没有记录时：说明只是该技能没有，并给出全部技能的记录数（不能让模型误以为整只狗没有记录）
+      final other = lib.skills.firstWhere((s) => s.id != goal['skill_id']).id;
+      final empty = jsonDecode(await box.run('get_training_history', {'skill_id': other})) as Map;
+      expect(empty['sessions'], isEmpty);
+      expect(empty['total_sessions_all_skills'], 2);
+      expect(empty['note'], contains('不代表没有其他技能的记录'));
+      // 技能 ID 写错（例如中文名）→ 报错，交回模型改正
+      expect(() => box.run('get_training_history', {'skill_id': '跟随零食'}), throwsArgumentError);
     });
 
     test('能不能练：周龄未到 / 前置未掌握都写明原因', () async {

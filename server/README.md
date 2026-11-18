@@ -133,6 +133,17 @@ resp: {stop_reason, content: [块...], upstream: "api_key" | "cli" | "fake"}   �
 CLI_UPSTREAM=1 .venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
+使用第三方中转（提供 Anthropic 格式接口、支持工具调用）时，用环境变量指定地址和 key，并关掉拒答兜底（中转通常不支持该 beta）：
+
+```bash
+export ANTHROPIC_BASE_URL="https://中转站地址"
+export ANTHROPIC_API_KEY="中转站的 key"
+export FALLBACKS=off
+.venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+注意：数据会经过中转站，只建议演示时使用；key 不要写进代码或提交到仓库。
+
 `GET /healthz` 会返回 `agent_model` 与当前 `upstream`。
 
 ## M4：账号、家庭与同步（sync.py / store.py）
