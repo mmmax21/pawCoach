@@ -1,0 +1,9 @@
+{
+  "_comment": "dog2.mp4（YouTube McSJtQE2yWI，CC BY，1280x720，17.5 秒）逐秒人工标注，key 是标注图序号 k，对应视频里 k+0.5 秒那一帧（标注图用 ffmpeg fps=1 抽出，第 k 张实际是 k+0.5 秒）。大部分时间是正面视角。sit=坐，stand=站。画面小、动作过渡、看不清的秒（1、6、7、8）不标，不进评估。",
+  "video": "dog2.mp4",
+  "labels": {
+    "0": "stand", "2": "stand", "3": "sit", "4": "sit", "5": "sit",
+    "9": "stand", "10": "stand", "11": "stand",
+    "12": "sit", "13": "sit", "14": "sit", "15": "sit", "16": "sit"
+  }
+}

@@ -1,0 +1,30 @@
+# PawCoach 依赖（阶段 B：换真实现，按步骤单独安装）
+# 每个步骤只装自己需要的，别一次性全装（这是环境安装的主要风险点）。
+#
+# 阶段 B 用独立的 Python 3.12 环境 .venv-b，不与阶段 A 的 .venv（3.13）混用：
+# deeplabcut 3.0.2 只支持到 Python 3.12。创建方式：
+#   uv python install 3.12
+#   uv venv --python 3.12 .venv-b
+#   uv pip install --python .venv-b/bin/python -r requirements-b.txt
+# 国外站点要走代理：export https_proxy=http://127.0.0.1:7892 http_proxy=http://127.0.0.1:7892
+# 阶段 B 的环境还需要阶段 A 的依赖（pydantic、numpy、httpx），已包含在 deeplabcut 的依赖里或下面补上。
+
+# B1~B4 姿态：SuperAnimal（首选）或 mmpose（备选）
+deeplabcut>=3.0         # 会带入 torch 2.x、torchvision、timm、pandas、tables 等
+pydantic
+httpx
+ultralytics             # B3 YOLO 狗检测。不会替换 torch，会带入 opencv-python、polars 等
+# B3 的权重要单独下载（国外站点走代理），放在 data/models/（已被 gitignore）：
+#   mkdir -p data/models
+#   curl -x http://127.0.0.1:7892 -L -o data/models/yolov8n.pt \
+#       https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8n.pt
+# mmpose                 # 备选：AP-10K/APT-36K 权重，SuperAnimal 不可用时才装
+
+# B5~B7 口令：Whisper（中英文都用它，实测 dog1 中文、dog3 英文都转得可用）
+openai-whisper          # 会带入 more-itertools、regex、tiktoken，不碰 torch
+# funasr                # 不装：会拉 24 个包（transformers、tokenizers 等一整套），
+#                         Whisper 中英文都够用，见 reports/B5.md
+# Whisper 模型（base，139MB）首次运行自动下载到 ~/.cache/whisper，国外站点要先 export https_proxy
+
+# B8 奖励（可选）：MediaPipe Hands
+# mediapipe

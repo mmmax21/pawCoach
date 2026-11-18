@@ -1,0 +1,13 @@
+# PawCoach 依赖（阶段 A：轻装跑通）
+# 安装：pip install -r requirements.txt
+# 说明：阶段 A 只装这三个，跑通「视频 → JSON → 建议」全链路；
+#       模型类重依赖（torch/ultralytics/deeplabcut/funasr/openai-whisper）见 requirements-b.txt，
+#       到阶段 B 再由对应步骤单独安装，不阻塞 A。
+
+numpy>=2.0
+pydantic>=2.0
+httpx>=0.27
+pyyaml>=6.0  # C5 eval cases 用例文件用 yaml
+fastapi>=0.100  # D1 API 后端
+uvicorn>=0.30  # D1 API 后端
+python-multipart>=0.0.9  # D1 上传视频/表单解析

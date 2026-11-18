@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv-b/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# 环境变量与密钥
+.env
+.env.*
+!.env.example
+
+# 数据与产出（不提交版本库；数据来源与许可记录见 data/sources.csv）
+data/
+results/
+
+# 数据库
+*.db
+*.sqlite3
+
+# Claude Code 本地设置（机器相关，不提交）
+.claude/settings.local.json

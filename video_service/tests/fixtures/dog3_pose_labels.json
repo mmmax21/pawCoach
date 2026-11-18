@@ -1,0 +1,15 @@
+{
+  "_comment": "dog3.mp4（YouTube 4lBpT-yond8，CC BY，裁成 404x720）逐秒人工标注。key 是标注图序号 k，对应视频里 k+0.5 秒那一帧（标注图用 ffmpeg fps=1 抽出，第 k 张实际是 k+0.5 秒），取该秒时刻那一帧。sit=坐，stand=站或行走（含站立低头），unclear=画面里没有狗或只露出边缘一小部分。过渡瞬间（坐下、起身、跳起、快速移动的中间帧）和看不清的帧不标，不进评估。该视频没有趴下（down）。",
+  "video": "dog3.mp4",
+  "labels": {
+    "0": "stand", "2": "sit", "3": "sit", "4": "sit", "5": "sit", "6": "sit",
+    "8": "unclear", "9": "unclear",
+    "10": "stand", "11": "stand",
+    "12": "sit", "13": "sit", "14": "sit", "15": "sit", "16": "sit", "17": "sit", "18": "sit", "19": "sit",
+    "21": "stand", "22": "stand", "23": "stand", "24": "stand", "25": "stand", "26": "stand",
+    "28": "sit", "29": "sit", "30": "sit", "31": "sit", "32": "sit", "33": "sit",
+    "35": "unclear", "36": "unclear", "37": "stand", "38": "stand",
+    "39": "sit", "40": "sit", "41": "sit", "42": "sit", "43": "sit", "44": "sit", "45": "sit", "46": "sit", "47": "sit", "48": "sit", "49": "sit",
+    "50": "unclear", "51": "unclear", "52": "unclear", "53": "unclear", "54": "unclear"
+  }
+}

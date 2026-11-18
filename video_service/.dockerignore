@@ -1,0 +1,14 @@
+.git
+.venv
+.venv-b
+__pycache__
+*.py[cod]
+.pytest_cache
+.env
+data
+results
+reports
+tests
+eval
+docs
+scripts
