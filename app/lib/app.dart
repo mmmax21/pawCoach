@@ -166,7 +166,7 @@ class _PuppyTrainerAppState extends ConsumerState<PuppyTrainerApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: '幼犬训练',
+      title: 'PawCoach',
       theme: AppTheme.light(),
       routerConfig: ref.watch(routerProvider),
       builder: (context, child) => RemovedNoticeHost(

@@ -16,7 +16,7 @@ import '../domain/streak.dart' show localDateOf;
 /// 一个家庭一只狗，预排 14 个独立通知。
 const reminderNotificationId = 1001;
 const reminderScheduleDays = 14;
-const reminderTitle = '幼犬训练';
+const reminderTitle = 'PawCoach';
 const reminderBody = '今天还没练，去看看本周目标';
 const reminderChannelId = 'daily_reminder';
 const reminderChannelName = '每日训练提醒';

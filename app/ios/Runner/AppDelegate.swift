@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import UserNotifications
 import workmanager_apple
 
 @main
@@ -8,6 +9,9 @@ import workmanager_apple
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
+    }
     // 周日晚周报任务：iOS 要求在启动返回前注册 BGTaskScheduler 的处理器（M2 简报第 9 节）。
     WorkmanagerPlugin.registerPeriodicTask(
       withIdentifier: "weekly_report_task",

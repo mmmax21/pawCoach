@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>幼犬训练</string>
+	<string>PawCoach</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>puppy_trainer</string>
+	<string>PawCoach</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -59,6 +59,19 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>选取训练视频备注需要访问相册，视频只保存在本机。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>录制训练视频需要访问相机，视频仅用于本机分析或备注。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>录制训练视频与识别口令需要访问麦克风，音频仅用于本机分析。</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>连接同一局域网内的家庭同步与训练分析服务需要本地网络权限。</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
