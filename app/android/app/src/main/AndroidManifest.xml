@@ -8,9 +8,13 @@
     <!-- M3：AI 教练走本地服务端代理；每日提醒重启后恢复调度 -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- 视频纠错的引导拍摄：相机预览与录像。录像带声音（口令识别要用）。 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
 
     <application
-        android:label="幼犬训练"
+        android:label="PawCoach"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config">
