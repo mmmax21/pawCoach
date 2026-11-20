@@ -1,6 +1,7 @@
 /// 全局 Riverpod providers：数据库、内容库、仓库、同步。
 library;
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
@@ -93,10 +94,18 @@ final clockProvider = Provider<DateTime Function()>((ref) => DateTime.now);
 // 存在本机文件 server_url.txt，不进数据库、不同步。
 // ---------------------------------------------------------------------------
 
+/// 默认服务器地址：显式传入 SYNC_BASE_URL 时优先使用；未传入时 iOS 默认连本机 127.0.0.1:8000，其余平台默认 10.0.2.2:8000。
+String get defaultServerUrl {
+  const fromEnv = String.fromEnvironment('SYNC_BASE_URL');
+  if (fromEnv.isNotEmpty) return fromEnv;
+  if (Platform.isIOS) return 'http://127.0.0.1:8000';
+  return syncBaseUrl;
+}
+
 class ServerUrlController extends StateNotifier<String> {
-  ServerUrlController({String initial = syncBaseUrl, Future<File> Function()? file})
+  ServerUrlController({String? initial, Future<File> Function()? file})
       : _file = file,
-        super(initial) {
+        super(initial ?? defaultServerUrl) {
     _load();
   }
   final Future<File> Function()? _file;
@@ -295,8 +304,89 @@ class AiOnlineController extends StateNotifier<bool> {
 
 final aiOnlineProvider = StateNotifierProvider<AiOnlineController, bool>((ref) => AiOnlineController());
 
-/// 在线模式的模型转发（服务端 /v1/agent）。测试 override 成假实现。
-final agentClientProvider = Provider<AgentClient>((ref) => HttpAgentClient(baseUrl: ref.watch(serverUrlProvider)));
+/// 手机端直连大模型配置（存在本机文件 direct_ai_config.json，不进数据库、不同步）。
+class DirectAiConfig {
+  const DirectAiConfig({
+    this.apiKey = '',
+    this.baseUrl = DirectAgentClient.defaultDirectBaseUrl,
+    this.model = DirectAgentClient.defaultDirectModel,
+  });
+
+  final String apiKey;
+  final String baseUrl;
+  final String model;
+
+  bool get enabled => apiKey.trim().isNotEmpty;
+
+  Map<String, String> toJson() => {
+        'api_key': apiKey,
+        'base_url': baseUrl,
+        'model': model,
+      };
+
+  factory DirectAiConfig.fromJson(Map<String, dynamic> json) => DirectAiConfig(
+        apiKey: (json['api_key'] ?? '').toString(),
+        baseUrl: (json['base_url'] ?? DirectAgentClient.defaultDirectBaseUrl).toString(),
+        model: (json['model'] ?? DirectAgentClient.defaultDirectModel).toString(),
+      );
+}
+
+class DirectAiConfigController extends StateNotifier<DirectAiConfig> {
+  DirectAiConfigController({DirectAiConfig initial = const DirectAiConfig(), Future<File> Function()? file})
+      : _file = file,
+        super(initial) {
+    _load();
+  }
+
+  final Future<File> Function()? _file;
+
+  Future<File> _target() async {
+    if (_file != null) return _file();
+    final dir = await getApplicationDocumentsDirectory();
+    return File(p.join(dir.path, 'direct_ai_config.json'));
+  }
+
+  Future<void> _load() async {
+    try {
+      final f = await _target();
+      if (f.existsSync()) {
+        final data = jsonDecode(f.readAsStringSync());
+        if (data is Map<String, dynamic> && mounted) {
+          state = DirectAiConfig.fromJson(data);
+        }
+      }
+    } catch (_) {}
+  }
+
+  Future<void> save({required String apiKey, required String baseUrl, required String model}) async {
+    final next = DirectAiConfig(
+      apiKey: apiKey.trim(),
+      baseUrl: DirectAgentClient.normalizeBaseUrl(baseUrl),
+      model: model.trim().isEmpty ? DirectAgentClient.defaultDirectModel : model.trim(),
+    );
+    state = next;
+    try {
+      (await _target()).writeAsStringSync(jsonEncode(next.toJson()));
+    } catch (_) {}
+  }
+
+  Future<void> clear() => save(apiKey: '', baseUrl: DirectAgentClient.defaultDirectBaseUrl, model: DirectAgentClient.defaultDirectModel);
+}
+
+final directAiConfigProvider = StateNotifierProvider<DirectAiConfigController, DirectAiConfig>((ref) => DirectAiConfigController());
+
+/// 在线模式客户端：手机端配置了 API Key 时直连模型，否则走电脑服务端 /v1/agent。
+final agentClientProvider = Provider<AgentClient>((ref) {
+  final direct = ref.watch(directAiConfigProvider);
+  if (direct.enabled) {
+    return DirectAgentClient(
+      apiKey: direct.apiKey,
+      baseUrl: direct.baseUrl,
+      model: direct.model,
+    );
+  }
+  return HttpAgentClient(baseUrl: ref.watch(serverUrlProvider));
+});
 
 final aiRepositoryProvider = Provider(
     (ref) => AiRepository(ref.watch(databaseProvider), clock: ref.watch(clockProvider)));

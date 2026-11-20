@@ -8,6 +8,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../core/app_nav.dart';
 import '../../core/dog_avatar.dart';
 import '../../core/providers.dart';
+import 'direct_ai_settings.dart';
 import 'server_settings.dart';
 
 class MePage extends ConsumerWidget {
@@ -67,6 +68,7 @@ class MePage extends ConsumerWidget {
             onTap: () => context.push('/settings/reminder'),
           ),
           const ServerUrlTile(),
+          const DirectAiTile(),
           if (subscriptionEntryEnabled)
             const ListTile(
               key: Key('me_subscription'),

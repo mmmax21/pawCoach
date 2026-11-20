@@ -70,3 +70,76 @@ class HttpAgentClient implements AgentClient {
     }
   }
 }
+
+/// 手机端直连 Anthropic Messages API（`/v1/messages`），无需启动电脑 `server/`。
+class DirectAgentClient implements AgentClient {
+  DirectAgentClient({
+    required this.apiKey,
+    String baseUrl = defaultDirectBaseUrl,
+    String model = defaultDirectModel,
+    Dio? dio,
+  })  : _model = model.trim().isEmpty ? defaultDirectModel : model.trim(),
+        _dio = dio ??
+            Dio(BaseOptions(
+              baseUrl: normalizeBaseUrl(baseUrl),
+              connectTimeout: const Duration(seconds: 10),
+              receiveTimeout: const Duration(seconds: 120),
+            ));
+
+  static const defaultDirectBaseUrl = 'https://api.anthropic.com';
+  static const defaultDirectModel = 'claude-opus-5-5';
+
+  final String apiKey;
+  final String _model;
+  final Dio _dio;
+
+  static String normalizeBaseUrl(String raw) {
+    var v = raw.trim();
+    if (v.isEmpty) return defaultDirectBaseUrl;
+    if (!v.startsWith('http://') && !v.startsWith('https://')) v = 'https://$v';
+    while (v.endsWith('/')) {
+      v = v.substring(0, v.length - 1);
+    }
+    return v;
+  }
+
+  String get _messagesPath => _dio.options.baseUrl.endsWith('/v1') ? '/messages' : '/v1/messages';
+
+  @override
+  Future<AgentTurn> turn({
+    required String system,
+    required List<Map<String, dynamic>> messages,
+    required List<Map<String, dynamic>> tools,
+  }) async {
+    try {
+      final resp = await _dio.post<Map<String, dynamic>>(
+        _messagesPath,
+        data: {
+          'model': _model,
+          'max_tokens': 4096,
+          'system': system,
+          'messages': messages,
+          if (tools.isNotEmpty) 'tools': tools,
+        },
+        options: Options(
+          headers: {
+            'x-api-key': apiKey.trim(),
+            'anthropic-version': '2023-06-01',
+            'content-type': 'application/json',
+          },
+        ),
+      );
+      final body = resp.data ?? const {};
+      return AgentTurn(
+        stopReason: (body['stop_reason'] ?? 'end_turn').toString(),
+        content: [
+          for (final b in (body['content'] as List? ?? const []))
+            Map<String, dynamic>.from(b as Map),
+        ],
+        upstream: 'direct',
+      );
+    } on DioException catch (e) {
+      throw AiClientException('直连模型请求失败', e.response?.statusCode ?? e.type.name);
+    }
+  }
+}
