@@ -24,6 +24,7 @@ import '../../domain/answer_composer.dart';
 import '../../domain/models.dart';
 import '../../domain/retrieval.dart';
 import 'agent_widgets.dart';
+import 'inline_markdown.dart';
 
 class ChatStrings {
   const ChatStrings._();
@@ -444,7 +445,7 @@ class _Bubble extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                body ?? SelectableText(text),
+                body ?? InlineMarkdownText(text),
                 if (footer != null) footer!,
               ],
             ),
@@ -484,7 +485,7 @@ class _MessageBubble extends StatelessWidget {
         text: agent.text,
         fromUser: false,
         tone: guard ? cs.tertiaryContainer : null,
-        body: SelectableText(agent.text),
+        body: InlineMarkdownText(agent.text),
         footer: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -565,7 +566,7 @@ class _AnswerBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text('• '),
-              Expanded(child: SelectableText(line.text))
+              Expanded(child: InlineMarkdownText(line.text))
             ],
           ));
         case SnapshotLineType.link:
@@ -582,7 +583,7 @@ class _AnswerBody extends StatelessWidget {
                 ));
         case SnapshotLineType.body:
           if (line.text.isEmpty) continue;
-          children.add(SelectableText(line.text));
+          children.add(InlineMarkdownText(line.text));
       }
     }
     return Column(
