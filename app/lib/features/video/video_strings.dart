@@ -57,7 +57,7 @@ class VideoStrings {
   static const analyzing = '正在分析，约一两分钟';
   static const prechecking = '正在检查画面，约十几秒';
   static const realigning = '正在重新判定…';
-  static const errUnreachable = '连不上视频分析服务。请确认电脑上的服务已启动，手机和电脑在同一网络。';
+  static const errUnreachable = '连不上视频分析服务。请确认电脑上的服务已启动、手机和电脑在同一网络，并在“我的 → 视频分析服务地址”里填对电脑 IP。';
   static const errFailed = '分析失败，请重试。';
   static const errTimeout = '分析超过 5 分钟还没有结果，请重试。';
   static const errTooLong = '视频超过 120 秒，请剪短后重新上传。';

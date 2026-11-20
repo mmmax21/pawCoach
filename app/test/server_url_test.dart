@@ -8,6 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:puppy_trainer/core/providers.dart';
 import 'package:puppy_trainer/data/ai/agent_client.dart';
 import 'package:puppy_trainer/data/sync/sync_service.dart';
+import 'package:puppy_trainer/data/video/video_api.dart';
 
 void main() {
   test('地址规范化：补 http://、去掉末尾斜杠', () {
@@ -44,5 +45,22 @@ void main() {
     container.read(serverUrlProvider.notifier).set('192.168.1.50:8000');
     // 地址变了会重新创建客户端
     expect(identical(container.read(agentClientProvider), a1), isFalse);
+  });
+
+  test('视频分析服务地址：单独存 video_url.txt，视频客户端跟着地址重建', () async {
+    final dir = Directory.systemTemp.createTempSync('video_url_');
+    addTearDown(() => dir.deleteSync(recursive: true));
+    final file = File('${dir.path}/video_url.txt');
+    final container = ProviderContainer(overrides: [
+      videoUrlProvider.overrideWith((ref) =>
+          ServerUrlController(fileName: 'video_url.txt', fallback: 'http://10.0.2.2:8001', file: () async => file)),
+    ]);
+    addTearDown(container.dispose);
+    expect(container.read(videoUrlProvider), 'http://10.0.2.2:8001');
+    final api1 = container.read(videoAnalysisApiProvider);
+    expect(api1, isA<DioVideoAnalysisApi>());
+    await container.read(videoUrlProvider.notifier).set('192.168.1.19:8001');
+    expect(file.readAsStringSync(), 'http://192.168.1.19:8001');
+    expect(identical(container.read(videoAnalysisApiProvider), api1), isFalse);
   });
 }

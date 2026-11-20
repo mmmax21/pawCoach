@@ -197,7 +197,7 @@ cd app && flutter build apk --debug
 | `AI_ONLINE` | `false` | AI 教练默认是否在线模式（用户也可以在 AI 教练页随时切换） |
 | `AI_MODE` | `library` | 旧版模型生成开关（M3），保留不用；在线模式请用 AI 教练页的开关 |
 | `VIDEO_ANALYSIS` | `false` | 视频纠错与实时奖励计时开关。默认关闭（视频纠错入口显示"敬请期待"，实时计时不显示）；开发时设 `true` 打开 |
-| `VIDEO_BASE_URL` | `http://10.0.2.2:8001` | 视频分析服务地址 |
+| `VIDEO_BASE_URL` | `http://10.0.2.2:8001` | 视频分析服务地址的默认值（App 里"我的 → 视频分析服务地址"可以改，换 Wi-Fi 不用重新打包） |
 
 用法：`flutter run --dart-define=参数=值`，多个参数重复写多次 `--dart-define`。
 

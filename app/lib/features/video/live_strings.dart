@@ -25,7 +25,7 @@ class LiveStrings {
   static const finishing = '正在整理结果…';
 
   // ---- 故障（讲清楚是哪一环，不让人对着空画面干等）
-  static const errUnreachable = '连不上视频分析服务。请确认电脑上的服务已启动，手机和电脑在同一网络。';
+  static const errUnreachable = '连不上视频分析服务。请确认电脑上的服务已启动、手机和电脑在同一网络，并在“我的 → 视频分析服务地址”里填对电脑 IP。';
   static const errPose = '电脑上的视频分析服务没有装好姿态模型，无法实时判断坐下。';
   static const errDisconnected = '和视频分析服务断开了，这一次的计时没有保存。';
   static const errServer = '视频分析服务出错，请重试。';

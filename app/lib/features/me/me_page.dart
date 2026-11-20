@@ -68,6 +68,7 @@ class MePage extends ConsumerWidget {
             onTap: () => context.push('/settings/reminder'),
           ),
           const ServerUrlTile(),
+          const VideoUrlTile(),
           const DirectAiTile(),
           if (subscriptionEntryEnabled)
             const ListTile(

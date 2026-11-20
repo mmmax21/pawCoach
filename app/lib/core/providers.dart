@@ -108,17 +108,24 @@ String get defaultServerUrl {
 }
 
 class ServerUrlController extends StateNotifier<String> {
-  ServerUrlController({String? initial, Future<File> Function()? file})
-      : _file = file,
-        super(initial ?? defaultServerUrl) {
+  /// [fileName]/[fallback] 让视频分析服务地址复用同一套逻辑（存 video_url.txt）。
+  ServerUrlController({
+    String? initial,
+    Future<File> Function()? file,
+    String fileName = 'server_url.txt',
+    String? fallback,
+  })  : _file = file,
+        _fileName = fileName,
+        super(initial ?? fallback ?? defaultServerUrl) {
     _load();
   }
   final Future<File> Function()? _file;
+  final String _fileName;
 
   Future<File> _target() async {
     if (_file != null) return _file();
     final dir = await getApplicationDocumentsDirectory();
-    return File(p.join(dir.path, 'server_url.txt'));
+    return File(p.join(dir.path, _fileName));
   }
 
   Future<void> _load() async {
@@ -416,20 +423,26 @@ final reminderServiceProvider = Provider((ref) => ReminderService(
 /// 构建参数 VIDEO_ANALYSIS（默认关闭）。测试可 override。
 final videoAnalysisEnabledProvider = Provider<bool>((ref) => videoAnalysisEnabled);
 
-/// 视频分析服务客户端（VIDEO_BASE_URL）。测试 override 成替身。
-final videoAnalysisApiProvider = Provider<VideoAnalysisApi>((ref) => DioVideoAnalysisApi());
+/// 视频分析服务地址：默认取构建参数 VIDEO_BASE_URL；用户可在"我的 → 视频分析服务地址"里修改，
+/// 换 Wi-Fi 不用重新打包。存在本机文件 video_url.txt。
+final videoUrlProvider = StateNotifierProvider<ServerUrlController, String>(
+    (ref) => ServerUrlController(fileName: 'video_url.txt', fallback: defaultVideoBaseUrl));
+
+/// 视频分析服务客户端。测试 override 成替身。
+final videoAnalysisApiProvider =
+    Provider<VideoAnalysisApi>((ref) => DioVideoAnalysisApi(baseUrl: ref.watch(videoUrlProvider)));
 
 /// 引导拍摄用的相机。测试 override 成假相机。
 final captureCameraFactoryProvider = Provider<CaptureCameraFactory>((ref) => PluginCaptureCamera.new);
 
-/// 取景自检客户端：与视频分析同一个服务（VIDEO_BASE_URL）。测试 override。
-final frameCheckerProvider = Provider<FrameChecker>((ref) => DioFrameChecker(baseUrl: defaultVideoBaseUrl));
+/// 取景自检客户端：与视频分析同一个服务。测试 override。
+final frameCheckerProvider = Provider<FrameChecker>((ref) => DioFrameChecker(baseUrl: ref.watch(videoUrlProvider)));
 
 /// 实时计时：造一个控制器（真实相机帧之外的全部依赖：服务连接、麦克风）。测试 override 成替身。
 /// 阈值 [lateSec] 由页面从内容库读出后传入。
 final liveControllerFactoryProvider = Provider<LiveController Function(WidgetRef ref, double lateSec)>(
   (ref) => (ref, lateSec) => LiveController(
-        client: WsLiveClient(baseUrl: defaultVideoBaseUrl),
+        client: WsLiveClient(baseUrl: ref.read(videoUrlProvider)),
         mic: RecordLiveMic(),
         lateSec: lateSec,
       ),
