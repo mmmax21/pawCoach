@@ -16,6 +16,7 @@ import '../../data/repositories/video_repository.dart';
 import '../../data/video/video_api.dart';
 import '../../domain/models.dart';
 import '../../domain/video_checks.dart';
+import 'guided_capture_page.dart';
 import 'video_strings.dart';
 
 /// 组装上传 meta（简报 4.3）。口令取该狗口令表，词表取 video_checks.yaml，目标秒数取常量表。
@@ -67,6 +68,17 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
   Future<void> _pick(bool camera) async {
     if (_unsafe) return; // 简报 4.4：勾选安全项后不上传
     final path = await ref.read(videoPickerProvider).pick(camera: camera);
+    if (path == null || !mounted) return;
+    _videoPath = path;
+    await _upload();
+  }
+
+  /// 引导拍摄：进入取景页，拍完拿到视频路径后走和相册选择完全相同的上传分析。
+  Future<void> _guided() async {
+    if (_unsafe) return;
+    final path = await Navigator.of(context).push<String>(
+      MaterialPageRoute(builder: (_) => const GuidedCapturePage()),
+    );
     if (path == null || !mounted) return;
     _videoPath = path;
     await _upload();
@@ -285,6 +297,13 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
           )
         else ...[
           FilledButton.icon(
+            key: const Key('video_guided'),
+            icon: const Icon(Icons.center_focus_strong_outlined),
+            label: const Text(VideoStrings.guidedEntry),
+            onPressed: _guided,
+          ),
+          const SizedBox(height: 8),
+          OutlinedButton.icon(
             key: const Key('video_pick_gallery'),
             icon: const Icon(Icons.video_library_outlined),
             label: const Text(VideoStrings.pickGallery),

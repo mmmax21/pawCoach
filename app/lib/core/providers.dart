@@ -29,8 +29,13 @@ import '../data/sync/derived_state.dart';
 import '../data/sync/sync_scheduler.dart';
 import '../data/sync/sync_service.dart';
 import '../data/repositories/video_repository.dart';
+import '../data/video/capture_camera.dart';
+import '../data/video/frame_check.dart';
 import '../data/video/video_api.dart';
 import '../data/video/video_picker.dart';
+import '../data/video/live_client.dart';
+import '../data/video/live_controller.dart';
+import '../data/video/live_mic.dart';
 import '../services/care_reminder_service.dart';
 import '../services/nudge_service.dart';
 import '../domain/models.dart';
@@ -413,6 +418,22 @@ final videoAnalysisEnabledProvider = Provider<bool>((ref) => videoAnalysisEnable
 
 /// 视频分析服务客户端（VIDEO_BASE_URL）。测试 override 成替身。
 final videoAnalysisApiProvider = Provider<VideoAnalysisApi>((ref) => DioVideoAnalysisApi());
+
+/// 引导拍摄用的相机。测试 override 成假相机。
+final captureCameraFactoryProvider = Provider<CaptureCameraFactory>((ref) => PluginCaptureCamera.new);
+
+/// 取景自检客户端：与视频分析同一个服务（VIDEO_BASE_URL）。测试 override。
+final frameCheckerProvider = Provider<FrameChecker>((ref) => DioFrameChecker(baseUrl: defaultVideoBaseUrl));
+
+/// 实时计时：造一个控制器（真实相机帧之外的全部依赖：服务连接、麦克风）。测试 override 成替身。
+/// 阈值 [lateSec] 由页面从内容库读出后传入。
+final liveControllerFactoryProvider = Provider<LiveController Function(WidgetRef ref, double lateSec)>(
+  (ref) => (ref, lateSec) => LiveController(
+        client: WsLiveClient(baseUrl: defaultVideoBaseUrl),
+        mic: RecordLiveMic(),
+        lateSec: lateSec,
+      ),
+);
 
 /// 选视频（相册 / 现场录）。测试 override。
 final videoPickerProvider = Provider<VideoPicker>((ref) => ImagePickerVideoPicker());

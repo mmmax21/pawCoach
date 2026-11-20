@@ -6,6 +6,7 @@
 library;
 
 import 'dart:convert';
+import 'dart:io' show Platform;
 
 import 'package:dio/dio.dart';
 import 'package:path/path.dart' as p;
@@ -17,6 +18,14 @@ const videoAnalysisEnabled =
 /// 视频分析服务地址：真机演示时填笔记本局域网 IP，如 http://192.168.1.23:8001。
 const videoBaseUrl = String.fromEnvironment('VIDEO_BASE_URL',
     defaultValue: 'http://10.0.2.2:8001');
+
+/// 默认视频分析服务地址：未传 VIDEO_BASE_URL 时，iOS 默认连本机 127.0.0.1:8001，其余默认 10.0.2.2:8001。
+String get defaultVideoBaseUrl {
+  const fromEnv = String.fromEnvironment('VIDEO_BASE_URL');
+  if (fromEnv.isNotEmpty) return fromEnv;
+  if (Platform.isIOS) return 'http://127.0.0.1:8001';
+  return videoBaseUrl;
+}
 
 /// 视频时长上限（秒），M5 简报 4.3。上传时作为 meta.max_duration 传给服务端校验。
 const videoMaxDurationSec = 120;
@@ -81,10 +90,10 @@ abstract class VideoAnalysisApi {
 }
 
 class DioVideoAnalysisApi implements VideoAnalysisApi {
-  DioVideoAnalysisApi({String baseUrl = videoBaseUrl, Dio? dio})
+  DioVideoAnalysisApi({String? baseUrl, Dio? dio})
       : _dio = dio ??
             Dio(BaseOptions(
-              baseUrl: baseUrl,
+              baseUrl: baseUrl ?? defaultVideoBaseUrl,
               connectTimeout: const Duration(seconds: 8),
               sendTimeout: const Duration(minutes: 3),
               receiveTimeout: const Duration(seconds: 30),

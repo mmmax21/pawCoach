@@ -16,6 +16,25 @@ class VideoStrings {
   static const comingSoonEntry = '$entry（$comingSoon）';
   static const pageTitle = '视频纠错';
   static const shootingHint = '拍摄要求：从侧面拍到狗全身，视频不超过 120 秒';
+
+  // ---- 引导拍摄（取景框 + 实时自检）。只讲拍摄，不含训练方法。
+  static const guidedEntry = '引导拍摄（推荐）';
+  static const guidedTitle = '引导拍摄';
+  static const guideSideHint = '把手机竖着，靠在稳的地方，让狗侧身站进框里，主人站在狗旁边';
+  static const guideStart = '开始录制';
+  static const guideStop = '这一轮结束';
+  static const guideStartAnyway = '仍然录制';
+  static const guideRecording = '录制中';
+  static const guideReady = '取景合适，可以开始';
+  static const guideChecking = '正在检查取景…';
+  static const guideOffline = '取景检查连不上，请自己把狗放进框里';
+  static const guideOfflineBanner = '取景检查不可用，仍可录制';
+  static const guideNoPermission = '需要相机和麦克风权限才能引导拍摄。可以在系统设置里打开，或改用"从相册选择"。';
+  static const guideNoCamera = '这台设备没有可用的相机，请改用"从相册选择"。';
+  static const guideCameraFailed = '相机打开失败，请重试，或改用"从相册选择"。';
+  static const guideMinLength = '录得太短了，请完整做一轮再停';
+  static const guideCountdown = '倒计时';
+  static String guideSeconds(int s) => '$s 秒';
   static const pickGallery = '从相册选择';
   static const pickCamera = '现场录制';
   static const safetyCheck = '狗在视频里有咆哮、龇牙、扑咬或明显害怕';
@@ -129,6 +148,21 @@ class VideoStrings {
     return '';
   }
 
+  /// 取景自检服务端可能返回的提示句（video_service/pawcoach/framing.py 的 MESSAGES）。
+  /// 只讲拍摄取景，不含训练方法。App 直接显示服务端给的句子，这里登记是为了让原文性测试认得它们。
+  static const framingMessages = <String>{
+    '画面里没找到狗，请让狗进入画面',
+    '狗被画面边缘截断了，请退后一点让狗完整入画',
+    '狗太小，请靠近一点',
+    '狗太大，请退后一点',
+    '看不出狗的整体轮廓，请让狗站直、正对取景框',
+    '请把狗放进框里',
+    '没看到主人，请让手和上身入画',
+    '建议把手机横过来拍',
+    '建议把手机竖过来拍，狗和手更清楚',
+    '取景合适，可以开始',
+  };
+
   /// 所有固定字符串。
   static const fixed = <String>{
     entry,
@@ -172,6 +206,22 @@ class VideoStrings {
     confirmTitle,
     confirmNote,
     confirmButton,
+    guidedEntry,
+    guidedTitle,
+    guideSideHint,
+    guideStart,
+    guideStop,
+    guideStartAnyway,
+    guideRecording,
+    guideReady,
+    guideChecking,
+    guideOffline,
+    guideOfflineBanner,
+    guideNoPermission,
+    guideNoCamera,
+    guideCameraFailed,
+    guideMinLength,
+    guideCountdown,
   };
 
   static const _num = r'\d+(?:\.\d+)?';
@@ -211,6 +261,7 @@ class VideoStrings {
   static bool isTemplate(String text,
           {List<String> correctionWords = const []}) =>
       fixed.contains(text) ||
+      framingMessages.contains(text) ||
       patterns.any((r) => r.hasMatch(text)) ||
       _isCorrectionEvidence(text, correctionWords);
 }

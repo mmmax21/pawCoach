@@ -23,6 +23,10 @@ GET /results/<job_id>
 POST /realign   （减少重拍）JSON {result, meta, user_cue_sits: [坐姿起点秒…]}
   用户确认「这几次是听口令坐下的」后，用上次 result.events 重新对齐，同步返回 {"status": "done", "result": {…}}。
 
+POST /frame-check   （取景自检）multipart：file = 一帧 JPEG、view = side | top
+  返回 {level: green|yellow|red, message, reasons, dog_box, person_box, guide, iou}，框为 0~1 归一化坐标。
+  同一时刻只跑一帧，忙时 429（App 丢帧即可）；缺检测器时 503。不落盘。
+
 GET /  健康检查，返回 {"status": "ok", "asr": …, "pose": …, "coach_mode": …}（M5：后三项供 App 与演示前自查）
 
 M5：上传的视频与全部中间产物在分析完成或失败后删除（只留 data/pawcoach.db 里的数字）；
@@ -127,6 +131,11 @@ async def _lifespan(_app):
 
 app = FastAPI(title="PawCoach", description="宠物训练视频分析后端", lifespan=_lifespan)
 
+# 实时计时（WebSocket /live）：边拍边显示口令、坐下、奖励和奖励延迟
+from app.live import router as live_router  # noqa: E402
+
+app.include_router(live_router)
+
 
 @app.get("/")
 def health() -> dict:
@@ -199,3 +208,60 @@ def realign_endpoint(req: RealignRequest) -> dict:
     except Exception as e:  # noqa: BLE001
         raise HTTPException(status_code=400, detail=f"无法重新对齐：{e}") from e
     return {"status": "done", "result": json.loads(to_json(result))}
+
+
+# 取景自检的实时检测：一次只跑一帧，且同一时刻只允许一个推理在跑。
+# 手机传帧比推理快时，多出来的请求直接 429，由 App 丢帧；不排队，否则预览框会越来越滞后。
+_FRAME_LOCK = threading.Lock()
+_MAX_FRAME_BYTES = 2 * 1024 * 1024
+
+
+@app.post("/frame-check")
+async def frame_check(
+    file: UploadFile = File(...),
+    view: str = Form("side"),
+    format: str = Form("jpeg"),
+    width: int | None = Form(None),
+    height: int | None = Form(None),
+) -> dict:
+    """取景自检（实时引导用）。
+
+    multipart：file = 一帧图像、view = side | top。
+    format = jpeg（默认）：file 是 JPEG 字节。
+    format = rgb：file 是 width × height × 3 的原始 RGB 字节（App 直接从相机帧缩小后发送，省去手机端编码）；
+                  这时必须带 width、height，字节数要正好等于 width × height × 3。
+    返回 FrameVerdict：{level: green|yellow|red, message, reasons, dog_box, person_box, guide, iou}，
+    框坐标都是相对画面宽高的 0~1，App 直接叠在预览上。不落盘，不保留任何帧。
+    """
+    from pawcoach.framing import SPECS, detect_frame, judge_frame
+
+    if view not in SPECS:
+        raise HTTPException(status_code=400, detail=f"view 必须是 {sorted(SPECS)}")
+    if format not in ("jpeg", "rgb"):
+        raise HTTPException(status_code=400, detail="format 必须是 jpeg 或 rgb")
+    data = await file.read()
+    if not data or len(data) > _MAX_FRAME_BYTES:
+        raise HTTPException(status_code=400, detail="帧为空或过大")
+    if format == "rgb":
+        if not width or not height or width <= 0 or height <= 0 or width * height * 3 != len(data):
+            raise HTTPException(status_code=400, detail="rgb 帧需要 width、height，且字节数必须等于 width×height×3")
+    if not _FRAME_LOCK.acquire(blocking=False):
+        raise HTTPException(status_code=429, detail="busy")
+    try:
+        import cv2
+        import numpy as np
+
+        if format == "rgb":
+            img = cv2.cvtColor(np.frombuffer(data, np.uint8).reshape(height, width, 3), cv2.COLOR_RGB2BGR)
+        else:
+            img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+        if img is None:
+            raise HTTPException(status_code=400, detail="无法解码为图片")
+        h, w = img.shape[:2]
+        try:
+            dogs, persons = detect_frame(img)
+        except Exception as e:  # noqa: BLE001  缺 ultralytics 等：明确告诉 App 取景自检不可用
+            raise HTTPException(status_code=503, detail=f"detector_unavailable: {e}") from e
+        return judge_frame(view, w, h, dogs, persons).to_dict()
+    finally:
+        _FRAME_LOCK.release()

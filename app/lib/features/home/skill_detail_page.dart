@@ -7,6 +7,7 @@ import '../../core/providers.dart';
 import '../../core/theme.dart';
 import '../../domain/models.dart';
 import '../video/video_check_page.dart';
+import '../video/live_timer_page.dart';
 
 /// 技能详情 / 教程页（TR-1）：summary、steps、common_mistakes、success_criteria，
 /// 底部"开始跟练"进入全屏跟练。
@@ -122,6 +123,8 @@ class SkillDetailPage extends ConsumerWidget {
               ),
               const SizedBox(height: AppSpace.xl),
               // M5（AI-4）：视频纠错入口（默认显示"敬请期待"）
+              LiveTimerEntry(skill: skill),
+              const SizedBox(height: AppSpace.sm),
               VideoCheckSection(skill: skill),
               const SizedBox(height: AppSpace.lg),
             ],
