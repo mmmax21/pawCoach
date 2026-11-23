@@ -1,0 +1,26 @@
+{
+  "_comment": "v3 多角度复测用的人工标注（2026-11-23，Opus 5.5 逐秒看帧标注）。视频来自 Mixkit 免费素材（Mixkit License，可免费使用；视频本身不进仓库，放在 data/datasets/mixkit/，用 scripts/v3_eval_mixkit.py --download 重新下载 360p 版）。key 是 Mixkit 视频编号；labels 里 \"a-b\": 标签 表示第 a 到 b 秒（取每秒 +0.5 秒那一帧）。过渡、翻滚、看不清的秒不标。sit=坐 stand=站或走 down=趴或侧躺。view：side 侧面 / front 正面或斜前方 / top 正上方俯拍。",
+  "clips": {
+    "13185": {"view": "side",  "url": "https://assets.mixkit.co/videos/13185/13185-360.mp4", "labels": {"1-5": "stand", "7": "sit", "9-11": "down"}},
+    "50679": {"view": "side",  "url": "https://assets.mixkit.co/videos/50679/50679-360.mp4", "labels": {"0-5": "sit", "7": "down"}},
+    "8379":  {"view": "side",  "url": "https://assets.mixkit.co/videos/8379/8379-360.mp4",   "labels": {"0-1": "down", "3-5": "sit", "7-11": "stand"}},
+    "8490":  {"view": "side",  "url": "https://assets.mixkit.co/videos/8490/8490-360.mp4",   "labels": {"0-1": "down", "3-5": "sit", "7-11": "stand"}},
+    "36495": {"view": "side",  "url": "https://assets.mixkit.co/videos/36495/36495-360.mp4", "labels": {"0-11": "down"}},
+    "9464":  {"view": "side",  "url": "https://assets.mixkit.co/videos/9464/9464-360.mp4",   "labels": {"0-11": "down"}},
+    "19666": {"view": "side",  "url": "https://assets.mixkit.co/videos/19666/19666-360.mp4", "labels": {"0-9": "down"}},
+    "1549":  {"view": "side",  "url": "https://assets.mixkit.co/videos/1549/1549-360.mp4",   "labels": {"0-5": "down", "7-11": "stand"}},
+    "1211":  {"view": "side",  "url": "https://assets.mixkit.co/videos/1211/1211-360.mp4",   "labels": {"3-11": "stand"}},
+    "36725": {"view": "side",  "url": "https://assets.mixkit.co/videos/36725/36725-360.mp4", "labels": {"0-11": "down"}},
+    "50678": {"view": "front", "url": "https://assets.mixkit.co/videos/50678/50678-360.mp4", "labels": {"0-6": "sit"}},
+    "50665": {"view": "front", "url": "https://assets.mixkit.co/videos/50665/50665-360.mp4", "labels": {"0-8": "sit"}},
+    "33161": {"view": "front", "url": "https://assets.mixkit.co/videos/33161/33161-360.mp4", "labels": {"0-9": "sit"}},
+    "45870": {"view": "front", "url": "https://assets.mixkit.co/videos/45870/45870-360.mp4", "labels": {"0-10": "sit"}},
+    "8359":  {"view": "front", "url": "https://assets.mixkit.co/videos/8359/8359-360.mp4",   "labels": {"0-11": "down"}},
+    "45872": {"view": "front", "url": "https://assets.mixkit.co/videos/45872/45872-360.mp4", "labels": {"0-11": "down"}},
+    "33163": {"view": "front", "url": "https://assets.mixkit.co/videos/33163/33163-360.mp4", "labels": {"0-8": "down"}},
+    "16619": {"view": "front", "url": "https://assets.mixkit.co/videos/16619/16619-360.mp4", "labels": {"0-9": "down"}},
+    "50685": {"view": "front", "url": "https://assets.mixkit.co/videos/50685/50685-360.mp4", "labels": {"0-9": "down"}},
+    "34639": {"view": "top",   "url": "https://assets.mixkit.co/videos/34639/34639-360.mp4", "labels": {"0-11": "down"}},
+    "25121": {"view": "top",   "url": "https://assets.mixkit.co/videos/25121/25121-360.mp4", "labels": {"0-11": "down"}}
+  }
+}

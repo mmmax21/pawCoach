@@ -446,7 +446,8 @@ void main() {
       expect(lib.skillById['stay_short']!.videoChecks.length, 4);
       expect(lib.skillById['stay_long']!.videoChecks.length, 2);
       expect(lib.skills.where((s) => s.videoChecks.isNotEmpty).map((s) => s.id).toSet(),
-          {'sit', 'stay_short', 'stay_long', 'down', 'calm_settle'});
+          {'sit', 'stay_short', 'stay_long', 'down', 'calm_settle', 'recall_indoor'});
+      expect(lib.skillById['recall_indoor']!.videoTarget, VideoTarget.arrive);
       // v1.5：趴下类技能的目标姿势是 down
       expect(lib.skillById['down']!.videoTarget, VideoTarget.down);
       expect(lib.skillById['calm_settle']!.videoTarget, VideoTarget.down);
@@ -497,8 +498,9 @@ void main() {
         final crit = lib.skillById[e.key]!.tutorial.successCriteria;
         expect(crit, contains('${e.value} 秒'), reason: e.key);
       }
+      // 召回（arrive）没有保持时长，不在表里；其余视频纠错技能都要有
       expect(videoTargetHoldSec.keys.toSet(),
-          lib.skills.where((s) => s.videoChecks.isNotEmpty).map((s) => s.id).toSet());
+          lib.skills.where((s) => s.videoChecks.isNotEmpty && s.videoTarget != VideoTarget.arrive).map((s) => s.id).toSet());
     });
 
     test('上传 meta：口令取狗的口令表，词表取内容库，language=zh', () {
@@ -561,7 +563,7 @@ void main() {
 
   // =========================================================================
   group('原文性：结果页每个文本块是内容库原文或模板', () {
-    for (final skillId in ['sit', 'stay_short', 'stay_long', 'down', 'calm_settle']) {
+    for (final skillId in ['sit', 'stay_short', 'stay_long', 'down', 'calm_settle', 'recall_indoor']) {
       testWidgets('$skillId：全部检测器命中 / 无命中 / 重拍', (t) async {
         final skill = lib.skillById[skillId]!;
         final allowed = <String>{
@@ -586,9 +588,9 @@ void main() {
         ]);
         final judgements = {
           'bad': judgeVideo(result: skill.videoTarget == VideoTarget.down ? slowBad : bad, skillChecks: skill.videoChecks, config: cfg,
-              targetHold: videoTargetHoldSec[skillId]!.toDouble()),
+              targetHold: videoTargetHoldSec[skillId]?.toDouble()),
           'good': judgeVideo(result: res(clean(3, hold: 40, markers: 3)), skillChecks: skill.videoChecks, config: cfg,
-              targetHold: videoTargetHoldSec[skillId]!.toDouble()),
+              targetHold: videoTargetHoldSec[skillId]?.toDouble()),
           'retake': judgeVideo(result: res(clean(1)), skillChecks: skill.videoChecks, config: cfg),
         };
         expect(judgements['bad']!.findings.map((f) => f.detector).toSet(),

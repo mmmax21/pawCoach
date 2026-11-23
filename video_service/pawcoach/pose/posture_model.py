@@ -301,6 +301,11 @@ def refine_with_images(video_path, track: np.ndarray, kp, rules):
         if not need:
             return labels, confs
         labels, confs = list(labels), np.array(confs, dtype=float)
+        from pawcoach.pose import vision_fallback
+
+        use_vlm = vision_fallback.enabled()
+        step = max(1, round(0.5 * kp.fps))  # 视觉兜底：每 0.5 秒最多一帧
+        pending: dict[int, np.ndarray] = {}
         cap = cv2.VideoCapture(str(video_path))
         i = 0
         last = max(need)
@@ -309,10 +314,27 @@ def refine_with_images(video_path, track: np.ndarray, kp, rules):
             if not ok:
                 break
             if i in need:
-                read = cnn.predict(cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB), track[i, 1:5])
+                rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
+                read = cnn.predict(rgb, track[i, 1:5])
                 labels[i], confs[i] = merge_read(labels[i], float(confs[i]), read, kp.conf[i], rules)
+                if use_vlm and labels[i] == "unclear" and (not pending or i - max(pending) >= step):
+                    pending[i] = cnn.crop(rgb, track[i, 1:5])
             i += 1
         cap.release()
+        if pending:
+            idx = sorted(pending)
+            if len(idx) > vision_fallback.MAX_FRAMES:  # 均匀抽样
+                pick = np.linspace(0, len(idx) - 1, vision_fallback.MAX_FRAMES).round().astype(int)
+                idx = [idx[k] for k in pick]
+            res = vision_fallback.classify_crops([pending[k] for k in idx])
+            for k, lab in zip(idx, res.labels):
+                if lab == "unclear":
+                    continue
+                ok_k = kp.conf[k] >= rules.min_kp_conf
+                kc = float(kp.conf[k][ok_k].mean()) if ok_k.any() else 0.0
+                for j in range(k, min(k + step, len(labels))):  # 这一帧到下一个抽样点之间的空档
+                    if labels[j] == "unclear" and j in need:
+                        labels[j], confs[j] = lab, kc
         return labels, confs
 
     return refine

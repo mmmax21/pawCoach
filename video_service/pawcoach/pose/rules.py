@@ -108,7 +108,7 @@ def classify_frame(
 # - 规则判"站"或"趴"、分类器以很高的概率判成另一个时，信分类器：规则的趴下条件没有真实视频验证过，
 #   分类器在 4000 多张趴着的照片上训练过；
 # - 规则判"坐"的不改：侧面判坐是两段真实视频逐秒标注验证过的。
-OVERRIDE_PROB = 0.85
+OVERRIDE_PROB = 0.75  # Mixkit 实拍复测：0.85 → 0.75 侧面判错 10 → 7（reports/V3-posture.md）
 
 
 def _hybrid(lab: PoseLabel, c: float, xy, conf, names, posture, rules: PoseRules) -> tuple[PoseLabel, float]:

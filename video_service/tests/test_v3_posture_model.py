@@ -60,7 +60,7 @@ def test_hybrid_rules():
     assert _hybrid("unclear", 0.5, xy, conf, NAMES, FakeModel("sit", 0.7), r)[0] == "sit"      # 规则判不了 → 用模型
     assert _hybrid("unclear", 0.5, xy, conf, NAMES, FakeModel("unclear", 0.4), r)[0] == "unclear"
     assert _hybrid("stand", 0.5, xy, conf, NAMES, FakeModel("down", 0.9), r)[0] == "down"      # 高概率改判站/趴
-    assert _hybrid("stand", 0.5, xy, conf, NAMES, FakeModel("down", 0.7), r)[0] == "stand"
+    assert _hybrid("stand", 0.5, xy, conf, NAMES, FakeModel("down", 0.7), r)[0] == "stand"  # 低于 0.75 不改判
     assert _hybrid("stand", 0.5, xy, conf, NAMES, FakeModel("sit", 0.99), r)[0] == "stand"     # 站不改成坐
     assert _hybrid("down", 0.5, xy, conf, NAMES, FakeModel("unclear", 0.5), r)[0] == "unclear"  # 规则判趴要分类器确认
     assert _hybrid("down", 0.5, xy, conf, NAMES, FakeModel("down", 0.7), r)[0] == "down"

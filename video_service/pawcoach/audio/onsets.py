@@ -24,6 +24,7 @@ from pawcoach.schema import AudioEvent, PoseSegment
 ONSET_WORD = "（出声）"   # 没听懂内容的一次说话；App 只用时刻，不展示这个词
 MATCH_S = 0.6             # 起音离转写出的词这么近 → 同一次说话
 CUE_BEFORE_S = 4.0        # 狗在起音后这么多秒内进入目标姿势 → 这一声是口令
+CUE_BEFORE_S_ARRIVE = 6.0  # 召回：狗要跑一段（成功标准"5 秒内跑到面前"），口令窗口放宽
 _EPS = 0.1
 
 
@@ -72,6 +73,7 @@ def fill_with_onsets(
                 out.append(AudioEvent(word=ONSET_WORD, t_start=t, t_end=t, kind="marker", source="onset"))
             continue
         nxt = next((s for s in segs if s.t_start >= t - _EPS), None)
-        if nxt is not None and nxt.t_start - t <= CUE_BEFORE_S:
+        window = CUE_BEFORE_S_ARRIVE if target == "arrive" else CUE_BEFORE_S
+        if nxt is not None and nxt.t_start - t <= window:
             out.append(AudioEvent(word=ONSET_WORD, t_start=t, t_end=t, kind="cue", source="onset"))
     return sorted(out, key=lambda a: a.t_start)

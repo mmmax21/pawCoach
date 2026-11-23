@@ -279,6 +279,9 @@ def _analyze(
         from pawcoach.precheck import precheck as run_precheck
 
         pc = run_precheck(video)
+        if meta.target_pose == "arrive":
+            # 召回看的是人和狗的距离，不看姿势：角度问题不拦（没拍到狗照样拦）
+            pc["issues"] = [i for i in pc["issues"] if i != "angle"]
         if pc["issues"]:
             frames = max(pc["frames"], 1)
             result = AnalysisResult(
@@ -301,6 +304,14 @@ def _analyze(
 
     # 3) 三条流水线
     pose = pose_extractor.extract(video)
+    arrive_missing = None
+    if meta.target_pose == "arrive":
+        # v3 召回：轮次终点是"狗跑到主人面前"（pose/approach.py），追加到姿势时间线里
+        from pawcoach.pose.approach import extract_arrivals
+        from pawcoach.pose.detect import DEFAULT_WEIGHTS
+
+        arrivals, arrive_missing = extract_arrivals(Path(video.path), video.fps, DEFAULT_WEIGHTS)
+        pose = sorted(pose + arrivals, key=lambda s: s.t_start)
     asr = AsrAudioExtractor()
     audio = asr.extract(video, meta)
     # v3：转写没听懂的口令 / 奖励用出声检测补（只有时刻）
@@ -313,6 +324,9 @@ def _analyze(
     confs = [seg.conf for seg in pose]
     duration = video.duration or 0.0
     unclear_s = unclear_seconds(pose)
+    if arrive_missing is not None:
+        # 召回：看不清 = 人或狗不在画面里的时间（姿势看不清不影响判断到没到）
+        unclear_s = round(arrive_missing * duration, 3)
     quality = Quality(
         dog_visible_ratio=_dog_visible_ratio(video),
         audio_ok=video.has_audio,

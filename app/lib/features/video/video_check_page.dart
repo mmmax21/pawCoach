@@ -299,7 +299,7 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
       children: [
         Text(skill.name, style: t.titleLarge),
         const SizedBox(height: 8),
-        const Text(VideoStrings.shootingHint),
+        Text(VideoStrings.shootingHintFor(skill.videoTarget)),
         const SizedBox(height: 16),
         CheckboxListTile(
           key: const Key('video_safety_check'),
@@ -731,11 +731,7 @@ class _CueConfirmCardState extends State<_CueConfirmCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-                widget.target == VideoTarget.down
-                    ? VideoStrings.confirmTitleDown
-                    : VideoStrings.confirmTitle,
-                style: t.titleMedium),
+            Text(VideoStrings.confirmTitleFor(widget.target), style: t.titleMedium),
             const SizedBox(height: 4),
             Text(VideoStrings.confirmNote, style: t.bodySmall),
             for (final (i, c) in widget.candidates.indexed)

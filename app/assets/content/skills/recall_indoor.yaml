@@ -92,6 +92,9 @@ mini_script:
     clicker_hint: false
 scoring_hint: 完全做到 = 最后 5 遍召回中 4 遍以上在 5 秒内跑到面前；部分做到 = 2-3 遍；没做到 = 1 遍以下，或狗过来后不停留直接跑开。
 downgrade_to: name_response
+video_target: arrive             # v1.5：召回看"狗跑到主人面前"（视频里要拍到主人和狗）
+video_checks:                    # v1.3：视频纠错。mistake = tutorial.common_mistakes 下标（从 0 起）
+  - { detector: repeated_cue, mistake: 0 }
 sources:
   - 正向召回训练法（高价值奖励 + 口令不重复 + 不用口令叫狗做讨厌的事），参见 AKC "How to Teach Your Dog to Come When Called" 及 Karen Pryor Clicker Training 公开教程
   - 两人召回游戏（Round Robin Recall）为常见正向训练课堂练习，参见 Ian Dunbar 幼犬训练公开资料

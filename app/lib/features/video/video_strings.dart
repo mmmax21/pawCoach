@@ -16,6 +16,8 @@ class VideoStrings {
   static const comingSoonEntry = '$entry（$comingSoon）';
   static const pageTitle = '视频纠错';
   static const shootingHint = '拍摄要求：拍到狗全身，侧面最准，正面、斜上方也可以；视频不超过 120 秒';
+  static const shootingHintArrive = '拍摄要求：把主人和狗都拍进画面，狗从远处跑向主人；视频不超过 120 秒';
+  static String shootingHintFor(VideoTarget t) => t == VideoTarget.arrive ? shootingHintArrive : shootingHint;
 
   // ---- 引导拍摄（取景框 + 实时自检）。只讲拍摄，不含训练方法。
   static const guidedEntry = '引导拍摄（推荐）';
@@ -80,9 +82,11 @@ class VideoStrings {
         RetakeReason.noDog => retakeNoDog,
         RetakeReason.wrongAngle => retakeAngle,
         RetakeReason.noVoice => retakeNoVoice,
-        RetakeReason.cueNotHeard => target == VideoTarget.down
-            ? retakeCueNotHeardDown
-            : retakeCueNotHeard,
+        RetakeReason.cueNotHeard => switch (target) {
+            VideoTarget.down => retakeCueNotHeardDown,
+            VideoTarget.arrive => retakeCueNotHeardArrive,
+            VideoTarget.sit => retakeCueNotHeard,
+          },
         RetakeReason.tooFewReliable => retakeTooFew(minTrials),
         RetakeReason.tooUnclear || null => retake,
       };
@@ -90,11 +94,23 @@ class VideoStrings {
   // ---- 补标口令
   static const confirmTitle = '标出听口令坐下的几次';
   static const confirmTitleDown = '标出听口令趴下的几次';
+  static const confirmTitleArrive = '标出听口令跑过来的几次';
+  static String confirmTitleFor(VideoTarget t) => switch (t) {
+        VideoTarget.down => confirmTitleDown,
+        VideoTarget.arrive => confirmTitleArrive,
+        VideoTarget.sit => confirmTitle,
+      };
+  static const retakeCueNotHeardArrive =
+      '看到狗跑到你面前了，但没听清口令。可以在下面标出哪几次是听口令跑过来的，或者离手机近一些、清楚地说口令后重拍';
   static const retakeCueNotHeardDown =
       '看到狗趴下了，但没听清口令。可以在下面标出哪几次是听口令趴下的，或者离手机近一些、清楚地说口令后重拍';
 
   /// 目标姿势的动作词（证据句式里代入）。
-  static String poseWord(VideoTarget t) => t == VideoTarget.down ? '趴下' : '坐下';
+  static String poseWord(VideoTarget t) => switch (t) {
+        VideoTarget.down => '趴下',
+        VideoTarget.arrive => '跑到你面前',
+        VideoTarget.sit => '坐下',
+      };
   static const confirmNote = '你标出的几轮不计算反应快慢和口令次数';
   static const confirmButton = '确认并重新判定';
   static String sitCandidate(num a, num b, {VideoTarget target = VideoTarget.sit}) =>
@@ -237,6 +253,9 @@ class VideoStrings {
     confirmTitle,
     confirmTitleDown,
     retakeCueNotHeardDown,
+    confirmTitleArrive,
+    retakeCueNotHeardArrive,
+    shootingHintArrive,
     confirmNote,
     confirmButton,
     guidedEntry,
@@ -284,11 +303,11 @@ class VideoStrings {
     RegExp(r'^第 \d+ 次检查$'),
     RegExp(r'^已改正 \d+ / \d+ 个问题$'),
     RegExp(r'^能确认的完整轮次不到 \d+ 轮，请多练几轮后重拍$'),
-    RegExp('^第 $_num–$_num 秒 狗(?:坐下|趴下)\$'),
-    RegExp('^$_t(?:坐下|趴下)，$_t才奖励，晚了 $_num 秒（有奖励的 \\d+ 轮里 \\d+ 轮晚于 $_num 秒）\$'),
-    RegExp('^$_t(?:、$_t)*各识别到一次口令，共 \\d+ 次后狗才(?:坐下|趴下)（\\d+ 轮里 \\d+ 轮口令重复）\$'),
+    RegExp('^第 $_num–$_num 秒 狗(?:坐下|趴下|跑到你面前)\$'),
+    RegExp('^$_t(?:坐下|趴下|跑到你面前)，$_t才奖励，晚了 $_num 秒（有奖励的 \\d+ 轮里 \\d+ 轮晚于 $_num 秒）\$'),
+    RegExp('^$_t(?:、$_t)*各识别到一次口令，共 \\d+ 次后狗才(?:坐下|趴下|跑到你面前)（\\d+ 轮里 \\d+ 轮口令重复）\$'),
     RegExp(r'^这段视频一共练了 \d+ 轮$'),
-    RegExp('^$_t说口令，$_t才(?:坐下|趴下)，用了 $_num 秒（\\d+ 轮里 \\d+ 轮超过 $_num 秒）\$'),
+    RegExp('^$_t说口令，$_t才(?:坐下|趴下|跑到你面前)，用了 $_num 秒（\\d+ 轮里 \\d+ 轮超过 $_num 秒）\$'),
     RegExp('^目标保持 $_num 秒，\\d+ 轮里 \\d+ 轮达到\$'),
     RegExp('^$_t起身，$_t才奖励（有奖励的 \\d+ 轮里 \\d+ 轮在起身后奖励）\$'),
     RegExp(r'^\d+ 轮里 \d+ 轮是狗自己起身结束的$'),

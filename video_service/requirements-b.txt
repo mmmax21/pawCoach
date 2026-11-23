@@ -30,3 +30,4 @@ openai-whisper          # 会带入 more-itertools、regex、tiktoken，不碰 t
 
 # B8 奖励（可选）：MediaPipe Hands
 # mediapipe
+anthropic==2.8.0        # v3 视觉大模型兜底（可选，VISION_FALLBACK=on 才用；与 server/ 同版本）

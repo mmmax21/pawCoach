@@ -536,4 +536,5 @@ const videoTargetHoldSec = <String, int>{
 };
 
 /// 视频纠错的目标姿势（技能 YAML 的 video_target，v1.5 起；缺省 sit）。
-enum VideoTarget { sit, down }
+/// arrive：召回类，看「狗跑到主人面前」（视频服务同时检测人和狗）。
+enum VideoTarget { sit, down, arrive }

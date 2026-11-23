@@ -214,7 +214,7 @@ VideoTarget _videoTarget(_Reader r) {
   final v = r.strOrNull('video_target');
   if (v == null) return VideoTarget.sit;
   return VideoTarget.values.firstWhere((t) => t.name == v,
-      orElse: () => throw ContentParseException(r.file, 'video_target 只能是 sit 或 down：$v'));
+      orElse: () => throw ContentParseException(r.file, 'video_target 只能是 sit、down 或 arrive：$v'));
 }
 
 /// v1.3 可选字段 `video_checks: [{detector, mistake}]`；下标越界、检测器重复视为解析错误。

@@ -68,3 +68,22 @@ def test_down_then_sit_counts_as_breaking():
     meta = MetaInfo(target_pose="down")
     trials, _ = align(pose, [AudioEvent(word="趴", t_start=1.0, t_end=1.2, kind="cue")], [], meta)
     assert trials[0].ended_by == "stand_up"
+
+
+def test_arrive_segments_and_align():
+    import numpy as np
+
+    from pawcoach.pose.approach import arrive_segments, distance_ratio
+
+    assert distance_ratio((1, 100, 0, 200, 400), (1, 220, 300, 300, 400)) == (0.05, 0.0)
+    fps = 10.0
+    # 远 1 秒、中间 0.5 秒、近 1 秒（中间夹一帧检测不到）、再远、近 0.2 秒（太短）
+    st = np.array([-1] * 10 + [0] * 5 + [1] * 5 + [0] + [1] * 5 + [-1] * 10 + [1] * 2)
+    segs = arrive_segments(st, fps)
+    assert [(s.t_start, s.t_end) for s in segs] == [(1.5, 2.6)]
+    # 一开始就在身边、从没离开：没有到达
+    assert arrive_segments(np.array([1] * 30), fps) == []
+    meta = MetaInfo(cues=["来"], target_pose="arrive")
+    audio = [AudioEvent(word="来", t_start=0.2, t_end=0.4, kind="cue"), AudioEvent(word="来", t_start=0.9, t_end=1.1, kind="cue")]
+    trials, _ = align(segs, audio, [], meta)
+    assert len(trials) == 1 and trials[0].cue_times == [0.2, 0.9] and trials[0].latency == 1.3

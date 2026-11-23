@@ -132,6 +132,18 @@ void main() {
     expect(judge([t(0, 5), t(20, 21), t(40, 41)]).findings, isEmpty);
   });
 
+  test('召回（arrive）：证据与提示按"跑到你面前"代入，并属于模板集合', () {
+    const f = VideoFinding(detector: 'repeated_cue', mistake: 0, evidence: {
+      'cue_times': [0.5, 2.0, 3.5], 'count': 3, 'repeated': 2, 'trials': 3,
+    });
+    final text = VideoStrings.evidence(f, target: VideoTarget.arrive);
+    expect(text, '第 0.5 秒、第 2 秒、第 3.5 秒各识别到一次口令，共 3 次后狗才跑到你面前（3 轮里 2 轮口令重复）');
+    expect(VideoStrings.isTemplate(text), isTrue);
+    expect(VideoStrings.isTemplate(VideoStrings.sitCandidate(3, 4.5, target: VideoTarget.arrive)), isTrue);
+    expect(VideoStrings.retakeFor(RetakeReason.cueNotHeard, target: VideoTarget.arrive),
+        VideoStrings.retakeCueNotHeardArrive);
+  });
+
   group('结果页', () {
     late ContentLibrary lib;
     late Skill skill;

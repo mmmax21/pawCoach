@@ -2,10 +2,11 @@
 
 ## v1.5（2026-11-23）
 
-- 视频纠错覆盖从 3 个技能扩到 5 个：新增 `down`（趴下）、`calm_settle`（安静趴垫）。
-- 技能新增可选字段 `video_target: sit | down`（缺省 sit）：视频服务按"口令 → 进入目标姿势 → 保持"切分轮次。
+- 视频纠错覆盖从 3 个技能扩到 6 个：新增 `down`（趴下）、`calm_settle`（安静趴垫）、`recall_indoor`（室内召回）。
+- 技能新增可选字段 `video_target: sit | down | arrive`（缺省 sit）：视频服务按"口令 → 进入目标姿势（或跑到主人面前）"切分轮次。
+- recall_indoor → repeated_cue（常见错误 0：一遍遍喊"来来来"）。"跑到面前"由视频服务同时检测人和狗的位置得出；画面没有标定，"3 米以上"只能近似为"离开主人至少一个身位"。
 - `video_checks.yaml` 新增检测器 `slow_response`（口令到做到超过 3 秒的轮次占比 ≥ 0.5）。3 秒取自 `down` 成功标准原文"狗在 3 秒内趴下"。
-- 映射：down → slow_response（常见错误 4：太早加口令）、reward_after_standup（2：手一抬狗就起来）；calm_settle → verbal_correction（1：站起来就说"不行"）、target_too_long（2：一上来就要求趴 1 分钟）、self_release（3：忘记说"好了"，狗自己溜走）。共新增 5 条可检测的常见错误（合计 14 条）。
+- 映射：down → slow_response（常见错误 4：太早加口令）、reward_after_standup（2：手一抬狗就起来）；calm_settle → verbal_correction（1：站起来就说"不行"）、target_too_long（2：一上来就要求趴 1 分钟）、self_release（3：忘记说"好了"，狗自己溜走）。共新增 6 条可检测的常见错误（合计 15 条）。
 - 只映射能从"姿势时间线 + 声音时刻"测出来的错误；主人的手势、零食位置、垫子摆放仍做不到，不映射。
 - `validate.py`：认识 slow_response 及其阈值；校验 video_target 取值。
 - 校验：`python3 content/validate.py` 0 errors, 0 warnings

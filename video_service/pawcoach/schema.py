@@ -84,7 +84,7 @@ class MetaModel(BaseModel):
     correction_words: list[str] = Field(default_factory=list)  # M5：纠正词
     language: Optional[str] = None  # M5：转写语言，None = 自动检测
     max_duration: Optional[float] = None  # M5：视频时长上限（秒）
-    target_pose: Literal["sit", "down"] = "sit"  # v3：目标姿势
+    target_pose: Literal["sit", "down", "arrive"] = "sit"  # v3：目标（坐 / 趴 / 跑到主人面前）
     use_onsets: bool = True  # v3：出声检测补口令 / 奖励
 
 

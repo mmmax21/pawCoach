@@ -325,8 +325,8 @@ def main() -> int:
             continue
         video_skills += 1
         path = os.path.join(ROOT, "skills", f"{sid}.yaml")
-        if s.get("video_target", "sit") not in ("sit", "down"):
-            err(path, f"video_target 只能是 sit 或 down：{s.get('video_target')!r}")
+        if s.get("video_target", "sit") not in ("sit", "down", "arrive"):
+            err(path, f"video_target 只能是 sit、down 或 arrive：{s.get('video_target')!r}")
         mistakes = s.get("tutorial", {}).get("common_mistakes", [])
         seen_d: set[str] = set()
         for c in checks:
