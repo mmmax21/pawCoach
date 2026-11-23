@@ -1,5 +1,16 @@
 # 内容库版本
 
+## v1.5（2026-11-23）
+
+- 视频纠错覆盖从 3 个技能扩到 5 个：新增 `down`（趴下）、`calm_settle`（安静趴垫）。
+- 技能新增可选字段 `video_target: sit | down`（缺省 sit）：视频服务按"口令 → 进入目标姿势 → 保持"切分轮次。
+- `video_checks.yaml` 新增检测器 `slow_response`（口令到做到超过 3 秒的轮次占比 ≥ 0.5）。3 秒取自 `down` 成功标准原文"狗在 3 秒内趴下"。
+- 映射：down → slow_response（常见错误 4：太早加口令）、reward_after_standup（2：手一抬狗就起来）；calm_settle → verbal_correction（1：站起来就说"不行"）、target_too_long（2：一上来就要求趴 1 分钟）、self_release（3：忘记说"好了"，狗自己溜走）。共新增 5 条可检测的常见错误（合计 14 条）。
+- 只映射能从"姿势时间线 + 声音时刻"测出来的错误；主人的手势、零食位置、垫子摆放仍做不到，不映射。
+- `validate.py`：认识 slow_response 及其阈值；校验 video_target 取值。
+- 校验：`python3 content/validate.py` 0 errors, 0 warnings
+- 整理人：Opus 5.5
+
 ## v1.4（2026-11-18）
 
 - 新增 `faq.yaml`：常见问题 24 条，覆盖不属于某一个技能或问题行为的训练通识（几个月开始练、每次练多久、零食怎么选、响片与标记词、奖励时机、为什么不打骂、全家口令一致、换地方就不会、怎么算学会、怎么减少零食、走神、退步、社会化等）。

@@ -194,7 +194,8 @@ def assemble(
     user_cues: list[float] = []
     for t in user_cue_sits or []:
         seg = next(
-            (s for s in pose if s.label == "sit" and abs(s.t_start - t) <= _SIT_MATCH_TOL), None
+            (s for s in pose if s.label == meta.target_pose and abs(s.t_start - t) <= _SIT_MATCH_TOL),
+            None,
         )
         if seg is None:
             continue
@@ -302,6 +303,11 @@ def _analyze(
     pose = pose_extractor.extract(video)
     asr = AsrAudioExtractor()
     audio = asr.extract(video, meta)
+    # v3：转写没听懂的口令 / 奖励用出声检测补（只有时刻）
+    if meta.use_onsets and video.has_audio:
+        from pawcoach.audio.onsets import detect_onsets, fill_with_onsets
+
+        audio = fill_with_onsets(audio, detect_onsets(video.path), pose, meta.target_pose)
 
     # 4)–5) 对齐与聚合（/realign 复用同一份逻辑）
     confs = [seg.conf for seg in pose]

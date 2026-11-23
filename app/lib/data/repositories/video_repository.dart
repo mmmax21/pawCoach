@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:drift/drift.dart';
 
 import '../../domain/video_checks.dart';
+import '../../domain/video_progress.dart';
 import '../db/database.dart';
 
 class StoredVideoAnalysis {
@@ -113,6 +114,26 @@ class VideoRepository {
         .watch()
         .map((rows) => [for (final r in rows) StoredVideoAnalysis.fromRow(r)]);
   }
+
+  /// 该技能的全部已判定检查（不含重拍），按时间升序：用于"和上次比"与纠错进度。
+  Stream<List<VideoAttempt>> watchAttempts(String dogId, String skillId) {
+    final q = db.select(db.videoAnalyses)
+      ..where((t) =>
+          t.dogId.equals(dogId) &
+          t.skillId.equals(skillId) &
+          t.status.equals(VideoStatus.ok.name))
+      ..orderBy([(t) => OrderingTerm.asc(t.createdAt)]);
+    return q.watch().map((rows) => [
+          for (final r in rows)
+            () {
+              final a = StoredVideoAnalysis.fromRow(r);
+              return VideoAttempt(id: a.id, at: a.createdAt, judgement: a.judgement);
+            }(),
+        ]);
+  }
+
+  Future<List<VideoAttempt>> attempts(String dogId, String skillId) =>
+      watchAttempts(dogId, skillId).first;
 
   Future<StoredVideoAnalysis?> byId(String id) async {
     final r = await (db.select(db.videoAnalyses)..where((t) => t.id.equals(id)))

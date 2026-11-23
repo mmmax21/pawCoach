@@ -75,7 +75,13 @@ def precheck(video) -> dict:
         track = detect_main_dog(sample, work, use_cache=False)
         dog = in_frame_mask(track, SAMPLE_FPS, w, h, max_gap_s=0.0)
         kp = load_keypoints(run_inference(sample, work), SAMPLE_FPS, w, h)
-        labels, _ = classify_frames(kp, PoseRules())
+        from pawcoach.pose.posture_model import default_cnn, default_model, refine_with_images
+
+        # v3：和整段分析同一套多角度判定（有图像分类器用它，否则用关键点分类器）
+        refine = refine_with_images(sample, track, kp, PoseRules())
+        labels, confs = classify_frames(kp, PoseRules(), None if default_cnn() else default_model())
+        if refine is not None:
+            labels, _ = refine(labels, confs)
     m = min(len(dog), len(labels), n)
     dog = np.asarray(dog[:m], dtype=bool)
     side = dog & np.array([lab != "unclear" for lab in labels[:m]], dtype=bool)

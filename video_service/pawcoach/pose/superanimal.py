@@ -117,4 +117,9 @@ class SuperAnimalPoseExtractor:
         if self.use_detection:
             track = detect_main_dog(path, self.pose_dir, use_cache=True)
             in_frame = in_frame_mask(track, video.fps, *video.display_size)
-        return keypoints_to_segments(kp, self.rules, in_frame)
+        from pawcoach.pose.posture_model import default_cnn, default_model, refine_with_images
+
+        # v3：有图像分类器时用它（俯拍更稳），关键点分类器不再参与；没有时退回关键点分类器
+        refine = refine_with_images(path, track, kp, self.rules) if self.use_detection else None
+        posture = None if (refine is not None and default_cnn() is not None) else default_model()
+        return keypoints_to_segments(kp, self.rules, in_frame, posture=posture, refine=refine)

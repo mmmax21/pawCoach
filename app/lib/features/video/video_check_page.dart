@@ -15,7 +15,9 @@ import '../../core/providers.dart';
 import '../../data/repositories/video_repository.dart';
 import '../../data/video/video_api.dart';
 import '../../domain/models.dart';
+import '../../core/theme.dart';
 import '../../domain/video_checks.dart';
+import '../../domain/video_progress.dart';
 import 'guided_capture_page.dart';
 import 'video_strings.dart';
 
@@ -31,6 +33,7 @@ Map<String, Object?> buildVideoMeta({
       'release_words': config.releaseWords,
       'correction_words': config.correctionWords,
       'target_hold': videoTargetHoldSec[skill.id]?.toDouble(),
+      'target_pose': skill.videoTarget.name,
       'language': 'zh',
       'max_duration': videoMaxDurationSec,
     };
@@ -55,6 +58,7 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
   Map<String, dynamic>? _result;
   Map<String, Object?>? _meta;
   String? _savedId;
+  AttemptProgress? _progress; // 多次上传：和上一次检查比
   String? _stage;
   List<double>? _realignFailedCues; // 重新判定失败时记下用户的选择，重试用
   int _run = 0; // 每次上传自增；页面关闭或重新开始时让旧的轮询自行退出
@@ -154,12 +158,14 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
               now: ref.read(clockProvider)(),
             );
       }
+      final progress = await _progressFor(dog?.id, skill.id, savedId, j);
       if (!mounted || run != _run) return;
       setState(() {
         _judgement = j;
         _result = result;
         _meta = meta;
         _savedId = savedId;
+        _progress = progress;
         _phase = _Phase.result;
       });
     } on VideoApiException catch (e) {
@@ -201,10 +207,13 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
       );
       final id = _savedId;
       if (id != null) await ref.read(videoRepositoryProvider).replace(id, j);
+      final dog = ref.read(currentDogProvider).valueOrNull;
+      final progress = await _progressFor(dog?.id, skill.id, id, j);
       if (!mounted || run != _run) return;
       setState(() {
         _judgement = j;
         _result = r;
+        _progress = progress;
         _phase = _Phase.result;
       });
     } catch (_) {
@@ -214,6 +223,19 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
         _phase = _Phase.result;
       });
     }
+  }
+
+  /// 读出该技能的全部检查，算这次（[savedId]）相对上一次的进度；没有狗档案时只看这一次。
+  Future<AttemptProgress?> _progressFor(
+      String? dogId, String skillId, String? savedId, VideoJudgement j) async {
+    if (j.status != VideoStatus.ok) return null;
+    if (dogId == null || savedId == null) {
+      return progressAt(
+          [VideoAttempt(at: DateTime.now(), judgement: j)], 0);
+    }
+    final all = await ref.read(videoRepositoryProvider).attempts(dogId, skillId);
+    final i = all.indexWhere((a) => a.id == savedId);
+    return i < 0 ? null : progressAt(all, i);
   }
 
   void _restart() {
@@ -226,6 +248,7 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
       _result = null;
       _meta = null;
       _savedId = null;
+      _progress = null;
       _stage = null;
       _realignFailedCues = null;
     });
@@ -255,6 +278,7 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
                 skill: skill,
                 judgement: _judgement!,
                 config: lib.videoChecks!,
+                progress: _progress,
                 onReupload: _restart,
                 candidates:
                     _result == null ? const [] : cueCandidates(_result!),
@@ -377,11 +401,15 @@ class VideoResultView extends StatelessWidget {
     this.candidates = const [],
     this.onConfirmCues,
     this.realignFailedCues,
+    this.progress,
   });
   final Skill skill;
   final VideoJudgement judgement;
   final VideoChecksConfig config;
   final VoidCallback? onReupload;
+
+  /// 多次上传：这次检查和上一次的比较；null 时不显示（旧调用方）。
+  final AttemptProgress? progress;
 
   /// 减少重拍：可以补标口令的坐下；[onConfirmCues] 为 null（历史页）时不显示补标。
   final List<VideoSitCandidate> candidates;
@@ -406,13 +434,18 @@ class VideoResultView extends StatelessWidget {
         children: [
           Text(
               VideoStrings.retakeFor(reason,
-                  minTrials: config.minReliableTrials),
+                  minTrials: config.minReliableTrials,
+                  target: skill.videoTarget),
               key: const Key('video_retake_text')),
+          const SizedBox(height: 8),
+          Text(VideoStrings.retakeNotCounted,
+              style: t.bodySmall?.copyWith(color: AppColors.textSecondary)),
           if (canConfirm) ...[
             const SizedBox(height: 16),
             _CueConfirmCard(
               key: const Key('video_cue_confirm'),
               candidates: candidates,
+              target: skill.videoTarget,
               initial: realignFailedCues,
               failed: realignFailedCues != null,
               onConfirm: onConfirmCues!,
@@ -435,6 +468,10 @@ class VideoResultView extends StatelessWidget {
       key: const Key('video_result'),
       padding: const EdgeInsets.all(16),
       children: [
+        if (progress != null) ...[
+          _ProgressCard(skill: skill, progress: progress!),
+          const SizedBox(height: 12),
+        ],
         Card(
           key: const Key('video_metrics'),
           child: Padding(
@@ -471,11 +508,26 @@ class VideoResultView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (progress != null && !progress!.isFirst)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: _Tag(
+                          key: Key('video_finding_tag_${f.detector}'),
+                          text: progress!.still
+                                  .any((s) => s.detector == f.detector)
+                              ? VideoStrings.tagStill
+                              : VideoStrings.tagFresh,
+                          color: progress!.still
+                                  .any((s) => s.detector == f.detector)
+                              ? AppColors.primary
+                              : AppColors.streak,
+                        ),
+                      ),
                     // 常见错误原文（逐字取自内容库）
                     Text(skill.tutorial.commonMistakes[f.mistake],
                         style: t.bodyLarge),
                     const SizedBox(height: 8),
-                    Text(VideoStrings.evidence(f),
+                    Text(VideoStrings.evidence(f, target: skill.videoTarget),
                         style: t.bodySmall?.copyWith(
                             color: Theme.of(context).colorScheme.outline)),
                   ],
@@ -508,11 +560,19 @@ class VideoResultView extends StatelessWidget {
         ),
         if (onReupload != null) ...[
           const SizedBox(height: 8),
-          TextButton(
-            key: const Key('video_reupload'),
-            onPressed: onReupload,
-            child: const Text(VideoStrings.reupload),
-          ),
+          if (judgement.findings.isNotEmpty)
+            OutlinedButton.icon(
+              key: const Key('video_reupload'),
+              icon: const Icon(Icons.replay),
+              onPressed: onReupload,
+              label: const Text(VideoStrings.checkAgain),
+            )
+          else
+            TextButton(
+              key: const Key('video_reupload'),
+              onPressed: onReupload,
+              child: const Text(VideoStrings.reupload),
+            ),
         ],
       ],
     );
@@ -529,6 +589,116 @@ class VideoResultView extends StatelessWidget {
       );
 }
 
+/// 结果页顶部：第几次检查、和上次比（已改正 / 还要改 / 新发现）、整体进度或"通过"。
+class _ProgressCard extends StatelessWidget {
+  const _ProgressCard({required this.skill, required this.progress});
+  final Skill skill;
+  final AttemptProgress progress;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context).textTheme;
+    final p = progress;
+    final passed = p.passed;
+    final mistakes = skill.tutorial.commonMistakes;
+    Widget line(IconData icon, Color color, String label, VideoFinding f,
+            String key) =>
+        Padding(
+          key: Key(key),
+          padding: const EdgeInsets.only(top: 6),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(icon, size: 18, color: color),
+              const SizedBox(width: 6),
+              Text(label, style: t.labelLarge?.copyWith(color: color)),
+              const SizedBox(width: 8),
+              Expanded(child: Text(mistakes[f.mistake], style: t.bodyMedium)),
+            ],
+          ),
+        );
+    return Card(
+      key: const Key('video_progress'),
+      color: passed ? AppColors.successSoft : null,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(VideoStrings.attemptTitle(p.attemptNo),
+                    key: const Key('video_attempt_no'), style: t.titleMedium),
+                const Spacer(),
+                if (passed)
+                  _Tag(
+                      key: const Key('video_passed'),
+                      text: VideoStrings.passed,
+                      color: AppColors.success,
+                      icon: Icons.verified)
+                else if (p.everFound.isNotEmpty && !p.isFirst)
+                  Text(VideoStrings.fixedProgress(p.fixedTotal, p.everFound.length),
+                      key: const Key('video_fixed_progress'),
+                      style: t.labelLarge?.copyWith(color: AppColors.success)),
+              ],
+            ),
+            if (passed) ...[
+              const SizedBox(height: 4),
+              Text(VideoStrings.passedNote, style: t.bodyMedium),
+            ],
+            if (!p.isFirst) ...[
+              const SizedBox(height: 10),
+              Text(VideoStrings.vsLast,
+                  style: t.labelMedium?.copyWith(color: AppColors.textSecondary)),
+              for (final f in p.fixed)
+                line(Icons.check_circle, AppColors.success,
+                    VideoStrings.fixedLabel, f, 'video_fixed_${f.detector}'),
+              for (final f in p.still)
+                line(Icons.error_outline, AppColors.primary,
+                    VideoStrings.stillLabel, f, 'video_still_${f.detector}'),
+              for (final f in p.fresh)
+                line(Icons.fiber_new_outlined, AppColors.streak,
+                    VideoStrings.freshLabel, f, 'video_fresh_${f.detector}'),
+            ],
+            if (!passed) ...[
+              const SizedBox(height: 10),
+              Text(p.isFirst ? VideoStrings.firstAttemptNote : VideoStrings.againNote,
+                  style: t.bodySmall?.copyWith(color: AppColors.textSecondary)),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Tag extends StatelessWidget {
+  const _Tag({super.key, required this.text, required this.color, this.icon});
+  final String text;
+  final Color color;
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.12),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          if (icon != null) ...[
+            Icon(icon, size: 14, color: color),
+            const SizedBox(width: 4),
+          ],
+          Text(text,
+              style: Theme.of(context)
+                  .textTheme
+                  .labelSmall
+                  ?.copyWith(color: color, fontWeight: FontWeight.w700)),
+        ]),
+      );
+}
+
 /// 补标口令：列出没配上口令的坐下，用户勾选"这次是听口令坐下的"。
 class _CueConfirmCard extends StatefulWidget {
   const _CueConfirmCard({
@@ -537,7 +707,9 @@ class _CueConfirmCard extends StatefulWidget {
     required this.onConfirm,
     this.initial,
     this.failed = false,
+    this.target = VideoTarget.sit,
   });
+  final VideoTarget target;
   final List<VideoSitCandidate> candidates;
   final void Function(List<double> sitStarts) onConfirm;
   final List<double>? initial;
@@ -559,7 +731,11 @@ class _CueConfirmCardState extends State<_CueConfirmCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(VideoStrings.confirmTitle, style: t.titleMedium),
+            Text(
+                widget.target == VideoTarget.down
+                    ? VideoStrings.confirmTitleDown
+                    : VideoStrings.confirmTitle,
+                style: t.titleMedium),
             const SizedBox(height: 4),
             Text(VideoStrings.confirmNote, style: t.bodySmall),
             for (final (i, c) in widget.candidates.indexed)
@@ -570,7 +746,8 @@ class _CueConfirmCardState extends State<_CueConfirmCard> {
                 value: _picked.contains(c.start),
                 onChanged: (v) => setState(() =>
                     v == true ? _picked.add(c.start) : _picked.remove(c.start)),
-                title: Text(VideoStrings.sitCandidate(c.start, c.end)),
+                title: Text(VideoStrings.sitCandidate(c.start, c.end,
+                    target: widget.target)),
               ),
             if (widget.failed) ...[
               Text(VideoStrings.errRealign,
@@ -598,6 +775,16 @@ final _storedAnalysisProvider = FutureProvider.autoDispose
     .family<StoredVideoAnalysis?, String>(
         (ref, id) => ref.watch(videoRepositoryProvider).byId(id));
 
+/// 历史里某一次检查相对它上一次的进度。
+final _historyProgressProvider = FutureProvider.autoDispose
+    .family<AttemptProgress?, ({String dogId, String skillId, String id})>(
+        (ref, k) async {
+  final all =
+      await ref.watch(videoRepositoryProvider).attempts(k.dogId, k.skillId);
+  final i = all.indexWhere((a) => a.id == k.id);
+  return i < 0 ? null : progressAt(all, i);
+});
+
 class VideoHistoryResultPage extends ConsumerWidget {
   const VideoHistoryResultPage(
       {super.key, required this.skillId, required this.analysisId});
@@ -614,7 +801,14 @@ class VideoHistoryResultPage extends ConsumerWidget {
       body: (a == null || skill == null || lib?.videoChecks == null)
           ? const Center(child: CircularProgressIndicator())
           : VideoResultView(
-              skill: skill, judgement: a.judgement, config: lib!.videoChecks!),
+              skill: skill,
+              judgement: a.judgement,
+              config: lib!.videoChecks!,
+              progress: ref
+                  .watch(_historyProgressProvider(
+                      (dogId: a.dogId, skillId: skillId, id: a.id)))
+                  .valueOrNull,
+            ),
     );
   }
 }
@@ -662,6 +856,7 @@ class VideoCheckSection extends ConsumerWidget {
                 children: [
                   const SizedBox(height: 16),
                   Text(VideoStrings.history, style: t.titleMedium),
+                  _SectionProgress(dogId: dog.id, skillId: skill.id),
                   for (final a in items)
                     ListTile(
                       key: Key('video_history_${a.id}'),
@@ -670,7 +865,7 @@ class VideoCheckSection extends ConsumerWidget {
                       subtitle: Text(a.status == VideoStatus.retake
                           ? VideoStrings.historyRetake
                           : a.findings.isEmpty
-                              ? VideoStrings.noFindings
+                              ? VideoStrings.passed
                               : VideoStrings.historyFindings(
                                   a.findings.length)),
                       trailing: const Icon(Icons.chevron_right),
@@ -682,6 +877,43 @@ class VideoCheckSection extends ConsumerWidget {
             },
           ),
       ],
+    );
+  }
+}
+
+/// 技能页"视频纠错记录"下的一行进度：最新一次检查是第几次、已改正几个 / 通过。
+class _SectionProgress extends ConsumerWidget {
+  const _SectionProgress({required this.dogId, required this.skillId});
+  final String dogId;
+  final String skillId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return StreamBuilder(
+      stream: ref.watch(videoRepositoryProvider).watchAttempts(dogId, skillId),
+      builder: (context, snap) {
+        final p = latestProgress(snap.data ?? const []);
+        if (p == null) return const SizedBox.shrink();
+        final t = Theme.of(context).textTheme;
+        final parts = [
+          VideoStrings.attemptTitle(p.attemptNo),
+          if (p.passed)
+            VideoStrings.passed
+          else if (p.everFound.isNotEmpty)
+            VideoStrings.fixedProgress(p.fixedTotal, p.everFound.length),
+        ];
+        return Padding(
+          key: const Key('video_section_progress'),
+          padding: const EdgeInsets.only(top: 4),
+          child: Row(children: [
+            Icon(p.passed ? Icons.verified : Icons.trending_up,
+                size: 18,
+                color: p.passed ? AppColors.success : AppColors.primary),
+            const SizedBox(width: 6),
+            Text(parts.join(' · '), style: t.bodyMedium),
+          ]),
+        );
+      },
     );
   }
 }

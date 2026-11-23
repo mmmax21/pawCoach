@@ -61,6 +61,13 @@ detectors:
     min_ratio: 0.5
     evidence: 列出一轮：保持时长、期间标记词次数
 
+  - id: slow_response
+    name: 口令加得太早（狗听到口令后很久才做到）
+    rule: 有口令时刻的轮次中，口令到进入目标姿势的时间超过 threshold_sec 秒的占比 ≥ min_ratio
+    threshold_sec: 3.0
+    min_ratio: 0.5
+    evidence: 列出最慢的一轮：口令时刻、做到时刻、相差秒数
+
   - id: verbal_correction
     name: 失败时出声纠正
     rule: 任一轮中识别到 correction_words 中的词

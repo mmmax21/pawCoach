@@ -13,6 +13,12 @@ M5 改动（只增字段，原有字段算法不变）：
 - 口令落在一段尚未配对、正在进行的坐姿里（等待类技能：狗先坐好，主人再说「等」）时与这段配对，
   这种轮次 latency 为 None（狗本来就坐着，没有反应快慢可言）。
 - 新增 cue_times / markers_during_hold / corrections 三个测量字段。
+
+v3 改动：
+- 目标姿势可配（meta.target_pose：sit 坐 / down 趴）。字段名仍叫 sit_start / sit_end（App 契约不变），
+  含义是"进入 / 离开目标姿势"。
+- 结束方式：目标姿势结束后紧接着出现另一个可判断的姿势（站、坐、趴里除目标外的）→ stand_up（狗自己起来了）。
+- 口令来源：出声检测补的口令（AudioEvent.source == "onset"）配上的轮次 cue_source = "onset"。
 """
 
 from __future__ import annotations
@@ -42,7 +48,8 @@ def align(
     cues = sorted((a for a in audio if a.kind == "cue"), key=lambda a: a.t_start)
     markers = sorted((a for a in audio if a.kind == "marker"), key=lambda a: a.t_start)
     releases = sorted((a for a in audio if a.kind == "release"), key=lambda a: a.t_start)
-    sits = sorted((s for s in pose if s.label == "sit"), key=lambda s: s.t_start)
+    target = getattr(meta, "target_pose", "sit") or "sit"
+    sits = sorted((s for s in pose if s.label == target), key=lambda s: s.t_start)
     rewards_sorted = sorted(rewards, key=lambda r: r.t)
     corrections = sorted((a for a in audio if a.kind == "correction"), key=lambda a: a.t_start)
 
@@ -89,6 +96,7 @@ def align(
             sit_end=seg.t_end,
             conf=seg.conf,
             cue_times=[] if cue_during_sit else [cue.t_start],
+            cue_source="onset" if getattr(cue, "source", "asr") == "onset" else "asr",
         )
 
         # 结束原因：本段内有释放词 → release；否则其后紧邻 stand → stand_up；否则 unknown
@@ -100,7 +108,11 @@ def align(
             trial.ended_by = "release"
         else:
             stand_after = next(
-                (s for s in pose if s.label == "stand" and s.t_start >= seg.t_end - _EPS),
+                (
+                    s
+                    for s in pose
+                    if s.label not in (target, "unclear") and s.t_start >= seg.t_end - _EPS
+                ),
                 None,
             )
             trial.ended_by = "stand_up" if stand_after is not None else "unknown"

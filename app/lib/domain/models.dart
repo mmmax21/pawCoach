@@ -4,9 +4,9 @@
 /// docs/content-library.md 一一对应，只做解析，不含任何训练内容。
 library;
 
-import 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig;
+import 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig, VideoTarget;
 
-export 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig, VideoDetectorRule;
+export 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig, VideoDetectorRule, VideoTarget;
 
 class TutorialStep {
   const TutorialStep({required this.text, this.image});
@@ -64,6 +64,7 @@ class Skill {
     required this.downgradeTo,
     required this.sources,
     this.videoChecks = const [],
+    this.videoTarget = VideoTarget.sit,
   });
 
   final String id;
@@ -88,6 +89,9 @@ class Skill {
 
   /// v1.3 可选字段：视频纠错检测器 → common_mistakes 下标。为空表示本技能不支持视频纠错。
   final List<VideoCheckMapping> videoChecks;
+
+  /// v1.5 可选字段 video_target：视频纠错看的目标姿势（坐 / 趴），缺省坐。
+  final VideoTarget videoTarget;
 
   /// 手势文案以"无"开头时不展示手势图（content/VERSION.md 审核说明）。
   bool get showsGestureImage => !defaultGesture.startsWith('无');

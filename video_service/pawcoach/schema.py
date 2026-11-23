@@ -44,6 +44,10 @@ class MetaInfo:
     correction_words: list[str] = field(default_factory=list)  # 纠正词，如 ["不对", "不行"]，匹配方式同口令词
     language: Optional[str] = None  # 转写语言（如 "zh"）；None = Whisper 自动检测
     max_duration: Optional[float] = None  # 视频时长上限（秒）；超出则直接失败（错误信息含 video_too_long）
+    # v3 新增（可选）：本技能的目标姿势（sit 坐 / down 趴）；轮次按"口令 → 进入目标姿势 → 保持"切分
+    target_pose: str = "sit"
+    # v3：用出声检测补转写没听懂的口令 / 奖励（pawcoach/audio/onsets.py）；False 时只用转写
+    use_onsets: bool = True
 
 
 # 常见口令默认表：不传 meta 时兜底，覆盖常见中英文口令；用户传自己的 meta 时整体覆盖这些默认。
@@ -80,6 +84,8 @@ class MetaModel(BaseModel):
     correction_words: list[str] = Field(default_factory=list)  # M5：纠正词
     language: Optional[str] = None  # M5：转写语言，None = 自动检测
     max_duration: Optional[float] = None  # M5：视频时长上限（秒）
+    target_pose: Literal["sit", "down"] = "sit"  # v3：目标姿势
+    use_onsets: bool = True  # v3：出声检测补口令 / 奖励
 
 
 @dataclass
@@ -100,6 +106,7 @@ class AudioEvent:
     t_start: float
     t_end: float
     kind: AudioKind
+    source: str = "asr"  # v3：asr 转写识别 / onset 出声检测补的（没听懂内容，只有时刻）
 
 
 @dataclass
@@ -208,4 +215,6 @@ def meta_from_dict(raw: dict) -> MetaInfo:
         correction_words=m.correction_words,
         language=m.language,
         max_duration=m.max_duration,
+        target_pose=m.target_pose,
+        use_onsets=m.use_onsets,
     )

@@ -97,5 +97,10 @@ mini_script:
     clicker_hint: true
 scoring_hint: 完全做到 = 最后 3 遍"去垫子"中 2 遍以上狗 5 秒内自己上垫子趴下，并趴满 30 秒；部分做到 = 能上垫子趴下但趴不到 30 秒就起来，或 3 遍中只做到 1 遍；没做到 = 需要零食引导才上垫子，或趴下不到 10 秒就起来。
 downgrade_to: down
+video_target: down               # v1.5：视频纠错的目标姿势（缺省为 sit）；看的是"上垫子趴下"之后的保持
+video_checks:                    # v1.3：视频纠错。mistake = tutorial.common_mistakes 下标（从 0 起）
+  - { detector: verbal_correction, mistake: 1 }
+  - { detector: target_too_long, mistake: 2 }
+  - { detector: self_release, mistake: 3 }
 sources:
   - 垫子训练（mat training / Relaxation Protocol），参见 Karen Overall "Protocol for Relaxation" 与 Karen Pryor Clicker Training 公开教程 "Go to Mat"

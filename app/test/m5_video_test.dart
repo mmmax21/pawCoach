@@ -102,7 +102,7 @@ List<Map<String, Object?>> clean(int n, {double hold = 4, int markers = 0}) => [
 
 const allDetectors = [
   'late_reward', 'repeated_cue', 'session_too_long', 'target_too_long',
-  'reward_after_standup', 'self_release', 'no_hold_marker', 'verbal_correction',
+  'reward_after_standup', 'self_release', 'no_hold_marker', 'verbal_correction', 'slow_response',
 ];
 
 final allChecks = [
@@ -437,7 +437,7 @@ void main() {
   // =========================================================================
   group('内容库 v1.3', () {
     test('video_checks.yaml 与三个技能的映射', () {
-      expect(lib.version, 'v1.4');
+      expect(lib.version, 'v1.5');
       expect(cfg.detectors.keys.toSet(), allDetectors.toSet());
       expect(cfg.minReliableTrials, 2);
       expect(cfg.markerWords, contains('好'));
@@ -446,7 +446,11 @@ void main() {
       expect(lib.skillById['stay_short']!.videoChecks.length, 4);
       expect(lib.skillById['stay_long']!.videoChecks.length, 2);
       expect(lib.skills.where((s) => s.videoChecks.isNotEmpty).map((s) => s.id).toSet(),
-          {'sit', 'stay_short', 'stay_long'});
+          {'sit', 'stay_short', 'stay_long', 'down', 'calm_settle'});
+      // v1.5：趴下类技能的目标姿势是 down
+      expect(lib.skillById['down']!.videoTarget, VideoTarget.down);
+      expect(lib.skillById['calm_settle']!.videoTarget, VideoTarget.down);
+      expect(lib.skillById['sit']!.videoTarget, VideoTarget.sit);
     });
 
     test('从数据库缓存读回与解析一致', () async {
@@ -557,7 +561,7 @@ void main() {
 
   // =========================================================================
   group('原文性：结果页每个文本块是内容库原文或模板', () {
-    for (final skillId in ['sit', 'stay_short', 'stay_long']) {
+    for (final skillId in ['sit', 'stay_short', 'stay_long', 'down', 'calm_settle']) {
       testWidgets('$skillId：全部检测器命中 / 无命中 / 重拍', (t) async {
         final skill = lib.skillById[skillId]!;
         final allowed = <String>{
@@ -574,8 +578,14 @@ void main() {
               reward: 103.5 + i * 10, endedBy: 'stand_up',
               cueTimes: i.isEven ? [100.0 + i * 10, 100.5 + i * 10] : null),
         ]);
+        // 趴下类：每轮口令后 5 秒才趴下、起身后才奖励、自己起来、出声纠正、保持很短
+        final slowBad = res([
+          for (var i = 0; i < 3; i++)
+            tr(cue: i * 20.0, sit: i * 20.0 + 5, end: i * 20.0 + 8, reward: i * 20.0 + 9, endedBy: 'stand_up',
+                corrections: [{'word': '不对', 't': i * 20.0 + 8.5}]),
+        ]);
         final judgements = {
-          'bad': judgeVideo(result: bad, skillChecks: skill.videoChecks, config: cfg,
+          'bad': judgeVideo(result: skill.videoTarget == VideoTarget.down ? slowBad : bad, skillChecks: skill.videoChecks, config: cfg,
               targetHold: videoTargetHoldSec[skillId]!.toDouble()),
           'good': judgeVideo(result: res(clean(3, hold: 40, markers: 3)), skillChecks: skill.videoChecks, config: cfg,
               targetHold: videoTargetHoldSec[skillId]!.toDouble()),
@@ -604,6 +614,7 @@ void main() {
             // 重拍句按原因选（减少重拍）；这里构造的是"可靠轮次不足"
             expect(texts.toSet(), {
               VideoStrings.retakeFor(e.value.retakeReasons.first, minTrials: cfg.minReliableTrials),
+              VideoStrings.retakeNotCounted,
               VideoStrings.reupload,
             });
           }
@@ -801,7 +812,7 @@ void main() {
 
       final saved = await t.runAsync(() => VideoRepository(db).watchRecent(dogId, 'sit').first);
       expect(saved!.single.findings.single.detector, 'late_reward');
-      expect(saved.single.contentVersion, 'v1.4');
+      expect(saved.single.contentVersion, 'v1.5');
 
       await t.ensureVisible(find.byKey(const Key('video_practice_1')));
       await t.tap(find.byKey(const Key('video_practice_1')));
@@ -828,7 +839,9 @@ void main() {
       await settle(t, find.byKey(const Key('video_history')));
       final tile = find.descendant(of: find.byKey(const Key('video_history')), matching: find.byType(ListTile));
       expect(tile, findsOneWidget);
-      expect(find.descendant(of: tile, matching: find.text(VideoStrings.noFindings)), findsOneWidget);
+      expect(find.descendant(of: tile, matching: find.text(VideoStrings.passed)), findsOneWidget);
+      await t.pump(const Duration(milliseconds: 50));
+      expect(find.byKey(const Key('video_section_progress')), findsOneWidget);
       // 列表最底部的条目被底部"开始跟练"栏遮住，直接触发 onTap
       t.widget<ListTile>(tile).onTap!();
       await settle(t, find.byKey(const Key('video_no_findings')));

@@ -15,7 +15,7 @@ class VideoStrings {
   static const comingSoon = '敬请期待';
   static const comingSoonEntry = '$entry（$comingSoon）';
   static const pageTitle = '视频纠错';
-  static const shootingHint = '拍摄要求：从侧面拍到狗全身，视频不超过 120 秒';
+  static const shootingHint = '拍摄要求：拍到狗全身，侧面最准，正面、斜上方也可以；视频不超过 120 秒';
 
   // ---- 引导拍摄（取景框 + 实时自检）。只讲拍摄，不含训练方法。
   static const guidedEntry = '引导拍摄（推荐）';
@@ -74,22 +74,49 @@ class VideoStrings {
       '看到狗坐下了，但没听清口令。可以在下面标出哪几次是听口令坐下的，或者离手机近一些、清楚地说口令后重拍';
   static String retakeTooFew(int n) => '能确认的完整轮次不到 $n 轮，请多练几轮后重拍';
 
-  static String retakeFor(RetakeReason? r, {int minTrials = 2}) => switch (r) {
+  static String retakeFor(RetakeReason? r,
+          {int minTrials = 2, VideoTarget target = VideoTarget.sit}) =>
+      switch (r) {
         RetakeReason.noDog => retakeNoDog,
         RetakeReason.wrongAngle => retakeAngle,
         RetakeReason.noVoice => retakeNoVoice,
-        RetakeReason.cueNotHeard => retakeCueNotHeard,
+        RetakeReason.cueNotHeard => target == VideoTarget.down
+            ? retakeCueNotHeardDown
+            : retakeCueNotHeard,
         RetakeReason.tooFewReliable => retakeTooFew(minTrials),
         RetakeReason.tooUnclear || null => retake,
       };
 
   // ---- 补标口令
   static const confirmTitle = '标出听口令坐下的几次';
+  static const confirmTitleDown = '标出听口令趴下的几次';
+  static const retakeCueNotHeardDown =
+      '看到狗趴下了，但没听清口令。可以在下面标出哪几次是听口令趴下的，或者离手机近一些、清楚地说口令后重拍';
+
+  /// 目标姿势的动作词（证据句式里代入）。
+  static String poseWord(VideoTarget t) => t == VideoTarget.down ? '趴下' : '坐下';
   static const confirmNote = '你标出的几轮不计算反应快慢和口令次数';
   static const confirmButton = '确认并重新判定';
-  static String sitCandidate(num a, num b) => '第 ${sec(a)}–${sec(b)} 秒 狗坐下';
+  static String sitCandidate(num a, num b, {VideoTarget target = VideoTarget.sit}) =>
+      '第 ${sec(a)}–${sec(b)} 秒 狗${poseWord(target)}';
   static const noFindings = '这段视频里没有发现常见错误';
   static const safetyStop = '视频里出现攻击或恐惧信号时，请先暂停自行训练，咨询兽医或专业训犬师。';
+
+  // ---- 多次上传直到改正（v3）：像做测试一样，每次上传和上一次比
+  static const vsLast = '和上次比';
+  static const fixedLabel = '已改正';
+  static const stillLabel = '还要改';
+  static const freshLabel = '新发现';
+  static const tagStill = '上次也有';
+  static const tagFresh = '新出现';
+  static const passed = '通过';
+  static const passedNote = '这次检查没有发现常见错误';
+  static const firstAttemptNote = '照着下面的问题改一改，再拍一段上传，会和这次对比';
+  static const againNote = '改好剩下的问题后再拍一段上传，直到通过';
+  static const retakeNotCounted = '需要重拍的上传不算一次检查';
+  static const checkAgain = '改好后再拍一段检查';
+  static String attemptTitle(int n) => '第 $n 次检查';
+  static String fixedProgress(int x, int y) => '已改正 $x / $y 个问题';
 
   // ---- 历史列表
   static const historyRetake = '需要重拍';
@@ -114,18 +141,19 @@ class VideoStrings {
   }
 
   // ---- 证据句式：只代入数字与时间
-  static String evidence(VideoFinding f) {
+  static String evidence(VideoFinding f, {VideoTarget target = VideoTarget.sit}) {
     final e = f.evidence;
+    final pw = poseWord(target);
     num n(String k) => e[k] as num;
     switch (f.detector) {
       case 'late_reward':
-        return '第 ${sec(n('sit_start'))} 秒坐下，第 ${sec(n('reward_t'))} 秒才奖励，晚了 ${sec(n('delay'))} 秒'
+        return '第 ${sec(n('sit_start'))} 秒$pw，第 ${sec(n('reward_t'))} 秒才奖励，晚了 ${sec(n('delay'))} 秒'
             '（有奖励的 ${n('rewarded')} 轮里 ${n('late')} 轮晚于 ${sec(n('threshold_sec'))} 秒）';
       case 'repeated_cue':
         final times = [
           for (final t in e['cue_times'] as List) '第 ${sec(t as num)} 秒'
         ].join('、');
-        return '$times各识别到一次口令，共 ${n('count')} 次后狗才坐下'
+        return '$times各识别到一次口令，共 ${n('count')} 次后狗才$pw'
             '（${n('trials')} 轮里 ${n('repeated')} 轮口令重复）';
       case 'session_too_long':
         return '这段视频一共练了 ${n('trials')} 轮';
@@ -139,6 +167,9 @@ class VideoStrings {
       case 'no_hold_marker':
         return '保持了 ${sec(n('hold'))} 秒，期间识别到标记词 ${n('markers')} 次'
             '（保持较久的 ${n('long')} 轮里 ${n('silent')} 轮没有标记词）';
+      case 'slow_response':
+        return '第 ${sec(n('cue_t'))} 秒说口令，第 ${sec(n('sit_start'))} 秒才$pw，用了 ${sec(n('latency'))} 秒'
+            '（${n('trials')} 轮里 ${n('slow')} 轮超过 ${sec(n('threshold_sec'))} 秒）';
       case 'verbal_correction':
         return [
           for (final h in e['hits'] as List)
@@ -204,6 +235,8 @@ class VideoStrings {
     retakeNoVoice,
     retakeCueNotHeard,
     confirmTitle,
+    confirmTitleDown,
+    retakeCueNotHeardDown,
     confirmNote,
     confirmButton,
     guidedEntry,
@@ -222,6 +255,18 @@ class VideoStrings {
     guideCameraFailed,
     guideMinLength,
     guideCountdown,
+    vsLast,
+    fixedLabel,
+    stillLabel,
+    freshLabel,
+    tagStill,
+    tagFresh,
+    passed,
+    passedNote,
+    firstAttemptNote,
+    againNote,
+    retakeNotCounted,
+    checkAgain,
   };
 
   static const _num = r'\d+(?:\.\d+)?';
@@ -236,11 +281,14 @@ class VideoStrings {
     RegExp('^$practice 第 \\d+ 部分\$'),
     RegExp(r'^\d+ 月 \d+ 日 \d\d:\d\d$'),
     RegExp(r'^发现 \d+ 个问题$'),
+    RegExp(r'^第 \d+ 次检查$'),
+    RegExp(r'^已改正 \d+ / \d+ 个问题$'),
     RegExp(r'^能确认的完整轮次不到 \d+ 轮，请多练几轮后重拍$'),
-    RegExp('^第 $_num–$_num 秒 狗坐下\$'),
-    RegExp('^$_t坐下，$_t才奖励，晚了 $_num 秒（有奖励的 \\d+ 轮里 \\d+ 轮晚于 $_num 秒）\$'),
-    RegExp('^$_t(?:、$_t)*各识别到一次口令，共 \\d+ 次后狗才坐下（\\d+ 轮里 \\d+ 轮口令重复）\$'),
+    RegExp('^第 $_num–$_num 秒 狗(?:坐下|趴下)\$'),
+    RegExp('^$_t(?:坐下|趴下)，$_t才奖励，晚了 $_num 秒（有奖励的 \\d+ 轮里 \\d+ 轮晚于 $_num 秒）\$'),
+    RegExp('^$_t(?:、$_t)*各识别到一次口令，共 \\d+ 次后狗才(?:坐下|趴下)（\\d+ 轮里 \\d+ 轮口令重复）\$'),
     RegExp(r'^这段视频一共练了 \d+ 轮$'),
+    RegExp('^$_t说口令，$_t才(?:坐下|趴下)，用了 $_num 秒（\\d+ 轮里 \\d+ 轮超过 $_num 秒）\$'),
     RegExp('^目标保持 $_num 秒，\\d+ 轮里 \\d+ 轮达到\$'),
     RegExp('^$_t起身，$_t才奖励（有奖励的 \\d+ 轮里 \\d+ 轮在起身后奖励）\$'),
     RegExp(r'^\d+ 轮里 \d+ 轮是狗自己起身结束的$'),

@@ -305,6 +305,7 @@ def main() -> int:
             "self_release": ["min_ratio"],
             "no_hold_marker": ["min_hold_sec", "min_ratio"],
             "verbal_correction": [],
+            "slow_response": ["threshold_sec", "min_ratio"],
         }
         for d in v.get("detectors", []):
             did = d.get("id")
@@ -324,6 +325,8 @@ def main() -> int:
             continue
         video_skills += 1
         path = os.path.join(ROOT, "skills", f"{sid}.yaml")
+        if s.get("video_target", "sit") not in ("sit", "down"):
+            err(path, f"video_target 只能是 sit 或 down：{s.get('video_target')!r}")
         mistakes = s.get("tutorial", {}).get("common_mistakes", [])
         seen_d: set[str] = set()
         for c in checks:

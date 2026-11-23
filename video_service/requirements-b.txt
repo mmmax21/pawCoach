@@ -13,6 +13,8 @@
 deeplabcut>=3.0         # 会带入 torch 2.x、torchvision、timm、pandas、tables 等
 pydantic
 httpx
+scikit-learn==1.9.1     # v3 多角度姿态（关键点版）：模型文件 pawcoach/pose/models/posture_hgb.joblib 用这个版本保存，版本不同可能读不了（读不了时自动退回只用规则）
+# v3 多角度姿态（图像版）用 timm（deeplabcut 已带入），模型文件 pawcoach/pose/models/posture_cnn.pt
 ultralytics             # B3 YOLO 狗检测。不会替换 torch，会带入 opencv-python、polars 等
 # B3 的权重要单独下载（国外站点走代理），放在 data/models/（已被 gitignore）：
 #   mkdir -p data/models

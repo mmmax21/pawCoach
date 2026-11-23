@@ -69,6 +69,7 @@ const videoDetectorParams = <String, List<String>>{
   'self_release': ['min_ratio'],
   'no_hold_marker': ['min_hold_sec', 'min_ratio'],
   'verbal_correction': [],
+  'slow_response': ['threshold_sec', 'min_ratio'],
 };
 
 // ---------------------------------------------------------------------------
@@ -479,6 +480,25 @@ final Map<String, _Detector> _detectors = {
     };
   },
 
+  // 有口令时刻的轮次中，口令到进入目标姿势的时间超过 threshold_sec 秒的占比 ≥ min_ratio
+  // （latency 为空的轮次不计：狗本来就在目标姿势里，或口令是用户补标的）
+  'slow_response': (c, r) {
+    final th = r.p('threshold_sec').toDouble();
+    final timed = c.trials.where((t) => t.latency != null && t.cueT != null).toList();
+    if (timed.isEmpty) return null;
+    final slow = timed.where((t) => t.latency! > th).toList();
+    if (slow.length / timed.length < r.p('min_ratio')) return null;
+    final worst = slow.reduce((a, b) => b.latency! > a.latency! ? b : a);
+    return {
+      'cue_t': worst.cueT,
+      'sit_start': worst.sitStart,
+      'latency': _r2(worst.latency!),
+      'slow': slow.length,
+      'trials': timed.length,
+      'threshold_sec': th,
+    };
+  },
+
   // 任一轮中识别到 correction_words 中的词
   'verbal_correction': (c, r) {
     final hits = [
@@ -504,9 +524,16 @@ Set<String> get implementedVideoDetectors => _detectors.keys.toSet();
 /// - sit：「…狗在 3 秒内坐下并保持 2 秒以上…」→ 2
 /// - stay_short：「…狗坐着等满 3 秒不起身…」→ 3
 /// - stay_long：「…时长：你站在狗身边，狗等满 30 秒直到"好了"才起身…」→ 30
+/// - down：「…狗在 3 秒内趴下（肘部碰地）并保持 2 秒以上…」→ 2
+/// - calm_settle：「…能安静趴 30 秒以上…」→ 30
 /// 单测会核对这些数字确实出现在对应技能的成功标准原文里。
 const videoTargetHoldSec = <String, int>{
   'sit': 2,
   'stay_short': 3,
   'stay_long': 30,
+  'down': 2,
+  'calm_settle': 30,
 };
+
+/// 视频纠错的目标姿势（技能 YAML 的 video_target，v1.5 起；缺省 sit）。
+enum VideoTarget { sit, down }

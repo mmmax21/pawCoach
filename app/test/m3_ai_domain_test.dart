@@ -300,7 +300,7 @@ void main() {
 
   group('内容库 v1.2 门槛', () {
     test('真实内容库读到 v1.2，两个词表已解析', () {
-      expect(lib.version, 'v1.4'); // v1.4（M5 为 v1.3），两个词表仍在
+      expect(lib.version, 'v1.5'); // v1.4（M5 为 v1.3），两个词表仍在
       expect(lib.aiGuard.hard, isNotEmpty);
       expect(lib.aiGuard.soft, isNotEmpty);
       expect(lib.aiGuard.trainingTerms, isNotEmpty);

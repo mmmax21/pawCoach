@@ -97,6 +97,26 @@ class PoseEngine:
         with self._lock:
             return self._infer(rgb)
 
+    def keypoints(self, rgb: np.ndarray) -> tuple[np.ndarray, tuple[float, float, float, float]] | None:
+        """原始关键点（39×3：x、y、置信度，像素坐标）和狗框（像素 x1,y1,x2,y2）；没找到狗为 None。
+        给多角度姿态分类器的训练与推理用（pose/posture_model.py）。"""
+        if not self._loaded:
+            self.load()
+        with self._lock:
+            r = self._yolo.predict(
+                rgb, classes=list(ANIMAL_CLASSES), conf=MIN_CONF, verbose=False, device=self._dev
+            )[0]
+            if not len(r.boxes):
+                return None
+            i = int(r.boxes.conf.argmax())
+            x1, y1, x2, y2 = (float(v) for v in r.boxes.xyxy[i].tolist())
+            out = self._runner.inference(images=[(rgb, {"bboxes": np.array([[x1, y1, x2 - x1, y2 - y1]])})])
+            return np.asarray(out[0]["bodyparts"])[0], (x1, y1, x2, y2)
+
+    @property
+    def bodyparts(self) -> list[str]:
+        return sorted(self._ix, key=self._ix.get)
+
     # ----- 内部：调用方持锁 -----
     def _infer(self, rgb: np.ndarray) -> FrameRead:
         h, w = rgb.shape[:2]
@@ -118,6 +138,16 @@ class PoseEngine:
         kp = np.asarray(out[0]["bodyparts"])[0]            # (39, 3)：x, y, 置信度
         xy, cf = self._substitute(kp[:, :2].copy(), kp[:, 2].copy())
         label, conf = classify_frame(xy, cf, self._ix, float(min(w, h)), self.rules)
+        # v3：规则判不了（正面 / 俯拍）时用多角度分类器（和离线路径同一套合用规则）
+        from pawcoach.pose.posture_model import default_cnn, default_model
+        from pawcoach.pose.rules import _hybrid, merge_read
+
+        if label != "sit":
+            cnn = default_cnn()
+            if cnn is not None:
+                label, conf = merge_read(label, conf, cnn.predict(rgb, (x1, y1, x2, y2)), cf, self.rules)
+            elif (posture := default_model()) is not None:
+                label, conf = _hybrid(label, conf, xy, cf, self.bodyparts, posture, self.rules)
         return FrameRead(label, conf, box)
 
     def _substitute(self, xy: np.ndarray, cf: np.ndarray) -> tuple[np.ndarray, np.ndarray]:

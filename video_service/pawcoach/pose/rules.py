@@ -46,6 +46,9 @@ class PoseRules:
     down_max_leg: float = 0.6       # h 小于 sit_min_h 时，(爪平均 y - back_middle y) / 体长 小于此值 → down；两段样本视频里都没有趴下，这条规则没有真实视频验证
     window_s: float = 0.5           # 多数投票窗口
     min_segment_s: float = 0.5      # 短于此时长的片段当作抖动并入邻段
+    # v3：两段相同姿势之间夹着不超过此时长的"看不清"，当作姿势没变（俯拍时判定会时断时续）。
+    # 0 关闭。取 1.5 秒（保守值，没有逐秒标注的视频验证过；更长的空档宁可留着看不清）。
+    bridge_s: float = 1.5
 
 
 @dataclass
@@ -100,13 +103,56 @@ def classify_frame(
     return "stand", float(used)
 
 
-def classify_frames(kp: Keypoints, rules: PoseRules) -> tuple[list[PoseLabel], np.ndarray]:
+# v3：多角度姿态分类器（pose/posture_model.py）怎么和规则合用
+# - 规则判不了（正面、俯拍、关键点不全 → unclear）时，用分类器的结果（它自己有概率门槛）；
+# - 规则判"站"或"趴"、分类器以很高的概率判成另一个时，信分类器：规则的趴下条件没有真实视频验证过，
+#   分类器在 4000 多张趴着的照片上训练过；
+# - 规则判"坐"的不改：侧面判坐是两段真实视频逐秒标注验证过的。
+OVERRIDE_PROB = 0.85
+
+
+def _hybrid(lab: PoseLabel, c: float, xy, conf, names, posture, rules: PoseRules) -> tuple[PoseLabel, float]:
+    """posture：有 predict(kp39) 的关键点模型，或已经算好的 PostureRead。"""
+    from pawcoach.pose.posture_model import PostureRead, kp_in_model_order
+
+    if lab == "sit":
+        return lab, c
+    read = posture if isinstance(posture, PostureRead) else posture.predict(kp_in_model_order(xy, conf, names))
+    return merge_read(lab, c, read, conf, rules)
+
+
+def merge_read(lab: PoseLabel, c: float, read, conf, rules: PoseRules) -> tuple[PoseLabel, float]:
+    """规则结果 + 分类器结果 → 最终标签（规则见上）。
+
+    另：规则判"趴"要分类器也判"趴"才算（规则的趴下条件没有真实视频验证过，俯拍时会误判）；
+    分类器拿不准时改成 unclear。没有分类器（read is None）时保持 v3 之前的行为。
+    """
+    if lab == "down" and read is not None and read.label != "down":
+        if read.label == "unclear":
+            return "unclear", c
+    if lab == "sit" or read is None or read.label == "unclear":
+        return lab, c
+    ok = conf >= rules.min_kp_conf
+    kc = float(conf[ok].mean()) if ok.any() else 0.0
+    if lab == "unclear":
+        return read.label, round(min(read.prob, kc), 3)
+    if read.label != lab and read.label in ("stand", "down") and read.prob >= OVERRIDE_PROB:
+        return read.label, round(min(read.prob, kc), 3)
+    return lab, c
+
+
+def classify_frames(
+    kp: Keypoints, rules: PoseRules, posture=None
+) -> tuple[list[PoseLabel], np.ndarray]:
+    """posture：pose/posture_model.PostureModel；None 时只用规则（和 v3 之前完全一样）。"""
     ix = kp.index
     short_side = float(min(kp.width, kp.height))
     labels: list[PoseLabel] = []
     confs = np.zeros(len(kp.xy))
     for f in range(len(kp.xy)):
         lab, c = classify_frame(kp.xy[f], kp.conf[f], ix, short_side, rules)
+        if posture is not None:
+            lab, c = _hybrid(lab, c, kp.xy[f], kp.conf[f], kp.names, posture, rules)
         labels.append(lab)
         confs[f] = c
     return labels, confs
@@ -156,6 +202,20 @@ def absorb_short_runs(labels: list[PoseLabel], min_frames: int) -> list[PoseLabe
             labels[i] = target[0]
 
 
+def bridge_unclear(labels: list[PoseLabel], max_frames: int) -> list[PoseLabel]:
+    """夹在两段相同姿势之间、不超过 max_frames 帧的 unclear 填成那个姿势。"""
+    if max_frames <= 0:
+        return list(labels)
+    labels = list(labels)
+    runs = _runs(labels)
+    for k in range(1, len(runs) - 1):
+        lab, a, b = runs[k]
+        if lab == "unclear" and b - a <= max_frames and runs[k - 1][0] == runs[k + 1][0] != "unclear":
+            for i in range(a, b):
+                labels[i] = runs[k - 1][0]
+    return labels
+
+
 def to_segments(labels: list[PoseLabel], confs: np.ndarray, fps: float) -> list[PoseSegment]:
     segs = []
     for lab, a, b in _runs(labels):
@@ -171,12 +231,18 @@ def to_segments(labels: list[PoseLabel], confs: np.ndarray, fps: float) -> list[
 
 
 def keypoints_to_segments(
-    kp: Keypoints, rules: PoseRules | None = None, in_frame: np.ndarray | None = None
+    kp: Keypoints,
+    rules: PoseRules | None = None,
+    in_frame: np.ndarray | None = None,
+    posture=None,
+    refine=None,
 ) -> list[PoseSegment]:
     """in_frame：每帧「狗完整在画面里」（B3 检测得出）。为 False 的帧一律 unclear，不管关键点怎么说。
     长度和关键点帧数不一致时，缺的帧按「不在画面」处理，多的丢掉。"""
     rules = rules or PoseRules()
-    labels, confs = classify_frames(kp, rules)
+    labels, confs = classify_frames(kp, rules, posture)
+    if refine is not None:  # v3：图像分类器逐帧补判（posture_model.refine_with_images）
+        labels, confs = refine(labels, confs)
     if in_frame is not None:
         mask = np.zeros(len(labels), dtype=bool)
         k = min(len(labels), len(in_frame))
@@ -184,4 +250,5 @@ def keypoints_to_segments(
         labels = [lab if mask[i] else "unclear" for i, lab in enumerate(labels)]
     voted = majority_vote(labels, max(1, round(rules.window_s * kp.fps)))
     smooth = absorb_short_runs(voted, max(1, round(rules.min_segment_s * kp.fps)))
+    smooth = bridge_unclear(smooth, round(rules.bridge_s * kp.fps))
     return to_segments(smooth, confs, kp.fps)

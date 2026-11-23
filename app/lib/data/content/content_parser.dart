@@ -6,7 +6,7 @@ library;
 import 'package:yaml/yaml.dart';
 
 import '../../domain/models.dart';
-import '../../domain/video_checks.dart' show implementedVideoDetectors, videoDetectorParams;
+import '../../domain/video_checks.dart' show VideoTarget, implementedVideoDetectors, videoDetectorParams;
 
 class ContentParseException implements Exception {
   ContentParseException(this.file, this.message, [this.cause]);
@@ -205,7 +205,16 @@ Skill skillFromMap(String file, Map map) {
     downgradeTo: r.strOrNull('downgrade_to'),
     sources: r.strList('sources'),
     videoChecks: _videoChecks(r, tutorial.commonMistakes.length),
+    videoTarget: _videoTarget(r),
   );
+}
+
+/// v1.5 可选字段 `video_target: sit | down`，缺省 sit。
+VideoTarget _videoTarget(_Reader r) {
+  final v = r.strOrNull('video_target');
+  if (v == null) return VideoTarget.sit;
+  return VideoTarget.values.firstWhere((t) => t.name == v,
+      orElse: () => throw ContentParseException(r.file, 'video_target 只能是 sit 或 down：$v'));
 }
 
 /// v1.3 可选字段 `video_checks: [{detector, mistake}]`；下标越界、检测器重复视为解析错误。

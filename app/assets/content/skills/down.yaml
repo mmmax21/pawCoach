@@ -96,6 +96,10 @@ mini_script:
     clicker_hint: false
 scoring_hint: 完全做到 = 最后 7 遍（第 5、6 步）里 6 遍以上只用口令加手势就趴下；部分做到 = 3-5 遍；没做到 = 2 遍以下或仍需零食拖到地上才趴。
 downgrade_to: sit
+video_target: down               # v1.5：视频纠错的目标姿势（缺省为 sit）
+video_checks:                    # v1.3：视频纠错。mistake = tutorial.common_mistakes 下标（从 0 起）
+  - { detector: slow_response, mistake: 4 }
+  - { detector: reward_after_standup, mistake: 2 }
 sources:
   - 诱导法教趴下（luring the down），参见 AKC "How to Teach Your Dog to Lie Down" 公开文章及 Karen Pryor Clicker Training 官网
   - 中间动作分步奖励（shaping），参见 Karen Pryor《Don't Shoot the Dog》
