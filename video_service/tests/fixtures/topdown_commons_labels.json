@@ -1,0 +1,863 @@
+{
+ "_comment": "v3 俯拍 / 高角度狗姿态人工标注（Wikimedia Commons「Dogs looking up」「Dogs looking up at viewer」两个分类，只收相机明显在狗上方的照片）。图片不进仓库。",
+ "images": {
+  "04ba5824f0f1.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Bulldog_180.JPG",
+   "license": "Public domain",
+   "creator": "Bart415"
+  },
+  "09993321a7d7.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Charles_banana.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Lionel guillou"
+  },
+  "0bf42c00d9c9.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Kreuzhof_-_panoramio_(38).jpg",
+   "license": "CC BY 3.0",
+   "creator": "Hans100"
+  },
+  "0dff9483adce.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Sonny_the_Goldendoodle.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Andrea Arden"
+  },
+  "0e64430c1a7c.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Amber_-_Hungarian_Vizsla.jpg",
+   "license": "CC BY 2.0",
+   "creator": "andy"
+  },
+  "10e4dfcdeb41.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Dog_Mutt.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Yourockmywalrus"
+  },
+  "11caa73f51b8.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Labrador_Retriever_gelb.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Jacktd"
+  },
+  "11fee230bc0b.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Bull_Dog_Ingles_Arturo.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Matitoe"
+  },
+  "1688e22ddcc5.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Curious_(3456558802).jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "Helmuts Rudzītis from Rīga, Latvia"
+  },
+  "172fdde8715b.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Charlie_the_Puggle.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "MelissaShankman"
+  },
+  "18a02121b5f1.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:FEMA_-_10669_-_Photograph_by_Jocelyn_Augustino_taken_on_09-11-2004_in_Florida.jpg",
+   "license": "Public domain",
+   "creator": "Jocelyn Augustino"
+  },
+  "1aeca5055b2a.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Buldog_angielsi_671.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Pleple2000"
+  },
+  "1ba0d715ce69.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Cute_dog_in_my_house.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Kcjsew"
+  },
+  "1c5c1da52cbe.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:2017-12-28_dog_in_Taiwan.jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "測鏡者"
+  },
+  "1e69242f7a30.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Echo-standard-male-akk-2007.jpg",
+   "license": "Public domain",
+   "creator": "Hyrel http://en.wikipedia.org/wiki/User_talk:Hyrel</a"
+  },
+  "26b27bed02ef.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Green_eyed_beige_Chihuahua.jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "Bree Bailey"
+  },
+  "2d3e28813805.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Brown_puppy_(9899551176).jpg",
+   "license": "CC BY 2.0",
+   "creator": "PhotKing ♛ from Cambridge , UK"
+  },
+  "1eb22a2f41b5.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Cachorro-bichon-maltes.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Jmcr87"
+  },
+  "2eba0399614a.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Dogs_like_cucumbers_%26_cucumbers_like_dogs.jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "nao-cha from Tokyo, Japan"
+  },
+  "33b00f418291.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:West_Highland_White_Puppy_12weeksold.JPG",
+   "license": "Public domain",
+   "creator": "Dangergrrrl"
+  },
+  "35e746243c33.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:2014_Westminster_Kennel_Club_Dog_Show_(12452119384).jpg",
+   "license": "CC BY 2.0",
+   "creator": "Pets Adviser from Brooklyn, USA"
+  },
+  "3f431b1926e4.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Casey_3.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "No machine-readable author provided. A"
+  },
+  "43bd29ac24d3.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Biewer_yorkshire_terrier.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Bc. Kateřina Filipi"
+  },
+  "44db647d5458.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Dachshund_J%C5%AFlinka.jpg",
+   "license": "CC BY 3.0",
+   "creator": "Delfínka"
+  },
+  "462a5e87867d.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Eliot_de_la_baume_des_f%C3%A9es.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Rita stetienne"
+  },
+  "4806a8c7ee60.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:A_yorkshire_terrier_watching_carefully_her_master-_2013-04-12_17-03.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "User:Chacaliandshrek"
+  },
+  "4aed3313ab23.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:3mocockapooChickpea.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Ljs9249"
+  },
+  "4c006e895636.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Brutus_Jack_Russell_0505.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Jonny 8909"
+  },
+  "50041553bb3a.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Andiclz22.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Andreashaid Clinaz"
+  },
+  "543308e89dfb.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Alertita.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Rubio campero"
+  },
+  "589885297860.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Oves.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Eri9991"
+  },
+  "59d6ee094ef9.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Naboens_hund_(9076780706).jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "Lisa Risager from Denmark"
+  },
+  "5d1e7588950b.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Charybdis_-_Cavalier_King_Charles_Spaniel.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "NNeilAlieNN"
+  },
+  "6963d84dd876.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Pawliday_Inn_Pet_Resort_01.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Adelaidasofia"
+  },
+  "6a72b2ab2b98.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:BlackLab2009.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Erikeltic (<a href=\"https://en.wikipedia.org/wiki/User_talk:Erikeltic\" class=\"extiw\" title=\"en:User t"
+  },
+  "742c10c4f631.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Biewer_Terrier.jpg",
+   "license": "Public domain",
+   "creator": "Cjm47 at English Wikipedia</"
+  },
+  "769bf28a7eea.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Oves_2.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Eri9991"
+  },
+  "76ec0a0f9481.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:DALMATIAN_ARGOS._THE_IMMORTAL_MEXICAN_DALMATIAN..jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Neoprotección"
+  },
+  "7823d47cb2c3.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:A_puppy_receiving_belly_rubs_for_peeing_on_a_puppy_pad.jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "arvind grover from New York City, USA"
+  },
+  "79c34364b77c.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Mitzi_-_Jacket.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Michael1952"
+  },
+  "7e9dc136b6e4.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Labrador_Retrievers_chocolate_look_up.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Mariah Gale from Massachusetts"
+  },
+  "7f4a0e7e80fa.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Buster_the_black_Labrador_Retriever_(2007).jpg",
+   "license": "Public domain",
+   "creator": "Burnopfielder1"
+  },
+  "7fbae753037d.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Blue_Roan_English_Cocker_Spaniel.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Stirpicult"
+  },
+  "80fa0644cf2c.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Jack_11-24-05_1106AM.jpg",
+   "license": "Public domain",
+   "creator": "No machine-readable author provided. Ithiel assu"
+  },
+  "8114ee14cc01.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Chinese_Shar-Pei_puppies.jpg",
+   "license": "Public domain",
+   "creator": "Satsuuma"
+  },
+  "81892ab909f1.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:MixedBreedFace1_wb.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Elf at English Wikipedia"
+  },
+  "854f983c31e2.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Pug_puppy_001.jpg",
+   "license": "Public domain",
+   "creator": "No machine-readable author provided. <a href=\"//commons.wikimedia.org/w/index.php?title=User:Rtamayo~commonswiki&amp;act"
+  },
+  "857b2445c94a.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Luna_pe%C3%B1a.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "sara peña rodriguez"
+  },
+  "8dbdf1545bb2.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Angie_12_Wochen,_Tag_10.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Maja Dumat"
+  },
+  "8e9684ef59c0.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Una_husky_siberiana.JPG",
+   "license": "CC BY-SA 4.0",
+   "creator": "EEIM"
+  },
+  "928187be61d1.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Ziggy_Lucero_Sessoms_3.11.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Arbor Place Gang"
+  },
+  "96edf160be75.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Andiclz23.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Andreashaid Clinaz"
+  },
+  "985acb2faef3.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:DoginKitchen002.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "123Hedgehog456"
+  },
+  "9b30cfe2c8dd.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:A_small_mongrel.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Janesalway"
+  },
+  "9bc00d3c535d.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:DogInSnow.jpg",
+   "license": "CC BY 3.0",
+   "creator": "FunkyJ"
+  },
+  "9d6ff11ef3f0.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Dog_named_Texas.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Carolbstevens"
+  },
+  "9e0517074e38.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Brindle_Moku_Akita_Inu_-_Clipped_Fur_-_on_Grass.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Malcolm Gin"
+  },
+  "9f7646651f14.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Chimin!!.jpg",
+   "license": "Public domain",
+   "creator": "No machine-readable author provided. Mai91 assumed"
+  },
+  "a240bf107aeb.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:St._Bernard_puppy_001.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": ""
+  },
+  "a3664eae3dd5.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Catahoula_Bulldog_female.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Acrysmith"
+  },
+  "a74537ec8f7c.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Torie_with_bone.jpg",
+   "license": "Public domain",
+   "creator": "No machine-readable author provided. Vlmastra assumed (based on copyright claims)."
+  },
+  "ab699d2dd283.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Laika_-_Peteca_do_Terra_de_Vera_Cruz_-_Terrier_Brasileiro_(Fox_Paulistinha).jpg",
+   "license": "CC BY 2.0",
+   "creator": "Gustavo L. Simianer Procat"
+  },
+  "af8a42a13094.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Pinschernain.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Darkbowser"
+  },
+  "9f022d0b5792.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:2014_Westminster_Kennel_Club_Dog_Show_(12486390935).jpg",
+   "license": "CC BY 2.0",
+   "creator": "Pets Adviser from Brooklyn, USA"
+  },
+  "b9681947976a.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Buldog_francuski.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "DrMT,"
+  },
+  "bd09fc315c24.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Chienne.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Mith"
+  },
+  "c16c5c35135e.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Cuco.jpg",
+   "license": "Public domain",
+   "creator": "Villascusa"
+  },
+  "c223dc4ae2ca.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Chien_errant.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Lucignolobrescia"
+  },
+  "c2429c1e6508.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Dog_shaming.jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "Pretty Poo Eater"
+  },
+  "c34132336502.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D0%B1%D0%B0%D0%BA%D0%B0_%D1%81_%D0%B2%D1%8B%D1%81%D1%83%D0%BD%D1%83%D1%82%D1%8B%D0%BC_%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%BC.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Andrey Butko"
+  },
+  "c38b981efa3f.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:APBT_puppy,_Ratchet.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Theboywholived"
+  },
+  "c3c03c3255ee.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:7202Photos_taken_2020_coronavirus_pandemic_Baliuag,_Bulacan_21.jpg",
+   "license": "CC0",
+   "creator": "Judgefloro"
+  },
+  "cafa6a1460e7.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:A_young_yorkshire_terrier_watching_carefully_watching_her_master-_2013-04-12_17-05.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "User:Chacaliandshrek"
+  },
+  "ce1ec9203744.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Quinnell.jpg",
+   "license": "Public domain",
+   "creator": "Baczalak"
+  },
+  "cfc6b57107dd.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Bloodhound_Puppy.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Ⅿeagan"
+  },
+  "d0c942590594.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Small_white_dog_sitting.jpg",
+   "license": "Public domain",
+   "creator": "Burty1 at <a class=\"external text\" data-mw-original-href=\"http://en.wikipedia.org\" href=\"https://en.wikiped"
+  },
+  "d9f3f241db2b.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Maltese_in_Ghana.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Rberchie"
+  },
+  "dbafd87a9cf5.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Black_cocker_spaniel.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Kipperkip"
+  },
+  "e05c8f5ec392.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Blue_Heeler_Tile.JPG",
+   "license": "CC BY-SA 2.5",
+   "creator": "No machine-readable author provided. <a href=\"//commons.wikimedia.org/w/index.php?title=User:Jgrabbs~commonswiki&amp;act"
+  },
+  "e3d9f1c1ff05.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:1budha_3meses.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "MayteAdri"
+  },
+  "ea33356bdb1f.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:JapaneseSpitzMarch2009Finland.JPG",
+   "license": "Public domain",
+   "creator": "InsectIntelligence"
+  },
+  "ea62a7997a2e.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Yellow_Leopard_Male.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Sasquatchcatahoula"
+  },
+  "f11b3812f4cc.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Morgan_the_Labrador.jpg",
+   "license": "CC BY 2.5",
+   "creator": "See: source"
+  },
+  "f65feef4eb32.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Chacho_(American_Pitbull_Terrier).jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Victor Frava"
+  },
+  "faab6c175e8c.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Perro_000.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Veronidae"
+  },
+  "fcb492cb02a9.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:15_years_old_yorkshire_terrier.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Louda19"
+  },
+  "fd3f73294b94.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Amelia,_an_English_Cocker_Spaniel.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Joeltaylor"
+  },
+  "fe26a76b3b9e.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Chinese_Shar-Pei_Westminster_Dog_Show.jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "Dave from New York, USA"
+  },
+  "0a40d0733609.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:German_Shepherd_waiting.JPG",
+   "license": "CC BY-SA 4.0",
+   "creator": "HoocH70"
+  },
+  "0b9cae46342f.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Labrador_Quax.JPG",
+   "license": "Public domain",
+   "creator": "No machine-readable author provided. Crazymamo"
+  },
+  "0bf49279f497.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Perro_in_the_darkness.JPG",
+   "license": "CC BY-SA 4.0",
+   "creator": "EEIM"
+  },
+  "0c41856fd1d1.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Ziggy_Sperber_Dog.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Lindsey Sperber"
+  },
+  "0c95122b7253.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Taro_the_Shiba_Inu_attacks_a_rabbit_wubba_aftermath.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Taro the Shiba Inu"
+  },
+  "1164370626c3.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Fanta_doggie.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Lemminsky"
+  },
+  "15fc5d972b4e.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Treeing_Walker_Coonhound-11-Stk_Lonepine%27s_Iron_Maiden_CGCA_03_(16583549901).jpg",
+   "license": "CC BY 2.0",
+   "creator": "Pets Adviser from Brooklyn, USA"
+  },
+  "173de532382d.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Epagneul_Breton_Beethoven_05161.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Stefan220273"
+  },
+  "19a04d5ced62.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Jack_the_Bulldog.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Patrickneil"
+  },
+  "1fe595e350d1.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Una_perra_sin_hogar.JPG",
+   "license": "CC BY-SA 4.0",
+   "creator": "EEIM"
+  },
+  "260750b738c7.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Imagen_025.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": ""
+  },
+  "3ce59fe3f4ee.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Whitedog_at_prayer_house.JPG",
+   "license": "CC BY 3.0",
+   "creator": "Clementina"
+  },
+  "41b5c09c2d07.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Prayer_house_puppy.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Clementina"
+  },
+  "46f4a375314b.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Jack_Russell_Terrier_look_up.jpg",
+   "license": "CC BY 2.0",
+   "creator": "tanakawho"
+  },
+  "47101a4a2702.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:French_Bulldog_on_Hollywood_Walk_of_Fame_Star.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Featherbunny"
+  },
+  "325939aa5651.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Feist_dog_looking_up.jpg",
+   "license": "Public domain",
+   "creator": ""
+  },
+  "3a15d83ce5f1.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Relaxing_with_the_staffy_pup.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Adam.J.W.C."
+  },
+  "4591bbc21fd7.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Sasha_the_St._Bernard.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Mattnapiwotzki"
+  },
+  "51344a62267a.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Emmalee.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Regalthai"
+  },
+  "58e1146240ef.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Zoey_Lhasa_Apso.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Sarah_Ackerman"
+  },
+  "59f91cb122ab.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Time_for_my_close_up_(4165754329).jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "IDS.photos from Tiverton, UK"
+  },
+  "5d978e4cc335.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:STERRANCECUTESTPUPPYEVAR.jpg",
+   "license": "Public domain",
+   "creator": "Amc07g"
+  },
+  "5fd4aa2edc64.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Short_haired_miniature_Dachshund.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "OakvilleGuy"
+  },
+  "60295570d7db.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Three-legged-dog_sheila1.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "No machine-readable author provided. Hundehalter assumed (based on copyright claims)."
+  },
+  "6261e2ff291f.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:StJohnWaterDogPuppy.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Danml283"
+  },
+  "643da1ab5d58.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Misty_the_Jack_Russell.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Heather Elke"
+  },
+  "67e88b795f5c.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Spotted_ring_tail_dog_2014-05-04_21-23.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "User:Primestarsupply"
+  },
+  "6c3d6548f884.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Handsome.jpg",
+   "license": "Public domain",
+   "creator": "Angie is dying"
+  },
+  "6e72e54d066a.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Yorkshirsk%C3%BD_teri%C3%A9r.jpg",
+   "license": "CC BY 3.0",
+   "creator": "Dezidor"
+  },
+  "77dd42e69dff.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Taro_the_Shiba_Inu_sits_with_a_Great_Dane_puppy.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Taro the Shiba Inu"
+  },
+  "810682b99011.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Oldis_zofia.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Zofia Zofi"
+  },
+  "8552699cce9b.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Milky_Maltese.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Archita78"
+  },
+  "87569a3569c6.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Fremont_Solstice_Parade_2010_-_384_(4720327208).jpg",
+   "license": "CC BY-SA 2.0",
+   "creator": "Daniel Stockman from Seattle, WA, USA"
+  },
+  "935c4236b4be.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Lluque.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Claudiavirgi2013"
+  },
+  "a066b9e5ddd0.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Rupert_the_Bulldog.jpg",
+   "license": "CC BY 2.0",
+   "creator": "Andrea Arden"
+  },
+  "add3e10a7ab4.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Rottweiler_pup_0207.jpg",
+   "license": "Public domain",
+   "creator": ""
+  },
+  "b54d65e0cd80.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Franz_001.jpg",
+   "license": "CC BY 3.0",
+   "creator": "Klaus Graf"
+  },
+  "badf9a42b457.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Schulhund_als_Welpe,_auf_Wiese.JPG",
+   "license": "CC BY 3.0",
+   "creator": "Wikiwau"
+  },
+  "c3b530321b2d.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Nacha001.JPG",
+   "license": "CC BY 2.5",
+   "creator": "Alakasam (<a href=\"//commons.wikimedia.org/w"
+  },
+  "c6a750bbc099.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Parson_Russell_Terri%C3%ABr.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Timo Clemens"
+  },
+  "c89b2427e1db.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:US_Navy_100323-N-7498L-233_Joint_Base_Pearl_Harbor-Hickam_security_military_dog_Rossi_arrives_at_the_pier_to_search_for_hidden_improvised_explosive_devices_during_exercise_Solid_Curtain-Citadel_Shield_2010.jpg",
+   "license": "Public domain",
+   "creator": "U.S. Navy photo by Mass Communication Specialist 2nd Mark Logico"
+  },
+  "d321b83f7562.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:PK_with_T-shirt.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Томасина"
+  },
+  "d84020e8a3f5.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Totoche_in_the_street_after_the_first_impact.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Gordon Fruitman"
+  },
+  "d8df8a025eb6.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:YoungGoldenRetriever.JPG",
+   "license": "CC BY-SA 3.0",
+   "creator": "Kai Kientopf"
+  },
+  "d961423e162d.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Sweet_Girl_IMG_2720e.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Rronenow"
+  },
+  "9d0daa885349.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Yorkshire_terrier.JPG",
+   "license": "CC0",
+   "creator": "Cifo Buscemi"
+  },
+  "e48dc4319af1.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Mancha,_Pitbull.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Edwin1998julio"
+  },
+  "e6a73b121b43.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:This_is_my_baby!!_His_name_is_KERNAN_he_is_a_blue_male_Great_Dane_2013-04-30_08-18.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "User:Carriemb"
+  },
+  "ead9818a25f7.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Gentil_bouledogue.jpg",
+   "license": "CC BY-SA 4.0",
+   "creator": "Thomon"
+  },
+  "ef9a599cf06b.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Jack_Russell_Terrier_lying_on_the_floor_(2008).jpg",
+   "license": "CC BY 3.0",
+   "creator": "JazTan"
+  },
+  "f29e1f4eea07.jpg": {
+   "label": "sit",
+   "source": "https://commons.wikimedia.org/wiki/File:Jackruseel.jpg",
+   "license": "CC BY-SA 2.5",
+   "creator": "Pablo Bertelsen jr."
+  },
+  "f5344bb70263.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:FancyCoton.JPG",
+   "license": "CC BY-SA 4.0",
+   "creator": "fmxrider11"
+  },
+  "fc584530dde6.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Taco_dog_(1796324549).jpg",
+   "license": "CC BY 2.0",
+   "creator": "istolethetv from Hong Kong, China"
+  },
+  "ff09eb795d17.jpg": {
+   "label": "down",
+   "source": "https://commons.wikimedia.org/wiki/File:Filapuppy.jpg",
+   "license": "Public domain",
+   "creator": "Jmop"
+  },
+  "ff95f0fa2982.jpg": {
+   "label": "stand",
+   "source": "https://commons.wikimedia.org/wiki/File:Tony_dog.jpg",
+   "license": "CC BY-SA 3.0",
+   "creator": "Jrcyber"
+  }
+ }
+}

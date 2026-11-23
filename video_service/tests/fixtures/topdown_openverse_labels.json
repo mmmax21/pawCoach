@@ -1,0 +1,329 @@
+{
+ "_comment": "v3 俯拍 / 高角度狗姿态人工标注（Openverse，CC0 / PDM / CC BY / CC BY-SA，只收相机明显在狗上方的照片）。图片不进仓库。",
+ "images": {
+  "1605d9df-9c5f-425e-8801-b7fe2d26eed8.jpg": {
+   "label": "down",
+   "source": "https://wordpress.org/photos/photo/75265e222e/",
+   "license": "cc0 1.0",
+   "creator": "Needhi Singh"
+  },
+  "318da8ed-5592-4058-819f-9c20ed08f6f0.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/22567737@N04/20805752410",
+   "license": "by 2.0",
+   "creator": "Aiko, Thomas & Juliette+Isaac"
+  },
+  "31e5373d-01db-4109-9958-cc8c10e7766c.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/26209464@N00/8154955849",
+   "license": "by-sa 2.0",
+   "creator": "simonov"
+  },
+  "45abbbde-7c3d-411e-9e83-e2f3688754ad.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/7298413@N06/5904791571",
+   "license": "by 2.0",
+   "creator": "Hello Turkey Toe"
+  },
+  "468ebca9-52aa-4aff-bb6f-06dd5ec4e02f.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/71401718@N00/3723704161",
+   "license": "by 2.0",
+   "creator": "Wonderlane"
+  },
+  "6fd12f0c-67ed-483e-8784-dd0df2263da6.jpg": {
+   "label": "down",
+   "source": "https://wordpress.org/photos/photo/778687a614/",
+   "license": "cc0 1.0",
+   "creator": "Topher"
+  },
+  "7b5d9807-3761-4bf1-b200-d7cdd17676c8.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/151639852@N07/45370312994",
+   "license": "by-sa 2.0",
+   "creator": "Miguel Discart (Photos Vrac)"
+  },
+  "7fafe321-c9bb-4ccc-b901-e48faa0f7388.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/60109376@N00/470419512",
+   "license": "by 2.0",
+   "creator": "rikkis_refuge"
+  },
+  "9891372d-d317-4953-a385-3a852f0de0dc.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/10581108@N00/6034242519",
+   "license": "by 2.0",
+   "creator": "jencu"
+  },
+  "cf0554ab-d99c-4c76-a243-fa1f0dd546f3.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/151639852@N07/45182844305",
+   "license": "by-sa 2.0",
+   "creator": "Miguel Discart (Photos Vrac)"
+  },
+  "4617a1ba-409c-4552-b1ac-2f9f8187fe3c.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/56218409@N03/35037308435",
+   "license": "by 2.0",
+   "creator": "mripp"
+  },
+  "55744c18-a61c-42df-8c40-4a83ac50ecea.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/78428166@N00/8638219717",
+   "license": "by 2.0",
+   "creator": "Tobyotter"
+  },
+  "57b4748e-cdc3-4a45-b85f-0724e8a749e5.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/61132483@N00/9416223841",
+   "license": "by 2.0",
+   "creator": "Elsie esq."
+  },
+  "efed4869-241e-44ac-b58f-edf117b63e48.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/61132483@N00/185383799",
+   "license": "by 2.0",
+   "creator": "Elsie esq."
+  },
+  "5ba0590a-3277-4437-b961-dbf1cec07926.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/151639852@N07/45182760725",
+   "license": "by-sa 2.0",
+   "creator": "Miguel Discart (Photos Vrac)"
+  },
+  "6b1d4c6b-e61b-4445-8f2c-bdf477011e92.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/17997014@N00/4272969954",
+   "license": "by-sa 2.0",
+   "creator": "TijsB"
+  },
+  "820d0503-c0c1-4a12-b255-95a1d3057de3.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/151639852@N07/46094587311",
+   "license": "by-sa 2.0",
+   "creator": "Miguel Discart (Photos Vrac)"
+  },
+  "b2ad4b9e-59b9-4934-95a2-d949d1307b9c.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/151639852@N07/46094592371",
+   "license": "by-sa 2.0",
+   "creator": "Miguel Discart (Photos Vrac)"
+  },
+  "bf835e5d-1edf-441b-9ec9-e88c430fe894.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/151639852@N07/46094876301",
+   "license": "by-sa 2.0",
+   "creator": "Miguel Discart (Photos Vrac)"
+  },
+  "d2e19784-64b8-453f-a74c-056fa70e5086.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/8489692@N03/4914304754",
+   "license": "by 2.0",
+   "creator": "katerha"
+  },
+  "b8c809fa-4562-4344-a0a1-9dfd0fd7933c.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/10271343@N00/2903932343",
+   "license": "by 2.0",
+   "creator": "desertdutchman"
+  },
+  "016301fa-7adb-469d-b415-97e71fd1763c.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/25636851@N03/48597390582",
+   "license": "by 2.0",
+   "creator": "ShebleyCL"
+  },
+  "06fa1956-2c6c-4ce0-93a4-955b765a5ea5.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/12707238@N00/20408390495",
+   "license": "by 2.0",
+   "creator": "Eric.Ray"
+  },
+  "133bc99c-9524-4590-8ace-2ad84707b53f.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/157635012@N07/43714543490",
+   "license": "cc0 1.0",
+   "creator": "Artem Beliaikin"
+  },
+  "1671187a-a901-47db-9bcd-bb678466a418.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/71153021@N00/2468440302",
+   "license": "by 2.0",
+   "creator": "MarilynJane"
+  },
+  "661f9195-ab27-49f1-8c04-36a0cab0d353.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/55932599@N06/8289211349",
+   "license": "by 2.0",
+   "creator": "Bad Apple Photography"
+  },
+  "9da88d30-df62-48c2-9f07-47dcbf8db02d.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/24420613@N08/3566191454",
+   "license": "by 2.0",
+   "creator": "faith goble"
+  },
+  "a4fe3388-e39c-4b15-b2fc-3586d7dd99b9.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/24580165@N03/30172577793",
+   "license": "by 2.0",
+   "creator": "tvdflickr"
+  },
+  "b5bba39b-c68c-401b-a041-c4fc5db65925.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/194291384@N08/51615574706",
+   "license": "by 2.0",
+   "creator": "britishhamper"
+  },
+  "c71378a8-8748-4946-94ae-3fc59b3f14be.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/96489918@N00/3366783305",
+   "license": "by 2.0",
+   "creator": "cplbasilisk"
+  },
+  "e406a3ce-03cb-4ef9-8a29-3d75e25485ad.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/37882873@N00/3054658314",
+   "license": "by 2.0",
+   "creator": "ex_magician"
+  },
+  "fe43a7f2-2419-480d-9741-359130a946bb.jpg": {
+   "label": "sit",
+   "source": "https://www.flickr.com/photos/99287245@N00/167998408",
+   "license": "by-sa 2.0",
+   "creator": "Todd Huffman"
+  },
+  "0316cdb2-51df-464b-83d6-af219a0a933d.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/78428166@N00/9189156034",
+   "license": "by 2.0",
+   "creator": "Tobyotter"
+  },
+  "4432c6b6-bce2-4708-8c12-b34018fbd4b1.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/60109376@N00/385994785",
+   "license": "by 2.0",
+   "creator": "rikkis_refuge"
+  },
+  "974edb04-c13e-4a30-b8fe-5988cec41184.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/61132483@N00/485390247",
+   "license": "by 2.0",
+   "creator": "Elsie esq."
+  },
+  "b430a58f-f4d0-47ef-bfd0-8b2ea18160d2.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/13907834@N00/5721198496",
+   "license": "by 2.0",
+   "creator": "MSVG"
+  },
+  "afb0b9e1-8041-48d0-8b6c-1b41bdcb1a20.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/24917549@N04/3501206397",
+   "license": "by-sa 2.0",
+   "creator": "Bukowsky18"
+  },
+  "e0300135-0ae5-45e6-af20-924b7a97017c.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/99247795@N00/4335541384",
+   "license": "by-sa 2.0",
+   "creator": "Richard Masoner / Cyclelicious"
+  },
+  "dcc6a89a-a166-41c6-ba52-4aed30e1e493.jpg": {
+   "label": "stand",
+   "source": "https://www.flickr.com/photos/78428166@N00/5607449409",
+   "license": "by 2.0",
+   "creator": "Tobyotter"
+  },
+  "1e00a3e3-77b5-4cf5-a0c2-eb1631d19137.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/40883475@N00/4291000177",
+   "license": "by 2.0",
+   "creator": "Hanumann"
+  },
+  "2c03ab4c-b55f-4a40-9769-91b46a5bc63f.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/60109376@N00/521577861",
+   "license": "by 2.0",
+   "creator": "rikkis_refuge"
+  },
+  "509b511c-5aa4-444a-bdc4-f14fa50436b4.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/40837632@N05/6944922556",
+   "license": "by 2.0",
+   "creator": "Gareth1953 All Right Now"
+  },
+  "57295d3d-73b7-459e-93cb-2b31b0c69aca.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/85473033@N00/3544955260",
+   "license": "by 2.0",
+   "creator": "AMagill"
+  },
+  "57f88f47-2644-40af-8e0d-8832936562c2.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/71401718@N00/3903232562",
+   "license": "by 2.0",
+   "creator": "Wonderlane"
+  },
+  "7b367982-ce6e-45d7-9d0f-2af4439c444f.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/9197427@N06/8479531130",
+   "license": "by-sa 2.0",
+   "creator": "pmarkham"
+  },
+  "7e78024e-ab05-4a7c-ab82-442edfb84e92.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/15049511@N00/426261947",
+   "license": "by 2.0",
+   "creator": "AirBeagle"
+  },
+  "873e531b-331e-4d89-9091-b227482a9a63.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/78428166@N00/6832987277",
+   "license": "by 2.0",
+   "creator": "Tobyotter"
+  },
+  "59c6d433-062a-4df9-95ec-3cf0f973c0e3.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/49946687@N05/10559374404",
+   "license": "by 2.0",
+   "creator": "_tar0_"
+  },
+  "94340ecb-e5e9-45ef-9914-1549d22d51c6.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/29278394@N00/17993319",
+   "license": "by 2.0",
+   "creator": "normanack"
+  },
+  "a6629bac-7f97-4714-99ef-c6d198b86a89.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/52614599@N00/6825471919",
+   "license": "by 2.0",
+   "creator": "dsearls"
+  },
+  "c0d1d92d-0707-4cb6-8395-45c27948fc4c.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/53133240@N00/17003553515",
+   "license": "by 2.0",
+   "creator": "Muffet"
+  },
+  "d251b360-c461-42a8-bbd4-76403399f5e6.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/78428166@N00/14586040119",
+   "license": "by 2.0",
+   "creator": "Tobyotter"
+  },
+  "d8c37bb0-a815-4ec0-8092-089cf89b38f6.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/47264866@N00/3211408866",
+   "license": "by 2.0",
+   "creator": "OakleyOriginals"
+  },
+  "c841316a-f683-4b11-8f25-0c3f124b20ca.jpg": {
+   "label": "down",
+   "source": "https://www.flickr.com/photos/91545223@N00/3660362304",
+   "license": "by-sa 2.0",
+   "creator": "Benson Kua"
+  }
+ }
+}
