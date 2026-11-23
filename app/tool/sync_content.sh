@@ -27,6 +27,8 @@ cp "$SRC/ai_guard.yaml" "$SRC/ai_terms.yaml" "$DST/"
 cp "$SRC/video_checks.yaml" "$DST/"
 # 内容库 v1.4 起：常见问题（可缺省）
 if [ -f "$SRC/faq.yaml" ]; then cp "$SRC/faq.yaml" "$DST/"; fi
+# 内容库 v1.6 起：身体信号（可缺省）
+if [ -f "$SRC/body_signals.yaml" ]; then cp "$SRC/body_signals.yaml" "$DST/"; fi
 
 # 生成清单，Flutter 不能枚举 assets 目录，启动时按清单逐个读取。
 {

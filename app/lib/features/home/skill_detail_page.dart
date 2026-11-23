@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/providers.dart';
 import '../../core/theme.dart';
 import '../../domain/models.dart';
+import '../body/body_check_page.dart';
 import '../video/video_check_page.dart';
 import '../video/live_timer_page.dart';
 
@@ -122,6 +123,9 @@ class SkillDetailPage extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: AppSpace.xl),
+              // v1.6：练前看看狗的状态（和视频功能同一个开关）
+              BodyCheckEntry(skill: skill),
+              const SizedBox(height: AppSpace.sm),
               // M5（AI-4）：视频纠错入口（默认显示"敬请期待"）
               LiveTimerEntry(skill: skill),
               const SizedBox(height: AppSpace.sm),

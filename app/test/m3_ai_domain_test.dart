@@ -300,7 +300,7 @@ void main() {
 
   group('内容库 v1.2 门槛', () {
     test('真实内容库读到 v1.2，两个词表已解析', () {
-      expect(lib.version, 'v1.5'); // v1.4（M5 为 v1.3），两个词表仍在
+      expect(lib.version, 'v1.6'); // v1.4（M5 为 v1.3），两个词表仍在
       expect(lib.aiGuard.hard, isNotEmpty);
       expect(lib.aiGuard.soft, isNotEmpty);
       expect(lib.aiGuard.trainingTerms, isNotEmpty);
@@ -334,7 +334,7 @@ void main() {
     test('库里缓存的词表缺失时回到内容源解析，缺 ai_terms.yaml 报错', () async {
       final db = memoryDb();
       await ContentRepository(db: db, source: FileContentSource(repoContentDir())).ensureLoaded();
-      expect((await db.select(db.contentAiLexicons).get()).length, 4); // M5：同表另存 video_checks；v1.4：faq
+      expect((await db.select(db.contentAiLexicons).get()).length, 5); // M5：同表另存 video_checks；v1.4：faq；v1.6：body_signals
       await db.delete(db.contentAiLexicons).go();
       final repo = ContentRepository(
         db: db,

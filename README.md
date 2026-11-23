@@ -92,6 +92,7 @@
 | 家庭共享 | 邀请码加入家庭，多台手机同步训练记录，任一成员打卡都算 | ✅（需启动 `server/`） |
 | 徽章、养护日历 | 训练里程碑徽章，疫苗 / 驱虫提醒 | ✅ |
 | 视频纠错 | 上传训练视频，自动指出"奖励太晚""口令重复"等常见错误；带取景框的拍摄引导 | 🚧 **敬请期待**（默认构建只显示入口，不可点） |
+| 狗的状态 | 拍一小段视频或一张照片，看狗是平静、兴奋还是有压力信号，据此建议今天怎么练；练习中压力信号多了提示"该停一停"；周报和 AI 助理训犬师也会参考 | 🚧 **敬请期待**（和视频纠错同一个开关） |
 | 实时奖励计时 | 边练边显示：狗是否坐下、口令和奖励的时刻、奖励比坐下晚了多久，超过阈值当场变红并显示内容库原文 | 🧪 实验（默认隐藏，需要 `video_service/`；尚未在真机上验证） |
 
 ---
@@ -206,9 +207,9 @@ cd app && flutter build apk --debug
 ## 测试
 
 ```bash
-cd app && flutter test                         # App：单元测试 + 页面测试（758 项）
+cd app && flutter test                         # App：单元测试 + 页面测试（769 项）
 cd server && .venv/bin/python -m pytest -q     # 后端：在线模式转发 + 家庭同步（41 项）
-cd video_service && python -m pytest -q        # 视频分析与实时计时（222 项，需要 conda 环境 pawcoach）
+cd video_service && python -m pytest -q        # 视频分析、实时计时与身体信号（226 项，需要 conda 环境 pawcoach）
 python3 content/validate.py                    # 内容库格式校验
 ```
 
@@ -230,6 +231,13 @@ python3 content/validate.py                    # 内容库格式校验
 详见 `handoffs/2026-11-19-M5-video.md`、`handoffs/2026-11-19-video-correction-v2.md`、`handoffs/2026-11-20-live-timer.md`、`handoffs/2026-11-23-video-v3.md`。
 
 ---
+
+### 狗的状态（身体信号）
+
+同样需要电脑上运行 `video_service/`，和视频纠错同一个开关。服务从关键点测出尾巴夹低 / 高举、身体压低、耳朵往后压、喘气、打哈欠、摇尾巴、动个不停、僵住不动 9 种信号（只测量），
+App 按内容库 `content/body_signals.yaml` 判断"平静 / 兴奋 / 有压力信号"，用在六个地方：练前状态检查（兴奋时建议先做"安静趴垫"，有压力信号时建议降级技能）、
+实时计时里"该停一停"、视频结果里的"狗的状态"、最近几次检查的节奏建议、周报、出现僵住时提示咨询专业训犬师；AI 助理训犬师可用工具 `get_dog_state` 查看。
+只描述看到的身体信号，不替狗下情绪结论，不做健康判断。实拍复测：喘气、动得多可用；尾巴、身体高低只在侧面可信；详见 `video_service/reports/V3-body-signals.md`。
 
 ## 安全说明（演示构建）
 

@@ -1,5 +1,15 @@
 # 内容库版本
 
+## v1.6（2026-11-23）
+
+- 新增 `body_signals.yaml`（可缺省）：狗的身体信号 9 种（尾巴夹低、身体压低、耳朵往后压、打哈欠、僵住不动、张嘴喘气、尾巴高举、摇尾巴、动个不停），每种写明看起来是什么样、通常意味着什么、属于压力类还是兴奋类。
+- 规则：练前状态检查（平静 / 兴奋 / 有压力信号 / 看不清）及对应建议；练习中"该停了"的条件与建议；根据最近几次检查调整节奏的建议；需要转介的信号（僵住不动）。兴奋时推荐先做 `calm_settle`。
+- 原则：只描述观察到的行为，不替狗下情绪结论，不做健康判断；`validate.py` 会拒绝出现健康相关词。
+- 来源：Turid Rugaas《On Talking Terms with Dogs: Calming Signals》、Lili Chin《Doggie Language》、ASPCA / AKC 身体语言公开文章、Beerda et al. (1998)。
+- `validate.py`：校验信号 ID 是视频服务测量的那几种、规则引用的信号与技能存在、文案齐全。
+- 校验：`python3 content/validate.py` 0 errors, 0 warnings
+- 整理人：Opus 5.5
+
 ## v1.5（2026-11-23）
 
 - 视频纠错覆盖从 3 个技能扩到 6 个：新增 `down`（趴下）、`calm_settle`（安静趴垫）、`recall_indoor`（室内召回）。

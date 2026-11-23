@@ -185,6 +185,8 @@ class AnalysisResult:
     # 预检结果（只在 API 开启预检时有）：{frames, dog_frames, side_frames, voice, issues: [...]}。
     # issues 非空时整段分析被跳过，trials 为空，App 按 issues 给出具体的重拍原因。
     precheck: Optional[dict] = None
+    # v3 身体信号（狗的状态）：pawcoach/body/check.check_video 的结果 {signals, metrics, postures, ...}；只测量
+    body: Optional[dict] = None
 
 
 def to_json(result: AnalysisResult) -> str:

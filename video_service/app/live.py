@@ -45,11 +45,12 @@ MAX_FRAME_PIXELS = 640 * 640
 
 
 def get_engine():
+    """模块级 _engine（测试可替换）；没有时用进程内共享的那份（身体信号检查、整段分析也用它）。"""
     global _engine
     if _engine is None:
-        from pawcoach.live.pose_live import PoseEngine
+        from pawcoach.live.pose_live import shared_engine
 
-        _engine = PoseEngine()
+        _engine = shared_engine()
     return _engine
 
 
@@ -130,6 +131,10 @@ async def live(ws: WebSocket) -> None:
 
                     r = FrameRead("unclear", 0.0, None)
                 session.on_frame(t, r.label, r.box)
+                if r.kp is not None:  # v3 身体信号
+                    from pawcoach.body.signals import frame_signals
+
+                    session.on_body(frame_signals(r.kp, t, None if r.label == "unclear" else r.label, r.side_view))
                 dirty = True
                 await push()
         finally:

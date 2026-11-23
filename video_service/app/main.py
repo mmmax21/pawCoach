@@ -27,6 +27,10 @@ POST /frame-check   （取景自检）multipart：file = 一帧 JPEG、view = si
   返回 {level: green|yellow|red, message, reasons, dog_box, person_box, guide, iou}，框为 0~1 归一化坐标。
   同一时刻只跑一帧，忙时 429（App 丢帧即可）；缺检测器时 503。不落盘。
 
+POST /body-check   （狗的状态）multipart：file = ≤20 秒视频或一张照片
+  返回身体信号 {kind, frames, usable, signals: [{id, t_start, t_end}], metrics, postures}，只测量不下结论；
+  App 按内容库 body_signals.yaml 判断"适不适合练"。忙时 429；上传的文件分析完立即删除。
+
 GET /  健康检查，返回 {"status": "ok", "asr": …, "pose": …, "coach_mode": …}（M5：后三项供 App 与演示前自查）
 
 M5：上传的视频与全部中间产物在分析完成或失败后删除（只留 data/pawcoach.db 里的数字）；
@@ -208,6 +212,48 @@ def realign_endpoint(req: RealignRequest) -> dict:
     except Exception as e:  # noqa: BLE001
         raise HTTPException(status_code=400, detail=f"无法重新对齐：{e}") from e
     return {"status": "done", "result": json.loads(to_json(result))}
+
+
+_BODY_LOCK = threading.Lock()
+_MAX_BODY_BYTES = 60 * 1024 * 1024
+
+
+@app.post("/body-check")
+async def body_check(file: UploadFile = File(...)) -> dict:
+    """狗的状态（练前检查）：上传一段 ≤20 秒的视频或一张照片，同步返回身体信号（只测量，不下结论）。
+
+    返回 {kind: video|image, frames, usable, signals: [{id, t_start, t_end}], metrics, postures}。
+    视频只取前 20 秒、每秒 5 帧。同一时刻只跑一个，忙时 429。分析完立即删除上传的文件。
+    """
+    from app.live import get_engine
+    from pawcoach.body.check import check_image, check_video
+
+    data = await file.read()
+    if not data or len(data) > _MAX_BODY_BYTES:
+        raise HTTPException(status_code=400, detail="文件为空或过大")
+    if not _BODY_LOCK.acquire(blocking=False):
+        raise HTTPException(status_code=429, detail="busy")
+    tmp = None
+    try:
+        import cv2
+        import numpy as np
+
+        engine = get_engine()
+        img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+        if img is not None:
+            return check_image(engine, cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+        UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+        tmp = UPLOAD_DIR / f"body_{uuid.uuid4().hex}_{_safe_name(file.filename)}"
+        tmp.write_bytes(data)
+        return check_video(engine, tmp)
+    except HTTPException:
+        raise
+    except Exception as e:  # noqa: BLE001
+        raise HTTPException(status_code=400, detail=f"无法分析：{type(e).__name__}") from e
+    finally:
+        _BODY_LOCK.release()
+        if tmp is not None:
+            tmp.unlink(missing_ok=True)
 
 
 # 取景自检的实时检测：一次只跑一帧，且同一时刻只允许一个推理在跑。

@@ -18,6 +18,11 @@ import '../../domain/models.dart';
 import '../../core/theme.dart';
 import '../../domain/video_checks.dart';
 import '../../domain/video_progress.dart';
+import '../../data/body/body_api.dart';
+import '../../data/repositories/body_repository.dart';
+import '../../domain/body_signals.dart';
+import '../body/body_strings.dart';
+import '../body/body_widgets.dart';
 import 'guided_capture_page.dart';
 import 'video_strings.dart';
 
@@ -159,6 +164,23 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
             );
       }
       final progress = await _progressFor(dog?.id, skill.id, savedId, j);
+      // v1.6：服务端附带的身体信号 → 存一条"视频"来源的状态记录（周报、节奏建议用）
+      final bodyCfg = lib.bodySignals;
+      if (bodyCfg != null && dog != null && result['body'] is Map && j.status == VideoStatus.ok) {
+        final s = BodySummary.fromJson(result['body'] as Map);
+        final a = assessBody(s, bodyCfg);
+        if (a.state != BodyState.unclear) {
+          await ref.read(bodyRepositoryProvider).save(
+                dogId: dog.id,
+                assessment: a,
+                summary: s,
+                context: BodyContext.video,
+                contentVersion: lib.version,
+                now: ref.read(clockProvider)(),
+                skillId: skill.id,
+              );
+        }
+      }
       if (!mounted || run != _run) return;
       setState(() {
         _judgement = j;
@@ -279,6 +301,8 @@ class _VideoCheckPageState extends ConsumerState<VideoCheckPage> {
                 judgement: _judgement!,
                 config: lib.videoChecks!,
                 progress: _progress,
+                body: _result?['body'] is Map ? BodySummary.fromJson(_result!['body'] as Map) : null,
+                bodyConfig: lib.bodySignals,
                 onReupload: _restart,
                 candidates:
                     _result == null ? const [] : cueCandidates(_result!),
@@ -402,7 +426,13 @@ class VideoResultView extends StatelessWidget {
     this.onConfirmCues,
     this.realignFailedCues,
     this.progress,
+    this.body,
+    this.bodyConfig,
   });
+
+  /// v1.6：这段视频里狗的身体信号（服务端 result.body）与内容库规则；任一为 null 时不显示。
+  final BodySummary? body;
+  final BodySignalsConfig? bodyConfig;
   final Skill skill;
   final VideoJudgement judgement;
   final VideoChecksConfig config;
@@ -496,6 +526,7 @@ class VideoResultView extends StatelessWidget {
             ),
           ),
         ),
+        if (body != null && bodyConfig != null) ..._bodySection(context, body!, bodyConfig!),
         const SizedBox(height: 16),
         if (judgement.findings.isNotEmpty) ...[
           Text(VideoStrings.findingsTitle, style: t.titleMedium),
@@ -576,6 +607,25 @@ class VideoResultView extends StatelessWidget {
         ],
       ],
     );
+  }
+
+  List<Widget> _bodySection(BuildContext context, BodySummary s, BodySignalsConfig c) {
+    final a = assessBody(s, c);
+    if (a.state == BodyState.unclear) return const [];
+    final w = worstStopWindow(s, c);
+    return [
+      const SizedBox(height: 16),
+      Text(BodyStrings.videoTitle, style: Theme.of(context).textTheme.titleMedium),
+      const SizedBox(height: 8),
+      BodyAssessmentCard(key: const Key('video_body'), assessment: a, config: c, showAdvice: false),
+      if (w.count >= c.stopMinCount && w.start != null) ...[
+        const SizedBox(height: 8),
+        BodyStopNotice(
+          text: c.stopAdvice,
+          detail: BodyStrings.stopWindow(w.start!, c.sessionWindowS, w.count),
+        ),
+      ],
+    ];
   }
 
   Widget _row(String label, String value) => Padding(

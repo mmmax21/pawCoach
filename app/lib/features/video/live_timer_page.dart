@@ -21,6 +21,10 @@ import '../../data/video/frame_check.dart' show NRect;
 import '../../data/video/live_client.dart';
 import '../../data/video/live_controller.dart';
 import '../../domain/models.dart';
+import '../../data/body/body_api.dart' show bodyRepositoryProvider;
+import '../../data/repositories/body_repository.dart' show BodyContext;
+import '../../domain/body_signals.dart';
+import '../body/body_widgets.dart';
 import 'live_strings.dart';
 
 /// 内容库里"奖励晚"这条常见错误的原文，由技能的 video_checks 映射决定下标。没有映射时返回 null。
@@ -122,10 +126,33 @@ class _LiveTimerPageState extends ConsumerState<LiveTimerPage> with WidgetsBindi
     });
   }
 
+  /// v1.6：本次实时练习的身体信号 → 一条"实时"来源的状态记录（周报、节奏建议用）。失败不影响结束流程。
+  Future<void> _saveBody(Map<String, dynamic> result) async {
+    try {
+      final lib = ref.read(contentLibraryProvider).valueOrNull;
+      final cfg = lib?.bodySignals;
+      final dog = ref.read(currentDogProvider).valueOrNull;
+      if (lib == null || cfg == null || dog == null || result['body'] is! Map) return;
+      final s = BodySummary.fromJson(result['body'] as Map);
+      final a = assessBody(s, cfg);
+      if (a.state == BodyState.unclear) return;
+      await ref.read(bodyRepositoryProvider).save(
+            dogId: dog.id,
+            assessment: a,
+            summary: s,
+            context: BodyContext.live,
+            contentVersion: lib.version,
+            now: ref.read(clockProvider)(),
+            skillId: widget.skill.id,
+          );
+    } catch (_) {}
+  }
+
   void _onChange() {
     if (!mounted) return;
     final c = _ctl!;
     if (c.phase == LivePhase.done && c.result != null) {
+      _saveBody(c.result!);
       final cb = widget.onFinished;
       if (cb != null) {
         cb(c.result!);
@@ -274,6 +301,19 @@ class _LiveTimerPageState extends ConsumerState<LiveTimerPage> with WidgetsBindi
     );
   }
 
+  String? _bodyStop(LiveSnapshot? snap) {
+    if (snap == null) return null;
+    final cfg = ref.read(contentLibraryProvider).valueOrNull?.bodySignals;
+    if (cfg == null || snap.bodyCounts.isEmpty) return null;
+    return shouldStop(snap.bodyCounts, cfg) ? cfg.stopAdvice : null;
+  }
+
+  String? _bodyReferral(LiveSnapshot? snap) {
+    final cfg = ref.read(contentLibraryProvider).valueOrNull?.bodySignals;
+    if (snap == null || cfg == null) return null;
+    return cfg.referralSignals.any((id) => (snap.bodyCounts[id] ?? 0) > 0) ? cfg.referralAdvice : null;
+  }
+
   Widget _runningView(BuildContext context, LiveController c) {
     final cam = _camera!;
     final snap = c.snapshot;
@@ -340,6 +380,11 @@ class _LiveTimerPageState extends ConsumerState<LiveTimerPage> with WidgetsBindi
                 child: Text(mistake, style: const TextStyle(color: Colors.white, height: 1.35)),
               ),
             ),
+          // v1.6：最近一段时间压力信号够多 → 内容库"该停一停"原文
+          if (_bodyStop(snap) case final String text)
+            Padding(padding: const EdgeInsets.only(top: 6), child: BodyStopNotice(text: text)),
+          if (_bodyReferral(snap) case final String text)
+            Padding(padding: const EdgeInsets.only(top: 6), child: BodyReferralCard(text: text)),
           const SizedBox(height: 8),
           _trialStrip(snap),
           const SizedBox(height: 10),

@@ -14,6 +14,8 @@ import 'dart:convert';
 
 import 'package:drift/drift.dart' show OrderingTerm;
 
+import '../../domain/body_signals.dart';
+import '../repositories/body_repository.dart';
 import '../../domain/ai_guard.dart';
 import '../../domain/models.dart';
 import '../../domain/plan_generator.dart';
@@ -134,6 +136,9 @@ final List<Map<String, dynamic>> agentTools = [
     'limit': {'type': 'integer', 'description': '最多几条，默认 5，最多 10'},
   }),
   _tool('get_week_plan', '读取本周训练计划：目标技能、每项完成次数 / 目标次数、今日保底任务。', {}),
+  _tool('get_dog_state', '读取最近几次"狗的状态"检查（练前拍的视频 / 照片、上传的训练视频、实时计时）：平静 / 兴奋 / 有压力信号，观察到的身体信号及含义，以及按内容库规则给出的训练节奏建议。安排练习强度、时长或回答"狗是不是累了 / 紧张"时先查。', {
+    'limit': {'type': 'integer', 'description': '最多几条，默认 5，最多 10'},
+  }),
   _tool('search_library', '在训练内容库（技能教程、问题行为、常见问题）里检索。给出任何训练方法前必须先检索，只能依据返回的资料回答。', {
     'query': {'type': 'string', 'description': '检索内容，用主人的说法即可'},
   }, ['query']),
@@ -158,6 +163,7 @@ const agentToolLabels = {
   'get_dog_profile': '查看狗狗档案',
   'get_training_history': '查看训练记录',
   'get_week_plan': '查看本周计划',
+  'get_dog_state': '查看狗的状态记录',
   'search_library': '检索训练内容库',
   'check_skill_eligibility': '按规则检查能不能练',
   'propose_plan_change': '准备调整计划',
@@ -173,7 +179,7 @@ String agentSystemPrompt({String? contextSkillName}) => '''
 2. 方法只依据内容库：给出任何训练方法前先调用 search_library，只能依据返回的资料；用到哪条资料，就在句末标注 [ref: 资料id]。资料里没有的，直接说"内容库暂时没有覆盖，建议咨询专业训犬师"，不要自己编。
 3. 只用正向训练：拒绝打骂、惩罚、恐吓等方法，并简单说明原因、给出替代做法。
 4. 计划由规则说了算：建议练某个技能前先 check_skill_eligibility；要改计划只能调用 propose_plan_change，它只会生成确认卡片——不要说"已经帮你加好了"，要说"点下面的卡片确认后就会加入"。
-5. 业务判断：同一技能最近连续两次"没做到"，按规则建议先退回更基础的技能；出现健康、受伤、疑似疼痛的迹象 → refer_to_professional(kind=vet)，不给任何医疗建议；攻击性强或持续恶化 → refer_to_professional(kind=trainer)。
+5. 业务判断：同一技能最近连续两次"没做到"，按规则建议先退回更基础的技能；get_dog_state 返回了 pacing_advice 时，按它调整练习强度和时长（原文转述，不要自己加结论）；只描述观察到的身体信号，不替狗下"焦虑 / 开心"的结论；出现健康、受伤、疑似疼痛的迹象 → refer_to_professional(kind=vet)，不给任何医疗建议；攻击性强或持续恶化 → refer_to_professional(kind=trainer)。
 6. 事实只来自工具：狗的周龄、训练次数、评分、计划等数字和事实，只能引用工具结果，不要猜；只查了某个技能的记录时，不要推断成整只狗的情况。前后回答不一致时以最新的工具结果为准，并直接说明。
 7. 表达：中文，简洁、具体、像同事一样说话，200 字以内；先给结论，再给 1-3 个可以马上做的步骤。
 ${contextSkillName == null ? '' : '\n主人当前正在看的技能：$contextSkillName。\n'}''';
@@ -218,6 +224,8 @@ class AgentToolbox {
         return jsonEncode(await _history(input['skill_id'] as String?, (input['limit'] as num?)?.toInt() ?? 5));
       case 'get_week_plan':
         return jsonEncode(await _plan());
+      case 'get_dog_state':
+        return jsonEncode(await _dogState(((input['limit'] as num?)?.toInt() ?? 5).clamp(1, 10)));
       case 'search_library':
         return _search((input['query'] ?? '').toString());
       case 'check_skill_eligibility':
@@ -234,6 +242,40 @@ class AgentToolbox {
         return jsonEncode({'ok': true, 'shown': '已给主人显示转介卡片'});
     }
     throw ArgumentError('未知工具 $name');
+  }
+
+  Future<Map<String, dynamic>> _dogState(int limit) async {
+    final cfg = library.bodySignals;
+    if (cfg == null) return {'available': false, 'note': '内容库没有身体信号规则'};
+    final recs = await BodyRepository(db).recent(dogId, limit: limit);
+    final pace = pacingState([for (final r in recs) r.state], cfg);
+    return {
+      'checks': [
+        for (final r in recs)
+          {
+            'date': r.at.toLocal().toIso8601String().substring(0, 16),
+            'where': switch (r.context) {
+              BodyContext.preTraining => '练前检查',
+              BodyContext.video => '上传的训练视频',
+              BodyContext.live => '实时计时',
+            },
+            if (r.skillId != null) 'skill': _name(r.skillId!),
+            'state': switch (r.state) {
+              BodyState.calm => '平静',
+              BodyState.excited => '兴奋',
+              BodyState.stressed => '有压力信号',
+              BodyState.unclear => '看不清',
+            },
+            'signals': [
+              for (final id in {for (final s in r.summary.signals) s.id})
+                if (cfg.signals[id] != null) {'name': cfg.signals[id]!.name, 'meaning': cfg.signals[id]!.meaning},
+            ],
+            if (r.referral) 'referral_advice': cfg.referralAdvice,
+          },
+      ],
+      if (recs.isEmpty) 'note': '还没有做过狗的状态检查',
+      if (pace != null) 'pacing_advice': cfg.pacingAdvice[pace],
+    };
   }
 
   String _skillArg(Map<String, dynamic> input) {

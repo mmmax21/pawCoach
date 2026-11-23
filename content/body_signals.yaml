@@ -1,0 +1,98 @@
+# 狗的身体信号（v1.6 起，可缺省）
+# 视频分析服务只测量信号出现的时刻（pawcoach/body/signals.py），本文件决定：
+#   1. 每种信号叫什么、看起来是什么样、通常意味着什么；
+#   2. 练前状态检查：怎样算"平静 / 兴奋 / 有压力信号"，以及对应的训练建议；
+#   3. 练习中：多少压力信号算"该停了"；
+#   4. 根据最近几次检查调整训练节奏；
+#   5. 哪些信号要提示暂停自行训练、咨询专业训犬师。
+# App 只展示本文件原文与固定模板，不生成任何建议文字。
+# 原则：只说"观察到什么"，不替狗下"焦虑 / 开心"的结论，不做任何健康判断；单个信号意义有限，要看组合和情境。
+
+signals:
+  - id: tail_tucked
+    name: 尾巴夹低
+    looks_like: 尾巴压低，往后腿之间夹
+    meaning: 常见于害怕、不安或不确定的时候
+    category: stress
+  - id: body_low
+    name: 身体压低
+    looks_like: 站着时身体往下沉、重心后移
+    meaning: 常见于紧张、想避开眼前的东西
+    category: stress
+  - id: ears_drop
+    name: 耳朵往后压
+    looks_like: 耳朵比平时更往后、往下贴
+    meaning: 常见于紧张或想表示退让；不同耳型的狗差别很大，这里只和它自己平时比
+    category: stress
+  - id: yawn
+    name: 打哈欠
+    looks_like: 不困的时候张大嘴打哈欠
+    meaning: 训练中出现常被看作缓解紧张的"安抚信号"，提示狗可能有点吃不消
+    category: stress
+  - id: freeze
+    name: 僵住不动
+    looks_like: 身体压低或夹着尾巴，一动不动好几秒
+    meaning: 常见于很害怕、不知道该怎么办的时候
+    category: stress
+  - id: panting
+    name: 张嘴喘气
+    looks_like: 嘴张开，持续快速呼吸
+    meaning: 运动后、天热或兴奋时都会出现；不动也不热却一直喘，可能是紧张
+    category: arousal
+  - id: tail_high
+    name: 尾巴高举
+    looks_like: 站着时尾巴明显高过背部
+    meaning: 常见于兴奋、高度关注某样东西
+    category: arousal
+  - id: tail_wag
+    name: 摇尾巴
+    looks_like: 尾巴左右来回摆动
+    meaning: 表示情绪被调动起来，不一定是开心，要结合身体其他部位看
+    category: arousal
+  - id: high_motion
+    name: 动个不停
+    looks_like: 来回走动、跑跳，很少停下来
+    meaning: 兴奋度高，这时注意力很难集中在练习上
+    category: arousal
+
+# 练前状态检查（拍 5–20 秒视频或一张照片）
+readiness:
+  min_usable_frames: 8            # 能看清狗的帧少于此数 → 看不清，请重拍
+  stressed:                       # 满足任一条 → 有压力信号
+    any_of: [freeze]
+    count_of: [tail_tucked, body_low, ears_drop, yawn]
+    min_count: 2
+  excited:                        # 不算有压力信号时，满足任一条 → 兴奋
+    count_of: [high_motion, tail_high, tail_wag, panting]
+    min_count: 2
+    motion_mean_over: 0.8         # 身体中心平均移动速度（身长 / 秒）
+  advice:
+    calm: 狗现在比较平静，适合开始今天的练习。
+    excited: 狗现在比较兴奋，注意力很难集中。可以先做几分钟"安静趴垫"或嗅闻找零食，等它平静一些再开始，今天的练习也可以短一点。
+    stressed: 狗现在出现了一些压力信号。可以换到更安静、更熟悉的地方，或者先练更简单、它已经会的动作，每次只练两三遍就停，多给奖励。
+    unclear: 画面里看不清狗，请把狗全身拍进画面后再试一次。
+  calm_down_skill: calm_settle    # 兴奋时推荐先做的技能（必须存在）
+
+# 练习中（实时计时、上传的训练视频）
+in_session:
+  window_s: 30                    # 实时：最近多少秒
+  stop_count_of: [yawn, tail_tucked, body_low, ears_drop, freeze]
+  stop_min_count: 3               # 窗口内出现这么多次压力信号 → 建议这一轮结束
+  stop_advice: 狗最近出现了好几次压力信号，可能累了或觉得有点难。建议这一轮在它做成功一次后就结束，下次把难度降一点、时间缩短一点。
+
+# 根据最近几次检查调整训练节奏
+pacing:
+  lookback: 3                     # 看最近几次检查
+  min_same: 2                     # 其中至少几次是同一种状态才给建议
+  stressed: 最近几次练习前狗都出现了压力信号。建议这段时间每次只练 3–5 分钟，选它已经会的动作开头，用它最喜欢的零食，必要时换到更安静的地方。
+  excited: 最近几次练习前狗都比较兴奋。建议把练习安排在散步或玩耍之后，先做"安静趴垫"让它平静下来，练习中用价值低一点的零食、节奏放慢。
+
+# 转介：出现这些信号时提示暂停自行训练
+referral:
+  signals: [freeze]
+  advice: 画面里狗出现了僵住不动的信号。如果它经常这样，或者伴随咆哮、龇牙、躲藏，请先暂停自行训练，咨询专业训犬师。
+
+sources:
+  - 安抚信号（打哈欠、舔嘴、转头等），参见 Turid Rugaas《On Talking Terms with Dogs: Calming Signals》
+  - 狗的身体语言图解，参见 Lili Chin《Doggie Language》与 ASPCA、AKC 公开的"How to read dog body language"文章
+  - 压力相关行为（身体压低、打哈欠、舔嘴等），参见 Beerda et al. (1998) Applied Animal Behaviour Science 58: 365–381

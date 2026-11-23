@@ -6,6 +6,7 @@ library;
 import 'package:yaml/yaml.dart';
 
 import '../../domain/models.dart';
+import '../../domain/body_signals.dart' show BodySignalsConfig, bodySignalsFromMap;
 import '../../domain/video_checks.dart' show VideoTarget, implementedVideoDetectors, videoDetectorParams;
 
 class ContentParseException implements Exception {
@@ -445,6 +446,17 @@ List<AiTerm> aiTermsFromMap(String file, Map map) {
   return out;
 }
 
+/// body_signals.yaml（v1.6 起，可缺省）。
+BodySignalsConfig parseBodySignals(String file, String text) => bodySignalsFromMapChecked(file, _loadRoot(file, text));
+
+BodySignalsConfig bodySignalsFromMapChecked(String file, Map map) {
+  try {
+    return bodySignalsFromMap(map);
+  } on FormatException catch (e) {
+    throw ContentParseException(file, e.message);
+  }
+}
+
 /// faq.yaml（v1.4 起，可缺省）：`faqs: [{id, question, keywords, answer, tips?, related?, sources}]`。
 List<FaqEntry> parseFaqs(String file, String text) => faqsFromMap(file, _loadRoot(file, text));
 
@@ -518,6 +530,10 @@ void validateReferences(ContentLibrary lib) {
         throw ContentParseException('faq.yaml', 'FAQ ${f.id} 的 related 引用不存在的内容 $id');
       }
     }
+  }
+  final bs = lib.bodySignals;
+  if (bs != null && !lib.skillById.containsKey(bs.calmDownSkill)) {
+    throw ContentParseException('body_signals.yaml', 'calm_down_skill 引用不存在的技能 ${bs.calmDownSkill}');
   }
   final vc = lib.videoChecks;
   if (vc != null) {

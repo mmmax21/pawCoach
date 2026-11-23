@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../body/body_widgets.dart';
 import '../../data/repositories/household_repository.dart' show displayNickname;
 import '../../domain/streak.dart' show localDateOf;
 
@@ -141,6 +142,8 @@ class _ReportBody extends ConsumerWidget {
           ],
         ),
         _MemberBreakdown(weekStart: summary.weekStart),
+        // v1.6：这一周练前 / 练习中的状态检查
+        BodyWeeklySection(weekStart: summary.weekStart),
         const SizedBox(height: 16),
         Text(ReportStrings.tableTitle, style: t.titleMedium),
         const SizedBox(height: 8),

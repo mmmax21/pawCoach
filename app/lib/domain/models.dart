@@ -4,6 +4,7 @@
 /// docs/content-library.md 一一对应，只做解析，不含任何训练内容。
 library;
 
+import 'body_signals.dart' show BodySignalsConfig;
 import 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig, VideoTarget;
 
 export 'video_checks.dart' show VideoCheckMapping, VideoChecksConfig, VideoDetectorRule, VideoTarget;
@@ -293,6 +294,7 @@ class ContentLibrary {
     required List<AiTerm> aiTerms,
     this.videoChecks,
     List<FaqEntry> faqs = const [],
+    this.bodySignals,
   })  : aiTerms = List.unmodifiable(aiTerms),
         faqs = List.unmodifiable(faqs),
         faqById = {for (final f in faqs) f.id: f},
@@ -317,6 +319,9 @@ class ContentLibrary {
 
   /// v1.3 起：video_checks.yaml。客户端加载内容库时必填；手工构造（测试）可省略。
   final VideoChecksConfig? videoChecks;
+
+  /// v1.6 起：body_signals.yaml（可缺省；缺省时不显示"狗的状态"相关功能）。
+  final BodySignalsConfig? bodySignals;
 
   /// v1.4 起：faq.yaml（可缺省，缺省为空）。
   final List<FaqEntry> faqs;

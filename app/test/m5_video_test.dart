@@ -437,7 +437,7 @@ void main() {
   // =========================================================================
   group('内容库 v1.3', () {
     test('video_checks.yaml 与三个技能的映射', () {
-      expect(lib.version, 'v1.5');
+      expect(lib.version, 'v1.6');
       expect(cfg.detectors.keys.toSet(), allDetectors.toSet());
       expect(cfg.minReliableTrials, 2);
       expect(cfg.markerWords, contains('好'));
@@ -721,6 +721,12 @@ void main() {
       await t.runAsync(() => db.close());
     }
 
+    void tallScreen(WidgetTester t) {
+      t.view.physicalSize = const Size(1080, 4200);
+      t.view.devicePixelRatio = 2.0;
+      addTearDown(t.view.reset);
+    }
+
     Future<void> openSkill(WidgetTester t, String skillId) async {
       await settle(t, find.byType(Scaffold));
       router(t).push('/skill/$skillId');
@@ -731,10 +737,13 @@ void main() {
       await seed(t);
       final api = FakeVideoApi();
       await pumpApp(t, api);
+      tallScreen(t); // v1.6 技能页多了"练前看看狗的状态"入口，视频入口在一屏之外
       await openSkill(t, 'sit');
       expect(find.byKey(const Key('video_entry')), findsOneWidget);
-      router(t).push('/skill/down');
-      await settle(t, find.text('趴下'));
+      // v1.5 起趴下也有视频纠错；换一个没有 video_checks 的技能
+      router(t).push('/skill/name_response');
+      await settle(t, find.text(lib.skillById['name_response']!.name));
+      await t.drag(find.byType(ListView).last, const Offset(0, -4000));
       await t.pump(const Duration(milliseconds: 300));
       expect(find.byKey(const Key('video_entry')), findsNothing);
       await teardown(t);
@@ -790,8 +799,8 @@ void main() {
       ]);
       api.gate = Completer<void>();
       await pumpApp(t, api);
+      tallScreen(t);
       await openSkill(t, 'sit');
-      await t.scrollUntilVisible(find.byKey(const Key('video_entry')), 300, scrollable: find.byType(Scrollable).first);
       await t.tap(find.byKey(const Key('video_entry')));
       await settle(t, find.byKey(const Key('video_pick_gallery')));
       await t.tap(find.byKey(const Key('video_pick_gallery')));
@@ -814,7 +823,7 @@ void main() {
 
       final saved = await t.runAsync(() => VideoRepository(db).watchRecent(dogId, 'sit').first);
       expect(saved!.single.findings.single.detector, 'late_reward');
-      expect(saved.single.contentVersion, 'v1.5');
+      expect(saved.single.contentVersion, 'v1.6');
 
       await t.ensureVisible(find.byKey(const Key('video_practice_1')));
       await t.tap(find.byKey(const Key('video_practice_1')));

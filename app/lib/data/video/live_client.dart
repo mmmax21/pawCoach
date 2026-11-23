@@ -95,6 +95,7 @@ class LiveSnapshot {
     required this.liveTrial,
     required this.lateSec,
     required this.hint,
+    this.bodyCounts = const {},
   });
 
   final double t;
@@ -107,6 +108,9 @@ class LiveSnapshot {
   final LiveTrialView? liveTrial;
   final double lateSec;
   final String? hint; // 服务端给的当场提示："该奖励了" / "奖励晚了" / "口令说了 N 次，只说一次"
+
+  /// v1.6 身体信号：最近一段时间（服务端 BODY_WINDOW_S）各信号出现次数；该不该停由手机按内容库判断。
+  final Map<String, int> bodyCounts;
 
   factory LiveSnapshot.fromJson(Map j) {
     final box = j['dog_box'];
@@ -121,6 +125,10 @@ class LiveSnapshot {
       liveTrial: j['live_trial'] is Map ? LiveTrialView.fromJson(j['live_trial'] as Map) : null,
       lateSec: (j['late_sec'] as num?)?.toDouble() ?? 1.0,
       hint: j['hint'] as String?,
+      bodyCounts: {
+        for (final e in (((j['body'] as Map?)?['counts'] as Map?) ?? const {}).entries)
+          '${e.key}': (e.value as num).toInt(),
+      },
     );
   }
 }

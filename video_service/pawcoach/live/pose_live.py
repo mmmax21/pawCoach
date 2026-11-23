@@ -36,6 +36,8 @@ class FrameRead:
     label: str                                   # sit | stand | down | unclear
     conf: float
     box: tuple[float, float, float, float] | None  # 归一化 x1,y1,x2,y2；没找到狗为 None
+    kp: np.ndarray | None = None                 # v3 身体信号：模型顺序 39×3（pose/posture_model.NAMES）
+    side_view: bool = False                      # 规则能判（侧面可判断）→ 尾巴 / 身体高低可信
 
 
 class PoseEngine:
@@ -138,6 +140,7 @@ class PoseEngine:
         kp = np.asarray(out[0]["bodyparts"])[0]            # (39, 3)：x, y, 置信度
         xy, cf = self._substitute(kp[:, :2].copy(), kp[:, 2].copy())
         label, conf = classify_frame(xy, cf, self._ix, float(min(w, h)), self.rules)
+        side_view = label != "unclear"
         # v3：规则判不了（正面 / 俯拍）时用多角度分类器（和离线路径同一套合用规则）
         from pawcoach.pose.posture_model import default_cnn, default_model
         from pawcoach.pose.rules import _hybrid, merge_read
@@ -148,7 +151,9 @@ class PoseEngine:
                 label, conf = merge_read(label, conf, cnn.predict(rgb, (x1, y1, x2, y2)), cf, self.rules)
             elif (posture := default_model()) is not None:
                 label, conf = _hybrid(label, conf, xy, cf, self.bodyparts, posture, self.rules)
-        return FrameRead(label, conf, box)
+        from pawcoach.pose.posture_model import kp_in_model_order
+
+        return FrameRead(label, conf, box, kp_in_model_order(xy, cf, self.bodyparts), side_view)
 
     def _substitute(self, xy: np.ndarray, cf: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
         floor = self.rules.min_kp_conf
@@ -161,3 +166,14 @@ class PoseEngine:
             if cf[bi] >= floor:
                 xy[si], cf[si] = xy[bi], cf[bi]
         return xy, cf
+
+
+_SHARED: PoseEngine | None = None
+
+
+def shared_engine() -> PoseEngine:
+    """进程内共享的一份模型（实时计时、身体信号检查、整段分析里的身体信号共用）。"""
+    global _SHARED
+    if _SHARED is None:
+        _SHARED = PoseEngine()
+    return _SHARED

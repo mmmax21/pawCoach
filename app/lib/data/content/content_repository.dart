@@ -94,7 +94,9 @@ class ContentRepository {
     final videoChecks = parseVideoChecks('video_checks.yaml', await _must('video_checks.yaml', 'v1.3'));
     final faqText = await _optional('faq.yaml');
     final faqs = faqText == null ? const <FaqEntry>[] : parseFaqs('faq.yaml', faqText);
+    final bodyText = await _optional('body_signals.yaml');
     final lib = ContentLibrary(
+      bodySignals: bodyText == null ? null : parseBodySignals('body_signals.yaml', bodyText),
       version: version,
       skills: skills,
       issues: issues,
@@ -207,6 +209,15 @@ class ContentRepository {
               json: jsonEncode(_plain(loadYaml(faqText))),
             ));
       }
+      // v1.6：body_signals.yaml（可缺省）同表存放，id 固定为 body_signals
+      final bodyText = await _optional('body_signals.yaml');
+      if (bodyText != null) {
+        await db.into(db.contentAiLexicons).insert(ContentAiLexiconsCompanion.insert(
+              id: 'body_signals',
+              version: lib.version,
+              json: jsonEncode(_plain(loadYaml(bodyText))),
+            ));
+      }
       await db.into(db.contentVersions).insert(ContentVersionsCompanion.insert(
             version: lib.version,
             loadedAt: now,
@@ -240,6 +251,9 @@ class ContentRepository {
           'db:content_ai_lexicons/ai_terms', jsonDecode(aiRows['ai_terms']!) as Map),
       videoChecks: videoChecksFromMap('db:content_ai_lexicons/video_checks',
           jsonDecode(aiRows['video_checks']!) as Map),
+      bodySignals: aiRows['body_signals'] == null
+          ? null
+          : bodySignalsFromMapChecked('db:content_ai_lexicons/body_signals', jsonDecode(aiRows['body_signals']!) as Map),
       faqs: aiRows['faq'] == null
           ? const []
           : faqsFromMap('db:content_ai_lexicons/faq', jsonDecode(aiRows['faq']!) as Map),

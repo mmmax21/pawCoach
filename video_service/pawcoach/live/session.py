@@ -23,6 +23,8 @@ from pawcoach.live.vad import OnsetDetector
 DEFAULT_LATE_SEC = 1.0
 # 狗坐下后多久还没有奖励，就开始提示"该奖励了"
 NUDGE_AFTER_S = 0.8
+BODY_WINDOW_S = 30.0   # 实时：最近 30 秒的身体信号（该不该停由手机按内容库规则判断）
+BODY_KEEP_S = 60.0
 
 
 @dataclass
@@ -40,6 +42,7 @@ class Snapshot:
     late_sec: float
     hint: str | None              # 提示代码，不是文字：reward_due / reward_late / cue_repeated / None。
                                   # 文字由手机端按内容库原文显示；服务端不生成任何训练建议。
+    body: dict | None = None      # v3 身体信号：最近 BODY_WINDOW_S 秒里各信号出现次数 {counts, window, usable}
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -67,6 +70,9 @@ def _trial_dict(tr: LiveTrial, late_sec: float, now: float) -> dict:
 
 class LiveSession:
     def __init__(self, late_sec: float = DEFAULT_LATE_SEC, mic_enabled: bool = True):
+        self.body_frames: list = []        # v3 身体信号：FrameSignals，只留最近 BODY_KEEP_S 秒
+        self.body_all: list = []           # 整段（结束时汇总进 result）
+        self._body_cache: tuple[float, dict] | None = None
         self.late_sec = late_sec
         self.mic_enabled = mic_enabled
         self.tracker = StateTracker()
@@ -93,6 +99,29 @@ class LiveSession:
         if label != "unclear":
             self.clear_frames += 1
         self.tracker.push(t, label)
+
+    def on_body(self, fs) -> None:
+        """一帧的身体信号（pawcoach/body/signals.FrameSignals）。"""
+        if fs is None:
+            return
+        self.body_frames.append(fs)
+        self.body_all.append(fs)
+        cut = fs.t - BODY_KEEP_S
+        while self.body_frames and self.body_frames[0].t < cut:
+            self.body_frames.pop(0)
+
+    def body_snapshot(self) -> dict | None:
+        if not self.body_frames:
+            return None
+        if self._body_cache and self.now - self._body_cache[0] < 1.0:  # 最多每秒算一次
+            return self._body_cache[1]
+        from pawcoach.body.signals import counts, summarize
+
+        recent = [f for f in self.body_frames if f.t >= self.now - BODY_WINDOW_S]
+        s = summarize(recent)
+        out = {"counts": counts(s), "window": BODY_WINDOW_S, "usable": s.usable}
+        self._body_cache = (self.now, out)
+        return out
 
     def on_audio(self, t0: float, pcm: np.ndarray) -> list[float]:
         n = len(pcm)
@@ -135,6 +164,7 @@ class LiveSession:
             live_trial=live,
             late_sec=self.late_sec,
             hint=hint,
+            body=self.body_snapshot(),
         )
 
     def result(self) -> dict:
@@ -200,4 +230,14 @@ class LiveSession:
             "events": {"pose": events_pose, "audio": [{"word": "", "t_start": v, "t_end": v, "kind": "other"} for v in self.onsets]},
             "taps": list(self.taps),
             "duration": round(self.now, 2),
+            "body": self._body_result(),
         }
+
+    def _body_result(self) -> dict | None:
+        if not self.body_all:
+            return None
+        from pawcoach.body.signals import summarize
+
+        out = summarize(self.body_all).to_dict()
+        out["kind"] = "live"
+        return out

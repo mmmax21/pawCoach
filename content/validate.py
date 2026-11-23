@@ -339,6 +339,57 @@ def main() -> int:
             if not isinstance(m, int) or not 0 <= m < len(mistakes):
                 err(path, f"video_checks 的 mistake 下标 {m} 越界（共 {len(mistakes)} 条常见错误）")
 
+    # v1.6: 身体信号（可缺省）
+    bp = os.path.join(ROOT, "body_signals.yaml")
+    body_signal_count = 0
+    if os.path.exists(bp):
+        scan_banned(bp)
+        b = load(bp) or {}
+        known = {"tail_tucked", "body_low", "ears_drop", "yawn", "freeze", "panting", "tail_high", "tail_wag", "high_motion"}
+        ids = set()
+        for sg in b.get("signals", []):
+            sid = sg.get("id")
+            if sid in ids:
+                err(bp, f"信号 {sid} 重复")
+            ids.add(sid)
+            if sid not in known:
+                err(bp, f"未知信号 {sid}（视频服务没有测量它）")
+            for k in ("name", "looks_like", "meaning", "category"):
+                if not str(sg.get(k, "")).strip():
+                    err(bp, f"信号 {sid} 缺 {k}")
+            if sg.get("category") not in ("stress", "arousal"):
+                err(bp, f"信号 {sid} 的 category 只能是 stress 或 arousal")
+        body_signal_count = len(ids)
+        def refs(lst, where):
+            for x in lst or []:
+                if x not in ids:
+                    err(bp, f"{where} 引用不存在的信号 {x}")
+        r = b.get("readiness", {})
+        refs(r.get("stressed", {}).get("any_of"), "readiness.stressed.any_of")
+        refs(r.get("stressed", {}).get("count_of"), "readiness.stressed.count_of")
+        refs(r.get("excited", {}).get("count_of"), "readiness.excited.count_of")
+        for k in ("calm", "excited", "stressed", "unclear"):
+            if not str(r.get("advice", {}).get(k, "")).strip():
+                err(bp, f"readiness.advice 缺 {k}")
+        if r.get("calm_down_skill") not in skills:
+            err(bp, f"readiness.calm_down_skill 引用不存在的技能 {r.get('calm_down_skill')}")
+        refs(b.get("in_session", {}).get("stop_count_of"), "in_session.stop_count_of")
+        for sec, keys in (("in_session", ("window_s", "stop_min_count", "stop_advice")), ("pacing", ("lookback", "min_same", "stressed", "excited")),
+                          ("referral", ("signals", "advice"))):
+            for k in keys:
+                if k not in b.get(sec, {}):
+                    err(bp, f"{sec} 缺 {k}")
+        refs(b.get("referral", {}).get("signals"), "referral.signals")
+        if not b.get("sources"):
+            err(bp, "缺 sources")
+        health = ["病", "药", "疼", "痛", "诊断", "症状"]
+        for line in open(bp, encoding="utf-8").read().splitlines():
+            if line.lstrip().startswith("#"):
+                continue
+            for w in health:
+                if w in line:
+                    err(bp, f"出现健康相关词「{w}」：身体信号只描述行为，不做健康判断")
+
     # v1.4: 常见问题
     fp = os.path.join(ROOT, "faq.yaml")
     faq_count = 0
@@ -379,6 +430,7 @@ def main() -> int:
                 if r not in all_ids:
                     err(fp, f"{fid}: related 引用不存在的 ID {r}")
 
+    print(f"身体信号 {body_signal_count} 种；", end="")
     print(f"技能 {len(skills)} 个，问题行为 {issues} 个，视频纠错技能 {video_skills} 个，常见问题 {faq_count} 条")
     for w in warnings:
         print(f"WARN  {w}")

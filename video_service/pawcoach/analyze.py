@@ -241,6 +241,7 @@ def realign(result: dict, meta: MetaInfo, user_cue_sits: list[float]) -> Analysi
     quality = Quality(**{k: q[k] for k in Quality.__dataclass_fields__ if k in q})
     out = assemble(result.get("video_id", ""), pose, audio, meta, quality, user_cue_sits)
     out.precheck = result.get("precheck")
+    out.body = result.get("body")
     return out
 
 
@@ -337,6 +338,15 @@ def _analyze(
     )
     result = assemble(video_id, pose, audio, meta, quality)
     result.precheck = pc
+    # v3 身体信号：整段每秒 3 帧（失败不影响主结果）
+    if pose_kind == "superanimal":
+        try:
+            from pawcoach.body.check import check_video
+            from pawcoach.live.pose_live import shared_engine
+
+            result.body = check_video(shared_engine(), video.path, fps=3.0, max_s=None)
+        except Exception:  # noqa: BLE001
+            result.body = None
 
     # 6) coach（M5：COACH_MODE 默认 off → 空串、不发任何外部请求；
     #    template / llm 时沿用原逻辑：C4 安全层优先，完全空数据时给诚实提示，不调 LLM 避免幻觉）
